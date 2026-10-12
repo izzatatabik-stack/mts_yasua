@@ -1,0 +1,2416 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MTs. YASUA Pilangwetan — Madrasah Tsanawiyah Berakhlak, Cerdas & Berprestasi</title>
+  <meta name="description" content="Website Resmi MTs. YASUA Pilangwetan, Kebonagung, Demak. Membentuk Generasi Qur'ani, Berakhlakul Karimah, Unggul Prestasi dan Menguasai Teknologi.">
+  <meta name="keywords" content="MTs YASUA, MTs Yasua Pilangwetan, PPDB MTs Yasua, Madrasah Demak, Kebonagung Demak">
+  
+  <!-- Open Graph Meta -->
+  <meta property="og:title" content="MTs. YASUA Pilangwetan — Berakhlak, Cerdas, Berprestasi">
+  <meta property="og:description" content="Penerimaan Peserta Didik Baru (PPDB) MTs. YASUA Pilangwetan - Demak. Daftar online sekarang!">
+  <meta property="og:type" content="website">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Tailwind Configuration for Custom Islamic Green & Gold Theme -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              dark: '#033324',
+              primary: '#065F46',      // Deep Islamic Emerald Green
+              medium: '#0D7B58',
+              light: '#10B981',       // Mint / Fresh Green
+              pale: '#ECFDF5',
+              surface: '#F4FBF7',
+              accent: '#F59E0B',      // Warm Amber / Gold
+              accentHover: '#D97706',
+              gold: '#FBBF24'
+            }
+          },
+          fontFamily: {
+            sans: ['Plus Jakarta Sans', 'Inter', 'sans-serif'],
+            arabic: ['Amiri', 'serif']
+          },
+          boxShadow: {
+            'glow-green': '0 10px 30px -10px rgba(6, 95, 70, 0.35)',
+            'glow-gold': '0 10px 25px -5px rgba(245, 158, 11, 0.4)'
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Google Fonts: Plus Jakarta Sans & Amiri -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <!-- Lucide Icons CDN -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <style>
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+    .arabic-font {
+      font-family: 'Amiri', serif;
+    }
+    /* Glassmorphism styling */
+    .glass-nav {
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+    }
+    .hover-lift {
+      transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s ease;
+    }
+    .hover-lift:hover {
+      transform: translateY(-4px);
+    }
+
+    /* Continuous Sequential Word Zoom-In Animation */
+    @keyframes wordZoomCycle {
+      0% {
+        transform: scale(1) translateY(0);
+        filter: brightness(1);
+      }
+      3.5% {
+        transform: scale(1.18) translateY(-3px);
+        filter: brightness(1.28) drop-shadow(0 4px 14px rgba(251, 191, 36, 0.45));
+      }
+      7.5% {
+        transform: scale(1.12) translateY(-2px);
+        filter: brightness(1.18) drop-shadow(0 2px 8px rgba(251, 191, 36, 0.35));
+      }
+      13% {
+        transform: scale(1) translateY(0);
+        filter: brightness(1);
+      }
+      100% {
+        transform: scale(1) translateY(0);
+        filter: brightness(1);
+      }
+    }
+
+    .zoom-word {
+      display: inline-block;
+      transform-origin: center center;
+      animation: wordZoomCycle 5.6s cubic-bezier(0.34, 1.56, 0.64, 1) infinite;
+      will-change: transform, filter;
+    }
+
+    .zoom-w1 { animation-delay: 0s; }
+    .zoom-w2 { animation-delay: 0.8s; }
+    .zoom-w3 { animation-delay: 1.6s; }
+    .zoom-w4 { animation-delay: 2.4s; }
+    .zoom-w5 { animation-delay: 3.2s; }
+    .zoom-w6 { animation-delay: 4.0s; }
+    .zoom-w7 { animation-delay: 4.8s; }
+
+    /* Continuous Seamless Marquee Slider for Dewan Guru */
+    @keyframes teacherMarqueeScroll {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    .teacher-marquee-track {
+      display: flex;
+      width: max-content;
+      animation: teacherMarqueeScroll 28s linear infinite;
+      will-change: transform;
+    }
+
+    .teacher-marquee-container:hover .teacher-marquee-track,
+    .teacher-marquee-track:hover {
+      animation-play-state: paused !important;
+    }
+  </style>
+</head>
+<body class="antialiased text-slate-800 bg-[#F4FBF7] min-h-screen flex flex-col selection:bg-emerald-200 selection:text-brand-dark">
+
+  <!-- FLOATING NAVIGATION BAR (Glassmorphism Header) -->
+  <header class="sticky top-3 sm:top-4 z-40 px-3 sm:px-6 lg:px-8 w-full transition-all duration-300 -mb-[76px] sm:-mb-[84px] lg:-mb-[88px] pointer-events-none">
+    <nav class="max-w-7xl mx-auto glass-nav rounded-full shadow-[0_12px_40px_rgba(6,95,70,0.12)] border border-white/80 px-4 sm:px-6 lg:px-8 py-2.5 sm:py-3 transition-all duration-300 pointer-events-auto">
+      <div class="flex items-center justify-between">
+        
+        <!-- Brand Logo & Title -->
+        <a href="#" class="flex items-center gap-3 group shrink-0">
+          <img src="logo.png" alt="Logo MTs. YASUA Pilangwetan" class="w-10 h-10 sm:w-11 sm:h-11 object-contain group-hover:scale-105 transition-transform duration-300 drop-shadow-sm">
+          <div class="flex flex-col justify-center">
+            <span class="text-brand-primary font-black text-base sm:text-lg tracking-tight whitespace-nowrap leading-none group-hover:text-brand-medium transition-colors">
+              MTs. YASUA
+            </span>
+            <span class="text-brand-accent font-extrabold text-[9px] sm:text-[10px] tracking-widest uppercase mt-0.5">
+              PILANGWETAN - DEMAK
+            </span>
+          </div>
+        </a>
+
+        <!-- Desktop Navigation Links -->
+        <div class="hidden lg:flex items-center space-x-1 xl:space-x-1.5 text-slate-700 font-semibold text-[13.5px]">
+          <a href="#" class="text-brand-primary font-bold px-2.5 py-1.5 rounded-full hover:bg-emerald-50 transition-colors">Beranda</a>
+          <a href="#sambutan" class="hover:text-brand-primary px-2.5 py-1.5 rounded-full hover:bg-emerald-50 transition-colors">Sambutan</a>
+          <a href="#dewan-guru" class="hover:text-brand-primary px-2.5 py-1.5 rounded-full hover:bg-emerald-50 transition-colors">Dewan Guru</a>
+          <a href="#profil" class="hover:text-brand-primary px-2.5 py-1.5 rounded-full hover:bg-emerald-50 transition-colors">Profil</a>
+          <a href="#program" class="hover:text-brand-primary px-2.5 py-1.5 rounded-full hover:bg-emerald-50 transition-colors">Program</a>
+          <a href="#berita" class="hover:text-brand-primary px-2.5 py-1.5 rounded-full hover:bg-emerald-50 transition-colors">Berita</a>
+          <a href="#ekskul" class="hover:text-brand-primary px-2.5 py-1.5 rounded-full hover:bg-emerald-50 transition-colors">Ekskul</a>
+          <a href="#galeri" class="hover:text-brand-primary px-2.5 py-1.5 rounded-full hover:bg-emerald-50 transition-colors">Galeri</a>
+          <a href="#kontak" class="hover:text-brand-primary px-2.5 py-1.5 rounded-full hover:bg-emerald-50 transition-colors">Kontak</a>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="hidden lg:flex items-center gap-3">
+          <a href="#brosur" class="w-9 h-9 rounded-full flex items-center justify-center bg-emerald-50 text-brand-primary hover:bg-emerald-100 transition-all" title="Unduh Brosur">
+            <i data-lucide="file-down" class="w-4 h-4"></i>
+          </a>
+          <a href="#ppdb" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-gradient-to-r from-brand-primary to-emerald-600 hover:from-brand-dark hover:to-brand-primary text-white font-extrabold text-xs sm:text-[13px] shadow-glow-green hover:shadow-lg transition-all duration-200">
+            <span>Daftar PPDB</span>
+            <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+          </a>
+        </div>
+
+        <!-- Mobile Menu Button -->
+        <div class="flex items-center gap-2 lg:hidden">
+          <a href="#ppdb" class="px-3.5 py-1.5 rounded-full bg-brand-primary text-white text-xs font-bold shadow-sm">
+            PPDB
+          </a>
+          <button id="mobileMenuBtn" onclick="toggleMobileMenu()" class="w-9 h-9 rounded-full flex items-center justify-center bg-emerald-50 text-brand-primary hover:bg-emerald-100 transition-colors" aria-label="Buka Menu">
+            <i data-lucide="menu" class="w-5 h-5"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Mobile Dropdown Menu -->
+      <div id="mobileMenu" class="hidden lg:hidden pt-4 pb-2 border-t border-slate-100 mt-3 text-slate-700 flex flex-col space-y-2">
+        <a href="#" onclick="toggleMobileMenu()" class="px-3 py-2 rounded-xl text-brand-primary font-bold hover:bg-emerald-50">Beranda</a>
+        <a href="#sambutan" onclick="toggleMobileMenu()" class="px-3 py-2 rounded-xl font-medium hover:bg-emerald-50">Sambutan Pimpinan</a>
+        <a href="#dewan-guru" onclick="toggleMobileMenu()" class="px-3 py-2 rounded-xl font-medium hover:bg-emerald-50">Dewan Guru & Tenaga Pendidik</a>
+        <a href="#profil" onclick="toggleMobileMenu()" class="px-3 py-2 rounded-xl font-medium hover:bg-emerald-50">Profil & Visi Misi</a>
+        <a href="#program" onclick="toggleMobileMenu()" class="px-3 py-2 rounded-xl font-medium hover:bg-emerald-50">Program Unggulan</a>
+        <a href="#berita" onclick="toggleMobileMenu()" class="px-3 py-2 rounded-xl font-medium hover:bg-emerald-50">Berita & Pengumuman</a>
+        <a href="#ekskul" onclick="toggleMobileMenu()" class="px-3 py-2 rounded-xl font-medium hover:bg-emerald-50">Ekstrakurikuler</a>
+        <a href="#galeri" onclick="toggleMobileMenu()" class="px-3 py-2 rounded-xl font-medium hover:bg-emerald-50">Galeri Media Sosial</a>
+        <a href="#brosur" onclick="toggleMobileMenu()" class="px-3 py-2 rounded-xl font-medium hover:bg-emerald-50">Unduh Brosur PPDB</a>
+        <a href="#kontak" onclick="toggleMobileMenu()" class="px-3 py-2 rounded-xl font-medium hover:bg-emerald-50">Hubungi Kami (WhatsApp)</a>
+        <div class="pt-2">
+          <a href="#ppdb" onclick="toggleMobileMenu()" class="w-full text-center block py-2.5 rounded-xl bg-brand-accent text-slate-900 font-extrabold text-sm shadow-md">
+            Pendaftaran Siswa Baru (PPDB Online)
+          </a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- MAIN CONTENT -->
+  <main class="flex-1">
+
+    <!-- HERO SECTION -->
+    <section class="relative overflow-hidden min-h-[580px] lg:min-h-[calc(100vh-10px)] flex items-center justify-center bg-gradient-to-br from-[#022c1f] via-[#064E3B] to-[#0A6B48] text-white">
+      <!-- Background Decorative Elements -->
+      <div class="absolute inset-0 opacity-[0.05] pointer-events-none bg-[radial-gradient(#FFFFFF_1px,transparent_1px)] [background-size:24px_24px]"></div>
+      <div class="absolute -right-32 -top-32 w-96 h-96 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none"></div>
+      <div class="absolute -left-32 -bottom-32 w-96 h-96 bg-brand-accent/10 rounded-full blur-3xl pointer-events-none"></div>
+
+      <div class="max-w-7xl mx-auto px-4 sm:px-8 pt-28 sm:pt-30 lg:pt-32 pb-10 sm:pb-12 lg:pb-14 relative z-10 w-full">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+          
+          <!-- Left Hero Text -->
+          <div class="lg:col-span-7 text-left space-y-4 sm:space-y-4.5">
+            
+            <div class="flex flex-wrap items-center gap-2 pt-1 sm:pt-2">
+              <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/15 backdrop-blur-md border border-white/30 text-white text-xs font-semibold tracking-wide shadow-sm">
+                <i data-lucide="sparkles" class="w-3.5 h-3.5 text-brand-gold"></i>
+                <span>YAYASAN ISLAM SUADA (YASUA)</span>
+              </div>
+              <div class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-emerald-100 text-xs font-medium">
+                <i data-lucide="map-pin" class="w-3 h-3 text-amber-300"></i>
+                <span>PILANGWETAN · KEBONAGUNG · DEMAK</span>
+              </div>
+            </div>
+
+            <h1 class="tracking-tight space-y-1 sm:space-y-1.5">
+              <div class="text-xl sm:text-2xl md:text-3xl font-extrabold text-emerald-100">
+                <span class="zoom-word zoom-w1 mr-2">Membentuk</span>
+                <span class="zoom-word zoom-w2">Generasi</span>
+              </div>
+              <div class="text-3xl sm:text-4xl md:text-4xl lg:text-[46px] font-black leading-[1.18]">
+                <span class="text-brand-gold drop-shadow-[0_2px_15px_rgba(245,158,11,0.5)]">
+                  <span class="zoom-word zoom-w3 mr-2">Qur’ani,</span>
+                  <span class="zoom-word zoom-w4">Cerdas,</span>
+                </span>
+                <span class="block mt-0.5 text-white">
+                  <span class="zoom-word zoom-w5 mr-1.5">&amp;</span>
+                  <span class="zoom-word zoom-w6 mr-2">Berakhlakul</span>
+                  <span class="zoom-word zoom-w7">Karimah</span>
+                </span>
+              </div>
+            </h1>
+
+            <p class="text-emerald-100/90 text-sm sm:text-base leading-relaxed max-w-2xl font-normal">
+              MTs. YASUA Pilangwetan memadukan kurikulum madrasah nasional, pembinaan karakter Islami Ahlus Sunnah Wal Jama'ah, pembiasaan Al-Qur'an, dan penguasaan literasi digital di era modern.
+            </p>
+
+            <!-- CTA Buttons -->
+            <div class="pt-1 flex flex-wrap items-center gap-3 sm:gap-4">
+              <a href="#ppdb" class="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-2xl bg-gradient-to-r from-brand-accent to-amber-500 hover:from-amber-500 hover:to-brand-accent text-slate-950 font-black text-xs sm:text-sm shadow-glow-gold hover:scale-105 transition-all duration-200">
+                <i data-lucide="user-plus" class="w-4 h-4 text-slate-950"></i>
+                <span>Daftar PPDB Online</span>
+                <i data-lucide="arrow-right" class="w-4 h-4"></i>
+              </a>
+              <a href="#profil" class="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-2xl bg-white/10 hover:bg-white/20 backdrop-blur-md text-white font-bold text-xs sm:text-sm border border-white/25 transition-all duration-200">
+                <span>Kenali Madrasah Kami</span>
+                <i data-lucide="chevron-down" class="w-4 h-4"></i>
+              </a>
+            </div>
+
+            <!-- Quick Counter Stats (Dikecilkan Sedikit) -->
+            <div class="pt-3 sm:pt-4 border-t border-white/20 grid grid-cols-3 gap-2 sm:gap-3">
+              <div class="bg-white/5 backdrop-blur-sm p-2 sm:p-2.5 rounded-xl border border-white/10 text-center sm:text-left">
+                <span class="text-lg sm:text-xl lg:text-2xl font-black text-white block">Aswaja</span>
+                <span class="text-[9px] sm:text-[10px] font-semibold text-emerald-200 uppercase tracking-wider block mt-0.5">Berhaluan Islami</span>
+              </div>
+              <div class="bg-white/5 backdrop-blur-sm p-2 sm:p-2.5 rounded-xl border border-white/10 text-center sm:text-left">
+                <span class="text-lg sm:text-xl lg:text-2xl font-black text-white block">100%</span>
+                <span class="text-[9px] sm:text-[10px] font-semibold text-emerald-200 uppercase tracking-wider block mt-0.5">Pendidik Berdedikasi</span>
+              </div>
+              <div class="bg-white/5 backdrop-blur-sm p-2 sm:p-2.5 rounded-xl border border-white/10 text-center sm:text-left">
+                <span class="text-lg sm:text-xl lg:text-2xl font-black text-brand-gold block">Terakreditasi</span>
+                <span class="text-[9px] sm:text-[10px] font-semibold text-emerald-200 uppercase tracking-wider block mt-0.5">Madrasah Unggul</span>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Right Hero Card / Interactive Photo Slider -->
+          <div class="lg:col-span-5 flex flex-col items-center justify-center w-full">
+            <div class="w-full max-w-[440px]">
+              
+              <!-- Main Slider Card -->
+              <div class="relative w-full rounded-3xl overflow-hidden shadow-2xl border-4 border-white/30 bg-emerald-950 group">
+                
+                <!-- Slides Container -->
+                <div id="heroSlider" class="relative aspect-[16/11] sm:aspect-[4/3] w-full overflow-hidden bg-emerald-900 select-none">
+                  
+                  <!-- Slide 1: Gedung Utama Madrasah -->
+                  <div class="hero-slide absolute inset-0 transition-opacity duration-700 ease-in-out opacity-100 z-10" data-index="0">
+                    <img src="foto-gedung.jpg" alt="Gedung Kampus MTs YASUA Pilangwetan" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent"></div>
+                    <div class="absolute top-3.5 left-3.5 bg-brand-primary/90 backdrop-blur-md px-3 py-1 rounded-full border border-white/30 text-white text-[11px] font-bold flex items-center gap-1.5 shadow-md">
+                      <i data-lucide="building-2" class="w-3.5 h-3.5 text-brand-gold"></i>
+                      <span>Kampus MTs. YASUA</span>
+                    </div>
+                    <div class="absolute bottom-3.5 left-4 right-4 text-white">
+                      <span class="text-[11px] font-semibold text-brand-gold uppercase tracking-wider block">Gedung Pembelajaran Terpadu</span>
+                      <p class="text-sm sm:text-base font-bold leading-tight mt-0.5">Lingkungan madrasah yang asri, nyaman, dan berwibawa di Pilangwetan.</p>
+                    </div>
+                  </div>
+
+                  <!-- Slide 2: Apel Pagi di Lapangan -->
+                  <div class="hero-slide absolute inset-0 transition-opacity duration-700 ease-in-out opacity-0 z-0 pointer-events-none" data-index="1">
+                    <img src="foto-upacara.jpg" alt="Apel Pagi Siswa MTs YASUA" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent"></div>
+                    <div class="absolute top-3.5 left-3.5 bg-brand-primary/90 backdrop-blur-md px-3 py-1 rounded-full border border-white/30 text-white text-[11px] font-bold flex items-center gap-1.5 shadow-md">
+                      <i data-lucide="users" class="w-3.5 h-3.5 text-brand-gold"></i>
+                      <span>Kedisiplinan &amp; Akhlak</span>
+                    </div>
+                    <div class="absolute bottom-3.5 left-4 right-4 text-white">
+                      <span class="text-[11px] font-semibold text-brand-gold uppercase tracking-wider block">Apel Pagi & Pembinaan Siswa</span>
+                      <p class="text-sm sm:text-base font-bold leading-tight mt-0.5">Membiasakan ketertiban, adab, dan rasa kebersamaan seluruh siswa-siswi.</p>
+                    </div>
+                  </div>
+
+                  <!-- Slide 3: Laboratorium Komputer -->
+                  <div class="hero-slide absolute inset-0 transition-opacity duration-700 ease-in-out opacity-0 z-0 pointer-events-none" data-index="2">
+                    <img src="foto-labkom.jpg" alt="Laboratorium Komputer & ANBK" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent"></div>
+                    <div class="absolute top-3.5 left-3.5 bg-brand-primary/90 backdrop-blur-md px-3 py-1 rounded-full border border-white/30 text-white text-[11px] font-bold flex items-center gap-1.5 shadow-md">
+                      <i data-lucide="laptop" class="w-3.5 h-3.5 text-brand-gold"></i>
+                      <span>Literasi Digital</span>
+                    </div>
+                    <div class="absolute bottom-3.5 left-4 right-4 text-white">
+                      <span class="text-[11px] font-semibold text-brand-gold uppercase tracking-wider block">Praktik Komputer & ANBK</span>
+                      <p class="text-sm sm:text-base font-bold leading-tight mt-0.5">Penguasaan teknologi modern untuk mencetak generasi cerdas digital.</p>
+                    </div>
+                  </div>
+
+                  <!-- Slide 4: Pembiasaan Sholat Berjamaah Putra -->
+                  <div class="hero-slide absolute inset-0 transition-opacity duration-700 ease-in-out opacity-0 z-0 pointer-events-none" data-index="3">
+                    <img src="foto-sholat-santri.jpg" alt="Sholat Berjamaah Siswa Putra" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent"></div>
+                    <div class="absolute top-3.5 left-3.5 bg-brand-primary/90 backdrop-blur-md px-3 py-1 rounded-full border border-white/30 text-white text-[11px] font-bold flex items-center gap-1.5 shadow-md">
+                      <i data-lucide="heart" class="w-3.5 h-3.5 text-brand-gold"></i>
+                      <span>Pembiasaan Ibadah</span>
+                    </div>
+                    <div class="absolute bottom-3.5 left-4 right-4 text-white">
+                      <span class="text-[11px] font-semibold text-brand-gold uppercase tracking-wider block">Shalat Berjamaah di Masjid</span>
+                      <p class="text-sm sm:text-base font-bold leading-tight mt-0.5">Penanaman nilai iman, taqwa, dan khusyuk dalam ibadah harian siswa putra.</p>
+                    </div>
+                  </div>
+
+                  <!-- Slide 5: Bimbingan Keagamaan Siswi Putri -->
+                  <div class="hero-slide absolute inset-0 transition-opacity duration-700 ease-in-out opacity-0 z-0 pointer-events-none" data-index="4">
+                    <img src="foto-kajian-santriwati.jpg" alt="Bimbingan Keagamaan Siswi Putri" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent"></div>
+                    <div class="absolute top-3.5 left-3.5 bg-brand-primary/90 backdrop-blur-md px-3 py-1 rounded-full border border-white/30 text-white text-[11px] font-bold flex items-center gap-1.5 shadow-md">
+                      <i data-lucide="book-open" class="w-3.5 h-3.5 text-brand-gold"></i>
+                      <span>Bimbingan Siswi Putri</span>
+                    </div>
+                    <div class="absolute bottom-3.5 left-4 right-4 text-white">
+                      <span class="text-[11px] font-semibold text-brand-gold uppercase tracking-wider block">Bimbingan Belajar & Al-Qur'an</span>
+                      <p class="text-sm sm:text-base font-bold leading-tight mt-0.5">Suasana khidmah pembinaan tahfidz Al-Qur'an dan adab siswi.</p>
+                    </div>
+                  </div>
+
+                  <!-- Slide Indicator Badge (Top Right) -->
+                  <div class="absolute top-3.5 right-3.5 bg-black/50 backdrop-blur-md px-2.5 py-0.5 rounded-full border border-white/20 text-white text-[10px] font-semibold z-20">
+                    <span id="slideCounter">1 / 5</span>
+                  </div>
+
+                  <!-- Left & Right Arrow Buttons -->
+                  <button type="button" onclick="changeHeroSlide(-1)" class="absolute left-2.5 top-1/2 -translate-y-1/2 w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-black/45 hover:bg-black/75 text-white backdrop-blur-sm border border-white/25 flex items-center justify-center transition-all hover:scale-110 active:scale-95 z-20 shadow-md" aria-label="Foto Sebelumnya">
+                    <i data-lucide="chevron-left" class="w-5 h-5"></i>
+                  </button>
+                  <button type="button" onclick="changeHeroSlide(1)" class="absolute right-2.5 top-1/2 -translate-y-1/2 w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-black/45 hover:bg-black/75 text-white backdrop-blur-sm border border-white/25 flex items-center justify-center transition-all hover:scale-110 active:scale-95 z-20 shadow-md" aria-label="Foto Selanjutnya">
+                    <i data-lucide="chevron-right" class="w-5 h-5"></i>
+                  </button>
+
+                </div>
+
+              </div>
+
+              <!-- 5 Small Thumbnail Selector Photos Below Slider -->
+              <div class="grid grid-cols-5 gap-2 sm:gap-2.5 mt-3 w-full">
+                <button type="button" onclick="goToHeroSlide(0)" class="hero-thumb relative aspect-[4/3] rounded-xl overflow-hidden border-2 border-brand-accent ring-2 ring-brand-accent/50 shadow-md transition-all hover:scale-105 focus:outline-none opacity-100 scale-105" title="Gedung Kampus">
+                  <img src="foto-gedung.jpg" alt="Thumbnail Gedung" class="w-full h-full object-cover">
+                </button>
+                <button type="button" onclick="goToHeroSlide(1)" class="hero-thumb relative aspect-[4/3] rounded-xl overflow-hidden border-2 border-white/30 opacity-70 hover:opacity-100 hover:border-white/80 transition-all hover:scale-105 focus:outline-none" title="Apel Pagi Siswa">
+                  <img src="foto-upacara.jpg" alt="Thumbnail Apel Siswa" class="w-full h-full object-cover">
+                </button>
+                <button type="button" onclick="goToHeroSlide(2)" class="hero-thumb relative aspect-[4/3] rounded-xl overflow-hidden border-2 border-white/30 opacity-70 hover:opacity-100 hover:border-white/80 transition-all hover:scale-105 focus:outline-none" title="Laboratorium Komputer">
+                  <img src="foto-labkom.jpg" alt="Thumbnail Lab Komputer" class="w-full h-full object-cover">
+                </button>
+                <button type="button" onclick="goToHeroSlide(3)" class="hero-thumb relative aspect-[4/3] rounded-xl overflow-hidden border-2 border-white/30 opacity-70 hover:opacity-100 hover:border-white/80 transition-all hover:scale-105 focus:outline-none" title="Sholat Berjamaah Siswa">
+                  <img src="foto-sholat-santri.jpg" alt="Thumbnail Sholat Siswa" class="w-full h-full object-cover">
+                </button>
+                <button type="button" onclick="goToHeroSlide(4)" class="hero-thumb relative aspect-[4/3] rounded-xl overflow-hidden border-2 border-white/30 opacity-70 hover:opacity-100 hover:border-white/80 transition-all hover:scale-105 focus:outline-none" title="Bimbingan Siswi">
+                  <img src="foto-kajian-santriwati.jpg" alt="Thumbnail Bimbingan Siswi" class="w-full h-full object-cover">
+                </button>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Wave Separator Ribbon (Bottom of Hero) -->
+      <div class="absolute -bottom-[2px] left-0 right-0 w-full overflow-hidden leading-none z-20 pointer-events-none">
+        <svg viewBox="0 0 1440 100" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" class="w-full h-8 sm:h-10 md:h-12 lg:h-14 block">
+          <path d="M0,68 C200,76 320,78 460,76 C680,72 880,55 1080,55 C1220,55 1340,62 1440,64 L1440,100 L0,100 Z" fill="#D1FAE5" opacity="0.6"></path>
+          <path d="M0,62 C200,70 320,72 460,70 C680,66 880,48 1080,48 C1220,48 1340,55 1440,57 L1440,100 L0,100 Z" fill="#ECFDF5" opacity="0.9"></path>
+          <path d="M0,72 C200,80 320,82 460,80 C680,76 880,58 1080,58 C1220,58 1340,65 1440,67 L1440,100 L0,100 Z" fill="#FFFFFF"></path>
+        </svg>
+      </div>
+    </section>
+
+    <!-- SAMBUTAN KEPALA MADRASAH (Welcome Message from Leadership - Sleek 1 Screen Fit) -->
+    <section id="sambutan" class="py-7 sm:py-8 lg:py-9 bg-white relative overflow-hidden border-b border-emerald-100/80">
+      <!-- Background Ambient Elements -->
+      <div class="absolute -right-40 top-1/2 -translate-y-1/2 w-80 h-80 bg-emerald-100/30 rounded-full blur-3xl pointer-events-none"></div>
+      <div class="absolute -left-40 bottom-10 w-80 h-80 bg-amber-100/20 rounded-full blur-3xl pointer-events-none"></div>
+
+      <div class="max-w-7xl mx-auto px-4 sm:px-8 relative z-10">
+        
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-10 items-center">
+          
+          <!-- Left Column: Compact Portrait Card of Kepala Madrasah -->
+          <div class="lg:col-span-4 flex flex-col items-center justify-center">
+            <div class="relative w-full max-w-[240px] sm:max-w-[260px] lg:max-w-[280px] group">
+              <div class="relative rounded-2xl overflow-hidden shadow-xl border-2 border-emerald-100 bg-emerald-950">
+                <!-- Photo with 4:5 Aspect Ratio -->
+                <div class="relative aspect-[4/5] w-full overflow-hidden bg-emerald-900">
+                  <img src="kepala-madrasah.png" alt="Muthohar, S.Pd. - Kepala MTs. YASUA Pilangwetan" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500">
+                  <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent"></div>
+                  
+                  <!-- Floating Badge -->
+                  <div class="absolute top-2.5 left-2.5 bg-brand-primary/90 backdrop-blur-md px-2.5 py-1 rounded-full border border-white/30 text-white text-[10px] font-bold flex items-center gap-1.5 shadow-sm">
+                    <i data-lucide="award" class="w-3 h-3 text-brand-gold"></i>
+                    <span>Pimpinan Madrasah</span>
+                  </div>
+
+                  <!-- Bottom Overlay -->
+                  <div class="absolute bottom-2.5 left-3 right-3 text-white">
+                    <span class="text-[9px] font-semibold text-brand-gold uppercase tracking-wider block">Yayasan Islam Suada</span>
+                    <h3 class="text-base sm:text-lg font-black tracking-tight leading-tight">Muthohar, S.Pd.</h3>
+                    <p class="text-[10px] text-emerald-200">Kepala MTs. YASUA Pilangwetan</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Column: Compact Speech Narrative -->
+          <div class="lg:col-span-8 space-y-2.5 text-left">
+            
+            <div>
+              <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-100 text-brand-primary text-[10px] font-extrabold tracking-wider uppercase mb-1">
+                <i data-lucide="quote" class="w-3 h-3 text-brand-primary"></i>
+                SAMBUTAN KEPALA MADRASAH
+              </span>
+              <h2 class="text-lg sm:text-xl lg:text-2xl font-extrabold text-brand-dark tracking-tight leading-snug">
+                Membina Karakter Islami, <span class="text-brand-primary">Menumbuhkan Generasi Berprestasi</span>
+              </h2>
+              <div class="flex items-center gap-2 text-xs sm:text-[13px] font-bold text-emerald-800 italic mt-0.5">
+                <i data-lucide="sparkles" class="w-3.5 h-3.5 text-brand-gold shrink-0"></i>
+                <span>Assalamu’alaikum Warahmatullahi Wabarakatuh</span>
+              </div>
+            </div>
+
+            <!-- Narasi Sambutan Padat & Bermakna -->
+            <div class="space-y-2 text-slate-600 text-xs sm:text-[13.5px] leading-relaxed">
+              <p>
+                Alhamdulillah, puji syukur ke hadirat Allah SWT dan shalawat bagi Rasulullah SAW. Selamat datang di website resmi <strong>MTs. YASUA Pilangwetan</strong>, Kecamatan Kebonagung, Demak. Media ini hadir sebagai jendela informasi, transparansi, serta jembatan silaturahmi bagi seluruh keluarga besar madrasah dan masyarakat.
+              </p>
+              <p>
+                Di era modern saat ini, madrasah memegang peranan krusial sebagai pilar benteng moral sekaligus penggerak kemajuan. Kami berkomitmen menyelenggarakan pendidikan terpadu: memadukan kurikulum nasional, penguatan karakter <strong>Ahlus Sunnah Wal Jama’ah (Aswaja)</strong>, pembiasaan Al-Qur'an dan adab santun, serta literasi digital untuk mengantarkan setiap siswa dan siswi meraih masa depan gemilang.
+              </p>
+            </div>
+
+            <!-- Quote Card Highlight Compact -->
+            <div class="p-2.5 sm:p-3 rounded-xl bg-gradient-to-r from-emerald-50 via-[#F4FBF7] to-amber-50/50 border-l-4 border-brand-accent shadow-sm my-1.5">
+              <p class="italic text-slate-800 text-xs sm:text-[13px] font-medium leading-relaxed">
+                “Mendidik dengan keikhlasan hati dan keteladanan. Kami bertekad mendampingi seluruh siswa dan siswi menjadi insan yang berilmu, kokoh beriman, dan berakhlakul karimah.”
+              </p>
+              <div class="mt-1 flex items-center justify-between text-[11px]">
+                <span class="font-bold text-amber-800 uppercase">— Muthohar, S.Pd.</span>
+                <span class="text-slate-500 font-semibold">Kepala MTs. YASUA</span>
+              </div>
+            </div>
+
+            <!-- Penutup & Action Buttons -->
+            <div class="pt-2 border-t border-emerald-100 flex flex-wrap items-center justify-between gap-2.5">
+              <div class="text-xs font-bold text-emerald-800 italic">
+                Wassalamu’alaikum Warahmatullahi Wabarakatuh.
+              </div>
+              <div class="flex items-center gap-2">
+                <a href="#dewan-guru" class="px-3 py-1.5 rounded-lg bg-emerald-100/80 hover:bg-emerald-200 text-brand-dark font-bold text-xs transition-colors flex items-center gap-1">
+                  <span>Dewan Guru</span>
+                  <i data-lucide="chevron-down" class="w-3 h-3 text-brand-primary"></i>
+                </a>
+                <a href="#profil" class="px-3 py-1.5 rounded-lg bg-emerald-50 hover:bg-emerald-100 text-brand-primary font-bold text-xs transition-colors">
+                  Profil Madrasah
+                </a>
+                <a href="#ppdb" class="px-3.5 py-1.5 rounded-lg bg-brand-primary hover:bg-brand-dark text-white font-extrabold text-xs shadow-sm transition-all flex items-center gap-1">
+                  <span>Daftar PPDB</span>
+                  <i data-lucide="arrow-right" class="w-3 h-3"></i>
+                </a>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- DEWAN GURU & TENAGA PENDIDIK (Continuous Marquee Slider) -->
+    <section id="dewan-guru" class="py-12 sm:py-16 bg-gradient-to-br from-[#064e3b] via-[#043d2c] to-[#022419] text-white relative overflow-hidden border-y border-emerald-800/60">
+      <!-- Glow ambient background -->
+      <div class="absolute -left-20 top-1/2 -translate-y-1/2 w-80 h-80 bg-emerald-400/15 rounded-full blur-3xl pointer-events-none"></div>
+      <div class="absolute -right-20 top-1/2 -translate-y-1/2 w-80 h-80 bg-amber-400/15 rounded-full blur-3xl pointer-events-none"></div>
+
+      <div class="max-w-7xl mx-auto px-4 sm:px-8 relative z-10">
+        
+        <!-- Section Header with Controls -->
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 sm:mb-10 gap-4">
+          <div>
+            <div class="flex items-center gap-2 mb-2">
+              <span class="text-xl sm:text-2xl">🎓</span>
+              <h2 class="text-xl sm:text-2xl md:text-3xl font-black text-white tracking-tight uppercase">
+                DEWAN GURU &amp; TENAGA PENDIDIK
+              </h2>
+            </div>
+            <p class="text-xs sm:text-sm text-emerald-100/90 font-medium">
+              Menampilkan 6 profil pengajar yang bergeser pelan secara kontinu (Arahkan kursor untuk jeda)
+            </p>
+          </div>
+
+          <!-- Controls & View All -->
+          <div class="flex items-center gap-3 shrink-0">
+            <div class="flex items-center gap-1.5">
+              <button onclick="scrollTeachers('left')" class="w-8 h-8 sm:w-9 sm:py-1 sm:h-9 rounded-xl bg-white/10 hover:bg-white/20 text-white flex items-center justify-center transition-all border border-emerald-400/20 backdrop-blur-sm" aria-label="Geser Kiri" title="Geser Kiri">
+                <i data-lucide="chevron-left" class="w-4 h-4 sm:w-5 sm:h-5"></i>
+              </button>
+              <button onclick="scrollTeachers('right')" class="w-8 h-8 sm:w-9 sm:py-1 sm:h-9 rounded-xl bg-white/10 hover:bg-white/20 text-white flex items-center justify-center transition-all border border-emerald-400/20 backdrop-blur-sm" aria-label="Geser Kanan" title="Geser Kanan">
+                <i data-lucide="chevron-right" class="w-4 h-4 sm:w-5 sm:h-5"></i>
+              </button>
+            </div>
+            <button onclick="showAllTeachersModal()" class="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-white text-emerald-950 hover:bg-emerald-50 font-bold text-xs sm:text-[13px] shadow-md transition-all">
+              <span>Lihat Semua Guru</span>
+              <i data-lucide="arrow-right" class="w-3.5 h-3.5 text-brand-primary"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Marquee Slider Track Container -->
+        <div id="teacherMarqueeWrapper" class="teacher-marquee-container [mask-image:linear-gradient(to_right,transparent,black_3%,black_97%,transparent)]">
+          <div id="teacherMarqueeTrack" class="teacher-marquee-track py-2">
+            
+            <!-- TEACHER 1 -->
+            <div class="w-44 sm:w-52 shrink-0 bg-white rounded-2xl sm:rounded-3xl p-3 sm:p-3.5 shadow-xl text-slate-800 group hover:-translate-y-2 transition-all duration-300">
+              <div class="aspect-square rounded-xl sm:rounded-2xl overflow-hidden bg-slate-100 mb-3 relative">
+                <img src="guru_1.jpg" alt="Susriandi, S.Pd" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                <span class="absolute bottom-2 left-2 px-2 py-0.5 rounded-full bg-slate-900/70 text-white text-[9px] font-bold backdrop-blur-xs">Bahasa</span>
+              </div>
+              <h3 class="font-bold text-slate-900 text-xs sm:text-[14px] leading-tight truncate">Susriandi, S.Pd</h3>
+              <p class="text-[11px] sm:text-xs font-semibold text-amber-700 mt-1 truncate">Guru Bahasa Indonesia</p>
+            </div>
+
+            <!-- TEACHER 2 -->
+            <div class="w-44 sm:w-52 shrink-0 bg-white rounded-2xl sm:rounded-3xl p-3 sm:p-3.5 shadow-xl text-slate-800 group hover:-translate-y-2 transition-all duration-300">
+              <div class="aspect-square rounded-xl sm:rounded-2xl overflow-hidden bg-slate-100 mb-3 relative">
+                <img src="guru_2.jpg" alt="Arsyad Edi, SS" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                <span class="absolute bottom-2 left-2 px-2 py-0.5 rounded-full bg-slate-900/70 text-white text-[9px] font-bold backdrop-blur-xs">Bahasa</span>
+              </div>
+              <h3 class="font-bold text-slate-900 text-xs sm:text-[14px] leading-tight truncate">Arsyad Edi, SS</h3>
+              <p class="text-[11px] sm:text-xs font-semibold text-amber-700 mt-1 truncate">Guru Bahasa Inggris</p>
+            </div>
+
+            <!-- TEACHER 3 -->
+            <div class="w-44 sm:w-52 shrink-0 bg-white rounded-2xl sm:rounded-3xl p-3 sm:p-3.5 shadow-xl text-slate-800 group hover:-translate-y-2 transition-all duration-300">
+              <div class="aspect-square rounded-xl sm:rounded-2xl overflow-hidden bg-slate-100 mb-3 relative">
+                <img src="guru_3.jpg" alt="Hasbullah, S.Kom" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                <span class="absolute bottom-2 left-2 px-2 py-0.5 rounded-full bg-slate-900/70 text-white text-[9px] font-bold backdrop-blur-xs">TIK &amp; Lab</span>
+              </div>
+              <h3 class="font-bold text-slate-900 text-xs sm:text-[14px] leading-tight truncate">Hasbullah, S.Kom</h3>
+              <p class="text-[11px] sm:text-xs font-semibold text-amber-700 mt-1 truncate">Guru Informatika</p>
+            </div>
+
+            <!-- TEACHER 4 -->
+            <div class="w-44 sm:w-52 shrink-0 bg-white rounded-2xl sm:rounded-3xl p-3 sm:p-3.5 shadow-xl text-slate-800 group hover:-translate-y-2 transition-all duration-300">
+              <div class="aspect-square rounded-xl sm:rounded-2xl overflow-hidden bg-slate-100 mb-3 relative">
+                <img src="guru_4.jpg" alt="Aidiyah, S.Pd" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                <span class="absolute bottom-2 left-2 px-2 py-0.5 rounded-full bg-slate-900/70 text-white text-[9px] font-bold backdrop-blur-xs">Sains</span>
+              </div>
+              <h3 class="font-bold text-slate-900 text-xs sm:text-[14px] leading-tight truncate">Aidiyah, S.Pd</h3>
+              <p class="text-[11px] sm:text-xs font-semibold text-amber-700 mt-1 truncate">Guru Matematika</p>
+            </div>
+
+            <!-- TEACHER 5 -->
+            <div class="w-44 sm:w-52 shrink-0 bg-white rounded-2xl sm:rounded-3xl p-3 sm:p-3.5 shadow-xl text-slate-800 group hover:-translate-y-2 transition-all duration-300">
+              <div class="aspect-square rounded-xl sm:rounded-2xl overflow-hidden bg-slate-100 mb-3 relative">
+                <img src="guru_5.jpg" alt="Wahyuni Arida Agustina, S.Pd" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                <span class="absolute bottom-2 left-2 px-2 py-0.5 rounded-full bg-slate-900/70 text-white text-[9px] font-bold backdrop-blur-xs">Karakter</span>
+              </div>
+              <h3 class="font-bold text-slate-900 text-xs sm:text-[14px] leading-tight truncate">Wahyuni Arida Agustina, S.Pd</h3>
+              <p class="text-[11px] sm:text-xs font-semibold text-amber-700 mt-1 truncate">Guru PPKn</p>
+            </div>
+
+            <!-- TEACHER 6 -->
+            <div class="w-44 sm:w-52 shrink-0 bg-white rounded-2xl sm:rounded-3xl p-3 sm:p-3.5 shadow-xl text-slate-800 group hover:-translate-y-2 transition-all duration-300">
+              <div class="aspect-square rounded-xl sm:rounded-2xl overflow-hidden bg-slate-100 mb-3 relative">
+                <img src="guru_6.jpg" alt="Emi Sulastri, S.Pd" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                <span class="absolute bottom-2 left-2 px-2 py-0.5 rounded-full bg-slate-900/70 text-white text-[9px] font-bold backdrop-blur-xs">Sosial</span>
+              </div>
+              <h3 class="font-bold text-slate-900 text-xs sm:text-[14px] leading-tight truncate">Emi Sulastri, S.Pd</h3>
+              <p class="text-[11px] sm:text-xs font-semibold text-amber-700 mt-1 truncate">Guru IPS</p>
+            </div>
+
+            <!-- ================= REPEAT FOR INFINITE CONTINUOUS SEAMLESS LOOP ================= -->
+
+            <!-- TEACHER 1 (DUPLICATE) -->
+            <div class="w-44 sm:w-52 shrink-0 bg-white rounded-2xl sm:rounded-3xl p-3 sm:p-3.5 shadow-xl text-slate-800 group hover:-translate-y-2 transition-all duration-300" aria-hidden="true">
+              <div class="aspect-square rounded-xl sm:rounded-2xl overflow-hidden bg-slate-100 mb-3 relative">
+                <img src="guru_1.jpg" alt="Susriandi, S.Pd" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                <span class="absolute bottom-2 left-2 px-2 py-0.5 rounded-full bg-slate-900/70 text-white text-[9px] font-bold backdrop-blur-xs">Bahasa</span>
+              </div>
+              <h3 class="font-bold text-slate-900 text-xs sm:text-[14px] leading-tight truncate">Susriandi, S.Pd</h3>
+              <p class="text-[11px] sm:text-xs font-semibold text-amber-700 mt-1 truncate">Guru Bahasa Indonesia</p>
+            </div>
+
+            <!-- TEACHER 2 (DUPLICATE) -->
+            <div class="w-44 sm:w-52 shrink-0 bg-white rounded-2xl sm:rounded-3xl p-3 sm:p-3.5 shadow-xl text-slate-800 group hover:-translate-y-2 transition-all duration-300" aria-hidden="true">
+              <div class="aspect-square rounded-xl sm:rounded-2xl overflow-hidden bg-slate-100 mb-3 relative">
+                <img src="guru_2.jpg" alt="Arsyad Edi, SS" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                <span class="absolute bottom-2 left-2 px-2 py-0.5 rounded-full bg-slate-900/70 text-white text-[9px] font-bold backdrop-blur-xs">Bahasa</span>
+              </div>
+              <h3 class="font-bold text-slate-900 text-xs sm:text-[14px] leading-tight truncate">Arsyad Edi, SS</h3>
+              <p class="text-[11px] sm:text-xs font-semibold text-amber-700 mt-1 truncate">Guru Bahasa Inggris</p>
+            </div>
+
+            <!-- TEACHER 3 (DUPLICATE) -->
+            <div class="w-44 sm:w-52 shrink-0 bg-white rounded-2xl sm:rounded-3xl p-3 sm:p-3.5 shadow-xl text-slate-800 group hover:-translate-y-2 transition-all duration-300" aria-hidden="true">
+              <div class="aspect-square rounded-xl sm:rounded-2xl overflow-hidden bg-slate-100 mb-3 relative">
+                <img src="guru_3.jpg" alt="Hasbullah, S.Kom" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                <span class="absolute bottom-2 left-2 px-2 py-0.5 rounded-full bg-slate-900/70 text-white text-[9px] font-bold backdrop-blur-xs">TIK &amp; Lab</span>
+              </div>
+              <h3 class="font-bold text-slate-900 text-xs sm:text-[14px] leading-tight truncate">Hasbullah, S.Kom</h3>
+              <p class="text-[11px] sm:text-xs font-semibold text-amber-700 mt-1 truncate">Guru Informatika</p>
+            </div>
+
+            <!-- TEACHER 4 (DUPLICATE) -->
+            <div class="w-44 sm:w-52 shrink-0 bg-white rounded-2xl sm:rounded-3xl p-3 sm:p-3.5 shadow-xl text-slate-800 group hover:-translate-y-2 transition-all duration-300" aria-hidden="true">
+              <div class="aspect-square rounded-xl sm:rounded-2xl overflow-hidden bg-slate-100 mb-3 relative">
+                <img src="guru_4.jpg" alt="Aidiyah, S.Pd" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                <span class="absolute bottom-2 left-2 px-2 py-0.5 rounded-full bg-slate-900/70 text-white text-[9px] font-bold backdrop-blur-xs">Sains</span>
+              </div>
+              <h3 class="font-bold text-slate-900 text-xs sm:text-[14px] leading-tight truncate">Aidiyah, S.Pd</h3>
+              <p class="text-[11px] sm:text-xs font-semibold text-amber-700 mt-1 truncate">Guru Matematika</p>
+            </div>
+
+            <!-- TEACHER 5 (DUPLICATE) -->
+            <div class="w-44 sm:w-52 shrink-0 bg-white rounded-2xl sm:rounded-3xl p-3 sm:p-3.5 shadow-xl text-slate-800 group hover:-translate-y-2 transition-all duration-300" aria-hidden="true">
+              <div class="aspect-square rounded-xl sm:rounded-2xl overflow-hidden bg-slate-100 mb-3 relative">
+                <img src="guru_5.jpg" alt="Wahyuni Arida Agustina, S.Pd" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                <span class="absolute bottom-2 left-2 px-2 py-0.5 rounded-full bg-slate-900/70 text-white text-[9px] font-bold backdrop-blur-xs">Karakter</span>
+              </div>
+              <h3 class="font-bold text-slate-900 text-xs sm:text-[14px] leading-tight truncate">Wahyuni Arida Agustina, S.Pd</h3>
+              <p class="text-[11px] sm:text-xs font-semibold text-amber-700 mt-1 truncate">Guru PPKn</p>
+            </div>
+
+            <!-- TEACHER 6 (DUPLICATE) -->
+            <div class="w-44 sm:w-52 shrink-0 bg-white rounded-2xl sm:rounded-3xl p-3 sm:p-3.5 shadow-xl text-slate-800 group hover:-translate-y-2 transition-all duration-300" aria-hidden="true">
+              <div class="aspect-square rounded-xl sm:rounded-2xl overflow-hidden bg-slate-100 mb-3 relative">
+                <img src="guru_6.jpg" alt="Emi Sulastri, S.Pd" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                <span class="absolute bottom-2 left-2 px-2 py-0.5 rounded-full bg-slate-900/70 text-white text-[9px] font-bold backdrop-blur-xs">Sosial</span>
+              </div>
+              <h3 class="font-bold text-slate-900 text-xs sm:text-[14px] leading-tight truncate">Emi Sulastri, S.Pd</h3>
+              <p class="text-[11px] sm:text-xs font-semibold text-amber-700 mt-1 truncate">Guru IPS</p>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- PROFIL & SEJARAH YASUA (Tentang Kami) -->
+    <section id="profil" class="py-16 sm:py-24 bg-white relative overflow-hidden border-y border-emerald-100">
+      <!-- Ambient background decoration -->
+      <div class="absolute -right-32 top-20 w-96 h-96 bg-emerald-50/70 rounded-full blur-3xl pointer-events-none"></div>
+      <div class="absolute -left-32 bottom-20 w-96 h-96 bg-amber-50/70 rounded-full blur-3xl pointer-events-none"></div>
+
+      <div class="max-w-7xl mx-auto px-4 sm:px-8 relative z-10 space-y-16">
+        
+        <!-- VISI & MISI MADRASAH (Dipindah ke atas Tentang Kami & Sejarah) -->
+        <div class="space-y-8">
+          <div class="text-center max-w-3xl mx-auto">
+            <span class="text-brand-primary font-bold text-xs sm:text-sm tracking-widest uppercase inline-block mb-2 px-3 py-1 rounded-full bg-emerald-100">
+              VISI &amp; MISI MADRASAH
+            </span>
+            <h2 class="text-2xl sm:text-3xl md:text-4xl font-extrabold text-brand-dark tracking-tight">
+              Arah &amp; Komitmen Pendidikan MTs. YASUA
+            </h2>
+            <div class="w-16 h-1.5 bg-brand-primary mx-auto mt-3 rounded-full"></div>
+            <p class="text-slate-600 text-xs sm:text-sm md:text-base mt-3">
+              Landasan visi luhur dan 5 pilar misi utama dalam membina generasi berilmu, bertakwa, dan berakhlakul karimah.
+            </p>
+          </div>
+
+          <div class="bg-gradient-to-br from-emerald-50 via-[#F4FBF7] to-white rounded-3xl p-6 sm:p-10 lg:p-12 border border-emerald-200/80 shadow-sm">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+              
+              <!-- Visi Card -->
+              <div class="lg:col-span-5 bg-white p-6 sm:p-8 rounded-2xl shadow-sm border border-emerald-100 flex flex-col justify-between">
+                <div>
+                  <div class="flex items-center gap-3 mb-4">
+                    <div class="w-11 h-11 rounded-xl bg-brand-primary text-white flex items-center justify-center font-bold shadow-sm">
+                      <i data-lucide="eye" class="w-5 h-5"></i>
+                    </div>
+                    <div>
+                      <span class="text-[10px] font-bold text-emerald-700 uppercase tracking-wider block">Cita-Cita Luhur</span>
+                      <h3 class="text-xl font-black text-brand-dark">Visi Madrasah</h3>
+                    </div>
+                  </div>
+                  <blockquote class="italic text-slate-800 text-sm sm:text-[15px] leading-relaxed border-l-4 border-brand-accent pl-4 py-2 my-3 bg-amber-50/50 rounded-r-xl">
+                    “Terwujudnya pendidikan yang islami, bermutu, memiliki sikap dan wawasan yang luas, beriman, bertaqwa, dan berahlakul karimah, menguasai ilmu pengetahuan dan tehnologi sesuai dengan perkembangan zaman.”
+                  </blockquote>
+                </div>
+                <div class="pt-4 mt-2 border-t border-emerald-50 flex items-center gap-2 text-xs text-brand-primary font-bold">
+                  <i data-lucide="sparkles" class="w-4 h-4 text-brand-gold"></i>
+                  <span>Komitmen Keunggulan MTs. YASUA</span>
+                </div>
+              </div>
+
+              <!-- Misi Card -->
+              <div class="lg:col-span-7 bg-white p-6 sm:p-8 rounded-2xl shadow-sm border border-emerald-100 flex flex-col justify-between">
+                <div>
+                  <div class="flex items-center gap-3 mb-4">
+                    <div class="w-11 h-11 rounded-xl bg-brand-accent text-slate-900 flex items-center justify-center font-bold shadow-sm">
+                      <i data-lucide="target" class="w-5 h-5"></i>
+                    </div>
+                    <div>
+                      <span class="text-[10px] font-bold text-amber-800 uppercase tracking-wider block">Pilar Strategis</span>
+                      <h3 class="text-xl font-black text-brand-dark">Misi Madrasah</h3>
+                    </div>
+                  </div>
+                  
+                  <ol class="space-y-3 text-xs sm:text-sm text-slate-700">
+                    <li class="flex items-start gap-3 p-2 rounded-xl hover:bg-emerald-50/50 transition-colors">
+                      <span class="w-6 h-6 rounded-full bg-brand-primary text-white flex items-center justify-center text-xs font-bold shrink-0 mt-0.5 shadow-sm">1</span>
+                      <span class="leading-relaxed">Melaksanakan pendidikan dan pengajaran agama Islam ala <strong>Ahlus sunnah wal jama’ah</strong>.</span>
+                    </li>
+                    <li class="flex items-start gap-3 p-2 rounded-xl hover:bg-emerald-50/50 transition-colors">
+                      <span class="w-6 h-6 rounded-full bg-brand-primary text-white flex items-center justify-center text-xs font-bold shrink-0 mt-0.5 shadow-sm">2</span>
+                      <span class="leading-relaxed">Memberikan pelayanan dan pengabdian yag sungguh-sungguh terhadap kepentingan lingkungan masyarakat banyak, bangsa dan negara <strong>Republik Indonesia</strong>.</span>
+                    </li>
+                    <li class="flex items-start gap-3 p-2 rounded-xl hover:bg-emerald-50/50 transition-colors">
+                      <span class="w-6 h-6 rounded-full bg-brand-primary text-white flex items-center justify-center text-xs font-bold shrink-0 mt-0.5 shadow-sm">3</span>
+                      <span class="leading-relaxed">Meningkatkan sistem pembelajaran yang aktif, kreatif, efektif, dan menyenangkan, sehingga mampu menghasilkan lulusan (<em>out put</em>) yang berkualitas.</span>
+                    </li>
+                    <li class="flex items-start gap-3 p-2 rounded-xl hover:bg-emerald-50/50 transition-colors">
+                      <span class="w-6 h-6 rounded-full bg-brand-primary text-white flex items-center justify-center text-xs font-bold shrink-0 mt-0.5 shadow-sm">4</span>
+                      <span class="leading-relaxed">Mempersiapkan manusia Indonesia seutuhnya, beriman, bertaqwa kepada Allah Swt, berahlakul karimah, yang berpengetahuan dan memeliki ketrampilan yang luas.</span>
+                    </li>
+                    <li class="flex items-start gap-3 p-2 rounded-xl hover:bg-emerald-50/50 transition-colors">
+                      <span class="w-6 h-6 rounded-full bg-brand-primary text-white flex items-center justify-center text-xs font-bold shrink-0 mt-0.5 shadow-sm">5</span>
+                      <span class="leading-relaxed">Memenuhi kebutuhan dan pelayanan pendidikan kepada masyarakat sekitar yang akhirnya menjadi idola masyarakat.</span>
+                    </li>
+                  </ol>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+        <!-- Pemisah Visual Elegan -->
+        <div class="relative py-2">
+          <div class="absolute inset-0 flex items-center"><div class="w-full border-t border-emerald-200"></div></div>
+          <div class="relative flex justify-center">
+            <span class="bg-white px-4 text-xs font-bold uppercase tracking-widest text-emerald-700 flex items-center gap-1.5">
+              <i data-lucide="compass" class="w-4 h-4 text-brand-gold"></i>
+              Sejarah &amp; Perjalanan
+            </span>
+          </div>
+        </div>
+
+        <!-- SECTION TITLE & INTRO: TENTANG KAMI & SEJARAH -->
+        <div class="text-center max-w-3xl mx-auto">
+          <span class="text-brand-primary font-bold text-xs sm:text-sm tracking-widest uppercase inline-block mb-2 px-3 py-1 rounded-full bg-emerald-100">
+            TENTANG KAMI &amp; SEJARAH
+          </span>
+          <h2 class="text-2xl sm:text-3xl md:text-4xl font-extrabold text-brand-dark tracking-tight">
+            Sejarah Perjalanan MTs. YASUA Pilangwetan
+          </h2>
+          <div class="w-16 h-1.5 bg-brand-primary mx-auto mt-4 rounded-full"></div>
+          <p class="text-slate-600 text-sm sm:text-base mt-4 leading-relaxed">
+            Menelusuri dedikasi dan ikhtiar luhur para pendiri sejak tahun 1949 hingga bertumbuh menjadi pilar pendidikan Islam terpadu di bawah naungan Yayasan Islam Suada (YASUA).
+          </p>
+        </div>
+
+        <!-- 1. GAGASAN AWAL & TOKOH PENDIRI (Hero Card) -->
+        <div class="bg-gradient-to-br from-emerald-900 via-brand-dark to-[#032e21] rounded-3xl p-6 sm:p-10 lg:p-12 text-white shadow-xl relative overflow-hidden border border-emerald-700/50">
+          <div class="absolute -right-16 -bottom-16 w-64 h-64 bg-emerald-500/10 rounded-full blur-2xl pointer-events-none"></div>
+          
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center relative z-10">
+            <div class="lg:col-span-8 space-y-4">
+              <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-brand-gold text-xs font-bold uppercase tracking-wider">
+                <i data-lucide="sparkles" class="w-3.5 h-3.5"></i>
+                <span>Akar Sejarah Madrasah</span>
+              </div>
+              <h3 class="text-xl sm:text-2xl lg:text-3xl font-extrabold leading-snug">
+                Ikhtiar Mulia Melahirkan Generasi Berilmu, Taqwa &amp; Berakhlak Karimah
+              </h3>
+              <p class="text-emerald-100 text-xs sm:text-sm lg:text-[14.5px] leading-relaxed text-justify">
+                Sejarah berdirinya Madrasah Tsanawiyah tidak terlepas kaitannya dengan berdirinya madrasah-madrasah lain yang sekarang berada dalam lingkungan <strong>Yayasan Islam Suada (YASUA) Pilangwetan</strong>. Dimulai dengan adanya ide dan gagasan dari tokoh-tokoh masyarakat yaitu <strong>Bapak K. Ahmad, Bapak Moh. Syuhadi (Kepala Desa), Bapak H. Nuruddin, Bapak H. Amin, Bapak Shodiqun, dan Bapak Muridan</strong>.
+              </p>
+              <p class="text-emerald-100 text-xs sm:text-sm lg:text-[14.5px] leading-relaxed text-justify">
+                Beliau-beliau itu berpikir bagaimana dapat membimbing dan mendidik anak-anak menjadi muslim yang berilmu, taqwa, sholeh serta berakhlak mulia, sehingga nantinya dapat menjadi anggota masyarakat yang berguna bagi Nusa, Bangsa, dan Agama.
+              </p>
+            </div>
+
+            <!-- Kartu Tokoh Pendiri -->
+            <div class="lg:col-span-4 bg-white/10 backdrop-blur-md rounded-2xl p-5 border border-white/20 space-y-3">
+              <div class="flex items-center gap-2.5 text-brand-gold font-bold text-xs uppercase tracking-wider">
+                <i data-lucide="users" class="w-4 h-4"></i>
+                <span>Tokoh Perintis Awal</span>
+              </div>
+              <div class="grid grid-cols-2 gap-2 text-xs">
+                <div class="bg-black/20 rounded-xl p-2.5 border border-white/10">
+                  <span class="text-[10px] text-emerald-300 block">Tokoh Ulama</span>
+                  <span class="font-bold text-white">Bapak K. Ahmad</span>
+                </div>
+                <div class="bg-black/20 rounded-xl p-2.5 border border-white/10">
+                  <span class="text-[10px] text-emerald-300 block">Kepala Desa</span>
+                  <span class="font-bold text-white">Bapak Moh. Syuhadi</span>
+                </div>
+                <div class="bg-black/20 rounded-xl p-2.5 border border-white/10">
+                  <span class="text-[10px] text-emerald-300 block">Tokoh Perintis</span>
+                  <span class="font-bold text-white">Bapak H. Nuruddin</span>
+                </div>
+                <div class="bg-black/20 rounded-xl p-2.5 border border-white/10">
+                  <span class="text-[10px] text-emerald-300 block">Tokoh Perintis</span>
+                  <span class="font-bold text-white">Bapak H. Amin</span>
+                </div>
+                <div class="bg-black/20 rounded-xl p-2.5 border border-white/10">
+                  <span class="text-[10px] text-emerald-300 block">Tokoh Perintis</span>
+                  <span class="font-bold text-white">Bapak Shodiqun</span>
+                </div>
+                <div class="bg-black/20 rounded-xl p-2.5 border border-white/10">
+                  <span class="text-[10px] text-emerald-300 block">Tokoh Perintis</span>
+                  <span class="font-bold text-white">Bapak Muridan</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2. LINIMASA PERJALANAN SEJARAH (Timeline Milestones) -->
+        <div class="space-y-8">
+          <div class="text-center max-w-2xl mx-auto">
+            <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-50 text-brand-primary text-xs font-bold uppercase tracking-wider">
+              <i data-lucide="history" class="w-3.5 h-3.5"></i>
+              LINIMASA PERKEMBANGAN
+            </span>
+            <h3 class="text-xl sm:text-2xl font-extrabold text-brand-dark tracking-tight mt-1.5">
+              Tonggak Bersejarah MTs. YASUA (1949 – Sekarang)
+            </h3>
+          </div>
+
+          <div class="relative border-l-2 border-emerald-200 ml-4 sm:ml-8 md:ml-32 space-y-8 py-2">
+            
+            <!-- MILESTONE 1: 1949 -->
+            <div class="relative pl-6 sm:pl-8 group">
+              <!-- Timeline Dot -->
+              <div class="absolute -left-[13px] top-1.5 w-6 h-6 rounded-full bg-brand-primary border-4 border-white shadow-md group-hover:scale-125 transition-transform"></div>
+              
+              <div class="bg-emerald-50/50 hover:bg-emerald-50/90 rounded-2xl p-5 sm:p-6 border border-emerald-100 transition-all shadow-sm">
+                <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
+                  <span class="px-3 py-1 rounded-full bg-brand-primary text-white font-black text-xs tracking-wider">
+                    12 September 1949
+                  </span>
+                  <span class="text-xs font-bold text-emerald-800">Cikal Bakal Awal</span>
+                </div>
+                <h4 class="text-base sm:text-lg font-bold text-brand-dark mb-2">
+                  Pendirian Madrasah Diniyah Awaliyah "MADRASAH TAHDZIBUL ATHFAL"
+                </h4>
+                <p class="text-xs sm:text-sm text-slate-600 leading-relaxed mb-3">
+                  Waktu belajar dilaksanakan siang hari mulai pukul <strong>13.30 – 17.00</strong> dengan tempat belajar sementara di <strong>serambi masjid</strong> dan di <strong>rumah Bapak K. Ahmad</strong>. Kepala Madrasah pertama dijabat oleh <strong>Bapak H. Amin Dimyathi</strong>.
+                </p>
+                <div class="p-3 bg-white rounded-xl border border-emerald-100 text-xs text-slate-700">
+                  <span class="font-bold text-brand-primary block mb-1">Susunan Pengurus Pertama (1949):</span>
+                  <div class="grid grid-cols-2 sm:grid-cols-4 gap-2">
+                    <div><span class="text-slate-400 block text-[10px]">Ketua:</span> <strong>Moh. Syuhadi</strong></div>
+                    <div><span class="text-slate-400 block text-[10px]">Penulis:</span> <strong>Shodiqun</strong></div>
+                    <div><span class="text-slate-400 block text-[10px]">Bendahara:</span> <strong>H. Nuruddin</strong></div>
+                    <div><span class="text-slate-400 block text-[10px]">Pembantu:</span> <strong>Muridan &amp; K. Ahmad</strong></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- MILESTONE 2: 1961 -->
+            <div class="relative pl-6 sm:pl-8 group">
+              <div class="absolute -left-[13px] top-1.5 w-6 h-6 rounded-full bg-emerald-600 border-4 border-white shadow-md group-hover:scale-125 transition-transform"></div>
+              
+              <div class="bg-white hover:bg-emerald-50/50 rounded-2xl p-5 sm:p-6 border border-emerald-100 transition-all shadow-sm">
+                <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
+                  <span class="px-3 py-1 rounded-full bg-emerald-700 text-white font-black text-xs tracking-wider">
+                    5 April 1961
+                  </span>
+                  <span class="text-xs font-bold text-emerald-800">Tingkat Ibtidaiyah</span>
+                </div>
+                <h4 class="text-base sm:text-lg font-bold text-brand-dark mb-1.5">
+                  Madrasah Wajib Belajar (MWB) / Madrasah Ibtidaiyah (MI)
+                </h4>
+                <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                  Didirikan Madrasah Wajib Belajar (MWB) yang kemudian berubah namanya menjadi <strong>Madrasah Ibtidaiyah (MI)</strong> dengan waktu belajar pada pagi hari.
+                </p>
+              </div>
+            </div>
+
+            <!-- MILESTONE 3: 1963 -->
+            <div class="relative pl-6 sm:pl-8 group">
+              <div class="absolute -left-[13px] top-1.5 w-6 h-6 rounded-full bg-brand-gold border-4 border-white shadow-md group-hover:scale-125 transition-transform"></div>
+              
+              <div class="bg-gradient-to-r from-emerald-50/80 to-amber-50/50 rounded-2xl p-5 sm:p-6 border-2 border-brand-accent/40 shadow-sm">
+                <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
+                  <span class="px-3 py-1 rounded-full bg-brand-accent text-slate-900 font-black text-xs tracking-wider">
+                    11 Maret 1963 (15 Syawal 1382 H / Senin Legi)
+                  </span>
+                  <span class="text-xs font-bold text-amber-800">Pendirian MTs &amp; Pondok</span>
+                </div>
+                <h4 class="text-base sm:text-lg font-bold text-brand-dark mb-2">
+                  Pendirian Madrasah Tsanawiyah (MTs) &amp; Pondok Pesantren
+                </h4>
+                <p class="text-xs sm:text-sm text-slate-700 leading-relaxed mb-2">
+                  • <strong>Pondok Pesantren</strong> didirikan untuk menampung siswa dari luar daerah dengan membangun asrama semi-permanen terdiri dari 7 kamar.
+                </p>
+                <p class="text-xs sm:text-sm text-slate-700 leading-relaxed">
+                  • <strong>Madrasah Tsanawiyah (MTs)</strong> resmi didirikan. Untuk sementara masuk siang hari pukul <strong>13.30 – 17.00</strong> dengan kurikulum mandiri lengkap memadukan pelajaran agama Islam dan pelajaran umum.
+                </p>
+              </div>
+            </div>
+
+            <!-- MILESTONE 4: 1970 -->
+            <div class="relative pl-6 sm:pl-8 group">
+              <div class="absolute -left-[13px] top-1.5 w-6 h-6 rounded-full bg-emerald-600 border-4 border-white shadow-md group-hover:scale-125 transition-transform"></div>
+              
+              <div class="bg-white hover:bg-emerald-50/50 rounded-2xl p-5 sm:p-6 border border-emerald-100 transition-all shadow-sm">
+                <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
+                  <span class="px-3 py-1 rounded-full bg-emerald-800 text-white font-black text-xs tracking-wider">
+                    2 Januari 1970
+                  </span>
+                  <span class="text-xs font-bold text-emerald-800">Standarisasi Kurikulum</span>
+                </div>
+                <h4 class="text-base sm:text-lg font-bold text-brand-dark mb-1.5">
+                  MTs Masuk Pagi (Kurikulum Departemen Agama) &amp; Berdirinya Madin Wustho
+                </h4>
+                <p class="text-xs sm:text-sm text-slate-600 leading-relaxed mb-2">
+                  Dengan makin berkembangnya pendidikan agama Islam di Pilangwetan, jam belajar Madrasah Tsanawiyah dialihkan ke <strong>pagi hari (07.15 – 12.30)</strong> dengan resmi menggunakan kurikulum Departemen Agama.
+                </p>
+                <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                  Sedangkan untuk siang harinya pada tanggal 2 Januari 1970 itu juga didirikan <strong>Madrasah Diniyah Wustho</strong>, yaitu madrasah menengah pertama khusus memberikan pendalaman pelajaran agama.
+                </p>
+              </div>
+            </div>
+
+            <!-- MILESTONE 5: 1974 -->
+            <div class="relative pl-6 sm:pl-8 group">
+              <div class="absolute -left-[13px] top-1.5 w-6 h-6 rounded-full bg-brand-primary border-4 border-white shadow-md group-hover:scale-125 transition-transform"></div>
+              
+              <div class="bg-emerald-50/70 rounded-2xl p-5 sm:p-6 border border-emerald-200 transition-all shadow-sm">
+                <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
+                  <span class="px-3 py-1 rounded-full bg-brand-primary text-white font-black text-xs tracking-wider">
+                    22 Juli 1974
+                  </span>
+                  <span class="text-xs font-bold text-brand-primary">Badan Hukum Yayasan</span>
+                </div>
+                <h4 class="text-base sm:text-lg font-bold text-brand-dark mb-2">
+                  Pembentukan Resmi Yayasan Islam Suada (YASUA)
+                </h4>
+                <p class="text-xs sm:text-sm text-slate-700 leading-relaxed mb-3">
+                  Untuk mengelola lembaga-lembaga Pendidikan Islam di Pilangwetan secara lebih profesional, berkemajuan, dan terpadu, maka pada tanggal 22 Juli 1974 dibentuk <strong>Yayasan Islam Suada (YASUA)</strong> dengan <strong>Akte Notaris: R. Kajoen Semarang No. 16</strong>.
+                </p>
+                <div class="p-3 bg-white rounded-xl border border-emerald-100 text-xs text-slate-700">
+                  <span class="font-bold text-slate-800 block mb-1">Penandatangan Akte Pendirian Yayasan:</span>
+                  <p class="text-xs font-medium text-emerald-900">
+                    MASTUR (H. MASYKUR) • H. AMIN DIMYATHI • S. PURHADI • MASRUCHIN, BA
+                  </p>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- 3. STRUKTUR PENGURUS YAYASAN ISLAM SUADA (YASUA) SEKARANG -->
+        <div class="bg-gradient-to-br from-[#F4FBF7] to-emerald-50/60 rounded-3xl p-6 sm:p-10 border border-emerald-200 shadow-sm space-y-6">
+          <div class="text-center max-w-2xl mx-auto">
+            <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-100 text-brand-primary text-xs font-bold uppercase tracking-wider">
+              <i data-lucide="shield-check" class="w-3.5 h-3.5"></i>
+              KEPENGURUSAN YAYASAN
+            </span>
+            <h3 class="text-xl sm:text-2xl font-extrabold text-brand-dark tracking-tight mt-1.5">
+              Pengurus Yayasan Islam Suada (YASUA) Saat Ini
+            </h3>
+            <p class="text-xs sm:text-sm text-slate-600 mt-1">
+              Menjaga amanah para muassis dan memimpin kemajuan lembaga pendidikan Islam di Pilangwetan, Kebonagung, Demak.
+            </p>
+          </div>
+
+          <!-- Grid Pimpinan Yayasan -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            
+            <!-- Ketua -->
+            <div class="bg-white rounded-2xl p-5 border border-emerald-100 shadow-sm text-center flex flex-col justify-between hover:border-brand-primary transition-colors">
+              <div>
+                <div class="w-12 h-12 mx-auto rounded-full bg-emerald-100 text-brand-primary flex items-center justify-center font-bold mb-3 shadow-inner">
+                  <i data-lucide="award" class="w-6 h-6"></i>
+                </div>
+                <span class="text-[11px] font-extrabold text-brand-primary uppercase tracking-wider block mb-1">Ketua Yayasan</span>
+                <h4 class="font-black text-slate-900 text-base leading-snug">KH. Muchit Abdul Hakim, BA</h4>
+              </div>
+              <span class="text-[10px] text-slate-400 mt-3 pt-2 border-t border-slate-100 block">Pimpinan Utama</span>
+            </div>
+
+            <!-- Wakil Ketua -->
+            <div class="bg-white rounded-2xl p-5 border border-emerald-100 shadow-sm text-center flex flex-col justify-between hover:border-brand-primary transition-colors">
+              <div>
+                <div class="w-12 h-12 mx-auto rounded-full bg-emerald-100 text-brand-primary flex items-center justify-center font-bold mb-3 shadow-inner">
+                  <i data-lucide="user-check" class="w-6 h-6"></i>
+                </div>
+                <span class="text-[11px] font-extrabold text-brand-primary uppercase tracking-wider block mb-1">Wakil Ketua</span>
+                <h4 class="font-black text-slate-900 text-base leading-snug">KH. Nur Salim, S.Ag., M.Si</h4>
+              </div>
+              <span class="text-[10px] text-slate-400 mt-3 pt-2 border-t border-slate-100 block">Wakil Pimpinan</span>
+            </div>
+
+            <!-- Sekretaris -->
+            <div class="bg-white rounded-2xl p-5 border border-emerald-100 shadow-sm text-center flex flex-col justify-between hover:border-brand-primary transition-colors">
+              <div>
+                <div class="w-12 h-12 mx-auto rounded-full bg-emerald-100 text-brand-primary flex items-center justify-center font-bold mb-3 shadow-inner">
+                  <i data-lucide="scroll" class="w-6 h-6"></i>
+                </div>
+                <span class="text-[11px] font-extrabold text-brand-primary uppercase tracking-wider block mb-1">Sekretaris</span>
+                <h4 class="font-black text-slate-900 text-base leading-snug">Mahfudli, S.Ag, M.Pd.I</h4>
+              </div>
+              <span class="text-[10px] text-slate-400 mt-3 pt-2 border-t border-slate-100 block">Tata Kelola &amp; Administrasi</span>
+            </div>
+
+            <!-- Bendahara -->
+            <div class="bg-white rounded-2xl p-5 border border-emerald-100 shadow-sm text-center flex flex-col justify-between hover:border-brand-primary transition-colors">
+              <div>
+                <div class="w-12 h-12 mx-auto rounded-full bg-emerald-100 text-brand-primary flex items-center justify-center font-bold mb-3 shadow-inner">
+                  <i data-lucide="landmark" class="w-6 h-6"></i>
+                </div>
+                <span class="text-[11px] font-extrabold text-brand-primary uppercase tracking-wider block mb-1">Bendahara</span>
+                <h4 class="font-black text-slate-900 text-base leading-snug">Drs. Sururi Hasyim</h4>
+              </div>
+              <span class="text-[10px] text-slate-400 mt-3 pt-2 border-t border-slate-100 block">Kebendaharaan</span>
+            </div>
+
+          </div>
+
+          <!-- Dewan Pengawas -->
+          <div class="bg-white rounded-2xl p-5 sm:p-6 border border-emerald-100 shadow-sm">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+              <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-xl bg-amber-100 text-amber-800 flex items-center justify-center font-bold shrink-0">
+                  <i data-lucide="shield-check" class="w-5 h-5"></i>
+                </div>
+                <div>
+                  <h4 class="font-black text-slate-900 text-sm sm:text-base">Dewan Pengawas Yayasan</h4>
+                  <p class="text-xs text-slate-500">Menjamin mutu, akuntabilitas, dan kelangsungan visi madrasah</p>
+                </div>
+              </div>
+              
+              <div class="flex flex-wrap items-center gap-2 sm:gap-3">
+                <span class="px-3.5 py-1.5 rounded-xl bg-emerald-50 border border-emerald-100 text-xs font-bold text-slate-800 flex items-center gap-1.5">
+                  <i data-lucide="check" class="w-3.5 h-3.5 text-brand-primary"></i>
+                  Asyhari
+                </span>
+                <span class="px-3.5 py-1.5 rounded-xl bg-emerald-50 border border-emerald-100 text-xs font-bold text-slate-800 flex items-center gap-1.5">
+                  <i data-lucide="check" class="w-3.5 h-3.5 text-brand-primary"></i>
+                  H. Aris Nur Hamidi, M.Ag
+                </span>
+                <span class="px-3.5 py-1.5 rounded-xl bg-emerald-50 border border-emerald-100 text-xs font-bold text-slate-800 flex items-center gap-1.5">
+                  <i data-lucide="check" class="w-3.5 h-3.5 text-brand-primary"></i>
+                  Toha Mahsun, S.Ag
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- PROGRAM UNGGULAN (4 Cards Grid - Ditempatkan di atas Minat & Bakat) -->
+    <section id="program" class="py-16 sm:py-24 bg-[#F4FBF7] relative border-b border-emerald-100/60">
+      <div class="max-w-7xl mx-auto px-4 sm:px-8">
+        
+        <div class="text-center max-w-3xl mx-auto mb-14">
+          <span class="text-brand-primary font-bold text-xs sm:text-sm tracking-widest uppercase inline-block mb-2 px-3 py-1 rounded-full bg-emerald-100">
+            4 PROGRAM UNGGULAN
+          </span>
+          <h2 class="text-2xl sm:text-3xl md:text-4xl font-extrabold text-brand-dark tracking-tight">
+            Membina Potensi, Mengukir Prestasi Siswa
+          </h2>
+          <div class="w-16 h-1.5 bg-brand-primary mx-auto mt-4 rounded-full"></div>
+          <p class="text-slate-600 text-sm sm:text-base mt-4">
+            Komitmen MTs. YASUA dalam memberikan pendidikan menyeluruh: ilmu agama yang kuat, akademis yang tangguh, serta kesiapan teknologi masa kini.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          
+          <!-- Card 1: Tahfiz & Keagamaan (Active Featured Card) -->
+          <div class="group relative rounded-3xl p-7 flex flex-col justify-between transition-all duration-300 hover-lift bg-gradient-to-br from-brand-primary to-emerald-800 text-white shadow-glow-green ring-2 ring-emerald-500/30">
+            <div>
+              <div class="flex items-center gap-3.5 mb-5">
+                <div class="w-14 h-14 rounded-2xl flex items-center justify-center shrink-0 bg-white/20 text-brand-gold ring-2 ring-white/30">
+                  <i data-lucide="book-open" class="w-7 h-7"></i>
+                </div>
+                <h3 class="text-lg font-bold leading-snug text-white">Tahfiz &amp; Kitab Salaf</h3>
+              </div>
+              <p class="text-xs sm:text-[13.5px] leading-relaxed text-emerald-100">
+                Bimbingan tahfiz Al-Qur'an juz amma & pilihan, muroja'ah rutin, serta pengenalan dasar kitab kuning Aswaja khas kepesantrenan.
+              </p>
+            </div>
+            <div class="pt-6 mt-6 border-t border-white/20 flex items-center justify-between text-xs font-bold text-amber-200">
+              <span>Kurikulum Terintegrasi</span>
+              <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
+            </div>
+          </div>
+
+          <!-- Card 2: Pembiasaan Akhlak & Ibadah -->
+          <div class="group relative rounded-3xl p-7 flex flex-col justify-between transition-all duration-300 hover-lift bg-white text-slate-800 border border-emerald-100 shadow-sm hover:border-emerald-300 hover:shadow-xl">
+            <div>
+              <div class="flex items-center gap-3.5 mb-5">
+                <div class="w-14 h-14 rounded-2xl flex items-center justify-center shrink-0 bg-emerald-50 text-brand-primary group-hover:bg-brand-primary group-hover:text-white transition-colors">
+                  <i data-lucide="heart-handshake" class="w-7 h-7"></i>
+                </div>
+                <h3 class="text-lg font-bold leading-snug text-brand-dark">Adab &amp; Karakter Islami</h3>
+              </div>
+              <p class="text-xs sm:text-[13.5px] leading-relaxed text-slate-600">
+                Pembiasaan sholat Dhuha, sholat Dhuhur berjamaah, istighosah mingguan, dan pembinaan adab santun kepada orang tua serta guru.
+              </p>
+            </div>
+            <div class="pt-6 mt-6 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-brand-primary">
+              <span>Pembiasaan Harian</span>
+              <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
+            </div>
+          </div>
+
+          <!-- Card 3: Penguatan Bahasa -->
+          <div class="group relative rounded-3xl p-7 flex flex-col justify-between transition-all duration-300 hover-lift bg-white text-slate-800 border border-emerald-100 shadow-sm hover:border-emerald-300 hover:shadow-xl">
+            <div>
+              <div class="flex items-center gap-3.5 mb-5">
+                <div class="w-14 h-14 rounded-2xl flex items-center justify-center shrink-0 bg-emerald-50 text-brand-primary group-hover:bg-brand-primary group-hover:text-white transition-colors">
+                  <i data-lucide="languages" class="w-7 h-7"></i>
+                </div>
+                <h3 class="text-lg font-bold leading-snug text-brand-dark">Bahasa Arab &amp; Inggris</h3>
+              </div>
+              <p class="text-xs sm:text-[13.5px] leading-relaxed text-slate-600">
+                Pengayaan kosa kata bahasa Arab untuk memperdalam pemahaman agama, serta bahasa Inggris praktis sebagai bekal komunikasi modern.
+              </p>
+            </div>
+            <div class="pt-6 mt-6 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-brand-primary">
+              <span>Literasi Bahasa</span>
+              <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
+            </div>
+          </div>
+
+          <!-- Card 4: Teknologi & Digital Learning -->
+          <div class="group relative rounded-3xl p-7 flex flex-col justify-between transition-all duration-300 hover-lift bg-white text-slate-800 border border-emerald-100 shadow-sm hover:border-emerald-300 hover:shadow-xl">
+            <div>
+              <div class="flex items-center gap-3.5 mb-5">
+                <div class="w-14 h-14 rounded-2xl flex items-center justify-center shrink-0 bg-emerald-50 text-brand-primary group-hover:bg-brand-primary group-hover:text-white transition-colors">
+                  <i data-lucide="monitor" class="w-7 h-7"></i>
+                </div>
+                <h3 class="text-lg font-bold leading-snug text-brand-dark">Teknologi &amp; Komputer</h3>
+              </div>
+              <p class="text-xs sm:text-[13.5px] leading-relaxed text-slate-600">
+                Praktik laboratorium komputer, pengenalan aplikasi perkantoran, media kreatif, dan ujian berbasis Asesmen Nasional (ANBK).
+              </p>
+            </div>
+            <div class="pt-6 mt-6 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-brand-primary">
+              <span>Siap Era Digital</span>
+              <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- EKSTRAKURIKULER (MINAT & BAKAT) -->
+    <section id="ekskul" class="py-16 sm:py-24 bg-white relative">
+      <div class="max-w-7xl mx-auto px-4 sm:px-8">
+        
+        <div class="text-center max-w-3xl mx-auto mb-14">
+          <span class="text-brand-primary font-bold text-xs sm:text-sm tracking-widest uppercase inline-block mb-2 px-3 py-1 rounded-full bg-emerald-100">
+            MINAT & BAKAT
+          </span>
+          <h2 class="text-2xl sm:text-3xl md:text-4xl font-extrabold text-brand-dark tracking-tight">
+            Kegiatan Ekstrakurikuler Siswa
+          </h2>
+          <div class="w-16 h-1.5 bg-brand-primary mx-auto mt-4 rounded-full"></div>
+          <p class="text-slate-600 text-sm sm:text-base mt-4">
+            Mengasah kepemimpinan, kreativitas seni, dan kebugaran jasmani siswa melalui beragam kegiatan positif di luar jam pelajaran.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 sm:gap-6">
+          
+          <div class="bg-white p-5 rounded-2xl text-center border border-emerald-100 shadow-sm hover-lift flex flex-col items-center">
+            <div class="w-14 h-14 rounded-2xl bg-amber-100 text-amber-700 flex items-center justify-center mb-3">
+              <i data-lucide="compass" class="w-7 h-7"></i>
+            </div>
+            <h4 class="font-bold text-sm text-slate-800">Pramuka</h4>
+            <span class="text-[11px] text-slate-500 mt-1">Disiplin & Kepanduan</span>
+          </div>
+
+          <div class="bg-white p-5 rounded-2xl text-center border border-emerald-100 shadow-sm hover-lift flex flex-col items-center">
+            <div class="w-14 h-14 rounded-2xl bg-emerald-100 text-brand-primary flex items-center justify-center mb-3">
+              <i data-lucide="drum" class="w-7 h-7"></i>
+            </div>
+            <h4 class="font-bold text-sm text-slate-800">Drumband</h4>
+            <span class="text-[11px] text-slate-500 mt-1">Gita Bahana Nada</span>
+          </div>
+
+          <div class="bg-white p-5 rounded-2xl text-center border border-emerald-100 shadow-sm hover-lift flex flex-col items-center">
+            <div class="w-14 h-14 rounded-2xl bg-pink-100 text-pink-700 flex items-center justify-center mb-3">
+              <i data-lucide="music" class="w-7 h-7"></i>
+            </div>
+            <h4 class="font-bold text-sm text-slate-800">Rebana / Hadroh</h4>
+            <span class="text-[11px] text-slate-500 mt-1">Seni Shalawat Islami</span>
+          </div>
+
+          <div class="bg-white p-5 rounded-2xl text-center border border-emerald-100 shadow-sm hover-lift flex flex-col items-center">
+            <div class="w-14 h-14 rounded-2xl bg-blue-100 text-blue-700 flex items-center justify-center mb-3">
+              <i data-lucide="sparkles" class="w-7 h-7"></i>
+            </div>
+            <h4 class="font-bold text-sm text-slate-800">Seni Tari</h4>
+            <span class="text-[11px] text-slate-500 mt-1">Kreasi Budaya & Tradisi</span>
+          </div>
+
+          <div class="bg-white p-5 rounded-2xl text-center border border-emerald-100 shadow-sm hover-lift flex flex-col items-center">
+            <div class="w-14 h-14 rounded-2xl bg-orange-100 text-orange-700 flex items-center justify-center mb-3">
+              <i data-lucide="trophy" class="w-7 h-7"></i>
+            </div>
+            <h4 class="font-bold text-sm text-slate-800">Olahraga</h4>
+            <span class="text-[11px] text-slate-500 mt-1">Futsal, Voli, Atletik</span>
+          </div>
+
+          <div class="bg-white p-5 rounded-2xl text-center border border-emerald-100 shadow-sm hover-lift flex flex-col items-center">
+            <div class="w-14 h-14 rounded-2xl bg-purple-100 text-purple-700 flex items-center justify-center mb-3">
+              <i data-lucide="users" class="w-7 h-7"></i>
+            </div>
+            <h4 class="font-bold text-sm text-slate-800">OSIS &amp; MPK</h4>
+            <span class="text-[11px] text-slate-500 mt-1">Organisasi Siswa</span>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- FITUR BERITA & PENGUMUMAN SEKOLAH -->
+    <section id="berita" class="py-16 sm:py-24 bg-[#F4FBF7] relative overflow-hidden border-t border-emerald-100">
+      <!-- Background Ambient Glow -->
+      <div class="absolute -left-32 top-10 w-96 h-96 bg-emerald-100/40 rounded-full blur-3xl pointer-events-none"></div>
+      <div class="absolute -right-32 bottom-10 w-96 h-96 bg-blue-100/40 rounded-full blur-3xl pointer-events-none"></div>
+
+      <div class="max-w-7xl mx-auto px-4 sm:px-8 relative z-10">
+        
+        <!-- Header Berita Section -->
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-10 sm:mb-12 gap-6">
+          <div>
+            <span class="text-brand-primary font-bold text-xs sm:text-sm tracking-widest uppercase inline-block mb-2 px-3.5 py-1 rounded-full bg-emerald-100/90 border border-emerald-200">
+              INFORMASI &amp; KABAR TERKINI
+            </span>
+            <h2 class="text-2xl sm:text-3xl md:text-4xl font-extrabold text-brand-dark tracking-tight">
+              Berita &amp; Pengumuman Sekolah
+            </h2>
+            <div class="w-16 h-1.5 bg-amber-500 mt-3 rounded-full"></div>
+          </div>
+          <div class="max-w-md">
+            <p class="text-slate-600 text-xs sm:text-sm md:text-base leading-relaxed">
+              Ikuti berbagai kabar prestasi siswa, agenda kegiatan resmi, serta pengumuman akademik terbaru dari MTs. YASUA Pilangwetan.
+            </p>
+          </div>
+        </div>
+
+        <!-- Layout 2 Kolom: Berita Utama (Poster) & Berita Terbaru (List) -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+          
+          <!-- SISI KIRI: Berita Utama (Featured News Poster Card) -->
+          <div class="lg:col-span-7">
+            <div onclick="openNewsModal('pts')" class="rounded-3xl overflow-hidden bg-white border border-emerald-100 shadow-md hover:shadow-2xl transition-all duration-300 group cursor-pointer flex flex-col justify-between">
+              
+              <!-- Poster Banner Image Container -->
+              <div class="relative overflow-hidden bg-slate-100 aspect-[4/3] sm:aspect-[16/11]">
+                <img src="poster_pts_berita.jpg" alt="Poster Penilaian Tengah Semester PTS MTs YASUA" class="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-700">
+                
+                <!-- Badge Kategori Mengambang -->
+                <span class="absolute top-4 left-4 inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-blue-600/95 text-white font-black text-xs shadow-md tracking-wider backdrop-blur-xs">
+                  <i data-lucide="bell" class="w-3.5 h-3.5"></i> BERITA
+                </span>
+
+                <span class="absolute top-4 right-4 inline-flex items-center gap-1 px-3 py-1 rounded-full bg-black/60 text-white font-medium text-[11px] backdrop-blur-md">
+                  <i data-lucide="calendar" class="w-3 h-3 text-brand-accent"></i> 5 - 10 Oktober 2026
+                </span>
+              </div>
+
+              <!-- Content Body -->
+              <div class="p-6 sm:p-7">
+                <div class="flex items-center gap-2 mb-2 text-xs font-semibold text-amber-800">
+                  <i data-lucide="clock" class="w-3.5 h-3.5"></i>
+                  <span>Jadwal Resmi Semester Ganjil TA 2026/2027</span>
+                </div>
+                
+                <h3 class="text-lg sm:text-xl md:text-2xl font-black text-brand-dark group-hover:text-brand-primary transition-colors leading-snug">
+                  Penilaian Tengah Semester (PTS) MTs. YASUA Pilangwetan
+                </h3>
+
+                <p class="text-slate-600 text-xs sm:text-sm mt-3 leading-relaxed">
+                  Pelaksanaan PTS terpadu untuk kelas VII, VIII, dan IX berbasis asesmen tertulis dan digital ANBK. Belajar dengan giat, junjung tinggi kejujuran, dan raih prestasi terbaikmu bersama madrasah!
+                </p>
+
+                <!-- Footer Card Action -->
+                <div class="mt-6 pt-4 border-t border-emerald-100 flex items-center justify-between">
+                  <span class="text-xs font-bold text-brand-primary flex items-center gap-1.5 group-hover:translate-x-1 transition-transform">
+                    <span>Baca Pengumuman &amp; Unduh Jadwal</span>
+                    <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                  </span>
+                  <span class="px-2.5 py-1 rounded-lg bg-emerald-50 text-[11px] font-semibold text-emerald-800">
+                    Akademik
+                  </span>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- SISI KANAN: Berita Terbaru (List 4 Berita Pilihan) -->
+          <div class="lg:col-span-5 space-y-4">
+            
+            <div class="flex items-center justify-between pb-2 border-b border-emerald-200">
+              <h4 class="font-black text-slate-800 text-sm tracking-wider uppercase flex items-center gap-2">
+                <i data-lucide="newspaper" class="w-4 h-4 text-brand-primary"></i>
+                BERITA TERBARU
+              </h4>
+              <span class="text-xs text-slate-500 font-semibold">4 Berita Pilihan</span>
+            </div>
+
+            <!-- List Item 1: Prestasi Siswa -->
+            <div onclick="openNewsModal('prestasi')" class="p-3 sm:p-3.5 rounded-2xl bg-white border border-emerald-100 shadow-sm hover:shadow-md hover:border-emerald-300 transition-all duration-200 group cursor-pointer flex items-center gap-3.5">
+              <div class="w-20 sm:w-24 h-20 sm:h-20 rounded-xl overflow-hidden shrink-0 bg-slate-100 relative">
+                <img src="foto-upacara.jpg" alt="Prestasi Siswa MTs YASUA" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+              </div>
+              <div class="flex-1 min-w-0">
+                <div class="flex items-center gap-2 mb-1">
+                  <span class="px-2 py-0.5 rounded text-[10px] font-extrabold bg-emerald-100 text-emerald-800 uppercase tracking-wider">
+                    PRESTASI
+                  </span>
+                  <span class="text-[11px] text-slate-500 font-medium">22 September 2026</span>
+                </div>
+                <h5 class="font-bold text-slate-900 text-xs sm:text-sm group-hover:text-brand-primary transition-colors line-clamp-2 leading-snug">
+                  Siswa MTs. YASUA Raih Juara 1 Olimpiade Sains &amp; Robotika Tingkat Provinsi
+                </h5>
+                <p class="text-[11px] text-slate-500 line-clamp-1 mt-0.5">
+                  Tim Robotika dan Sains MTs. YASUA kembali mengharumkan nama madrasah...
+                </p>
+              </div>
+              <i data-lucide="chevron-right" class="w-4 h-4 text-slate-400 group-hover:text-brand-primary group-hover:translate-x-1 transition-all shrink-0"></i>
+            </div>
+
+            <!-- List Item 2: Parenting Akbar -->
+            <div onclick="openNewsModal('parenting')" class="p-3 sm:p-3.5 rounded-2xl bg-white border border-emerald-100 shadow-sm hover:shadow-md hover:border-emerald-300 transition-all duration-200 group cursor-pointer flex items-center gap-3.5">
+              <div class="w-20 sm:w-24 h-20 sm:h-20 rounded-xl overflow-hidden shrink-0 bg-slate-100 relative">
+                <img src="foto-kajian-santriwati.jpg" alt="Workshop Parenting" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+              </div>
+              <div class="flex-1 min-w-0">
+                <div class="flex items-center gap-2 mb-1">
+                  <span class="px-2 py-0.5 rounded text-[10px] font-extrabold bg-blue-100 text-blue-800 uppercase tracking-wider">
+                    BERITA
+                  </span>
+                  <span class="text-[11px] text-slate-500 font-medium">15 September 2026</span>
+                </div>
+                <h5 class="font-bold text-slate-900 text-xs sm:text-sm group-hover:text-brand-primary transition-colors line-clamp-2 leading-snug">
+                  Workshop Parenting Akbar: Membangun Sinergi Rumah dan Sekolah Menuju Generasi Qur'ani
+                </h5>
+                <p class="text-[11px] text-slate-500 line-clamp-1 mt-0.5">
+                  Pertemuan silaturahmi akbar dan parenting session bersama wali murid...
+                </p>
+              </div>
+              <i data-lucide="chevron-right" class="w-4 h-4 text-slate-400 group-hover:text-brand-primary group-hover:translate-x-1 transition-all shrink-0"></i>
+            </div>
+
+            <!-- List Item 3: PPDB Dibuka -->
+            <div onclick="openNewsModal('ppdb')" class="p-3 sm:p-3.5 rounded-2xl bg-white border border-emerald-100 shadow-sm hover:shadow-md hover:border-emerald-300 transition-all duration-200 group cursor-pointer flex items-center gap-3.5">
+              <div class="w-20 sm:w-24 h-20 sm:h-20 rounded-xl overflow-hidden shrink-0 bg-slate-100 relative">
+                <img src="foto-gedung.jpg" alt="PPDB MTs YASUA" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+              </div>
+              <div class="flex-1 min-w-0">
+                <div class="flex items-center gap-2 mb-1">
+                  <span class="px-2 py-0.5 rounded text-[10px] font-extrabold bg-amber-100 text-amber-900 uppercase tracking-wider">
+                    PENGUMUMAN
+                  </span>
+                  <span class="text-[11px] text-slate-500 font-medium">10 September 2026</span>
+                </div>
+                <h5 class="font-bold text-slate-900 text-xs sm:text-sm group-hover:text-brand-primary transition-colors line-clamp-2 leading-snug">
+                  Penerimaan Peserta Didik Baru (PPDB) Tahun Ajaran 2026/2027 Resmi Dibuka
+                </h5>
+                <p class="text-[11px] text-slate-500 line-clamp-1 mt-0.5">
+                  Panitia PPDB MTs. YASUA membuka pendaftaran jalur prestasi dan reguler...
+                </p>
+              </div>
+              <i data-lucide="chevron-right" class="w-4 h-4 text-slate-400 group-hover:text-brand-primary group-hover:translate-x-1 transition-all shrink-0"></i>
+            </div>
+
+            <!-- List Item 4: ANBK Sukses -->
+            <div onclick="openNewsModal('anbk')" class="p-3 sm:p-3.5 rounded-2xl bg-white border border-emerald-100 shadow-sm hover:shadow-md hover:border-emerald-300 transition-all duration-200 group cursor-pointer flex items-center gap-3.5">
+              <div class="w-20 sm:w-24 h-20 sm:h-20 rounded-xl overflow-hidden shrink-0 bg-slate-100 relative">
+                <img src="foto-labkom.jpg" alt="ANBK Komputer" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+              </div>
+              <div class="flex-1 min-w-0">
+                <div class="flex items-center gap-2 mb-1">
+                  <span class="px-2 py-0.5 rounded text-[10px] font-extrabold bg-purple-100 text-purple-900 uppercase tracking-wider">
+                    AKADEMIK
+                  </span>
+                  <span class="text-[11px] text-slate-500 font-medium">28 Agustus 2026</span>
+                </div>
+                <h5 class="font-bold text-slate-900 text-xs sm:text-sm group-hover:text-brand-primary transition-colors line-clamp-2 leading-snug">
+                  Pelaksanaan ANBK di Laboratorium Komputer Berlangsung Tertib &amp; Lancar
+                </h5>
+                <p class="text-[11px] text-slate-500 line-clamp-1 mt-0.5">
+                  Kesiapan jaringan internet dan perangkat digital mendukung 100% kesuksesan ANBK...
+                </p>
+              </div>
+              <i data-lucide="chevron-right" class="w-4 h-4 text-slate-400 group-hover:text-brand-primary group-hover:translate-x-1 transition-all shrink-0"></i>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- GALERI MEDIA SOSIAL (Instagram & TikTok Highlights) -->
+    <section id="galeri" class="py-16 sm:py-24 bg-white relative">
+      <div class="max-w-7xl mx-auto px-4 sm:px-8">
+        
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
+          <div>
+            <span class="text-brand-primary font-bold text-xs sm:text-sm tracking-widest uppercase inline-block mb-2 px-3 py-1 rounded-full bg-emerald-100">
+              AKTIVITAS & DOKUMENTASI
+            </span>
+            <h2 class="text-2xl sm:text-3xl md:text-4xl font-extrabold text-brand-dark tracking-tight">
+              Galeri Media Sosial Kami
+            </h2>
+            <div class="w-16 h-1.5 bg-brand-primary mt-3 rounded-full"></div>
+            <p class="text-slate-600 text-sm sm:text-base mt-2">
+              Keseruan kegiatan belajar mengajar, lomba, dan pembiasaan di Instagram &amp; TikTok resmi MTs. YASUA.
+            </p>
+          </div>
+
+          <div class="flex items-center gap-3">
+            <a href="https://www.instagram.com/mts.yasua_pilangwetan/" target="_blank" class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-pink-50 text-pink-700 border border-pink-200 text-xs font-bold hover:bg-pink-100 transition-colors">
+              <i data-lucide="instagram" class="w-4 h-4"></i>
+              <span>@mts.yasua_pilangwetan</span>
+            </a>
+            <a href="https://www.tiktok.com/@mtsyasuapilangwetan" target="_blank" class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-slate-900 text-white text-xs font-bold hover:bg-slate-800 transition-colors">
+              <i data-lucide="video" class="w-4 h-4"></i>
+              <span>TikTok Resmi</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Gallery Grid Mockup with 5 Real Reference Photos -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          
+          <!-- Post 1: Gedung Kampus -->
+          <div class="rounded-3xl overflow-hidden border border-emerald-100 shadow-sm bg-[#F4FBF7] group hover-lift flex flex-col justify-between">
+            <div>
+              <div class="relative aspect-video overflow-hidden bg-slate-200">
+                <img src="foto-gedung.jpg" alt="Gedung MTs YASUA Pilangwetan" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                <span class="absolute top-3 right-3 bg-black/60 text-white text-[10px] px-2.5 py-1 rounded-full backdrop-blur-md flex items-center gap-1">
+                  <i data-lucide="instagram" class="w-3 h-3 text-pink-400"></i> Instagram
+                </span>
+                <span class="absolute bottom-2.5 left-2.5 bg-brand-primary/90 text-white text-[10px] px-2.5 py-0.5 rounded-full font-bold backdrop-blur-sm">
+                  Kampus Madrasah
+                </span>
+              </div>
+              <div class="p-5">
+                <span class="text-[11px] font-semibold text-brand-primary uppercase tracking-wider block mb-1">Sarana &amp; Fasilitas</span>
+                <h4 class="font-bold text-slate-800 text-base leading-snug">Gedung Pembelajaran Terpadu MTs. YASUA</h4>
+                <p class="text-xs text-slate-600 mt-2 leading-relaxed">Suasana kampus madrasah yang asri, hijau, bersih, dan berwawasan islami di Desa Pilangwetan, Kebonagung, Demak.</p>
+              </div>
+            </div>
+            <div class="px-5 pb-5">
+              <div class="pt-3 border-t border-emerald-100 flex items-center justify-between">
+                <span class="text-[11px] text-slate-500">Pilangwetan, Demak</span>
+                <a href="https://www.instagram.com/mts.yasua_pilangwetan/" target="_blank" class="text-xs font-bold text-brand-primary hover:underline flex items-center gap-1">
+                  Lihat Foto <i data-lucide="arrow-right" class="w-3 h-3"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Post 2: Apel Pagi -->
+          <div class="rounded-3xl overflow-hidden border border-emerald-100 shadow-sm bg-[#F4FBF7] group hover-lift flex flex-col justify-between">
+            <div>
+              <div class="relative aspect-video overflow-hidden bg-slate-200">
+                <img src="foto-upacara.jpg" alt="Apel Pagi Siswa MTs YASUA" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                <span class="absolute top-3 right-3 bg-black/60 text-white text-[10px] px-2.5 py-1 rounded-full backdrop-blur-md flex items-center gap-1">
+                  <i data-lucide="video" class="w-3 h-3 text-cyan-400"></i> TikTok
+                </span>
+                <span class="absolute bottom-2.5 left-2.5 bg-brand-primary/90 text-white text-[10px] px-2.5 py-0.5 rounded-full font-bold backdrop-blur-sm">
+                  Kedisiplinan
+                </span>
+              </div>
+              <div class="p-5">
+                <span class="text-[11px] font-semibold text-brand-primary uppercase tracking-wider block mb-1">Karakter &amp; Baris-Berbaris</span>
+                <h4 class="font-bold text-slate-800 text-base leading-snug">Apel Pagi &amp; Pembinaan Siswa di Lapangan</h4>
+                <p class="text-xs text-slate-600 mt-2 leading-relaxed">Membiasakan ketertiban, adab saling menghormati, dan kebersamaan seluruh siswa-siswi sebelum kegiatan pembelajaran.</p>
+              </div>
+            </div>
+            <div class="px-5 pb-5">
+              <div class="pt-3 border-t border-emerald-100 flex items-center justify-between">
+                <span class="text-[11px] text-slate-500">Dokumentasi Video</span>
+                <a href="https://www.tiktok.com/@mtsyasuapilangwetan" target="_blank" class="text-xs font-bold text-brand-primary hover:underline flex items-center gap-1">
+                  Tonton di TikTok <i data-lucide="arrow-right" class="w-3 h-3"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Post 3: Lab Komputer -->
+          <div class="rounded-3xl overflow-hidden border border-emerald-100 shadow-sm bg-[#F4FBF7] group hover-lift flex flex-col justify-between">
+            <div>
+              <div class="relative aspect-video overflow-hidden bg-slate-200">
+                <img src="foto-labkom.jpg" alt="Laboratorium Komputer & Digital" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                <span class="absolute top-3 right-3 bg-black/60 text-white text-[10px] px-2.5 py-1 rounded-full backdrop-blur-md flex items-center gap-1">
+                  <i data-lucide="instagram" class="w-3 h-3 text-pink-400"></i> Instagram
+                </span>
+                <span class="absolute bottom-2.5 left-2.5 bg-brand-primary/90 text-white text-[10px] px-2.5 py-0.5 rounded-full font-bold backdrop-blur-sm">
+                  Digital Lab
+                </span>
+              </div>
+              <div class="p-5">
+                <span class="text-[11px] font-semibold text-brand-primary uppercase tracking-wider block mb-1">Teknologi &amp; Sains</span>
+                <h4 class="font-bold text-slate-800 text-base leading-snug">Praktik Lab Komputer &amp; Literasi ANBK</h4>
+                <p class="text-xs text-slate-600 mt-2 leading-relaxed">Pelatihan komputer dasar, aplikasi modern, dan kesiapan asesmen digital agar siswa siap menghadapi era teknologi.</p>
+              </div>
+            </div>
+            <div class="px-5 pb-5">
+              <div class="pt-3 border-t border-emerald-100 flex items-center justify-between">
+                <span class="text-[11px] text-slate-500">Lab Komputer MTs</span>
+                <a href="https://www.instagram.com/mts.yasua_pilangwetan/" target="_blank" class="text-xs font-bold text-brand-primary hover:underline flex items-center gap-1">
+                  Lihat Post <i data-lucide="arrow-right" class="w-3 h-3"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Post 4: Sholat Berjamaah Siswa Putra -->
+          <div class="rounded-3xl overflow-hidden border border-emerald-100 shadow-sm bg-[#F4FBF7] group hover-lift flex flex-col justify-between">
+            <div>
+              <div class="relative aspect-video overflow-hidden bg-slate-200">
+                <img src="foto-sholat-santri.jpg" alt="Sholat Berjamaah Siswa Putra" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                <span class="absolute top-3 right-3 bg-black/60 text-white text-[10px] px-2.5 py-1 rounded-full backdrop-blur-md flex items-center gap-1">
+                  <i data-lucide="instagram" class="w-3 h-3 text-pink-400"></i> Instagram
+                </span>
+                <span class="absolute bottom-2.5 left-2.5 bg-brand-primary/90 text-white text-[10px] px-2.5 py-0.5 rounded-full font-bold backdrop-blur-sm">
+                  Ibadah Berjamaah
+                </span>
+              </div>
+              <div class="p-5">
+                <span class="text-[11px] font-semibold text-brand-primary uppercase tracking-wider block mb-1">Pembiasaan Ibadah</span>
+                <h4 class="font-bold text-slate-800 text-base leading-snug">Sholat Berjamaah &amp; Doa Bersama Siswa Putra</h4>
+                <p class="text-xs text-slate-600 mt-2 leading-relaxed">Membiasakan sholat berjamaah tepat waktu di masjid, istighosah mingguan, dan pembinaan adab santun siswa.</p>
+              </div>
+            </div>
+            <div class="px-5 pb-5">
+              <div class="pt-3 border-t border-emerald-100 flex items-center justify-between">
+                <span class="text-[11px] text-slate-500">Masjid Madrasah</span>
+                <a href="https://www.instagram.com/mts.yasua_pilangwetan/" target="_blank" class="text-xs font-bold text-brand-primary hover:underline flex items-center gap-1">
+                  Lihat Foto <i data-lucide="arrow-right" class="w-3 h-3"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Post 5: Bimbingan Keagamaan Siswi Putri -->
+          <div class="rounded-3xl overflow-hidden border border-emerald-100 shadow-sm bg-[#F4FBF7] group hover-lift flex flex-col justify-between sm:col-span-2 lg:col-span-1">
+            <div>
+              <div class="relative aspect-video overflow-hidden bg-slate-200">
+                <img src="foto-kajian-santriwati.jpg" alt="Bimbingan Keagamaan Siswi Putri" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                <span class="absolute top-3 right-3 bg-black/60 text-white text-[10px] px-2.5 py-1 rounded-full backdrop-blur-md flex items-center gap-1">
+                  <i data-lucide="video" class="w-3 h-3 text-cyan-400"></i> TikTok
+                </span>
+                <span class="absolute bottom-2.5 left-2.5 bg-brand-primary/90 text-white text-[10px] px-2.5 py-0.5 rounded-full font-bold backdrop-blur-sm">
+                  Tahfidz &amp; Adab
+                </span>
+              </div>
+              <div class="p-5">
+                <span class="text-[11px] font-semibold text-brand-primary uppercase tracking-wider block mb-1">Bimbingan Siswi</span>
+                <h4 class="font-bold text-slate-800 text-base leading-snug">Bimbingan Belajar &amp; Keputrian Siswi</h4>
+                <p class="text-xs text-slate-600 mt-2 leading-relaxed">Muroja'ah Al-Qur'an, pembinaan adab siswi muslimah, dan pendalaman materi agama bersama ustadzah pembina.</p>
+              </div>
+            </div>
+            <div class="px-5 pb-5">
+              <div class="pt-3 border-t border-emerald-100 flex items-center justify-between">
+                <span class="text-[11px] text-slate-500">Aula Pembinaan</span>
+                <a href="https://www.tiktok.com/@mtsyasuapilangwetan" target="_blank" class="text-xs font-bold text-brand-primary hover:underline flex items-center gap-1">
+                  Tonton di TikTok <i data-lucide="arrow-right" class="w-3 h-3"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SECTION PPDB TERPADU (Integrated Online Registration) -->
+    <section id="ppdb" class="py-16 sm:py-24 bg-gradient-to-br from-[#022c1f] via-[#065F46] to-[#0A6B48] text-white relative overflow-hidden">
+      <div class="max-w-7xl mx-auto px-4 sm:px-8 relative z-10">
+        
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+          
+          <!-- Left: PPDB Information & Flow -->
+          <div class="lg:col-span-7 space-y-6">
+            <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand-accent/20 border border-brand-accent/40 text-brand-gold text-xs font-bold uppercase tracking-wider">
+              <i data-lucide="sparkles" class="w-3.5 h-3.5"></i>
+              <span>PENERIMAAN PESERTA DIDIK BARU</span>
+            </div>
+
+            <h2 class="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight leading-tight">
+              Ayo Bergabung Bersama <br>
+              <span class="text-brand-gold">MTs. YASUA Pilangwetan</span>
+            </h2>
+
+            <p class="text-emerald-100/90 text-sm sm:text-base leading-relaxed max-w-xl">
+              Pendaftaran siswa baru dibuka untuk lulusan SD/MI. Proses pendaftaran mudah, cepat, dan dapat dilakukan secara daring melalui formulir resmi kami.
+            </p>
+
+            <!-- Alur Pendaftaran -->
+            <div class="space-y-4 pt-2">
+              <h4 class="font-extrabold text-sm uppercase tracking-wider text-emerald-200">Alur &amp; Langkah Pendaftaran:</h4>
+              
+              <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                <div class="bg-white/10 backdrop-blur-md p-4 rounded-2xl border border-white/15">
+                  <span class="w-7 h-7 rounded-full bg-brand-gold text-slate-950 font-black text-xs flex items-center justify-center mb-2">1</span>
+                  <h5 class="font-bold text-sm">Isi Formulir</h5>
+                  <p class="text-[12px] text-emerald-100 mt-1">Lengkapi data diri calon siswa melalui formulir online.</p>
+                </div>
+                
+                <div class="bg-white/10 backdrop-blur-md p-4 rounded-2xl border border-white/15">
+                  <span class="w-7 h-7 rounded-full bg-brand-gold text-slate-950 font-black text-xs flex items-center justify-center mb-2">2</span>
+                  <h5 class="font-bold text-sm">Konfirmasi WA</h5>
+                  <p class="text-[12px] text-emerald-100 mt-1">Konfirmasi pendaftaran ke nomor panitia PPDB.</p>
+                </div>
+                
+                <div class="bg-white/10 backdrop-blur-md p-4 rounded-2xl border border-white/15">
+                  <span class="w-7 h-7 rounded-full bg-brand-gold text-slate-950 font-black text-xs flex items-center justify-center mb-2">3</span>
+                  <h5 class="font-bold text-sm">Daftar Ulang</h5>
+                  <p class="text-[12px] text-emerald-100 mt-1">Verifikasi berkas fisik di madrasah & siap belajar!</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Syarat Berkas -->
+            <div class="p-4 rounded-2xl bg-white/5 border border-white/10 text-xs text-emerald-100 space-y-1.5">
+              <span class="font-bold text-brand-gold block text-sm mb-1">Berkas yang Perlu Disiapkan:</span>
+              <p>• Fotokopi Kartu Keluarga (KK) &amp; Akta Kelahiran</p>
+              <p>• Fotokopi Ijazah / Surat Keterangan Lulus (SKL) SD/MI</p>
+              <p>• Pas foto terbaru calon peserta didik (3x4)</p>
+            </div>
+
+          </div>
+
+          <!-- Right: Interactive Card with Direct Link & WhatsApp Support -->
+          <div class="lg:col-span-5">
+            <div class="bg-white rounded-3xl p-8 text-slate-900 shadow-2xl border-4 border-emerald-400/30 text-center space-y-6">
+              
+              <div class="w-16 h-16 rounded-3xl bg-emerald-100 text-brand-primary flex items-center justify-center mx-auto shadow-inner">
+                <i data-lucide="clipboard-check" class="w-8 h-8"></i>
+              </div>
+
+              <div>
+                <span class="text-xs font-extrabold text-brand-primary tracking-widest uppercase block mb-1">FORMULIR RESMI PPDB</span>
+                <h3 class="text-2xl font-black text-slate-900 leading-tight">Daftar Siswa Baru Sekarang</h3>
+                <p class="text-slate-600 text-xs sm:text-sm mt-2">
+                  Klik tombol di bawah ini untuk langsung mengisi formulir pendaftaran melalui Google Form resmi MTs. YASUA:
+                </p>
+              </div>
+
+              <!-- Primary Action: Open Google Form -->
+              <div class="space-y-3">
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSf3QZ_A7p8mFKq5xNSNjUiryalNwutbqQ0iyFL-ts5TDWOilQ/viewform" target="_blank" rel="noopener noreferrer" class="w-full inline-flex items-center justify-center gap-2.5 py-4 px-6 rounded-2xl bg-gradient-to-r from-brand-accent to-amber-500 hover:from-amber-500 hover:to-brand-accent text-slate-950 font-black text-base shadow-glow-gold hover:scale-102 transition-all">
+                  <i data-lucide="external-link" class="w-5 h-5"></i>
+                  <span>Buka Formulir PPDB Online</span>
+                </a>
+
+                <!-- Alternative WhatsApp Support -->
+                <a href="https://wa.me/6281228512345?text=Assalamu%27alaikum%20Panitia%20PPDB%20MTs%20YASUA%20Pilangwetan,%20saya%20ingin%20mendaftar%20atau%20bertanya%20seputar%20PPDB." target="_blank" class="w-full inline-flex items-center justify-center gap-2 py-3 px-6 rounded-2xl bg-emerald-50 hover:bg-emerald-100 text-brand-primary font-bold text-sm border border-emerald-200 transition-colors">
+                  <i data-lucide="message-circle" class="w-4 h-4 text-emerald-600"></i>
+                  <span>Bantuan Pendaftaran via WhatsApp</span>
+                </a>
+              </div>
+
+              <div class="pt-4 border-t border-slate-100 flex items-center justify-center gap-2 text-xs text-slate-500">
+                <i data-lucide="shield-check" class="w-4 h-4 text-brand-primary"></i>
+                <span>Data Anda Aman &amp; Langsung Terverifikasi Panitia</span>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SECTION BROSUR & DOWNLOAD PPDB -->
+    <section id="brosur" class="py-16 sm:py-20 bg-white relative border-b border-emerald-100">
+      <div class="max-w-7xl mx-auto px-4 sm:px-8">
+        
+        <div class="bg-gradient-to-r from-emerald-50 via-teal-50 to-emerald-50 rounded-3xl p-8 sm:p-12 border border-emerald-200 flex flex-col md:flex-row items-center justify-between gap-8">
+          
+          <div class="flex items-start sm:items-center gap-5">
+            <div class="w-16 h-16 sm:w-20 sm:h-20 rounded-3xl bg-brand-primary text-white flex items-center justify-center shrink-0 shadow-lg shadow-emerald-700/20">
+              <i data-lucide="file-text" class="w-8 h-8 sm:w-10 sm:h-10 text-amber-300"></i>
+            </div>
+            <div>
+              <span class="text-brand-primary font-bold text-xs uppercase tracking-wider block mb-1">DOKUMEN RESMI MADRASAH</span>
+              <h3 class="text-xl sm:text-2xl font-black text-slate-900">Brosur &amp; Rincian Informasi PPDB</h3>
+              <p class="text-slate-600 text-xs sm:text-sm mt-1 max-w-xl">
+                Unduh lembar panduan lengkap berisi jadwal pendaftaran, rincian seragam, kurikulum, serta profil pengajar MTs. YASUA Pilangwetan.
+              </p>
+            </div>
+          </div>
+
+          <!-- Download Action -->
+          <div class="shrink-0 flex flex-col sm:flex-row gap-3 w-full sm:w-auto">
+            <button onclick="downloadBrochure()" class="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-2xl bg-brand-primary hover:bg-brand-dark text-white font-bold text-sm shadow-md transition-all">
+              <i data-lucide="download" class="w-4 h-4"></i>
+              <span>Unduh Brosur (PDF)</span>
+            </button>
+            <a href="https://share.google/3JwRSCexKxu3KQ58v" target="_blank" class="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-2xl bg-white hover:bg-slate-50 text-slate-800 font-bold text-sm border border-slate-200 transition-all">
+              <i data-lucide="folder" class="w-4 h-4 text-emerald-600"></i>
+              <span>Google Drive Berkas</span>
+            </a>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SECTION HUBUNGI KAMI & FORM INTERAKTIF KE WHATSAPP -->
+    <section id="kontak" class="py-16 sm:py-24 bg-[#F4FBF7] relative">
+      <div class="max-w-7xl mx-auto px-4 sm:px-8">
+        
+        <div class="text-center max-w-3xl mx-auto mb-14">
+          <span class="text-brand-primary font-bold text-xs sm:text-sm tracking-widest uppercase inline-block mb-2 px-3 py-1 rounded-full bg-emerald-100">
+            LAYANAN INFORMASI
+          </span>
+          <h2 class="text-2xl sm:text-3xl md:text-4xl font-extrabold text-brand-dark tracking-tight">
+            Hubungi Panitia &amp; Pihak Madrasah
+          </h2>
+          <div class="w-16 h-1.5 bg-brand-primary mx-auto mt-4 rounded-full"></div>
+          <p class="text-slate-600 text-sm sm:text-base mt-4">
+            Punya pertanyaan mengenai program sekolah, biaya, atau administrasi? Kirim pesan langsung ke tim kami.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+          
+          <!-- Contact Details Cards -->
+          <div class="lg:col-span-5 space-y-4">
+            
+            <div class="bg-white p-6 rounded-3xl border border-emerald-100 shadow-sm flex items-start gap-4">
+              <div class="w-12 h-12 rounded-2xl bg-emerald-50 text-brand-primary flex items-center justify-center shrink-0">
+                <i data-lucide="map-pin" class="w-6 h-6"></i>
+              </div>
+              <div>
+                <h4 class="font-bold text-slate-800 text-base">Alamat Madrasah</h4>
+                <p class="text-xs sm:text-sm text-slate-600 mt-1 leading-relaxed">
+                  Jl. Pilangwetan, Desa Pilangwetan, Kecamatan Kebonagung, Kabupaten Demak, Jawa Tengah - 59583.
+                </p>
+              </div>
+            </div>
+
+            <div class="bg-white p-6 rounded-3xl border border-emerald-100 shadow-sm flex items-start gap-4">
+              <div class="w-12 h-12 rounded-2xl bg-emerald-50 text-brand-primary flex items-center justify-center shrink-0">
+                <i data-lucide="phone" class="w-6 h-6"></i>
+              </div>
+              <div>
+                <h4 class="font-bold text-slate-800 text-base">WhatsApp / Panitia PPDB</h4>
+                <p class="text-xs sm:text-sm text-slate-600 mt-1">
+                  +62 812-2851-2345 (Layanan Cepat Tanggap)
+                </p>
+                <span class="text-[11px] text-emerald-600 font-semibold block mt-1">Senin - Sabtu: 07.30 - 14.00 WIB</span>
+              </div>
+            </div>
+
+            <div class="bg-white p-6 rounded-3xl border border-emerald-100 shadow-sm flex items-start gap-4">
+              <div class="w-12 h-12 rounded-2xl bg-emerald-50 text-brand-primary flex items-center justify-center shrink-0">
+                <i data-lucide="globe" class="w-6 h-6"></i>
+              </div>
+              <div>
+                <h4 class="font-bold text-slate-800 text-base">Media Sosial Resmi</h4>
+                <div class="flex flex-wrap gap-2 mt-2">
+                  <a href="https://www.instagram.com/mts.yasua_pilangwetan/" target="_blank" class="text-xs font-semibold px-3 py-1 bg-pink-50 text-pink-700 rounded-lg hover:bg-pink-100 transition-colors">
+                    @mts.yasua_pilangwetan
+                  </a>
+                  <a href="https://www.tiktok.com/@mtsyasuapilangwetan" target="_blank" class="text-xs font-semibold px-3 py-1 bg-slate-100 text-slate-800 rounded-lg hover:bg-slate-200 transition-colors">
+                    @mtsyasuapilangwetan
+                  </a>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Direct WhatsApp Inquiry Form -->
+          <div class="lg:col-span-7">
+            <div class="bg-white p-8 rounded-3xl border border-emerald-200/80 shadow-md">
+              <div class="flex items-center gap-3 mb-6">
+                <div class="w-10 h-10 rounded-xl bg-emerald-100 text-brand-primary flex items-center justify-center font-bold">
+                  <i data-lucide="send" class="w-5 h-5"></i>
+                </div>
+                <div>
+                  <h3 class="text-lg font-black text-slate-900">Kirim Pesan WhatsApp Langsung</h3>
+                  <p class="text-xs text-slate-500">Pesan akan diteruskan ke admin madrasah via aplikasi WhatsApp.</p>
+                </div>
+              </div>
+
+              <form onsubmit="sendToWhatsApp(event)" class="space-y-4">
+                <div>
+                  <label for="senderName" class="block text-xs font-bold text-slate-700 uppercase mb-1">Nama Lengkap</label>
+                  <input type="text" id="senderName" required placeholder="Contoh: Ahmad Fauzi / Orang Tua Siswa" class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-brand-primary text-sm">
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div>
+                    <label for="senderAsal" class="block text-xs font-bold text-slate-700 uppercase mb-1">Asal Sekolah / Desa</label>
+                    <input type="text" id="senderAsal" required placeholder="Contoh: SD/MI Pilangwetan" class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-brand-primary text-sm">
+                  </div>
+                  <div>
+                    <label for="senderTopic" class="block text-xs font-bold text-slate-700 uppercase mb-1">Topik Pertanyaan</label>
+                    <select id="senderTopic" class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-brand-primary text-sm bg-white">
+                      <option value="Informasi PPDB & Biaya">Informasi PPDB &amp; Biaya</option>
+                      <option value="Program Tahfiz & Ekstrakurikuler">Program Tahfiz &amp; Ekstrakurikuler</option>
+                      <option value="Syarat Pendaftaran">Syarat Pendaftaran</option>
+                      <option value="Lainnya">Pertanyaan Lainnya</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div>
+                  <label for="senderMessage" class="block text-xs font-bold text-slate-700 uppercase mb-1">Isi Pesan / Pertanyaan</label>
+                  <textarea id="senderMessage" rows="3" required placeholder="Tuliskan pertanyaan Anda mengenai MTs. YASUA di sini..." class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-brand-primary text-sm"></textarea>
+                </div>
+
+                <button type="submit" class="w-full py-3.5 px-6 rounded-xl bg-gradient-to-r from-brand-primary to-emerald-600 hover:from-brand-dark hover:to-brand-primary text-white font-extrabold text-sm shadow-md transition-all flex items-center justify-center gap-2">
+                  <i data-lucide="message-square" class="w-4 h-4"></i>
+                  <span>Kirim ke WhatsApp Sekarang</span>
+                </button>
+              </form>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- MODAL BACA DETAIL BERITA & PENGUMUMAN -->
+  <div id="newsModal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-3 sm:p-5 bg-slate-950/70 backdrop-blur-sm transition-opacity duration-300">
+    <div class="bg-white rounded-3xl max-w-2xl w-full max-h-[90vh] overflow-y-auto shadow-2xl border border-emerald-100 flex flex-col relative animate-in fade-in zoom-in-95 duration-200">
+      
+      <!-- Modal Close Button Floating -->
+      <button onclick="closeNewsModal()" class="absolute top-4 right-4 z-10 w-9 h-9 rounded-full bg-black/60 hover:bg-black/80 text-white flex items-center justify-center backdrop-blur-md transition-colors" title="Tutup Modal" aria-label="Tutup">
+        <i data-lucide="x" class="w-5 h-5"></i>
+      </button>
+
+      <!-- Modal Image Banner -->
+      <div id="modalNewsImgContainer" class="relative aspect-video w-full overflow-hidden bg-slate-100">
+        <img id="modalNewsImg" src="" alt="Berita Image" class="w-full h-full object-cover">
+        <span id="modalNewsCategory" class="absolute bottom-3 left-4 px-3 py-1 rounded-full text-xs font-black shadow-md"></span>
+      </div>
+
+      <!-- Modal Content Body -->
+      <div class="p-6 sm:p-8 space-y-4">
+        <div class="flex items-center gap-2 text-xs text-slate-500 font-semibold">
+          <i data-lucide="calendar" class="w-3.5 h-3.5 text-brand-primary"></i>
+          <span id="modalNewsDate"></span>
+          <span class="text-slate-300">•</span>
+          <span class="text-emerald-700 font-bold">MTs. YASUA Pilangwetan</span>
+        </div>
+
+        <h3 id="modalNewsTitle" class="text-xl sm:text-2xl font-black text-slate-900 leading-snug"></h3>
+
+        <div id="modalNewsContent" class="text-slate-600 text-xs sm:text-sm leading-relaxed border-t border-emerald-100 pt-4"></div>
+
+        <div class="pt-4 border-t border-slate-100 flex items-center justify-between gap-3">
+          <button onclick="closeNewsModal()" class="px-5 py-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-xs transition-colors">
+            Tutup Jendela
+          </button>
+          <a href="https://wa.me/6281228512345" target="_blank" class="px-5 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs shadow-md transition-colors flex items-center gap-1.5">
+            <i data-lucide="message-square" class="w-3.5 h-3.5"></i>
+            <span>Tanya Panitia (WhatsApp)</span>
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- MODAL DAFTAR SEMUA DEWAN GURU & TENAGA PENDIDIK -->
+  <div id="allTeachersModal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-3 sm:p-6 bg-slate-950/75 backdrop-blur-md transition-opacity duration-300">
+    <div class="bg-gradient-to-br from-white via-slate-50 to-[#F4FBF7] rounded-3xl max-w-4xl w-full max-h-[90vh] overflow-y-auto shadow-2xl border border-emerald-100 p-6 sm:p-8 relative">
+      
+      <button onclick="closeAllTeachersModal()" class="absolute top-5 right-5 w-9 h-9 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-700 flex items-center justify-center transition-colors" title="Tutup" aria-label="Tutup">
+        <i data-lucide="x" class="w-5 h-5"></i>
+      </button>
+
+      <div class="text-center max-w-xl mx-auto mb-8">
+        <span class="text-xs font-bold text-brand-primary uppercase tracking-widest px-3 py-1 rounded-full bg-emerald-100">
+          PROFIL PENDIDIK
+        </span>
+        <h3 class="text-2xl sm:text-3xl font-black text-brand-dark mt-2">
+          Dewan Guru &amp; Tenaga Pendidik
+        </h3>
+        <p class="text-xs sm:text-sm text-slate-600 mt-2">
+          Pendidik berdedikasi, berkompeten, dan berakhlakul karimah yang membimbing putra-putri siswa di MTs. YASUA Pilangwetan.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-2 sm:grid-cols-3 gap-4 sm:gap-6">
+        
+        <!-- Guru 1 -->
+        <div class="bg-white rounded-2xl p-3 sm:p-4 border border-emerald-100 shadow-sm text-center">
+          <div class="aspect-square rounded-xl overflow-hidden bg-slate-100 mb-2.5">
+            <img src="guru_1.jpg" alt="Susriandi, S.Pd" class="w-full h-full object-cover">
+          </div>
+          <h4 class="font-bold text-slate-900 text-xs sm:text-sm leading-tight">Susriandi, S.Pd</h4>
+          <p class="text-[11px] font-semibold text-amber-700 mt-0.5">Guru Bahasa Indonesia</p>
+        </div>
+
+        <!-- Guru 2 -->
+        <div class="bg-white rounded-2xl p-3 sm:p-4 border border-emerald-100 shadow-sm text-center">
+          <div class="aspect-square rounded-xl overflow-hidden bg-slate-100 mb-2.5">
+            <img src="guru_2.jpg" alt="Arsyad Edi, SS" class="w-full h-full object-cover">
+          </div>
+          <h4 class="font-bold text-slate-900 text-xs sm:text-sm leading-tight">Arsyad Edi, SS</h4>
+          <p class="text-[11px] font-semibold text-amber-700 mt-0.5">Guru Bahasa Inggris</p>
+        </div>
+
+        <!-- Guru 3 -->
+        <div class="bg-white rounded-2xl p-3 sm:p-4 border border-emerald-100 shadow-sm text-center">
+          <div class="aspect-square rounded-xl overflow-hidden bg-slate-100 mb-2.5">
+            <img src="guru_3.jpg" alt="Hasbullah, S.Kom" class="w-full h-full object-cover">
+          </div>
+          <h4 class="font-bold text-slate-900 text-xs sm:text-sm leading-tight">Hasbullah, S.Kom</h4>
+          <p class="text-[11px] font-semibold text-amber-700 mt-0.5">Guru Informatika</p>
+        </div>
+
+        <!-- Guru 4 -->
+        <div class="bg-white rounded-2xl p-3 sm:p-4 border border-emerald-100 shadow-sm text-center">
+          <div class="aspect-square rounded-xl overflow-hidden bg-slate-100 mb-2.5">
+            <img src="guru_4.jpg" alt="Aidiyah, S.Pd" class="w-full h-full object-cover">
+          </div>
+          <h4 class="font-bold text-slate-900 text-xs sm:text-sm leading-tight">Aidiyah, S.Pd</h4>
+          <p class="text-[11px] font-semibold text-amber-700 mt-0.5">Guru Matematika</p>
+        </div>
+
+        <!-- Guru 5 -->
+        <div class="bg-white rounded-2xl p-3 sm:p-4 border border-emerald-100 shadow-sm text-center">
+          <div class="aspect-square rounded-xl overflow-hidden bg-slate-100 mb-2.5">
+            <img src="guru_5.jpg" alt="Wahyuni Arida Agustina, S.Pd" class="w-full h-full object-cover">
+          </div>
+          <h4 class="font-bold text-slate-900 text-xs sm:text-sm leading-tight">Wahyuni Arida Agustina, S.Pd</h4>
+          <p class="text-[11px] font-semibold text-amber-700 mt-0.5">Guru PPKn</p>
+        </div>
+
+        <!-- Guru 6 -->
+        <div class="bg-white rounded-2xl p-3 sm:p-4 border border-emerald-100 shadow-sm text-center">
+          <div class="aspect-square rounded-xl overflow-hidden bg-slate-100 mb-2.5">
+            <img src="guru_6.jpg" alt="Emi Sulastri, S.Pd" class="w-full h-full object-cover">
+          </div>
+          <h4 class="font-bold text-slate-900 text-xs sm:text-sm leading-tight">Emi Sulastri, S.Pd</h4>
+          <p class="text-[11px] font-semibold text-amber-700 mt-0.5">Guru IPS &amp; Keagamaan</p>
+        </div>
+
+      </div>
+
+      <div class="mt-8 text-center">
+        <button onclick="closeAllTeachersModal()" class="px-6 py-2.5 rounded-xl bg-brand-primary text-white font-bold text-xs sm:text-sm shadow-md hover:bg-brand-dark transition-colors">
+          Tutup
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="bg-gradient-to-br from-[#022419] to-[#043d2c] text-white pt-16 pb-12 border-t border-emerald-900/60">
+    <div class="max-w-7xl mx-auto px-4 sm:px-8">
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 pb-12 border-b border-emerald-800/40">
+        
+        <!-- Column 1: School Identity -->
+        <div class="lg:col-span-5 space-y-4">
+          <div class="flex items-center gap-3">
+            <img src="logo.png" alt="Logo MTs. YASUA Pilangwetan" class="w-12 h-12 object-contain drop-shadow-sm">
+            <div>
+              <span class="text-xl font-black tracking-tight text-white block">MTs. YASUA</span>
+              <span class="text-brand-gold text-[10px] font-bold tracking-widest uppercase block">PILANGWETAN - DEMAK</span>
+            </div>
+          </div>
+
+          <p class="text-emerald-100/80 text-xs sm:text-sm leading-relaxed max-w-md">
+            Lembaga pendidikan formal tingkat menengah pertama di bawah naungan Yayasan Islam Suada (YASUA) Pilangwetan, Kecamatan Kebonagung, Kabupaten Demak.
+          </p>
+
+          <div class="pt-2 flex items-center gap-3">
+            <a href="https://www.instagram.com/mts.yasua_pilangwetan/" target="_blank" class="w-9 h-9 rounded-xl bg-white/10 hover:bg-pink-600 flex items-center justify-center text-white transition-colors" title="Instagram">
+              <i data-lucide="instagram" class="w-4 h-4"></i>
+            </a>
+            <a href="https://www.tiktok.com/@mtsyasuapilangwetan" target="_blank" class="w-9 h-9 rounded-xl bg-white/10 hover:bg-slate-900 flex items-center justify-center text-white transition-colors" title="TikTok">
+              <i data-lucide="video" class="w-4 h-4"></i>
+            </a>
+            <a href="https://share.google/3JwRSCexKxu3KQ58v" target="_blank" class="w-9 h-9 rounded-xl bg-white/10 hover:bg-emerald-600 flex items-center justify-center text-white transition-colors" title="Google Drive Berkas">
+              <i data-lucide="folder" class="w-4 h-4"></i>
+            </a>
+            <a href="#kontak" class="w-9 h-9 rounded-xl bg-white/10 hover:bg-emerald-600 flex items-center justify-center text-white transition-colors" title="Hubungi Kami">
+              <i data-lucide="phone" class="w-4 h-4"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Column 2: Quick Links -->
+        <div class="lg:col-span-3 space-y-3">
+          <h4 class="font-bold text-sm tracking-wider uppercase text-brand-gold">Menu Cepat</h4>
+          <ul class="space-y-2 text-xs sm:text-sm text-emerald-100/90">
+            <li><a href="#" class="hover:text-amber-200 transition-colors">Beranda</a></li>
+            <li><a href="#sambutan" class="hover:text-amber-200 transition-colors">Sambutan Pimpinan</a></li>
+            <li><a href="#dewan-guru" class="hover:text-amber-200 transition-colors">Dewan Guru &amp; Tenaga Pendidik</a></li>
+            <li><a href="#profil" class="hover:text-amber-200 transition-colors">Profil &amp; Visi Misi</a></li>
+            <li><a href="#program" class="hover:text-amber-200 transition-colors">Program Unggulan</a></li>
+            <li><a href="#berita" class="hover:text-amber-200 transition-colors">Berita &amp; Pengumuman</a></li>
+            <li><a href="#ekskul" class="hover:text-amber-200 transition-colors">Ekstrakurikuler</a></li>
+            <li><a href="#galeri" class="hover:text-amber-200 transition-colors">Dokumentasi Media Sosial</a></li>
+            <li><a href="#brosur" class="hover:text-amber-200 transition-colors">Unduh Brosur Madrasah</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 3: Contact & PPDB Info -->
+        <div class="lg:col-span-4 space-y-3">
+          <h4 class="font-bold text-sm tracking-wider uppercase text-brand-gold">Informasi Madrasah</h4>
+          <div class="space-y-2.5 text-xs text-emerald-100/90 leading-relaxed">
+            <p class="flex items-start gap-2">
+              <i data-lucide="map-pin" class="w-4 h-4 text-brand-gold shrink-0 mt-0.5"></i>
+              <span>Pilangwetan, Kebonagung, Kab. Demak, Jawa Tengah</span>
+            </p>
+            <p class="flex items-center gap-2">
+              <i data-lucide="shield-check" class="w-4 h-4 text-emerald-400 shrink-0"></i>
+              <span>NPSN: <strong>20364357</strong></span>
+            </p>
+            <p class="flex items-center gap-2">
+              <i data-lucide="phone" class="w-4 h-4 text-brand-gold shrink-0"></i>
+              <span>WhatsApp: +62 812-2851-2345</span>
+            </p>
+            <div class="pt-2">
+              <a href="https://docs.google.com/forms/d/e/1FAIpQLSf3QZ_A7p8mFKq5xNSNjUiryalNwutbqQ0iyFL-ts5TDWOilQ/viewform" target="_blank" class="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-brand-accent text-slate-900 font-black text-xs hover:bg-amber-400 transition-colors">
+                <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+                <span>Formulir PPDB Online Resmi</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Copyright & Bottom Credit -->
+      <div class="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-emerald-200/70 gap-4 text-center">
+        <p>&copy; 2025 - 2026 MTs. YASUA (Pilangwetan - Demak). Seluruh Hak Cipta Dilindungi.</p>
+        <p class="text-[11px]">Dirancang untuk generasi Islami, cerdas, dan berprestasi.</p>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- SCRIPT LOGIC (Interactive Features) -->
+  <script>
+    // Initialize Lucide Icons
+    lucide.createIcons();
+
+    // Hero Photo Slider Logic
+    let currentHeroSlide = 0;
+    const totalHeroSlides = 5;
+    let heroSlideTimer = null;
+
+    function showHeroSlide(index) {
+      const slides = document.querySelectorAll('.hero-slide');
+      const thumbs = document.querySelectorAll('.hero-thumb');
+      const counter = document.getElementById('slideCounter');
+      if (!slides.length) return;
+
+      currentHeroSlide = (index + totalHeroSlides) % totalHeroSlides;
+
+      slides.forEach((slide, i) => {
+        if (i === currentHeroSlide) {
+          slide.classList.remove('opacity-0', 'pointer-events-none', 'z-0');
+          slide.classList.add('opacity-100', 'z-10');
+        } else {
+          slide.classList.remove('opacity-100', 'z-10');
+          slide.classList.add('opacity-0', 'pointer-events-none', 'z-0');
+        }
+      });
+
+      thumbs.forEach((thumb, i) => {
+        if (i === currentHeroSlide) {
+          thumb.className = "hero-thumb relative aspect-[4/3] rounded-xl overflow-hidden border-2 border-brand-accent ring-2 ring-brand-accent/50 shadow-md transition-all hover:scale-105 focus:outline-none opacity-100 scale-105";
+        } else {
+          thumb.className = "hero-thumb relative aspect-[4/3] rounded-xl overflow-hidden border-2 border-white/30 opacity-70 hover:opacity-100 hover:border-white/80 transition-all hover:scale-105 focus:outline-none";
+        }
+      });
+
+      if (counter) {
+        counter.textContent = `${currentHeroSlide + 1} / ${totalHeroSlides}`;
+      }
+    }
+
+    function changeHeroSlide(direction) {
+      showHeroSlide(currentHeroSlide + direction);
+      resetHeroSlideTimer();
+    }
+
+    function goToHeroSlide(index) {
+      showHeroSlide(index);
+      resetHeroSlideTimer();
+    }
+
+    function startHeroSlideTimer() {
+      stopHeroSlideTimer();
+      heroSlideTimer = setInterval(() => {
+        showHeroSlide(currentHeroSlide + 1);
+      }, 4500);
+    }
+
+    function stopHeroSlideTimer() {
+      if (heroSlideTimer) {
+        clearInterval(heroSlideTimer);
+        heroSlideTimer = null;
+      }
+    }
+
+    function resetHeroSlideTimer() {
+      startHeroSlideTimer();
+    }
+
+    // Attach hover pause and start timer on load
+    const sliderContainer = document.getElementById('heroSlider');
+    if (sliderContainer) {
+      sliderContainer.addEventListener('mouseenter', stopHeroSlideTimer);
+      sliderContainer.addEventListener('mouseleave', startHeroSlideTimer);
+    }
+    startHeroSlideTimer();
+
+    // Toggle Mobile Navigation Menu
+    function toggleMobileMenu() {
+      const menu = document.getElementById('mobileMenu');
+      menu.classList.toggle('hidden');
+    }
+
+    // Interactive WhatsApp Inquiry Function
+    function sendToWhatsApp(e) {
+      e.preventDefault();
+      const name = document.getElementById('senderName').value;
+      const asal = document.getElementById('senderAsal').value;
+      const topic = document.getElementById('senderTopic').value;
+      const msg = document.getElementById('senderMessage').value;
+
+      const phoneNumber = "6281228512345"; // Nomor Panitia
+      const formattedText = `Assalamu'alaikum wr. wb.%0A%0A*Pertanyaan Calon Wali Siswa / Siswi MTs. YASUA Pilangwetan*%0A------------------------------------%0A*Nama:* ${encodeURIComponent(name)}%0A*Asal:* ${encodeURIComponent(asal)}%0A*Topik:* ${encodeURIComponent(topic)}%0A%0A*Pesan:*%0A${encodeURIComponent(msg)}%0A------------------------------------%0ATerima kasih.`;
+
+      const waUrl = `https://wa.me/${phoneNumber}?text=${formattedText}`;
+      window.open(waUrl, '_blank');
+    }
+
+    // Virtual Brochure Generator / Download Function
+    function downloadBrochure() {
+      const brochureContent = `=====================================================
+BROSUR RESMI PENERIMAAN PESERTA DIDIK BARU (PPDB)
+MTs. YASUA (PILANGWETAN - DEMAK)
+NPSN: 20364357
+Alamat: Pilangwetan, Kec. Kebonagung, Kab. Demak, Jawa Tengah
+=====================================================
+
+VISI:
+"Mewujudkan pendidikan yang bermutu, islami, memiliki sikap dan wawasan yang luas, beriman, bertaqwa, dan berakhlakul karimah, serta menguasai ilmu pengetahuan dan teknologi sesuai dengan perkembangan zaman."
+
+PROGRAM UNGGULAN:
+1. Tahfiz Al-Qur'an & Kajian Kitab Salaf (Aswaja)
+2. Pembiasaan Sholat Dhuha, Dhuhur Berjamaah & Istighosah
+3. Penguatan Bahasa Arab & Bahasa Inggris
+4. Literasi Komputer & Digital Learning (ANBK)
+
+EKSTRAKURIKULER:
+• Pramuka Pangkalan MTs. YASUA
+• Drumband Gita Bahana Nada
+• Seni Hadroh / Rebana
+• Seni Tari & Olahraga (Voli, Futsal, Atletik)
+• Organisasi Siswa Intra Sekolah (OSIS)
+
+LINK PENDAFTARAN RESMI PPDB:
+https://docs.google.com/forms/d/e/1FAIpQLSf3QZ_A7p8mFKq5xNSNjUiryalNwutbqQ0iyFL-ts5TDWOilQ/viewform
+
+MEDIA SOSIAL:
+• Instagram: https://www.instagram.com/mts.yasua_pilangwetan/
+• TikTok: https://www.tiktok.com/@mtsyasuapilangwetan
+
+BANTUAN & KONTAK PANITIA:
+WhatsApp: +62 812-2851-2345
+=====================================================`;
+
+      const blob = new Blob([brochureContent], { type: 'text/plain;charset=utf-8' });
+      const link = document.createElement('a');
+      link.href = URL.createObjectURL(blob);
+      link.download = 'Brosur_PPDB_MTs_YASUA_Pilangwetan.txt';
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    }
+
+    // ==========================================
+    // DEWAN GURU & TENAGA PENDIDIK MARQUEE LOGIC
+    // ==========================================
+    function scrollTeachers(direction) {
+      const container = document.getElementById('teacherMarqueeWrapper');
+      if (!container) return;
+      const scrollStep = direction === 'left' ? -260 : 260;
+      container.scrollBy({ left: scrollStep, behavior: 'smooth' });
+    }
+
+    function showAllTeachersModal() {
+      const modal = document.getElementById('allTeachersModal');
+      if (modal) {
+        modal.classList.remove('hidden');
+        document.body.style.overflow = 'hidden';
+      }
+    }
+
+    function closeAllTeachersModal() {
+      const modal = document.getElementById('allTeachersModal');
+      if (modal) {
+        modal.classList.add('hidden');
+        document.body.style.overflow = '';
+      }
+    }
+
+    // ==========================================
+    // FITUR BERITA & PENGUMUMAN MODAL DATA & LOGIC
+    // ==========================================
+    const newsDetails = {
+      pts: {
+        category: 'PENGUMUMAN RESMI',
+        badgeClass: 'bg-blue-600 text-white',
+        date: '5 - 10 Oktober 2026',
+        title: 'Penilaian Tengah Semester (PTS) MTs. YASUA Pilangwetan TA 2026/2027',
+        image: 'poster_pts_berita.jpg',
+        content: `
+          <p class="mb-3">Assalamu’alaikum Warahmatullahi Wabarakatuh,</p>
+          <p class="mb-3">Diberitahukan kepada seluruh siswa-siswi dan Bapak/Ibu Wali Murid MTs. YASUA Pilangwetan bahwa kegiatan <strong>Penilaian Tengah Semester (PTS) Gasal Tahun Ajaran 2026/2027</strong> akan diselenggarakan secara terpadu pada:</p>
+          <div class="p-4 rounded-2xl bg-emerald-50 border border-emerald-200 mb-4 text-emerald-900 font-medium text-xs sm:text-sm">
+            <ul class="space-y-1.5 list-disc list-inside">
+              <li><strong>Hari/Tanggal:</strong> Senin, 5 Oktober 2026 s.d. Sabtu, 10 Oktober 2026</li>
+              <li><strong>Waktu Pelaksanaan:</strong> Pukul 07.30 WIB – Selesai</li>
+              <li><strong>Tempat:</strong> Ruang Kelas MTs. YASUA & Laboratorium Komputer Terpadu (Sesi Digital ANBK)</li>
+              <li><strong>Ketentuan:</strong> Hadir tepat waktu, berpakaian seragam madrasah lengkap, dan membawa perlengkapan alat tulis.</li>
+            </ul>
+          </div>
+          <p class="mb-3">Mari persiapkan diri dengan belajar tekun, menjaga kesehatan, senantiasa berikhtiar dan berdoa, serta menjunjung tinggi kejujuran untuk meraih prestasi gemilang.</p>
+          <p class="text-xs text-slate-500 italic mt-4">— Panitia PTS & Kurikulum MTs. YASUA Pilangwetan</p>
+        `
+      },
+      prestasi: {
+        category: 'PRESTASI SISWA',
+        badgeClass: 'bg-emerald-600 text-white',
+        date: '22 September 2026',
+        title: 'Siswa MTs. YASUA Raih Juara 1 Olimpiade Sains & Robotika Tingkat Provinsi Jawa Tengah',
+        image: 'foto-upacara.jpg',
+        content: `
+          <p class="mb-3">Alhamdulillahirabbil 'alamin, kabar membanggakan kembali hadir mengharumkan almamater tercinta. Delegasi siswa MTs. YASUA Pilangwetan berhasil meraih <strong>Juara 1 Lomba Olimpiade Sains Terapan & Robotika Madrasah Tingkat Provinsi Jawa Tengah</strong>.</p>
+          <p class="mb-3">Prestasi membanggakan ini diraih berkat dedikasi, bimbingan intensif dewan guru, dan ketekunan para siswa dalam program bimbingan sains serta penguasaan teknologi digital madrasah.</p>
+          <div class="p-3.5 rounded-xl bg-amber-50 border-l-4 border-amber-500 text-amber-900 text-xs sm:text-sm font-semibold my-3">
+            “Semoga pencapaian gemilang ini memicu semangat seluruh siswa-siswi MTs. YASUA untuk terus berkarya, mengukir prestasi, dan menebar manfaat.”
+          </div>
+          <p class="text-xs text-slate-500 italic">— Humas & Kesiswaan MTs. YASUA</p>
+        `
+      },
+      parenting: {
+        category: 'BERITA & KEGIATAN',
+        badgeClass: 'bg-blue-600 text-white',
+        date: '15 September 2026',
+        title: 'Workshop Parenting Akbar: Membangun Sinergi Rumah dan Sekolah Menuju Generasi Qur\'ani',
+        image: 'foto-kajian-santriwati.jpg',
+        content: `
+          <p class="mb-3">MTs. YASUA Pilangwetan sukses menggelar kegiatan <strong>Workshop Parenting Akbar dan Silaturahmi Wali Siswa</strong> di Aula Madrasah yang dihadiri oleh ratusan orang tua/wali murid dari kelas VII, VIII, dan IX.</p>
+          <p class="mb-3">Mengangkat tema <em>“Membina Karakter Islami di Era Serba Digital”</em>, narasumber membagikan wawasan aplikatif mengenai pentingnya keteladanan orang tua, pendampingan belajar di rumah, serta sinergi erat bersama bapak/ibu guru di madrasah.</p>
+          <p class="text-xs text-slate-500 italic mt-4">— Komite Madrasah & Dewan Guru MTs. YASUA</p>
+        `
+      },
+      ppdb: {
+        category: 'PENGUMUMAN RESMI',
+        badgeClass: 'bg-amber-600 text-white',
+        date: '10 September 2026',
+        title: 'Penerimaan Peserta Didik Baru (PPDB) Tahun Ajaran 2026/2027 Resmi Dibuka',
+        image: 'foto-gedung.jpg',
+        content: `
+          <p class="mb-3">Penerimaan Peserta Didik Baru (PPDB) MTs. YASUA Pilangwetan untuk Tahun Pelajaran 2026/2027 resmi dibuka secara daring dan luring.</p>
+          <p class="mb-3">Kami mengundang putra-putri lulusan SD/MI untuk bergabung bersama keluarga besar MTs. YASUA melalui:</p>
+          <ul class="list-disc list-inside space-y-1.5 mb-3 text-xs sm:text-sm">
+            <li><strong>Jalur Prestasi:</strong> Bebas biaya pendaftaran dan prioritas beasiswa tahfidz/akademik.</li>
+            <li><strong>Jalur Reguler:</strong> Pendaftaran mudah melalui tautan Google Form resmi di website ini.</li>
+          </ul>
+          <p class="mb-3">Dapatkan bimbingan kurikulum terpadu berasaskan Ahlus Sunnah Wal Jama’ah dan fasilitas pembelajaran modern.</p>
+          <p class="text-xs text-slate-500 italic mt-4">— Panitia PPDB MTs. YASUA Pilangwetan</p>
+        `
+      },
+      anbk: {
+        category: 'AKADEMIK & LAB KOMPUTER',
+        badgeClass: 'bg-purple-600 text-white',
+        date: '28 Agustus 2026',
+        title: 'Pelaksanaan Asesmen Nasional (ANBK) di Laboratorium Komputer Berlangsung Tertib & Lancar',
+        image: 'foto-labkom.jpg',
+        content: `
+          <p class="mb-3">Pelaksanaan Asesmen Nasional Berbasis Komputer (ANBK) di Laboratorium Komputer MTs. YASUA Pilangwetan berjalan tertib, aman, dan 100% lancar.</p>
+          <p class="mb-3">Dukungan infrastruktur komputer yang representatif, cadangan listrik UPS, serta koneksi fiber optik berkecepatan tinggi memastikan seluruh peserta dapat mengerjakan asesmen literasi dan numerasi tanpa kendala teknis.</p>
+          <p class="text-xs text-slate-500 italic mt-4">— Tim Proktor & Teknisi ANBK MTs. YASUA</p>
+        `
+      }
+    };
+
+    function openNewsModal(newsId) {
+      const data = newsDetails[newsId];
+      if (!data) return;
+
+      const modal = document.getElementById('newsModal');
+      const img = document.getElementById('modalNewsImg');
+      const category = document.getElementById('modalNewsCategory');
+      const date = document.getElementById('modalNewsDate');
+      const title = document.getElementById('modalNewsTitle');
+      const content = document.getElementById('modalNewsContent');
+
+      img.src = data.image;
+      img.alt = data.title;
+      category.textContent = data.category;
+      category.className = `absolute bottom-3 left-4 px-3 py-1 rounded-full text-xs font-black shadow-md ${data.badgeClass}`;
+      date.textContent = data.date;
+      title.textContent = data.title;
+      content.innerHTML = data.content;
+
+      modal.classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+      lucide.createIcons();
+    }
+
+    function closeNewsModal() {
+      const modal = document.getElementById('newsModal');
+      if (modal) {
+        modal.classList.add('hidden');
+        document.body.style.overflow = '';
+      }
+    }
+
+    // Close modals on clicking outside / ESC key
+    window.addEventListener('click', (e) => {
+      const newsModal = document.getElementById('newsModal');
+      const teachersModal = document.getElementById('allTeachersModal');
+      if (e.target === newsModal) closeNewsModal();
+      if (e.target === teachersModal) closeAllTeachersModal();
+    });
+
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        closeNewsModal();
+        closeAllTeachersModal();
+      }
+    });
+  </script>
+
+</body>
+</html>
