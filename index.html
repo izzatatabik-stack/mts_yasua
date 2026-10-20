@@ -53,7 +53,7 @@
       "postalCode": "59583",
       "addressCountry": "ID"
     },
-    "telephone": "+6281228512345",
+    "telephone": "+6285649881966",
     "sameAs": [
       "https://www.instagram.com/mts.yasua_pilangwetan/",
       "https://www.tiktok.com/@mtsyasuapilangwetan"
@@ -175,9 +175,35 @@
       will-change: transform;
     }
 
-    .teacher-marquee-container:hover .teacher-marquee-track,
-    .teacher-marquee-track:hover {
-      animation-play-state: paused !important;
+    /* Print Optimization for Official Brochure Flyer */
+    @media print {
+      body * {
+        visibility: hidden !important;
+      }
+      #printableBrochure, #printableBrochure * {
+        visibility: visible !important;
+      }
+      #printableBrochure {
+        position: absolute !important;
+        left: 0 !important;
+        top: 0 !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        margin: 0 !important;
+        padding: 8mm 12mm !important;
+        box-shadow: none !important;
+        border: none !important;
+        background: white !important;
+        color: #0f172a !important;
+        display: block !important;
+      }
+      .no-print {
+        display: none !important;
+      }
+      @page {
+        size: A4 portrait;
+        margin: 8mm;
+      }
     }
   </style>
 </head>
@@ -1768,7 +1794,7 @@
                 </a>
 
                 <!-- Alternative WhatsApp Support -->
-                <a href="https://wa.me/6281228512345?text=Assalamu%27alaikum%20Panitia%20PPDB%20MTs%20YASUA%20Pilangwetan,%20saya%20ingin%20mendaftar%20atau%20bertanya%20seputar%20PPDB." target="_blank" class="w-full inline-flex items-center justify-center gap-2 py-3 px-6 rounded-2xl bg-emerald-50 hover:bg-emerald-100 text-brand-primary font-bold text-sm border border-emerald-200 transition-colors">
+                <a href="https://wa.me/6285649881966?text=Assalamu%27alaikum%20Panitia%20PPDB%20MTs%20YASUA%20Pilangwetan,%20saya%20ingin%20mendaftar%20atau%20bertanya%20seputar%20PPDB." target="_blank" rel="noopener noreferrer" class="w-full inline-flex items-center justify-center gap-2 py-3 px-6 rounded-2xl bg-emerald-50 hover:bg-emerald-100 text-brand-primary font-bold text-sm border border-emerald-200 transition-colors">
                   <i data-lucide="message-circle" class="w-4 h-4 text-emerald-600"></i>
                   <span>Bantuan Pendaftaran via WhatsApp</span>
                 </a>
@@ -1808,11 +1834,11 @@
 
           <!-- Download Action -->
           <div class="shrink-0 flex flex-col sm:flex-row gap-3 w-full sm:w-auto">
-            <button onclick="downloadBrochure()" class="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-2xl bg-brand-primary hover:bg-brand-dark text-white font-bold text-sm shadow-md transition-all">
-              <i data-lucide="download" class="w-4 h-4"></i>
-              <span>Unduh Brosur (PDF)</span>
+            <button onclick="openBrochureModal()" class="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-2xl bg-brand-primary hover:bg-brand-dark text-white font-bold text-sm shadow-md transition-all group">
+              <i data-lucide="printer" class="w-4 h-4 text-brand-gold group-hover:scale-110 transition-transform"></i>
+              <span>Buka &amp; Cetak Brosur (PDF)</span>
             </button>
-            <a href="https://share.google/3JwRSCexKxu3KQ58v" target="_blank" class="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-2xl bg-white hover:bg-slate-50 text-slate-800 font-bold text-sm border border-slate-200 transition-all">
+            <a href="https://share.google/3JwRSCexKxu3KQ58v" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-2xl bg-white hover:bg-slate-50 text-slate-800 font-bold text-sm border border-slate-200 transition-all">
               <i data-lucide="folder" class="w-4 h-4 text-emerald-600"></i>
               <span>Google Drive Berkas</span>
             </a>
@@ -1864,7 +1890,7 @@
               <div>
                 <h4 class="font-bold text-slate-800 text-base">WhatsApp / Panitia PPDB</h4>
                 <p class="text-xs sm:text-sm text-slate-600 mt-1">
-                  +62 812-2851-2345 (Layanan Cepat Tanggap)
+                  +62 856-4988-1966 (Layanan Cepat Tanggap)
                 </p>
                 <span class="text-[11px] text-emerald-600 font-semibold block mt-1">Senin - Sabtu: 07.30 - 14.00 WIB</span>
               </div>
@@ -2025,7 +2051,7 @@
           <button onclick="closeNewsModal()" class="px-5 py-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-xs transition-colors">
             Tutup Jendela
           </button>
-          <a href="https://wa.me/6281228512345" target="_blank" class="px-5 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs shadow-md transition-colors flex items-center gap-1.5">
+          <a href="https://wa.me/6285649881966" target="_blank" rel="noopener noreferrer" class="px-5 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs shadow-md transition-colors flex items-center gap-1.5">
             <i data-lucide="message-square" class="w-3.5 h-3.5"></i>
             <span>Tanya Panitia (WhatsApp)</span>
           </a>
@@ -2122,6 +2148,187 @@
     </div>
   </div>
 
+  <!-- MODAL BROSUR & FLYER DIGITAL PPDB RESMI -->
+  <div id="brochureModal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-3 sm:p-6 bg-slate-950/80 backdrop-blur-md transition-opacity duration-300">
+    <div class="bg-slate-100 rounded-3xl max-w-4xl w-full max-h-[92vh] overflow-y-auto shadow-2xl border border-emerald-100 flex flex-col relative animate-in fade-in zoom-in-95 duration-200">
+      
+      <!-- Modal Top Action Bar (Screen Only) -->
+      <div class="sticky top-0 z-30 bg-white/95 backdrop-blur-md px-6 py-4 border-b border-slate-200 flex items-center justify-between no-print">
+        <div class="flex items-center gap-2">
+          <span class="w-3 h-3 rounded-full bg-emerald-500 animate-pulse"></span>
+          <h3 class="font-black text-slate-800 text-sm sm:text-base">Brosur Resmi PPDB MTs. YASUA (Format Cetak PDF)</h3>
+        </div>
+        <div class="flex items-center gap-2 sm:gap-3">
+          <button onclick="printBrochure()" class="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-brand-primary hover:bg-brand-dark text-white font-bold text-xs shadow-md transition-all">
+            <i data-lucide="printer" class="w-3.5 h-3.5 text-brand-gold"></i>
+            <span>Cetak / Simpan PDF</span>
+          </button>
+          <button onclick="closeBrochureModal()" class="w-9 h-9 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 flex items-center justify-center transition-colors" title="Tutup" aria-label="Tutup">
+            <i data-lucide="x" class="w-5 h-5"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Printable A4 Flyer Paper Sheet -->
+      <div class="p-4 sm:p-8 flex justify-center">
+        <div id="printableBrochure" class="bg-white rounded-2xl shadow-lg border border-slate-200 p-6 sm:p-10 max-w-3xl w-full text-slate-800 space-y-6">
+          
+          <!-- Flyer Header (Official Kop Surat Madrasah) -->
+          <div class="flex items-center gap-4 sm:gap-6 pb-5 border-b-2 border-emerald-800">
+            <img src="logo.webp" alt="Logo MTs YASUA" class="w-16 h-16 sm:w-20 sm:h-20 object-contain shrink-0">
+            <div class="flex-1 text-center sm:text-left">
+              <span class="text-[10px] sm:text-xs font-bold text-amber-700 tracking-widest uppercase block">YAYASAN ISLAM SUADA (YASUA)</span>
+              <h2 class="text-lg sm:text-2xl font-black text-brand-dark tracking-tight leading-tight">MADRASAH TSANAWIYAH YASUA</h2>
+              <p class="text-[11px] sm:text-xs font-bold text-emerald-800">PILANGWETAN — KEBONAGUNG — DEMAK</p>
+              <div class="flex flex-wrap items-center justify-center sm:justify-start gap-2 mt-1 text-[10px] text-slate-600">
+                <span class="bg-emerald-50 text-emerald-800 px-2 py-0.5 rounded font-bold">NPSN: 20364357</span>
+                <span>•</span>
+                <span>Alamat: Jl. Pilangwetan, Kebonagung, Demak 59583</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Banner Highlight -->
+          <div class="bg-gradient-to-r from-emerald-800 to-emerald-900 rounded-xl p-4 text-center text-white shadow-sm">
+            <span class="text-brand-gold text-[10px] sm:text-xs font-bold uppercase tracking-widest block">PENERIMAAN PESERTA DIDIK BARU (PPDB)</span>
+            <h3 class="text-base sm:text-xl font-extrabold mt-0.5">TAHUN PELAJARAN 2026 / 2027</h3>
+            <p class="text-[11px] sm:text-xs text-emerald-200 mt-1 italic">“Membentuk Generasi Qur'ani, Cerdas, Berakhlakul Karimah, &amp; Menguasai Teknologi”</p>
+          </div>
+
+          <!-- Two Columns Content -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 text-xs leading-relaxed">
+            
+            <!-- Left Column: Visi, Program, & Ekskul -->
+            <div class="space-y-4">
+              <!-- Visi Box -->
+              <div class="p-3.5 rounded-xl bg-emerald-50/70 border border-emerald-100">
+                <h4 class="font-black text-brand-dark text-xs uppercase tracking-wider mb-1 flex items-center gap-1.5">
+                  <i data-lucide="eye" class="w-3.5 h-3.5 text-brand-primary"></i>
+                  Visi Madrasah
+                </h4>
+                <p class="italic text-[11px] text-slate-700">“Terwujudnya pendidikan yang islami, bermutu, berwawasan luas, beriman, bertaqwa, berakhlakul karimah, dan menguasai IPTEK.”</p>
+              </div>
+
+              <!-- Program Unggulan -->
+              <div class="space-y-2">
+                <h4 class="font-black text-brand-dark text-xs uppercase tracking-wider flex items-center gap-1.5 border-b border-slate-200 pb-1">
+                  <i data-lucide="award" class="w-3.5 h-3.5 text-amber-600"></i>
+                  Program Unggulan
+                </h4>
+                <ul class="space-y-1.5 text-[11.5px] text-slate-700">
+                  <li class="flex items-start gap-2">
+                    <span class="w-4 h-4 rounded-full bg-emerald-600 text-white flex items-center justify-center text-[9px] font-bold shrink-0 mt-0.5">1</span>
+                    <span><strong>Tahfiz Al-Qur'an</strong> &amp; Kajian Kitab Salaf (Aswaja)</span>
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <span class="w-4 h-4 rounded-full bg-emerald-600 text-white flex items-center justify-center text-[9px] font-bold shrink-0 mt-0.5">2</span>
+                    <span><strong>Pembiasaan Sholat Berjamaah</strong>, Dhuha &amp; Istighosah</span>
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <span class="w-4 h-4 rounded-full bg-emerald-600 text-white flex items-center justify-center text-[9px] font-bold shrink-0 mt-0.5">3</span>
+                    <span><strong>Penguatan Bilingual</strong> (Bahasa Arab &amp; Inggris)</span>
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <span class="w-4 h-4 rounded-full bg-emerald-600 text-white flex items-center justify-center text-[9px] font-bold shrink-0 mt-0.5">4</span>
+                    <span><strong>Literasi Digital &amp; Lab Komputer</strong> (Siap ANBK)</span>
+                  </li>
+                </ul>
+              </div>
+
+              <!-- Ekstrakurikuler -->
+              <div class="space-y-1.5">
+                <h4 class="font-black text-brand-dark text-xs uppercase tracking-wider flex items-center gap-1.5 border-b border-slate-200 pb-1">
+                  <i data-lucide="sparkles" class="w-3.5 h-3.5 text-brand-primary"></i>
+                  Ekstrakurikuler &amp; Bakat
+                </h4>
+                <p class="text-[11px] text-slate-600 leading-snug">
+                  Pramuka Pangkalan MTs. YASUA, Drumband Gita Bahana Nada, Seni Rebana/Hadroh, Olahraga (Voli, Futsal, Atletik), Seni Tari Islami, &amp; OSIS.
+                </p>
+              </div>
+            </div>
+
+            <!-- Right Column: Syarat, Jalur, & Fasilitas -->
+            <div class="space-y-4">
+              <!-- Jalur Pendaftaran -->
+              <div class="p-3.5 rounded-xl bg-amber-50/70 border border-amber-200">
+                <h4 class="font-black text-amber-900 text-xs uppercase tracking-wider mb-1 flex items-center gap-1.5">
+                  <i data-lucide="check-circle" class="w-3.5 h-3.5 text-amber-600"></i>
+                  Jalur Pendaftaran
+                </h4>
+                <ul class="text-[11px] text-slate-700 space-y-1">
+                  <li>• <strong>Jalur Prestasi:</strong> Prioritas Beasiswa Tahfidz &amp; Prestasi Akademik / Non-Akademik.</li>
+                  <li>• <strong>Jalur Reguler:</strong> Pendaftaran terbuka untuk seluruh lulusan SD/MI.</li>
+                </ul>
+              </div>
+
+              <!-- Syarat Berkas -->
+              <div class="space-y-2">
+                <h4 class="font-black text-brand-dark text-xs uppercase tracking-wider flex items-center gap-1.5 border-b border-slate-200 pb-1">
+                  <i data-lucide="file-check" class="w-3.5 h-3.5 text-brand-primary"></i>
+                  Syarat Pendaftaran
+                </h4>
+                <ol class="space-y-1 text-[11px] text-slate-700 list-decimal list-inside">
+                  <li>Mengisi Formulir Pendaftaran (Online / Offline)</li>
+                  <li>Fotokopi Ijazah / SKL SD/MI (2 Lembar)</li>
+                  <li>Fotokopi Kartu Keluarga (KK) &amp; Akta Kelahiran</li>
+                  <li>Pas Foto 3x4 Background Merah/Biru (3 Lembar)</li>
+                  <li>Fotokopi Kartu PIP / KIP / PKH (jika ada)</li>
+                </ol>
+              </div>
+
+              <!-- Fasilitas -->
+              <div class="space-y-1.5">
+                <h4 class="font-black text-brand-dark text-xs uppercase tracking-wider flex items-center gap-1.5 border-b border-slate-200 pb-1">
+                  <i data-lucide="building" class="w-3.5 h-3.5 text-brand-primary"></i>
+                  Fasilitas Madrasah
+                </h4>
+                <p class="text-[11px] text-slate-600 leading-snug">
+                  Gedung permanen mandiri, Laboratorium Komputer full AC &amp; koneksi Fiber Optik, Masjid/Musholla madrasah, Perpustakaan, Lapangan olahraga, dan hotspot Wi-Fi.
+                </p>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Flyer Footer Contact & CTA -->
+          <div class="pt-4 border-t-2 border-emerald-800 flex flex-col sm:flex-row items-center justify-between gap-3 bg-slate-50 p-4 rounded-xl">
+            <div class="text-center sm:text-left">
+              <span class="text-[10px] font-bold text-slate-500 uppercase tracking-wider block">INFORMASI &amp; PENDAFTARAN RESMI</span>
+              <p class="text-xs font-black text-brand-dark mt-0.5">WhatsApp Panitia: <span class="text-brand-primary font-mono text-sm">+62 856-4988-1966</span></p>
+              <p class="text-[10px] text-slate-500">Instagram: @mts.yasua_pilangwetan • TikTok: @mtsyasuapilangwetan</p>
+            </div>
+            <div class="text-center sm:text-right shrink-0">
+              <span class="text-[10px] font-bold text-emerald-700 uppercase block">DAFTAR ONLINE SEKARANG</span>
+              <span class="text-[11px] font-extrabold text-slate-900 block font-mono">mts-yasua.vercel.app/#ppdb</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Modal Bottom Navigation (Screen Only) -->
+      <div class="bg-white px-6 py-4 border-t border-slate-200 flex flex-col sm:flex-row items-center justify-between gap-3 no-print">
+        <span class="text-xs text-slate-500">
+          💡 <em>Tip: Klik tombol "Cetak / Simpan PDF" untuk menyimpan brosur resmi ke HP atau komputer Anda.</em>
+        </span>
+        <div class="flex items-center gap-2 w-full sm:w-auto">
+          <button onclick="closeBrochureModal()" class="w-full sm:w-auto px-4 py-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-xs transition-colors">
+            Tutup
+          </button>
+          <a href="https://docs.google.com/forms/d/e/1FAIpQLSf3QZ_A7p8mFKq5xNSNjUiryalNwutbqQ0iyFL-ts5TDWOilQ/viewform" target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto px-5 py-2.5 rounded-xl bg-brand-accent hover:bg-amber-400 text-slate-950 font-black text-xs shadow-md transition-colors flex items-center justify-center gap-1.5">
+            <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+            <span>Daftar Google Form</span>
+          </a>
+          <button onclick="printBrochure()" class="w-full sm:w-auto px-5 py-2.5 rounded-xl bg-brand-primary hover:bg-brand-dark text-white font-bold text-xs shadow-md transition-colors flex items-center justify-center gap-1.5">
+            <i data-lucide="printer" class="w-3.5 h-3.5"></i>
+            <span>Cetak Brosur PDF</span>
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
   <!-- FOOTER -->
   <footer class="bg-gradient-to-br from-[#022419] to-[#043d2c] text-white pt-16 pb-12 border-t border-emerald-900/60">
     <div class="max-w-7xl mx-auto px-4 sm:px-8">
@@ -2188,7 +2395,7 @@
             </p>
             <p class="flex items-center gap-2">
               <i data-lucide="phone" class="w-4 h-4 text-brand-gold shrink-0"></i>
-              <span>WhatsApp: +62 812-2851-2345</span>
+              <span>WhatsApp: +62 856-4988-1966</span>
             </p>
             <div class="pt-2">
               <a href="https://docs.google.com/forms/d/e/1FAIpQLSf3QZ_A7p8mFKq5xNSNjUiryalNwutbqQ0iyFL-ts5TDWOilQ/viewform" target="_blank" class="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-brand-accent text-slate-900 font-black text-xs hover:bg-amber-400 transition-colors">
@@ -2301,56 +2508,40 @@
       const topic = document.getElementById('senderTopic').value;
       const msg = document.getElementById('senderMessage').value;
 
-      const phoneNumber = "6281228512345"; // Nomor Panitia
+      const phoneNumber = "6285649881966"; // Nomor Resmi Panitia PPDB MTs. YASUA
       const formattedText = `Assalamu'alaikum wr. wb.%0A%0A*Pertanyaan Calon Wali Siswa / Siswi MTs. YASUA Pilangwetan*%0A------------------------------------%0A*Nama:* ${encodeURIComponent(name)}%0A*Asal:* ${encodeURIComponent(asal)}%0A*Topik:* ${encodeURIComponent(topic)}%0A%0A*Pesan:*%0A${encodeURIComponent(msg)}%0A------------------------------------%0ATerima kasih.`;
 
       const waUrl = `https://wa.me/${phoneNumber}?text=${formattedText}`;
       window.open(waUrl, '_blank');
     }
 
-    // Virtual Brochure Generator / Download Function
+    // ==========================================
+    // BROSUR RESMI & CETAK PDF PPDB LOGIC
+    // ==========================================
+    function openBrochureModal() {
+      const modal = document.getElementById('brochureModal');
+      if (modal) {
+        modal.classList.remove('hidden');
+        document.body.style.overflow = 'hidden';
+        lucide.createIcons();
+      }
+    }
+
+    function closeBrochureModal() {
+      const modal = document.getElementById('brochureModal');
+      if (modal) {
+        modal.classList.add('hidden');
+        document.body.style.overflow = '';
+      }
+    }
+
+    function printBrochure() {
+      window.print();
+    }
+
+    // Virtual Brochure Generator / Download Fallback Function
     function downloadBrochure() {
-      const brochureContent = `=====================================================
-BROSUR RESMI PENERIMAAN PESERTA DIDIK BARU (PPDB)
-MTs. YASUA (PILANGWETAN - DEMAK)
-NPSN: 20364357
-Alamat: Pilangwetan, Kec. Kebonagung, Kab. Demak, Jawa Tengah
-=====================================================
-
-VISI:
-"Mewujudkan pendidikan yang bermutu, islami, memiliki sikap dan wawasan yang luas, beriman, bertaqwa, dan berakhlakul karimah, serta menguasai ilmu pengetahuan dan teknologi sesuai dengan perkembangan zaman."
-
-PROGRAM UNGGULAN:
-1. Tahfiz Al-Qur'an & Kajian Kitab Salaf (Aswaja)
-2. Pembiasaan Sholat Dhuha, Dhuhur Berjamaah & Istighosah
-3. Penguatan Bahasa Arab & Bahasa Inggris
-4. Literasi Komputer & Digital Learning (ANBK)
-
-EKSTRAKURIKULER:
-• Pramuka Pangkalan MTs. YASUA
-• Drumband Gita Bahana Nada
-• Seni Hadroh / Rebana
-• Seni Tari & Olahraga (Voli, Futsal, Atletik)
-• Organisasi Siswa Intra Sekolah (OSIS)
-
-LINK PENDAFTARAN RESMI PPDB:
-https://docs.google.com/forms/d/e/1FAIpQLSf3QZ_A7p8mFKq5xNSNjUiryalNwutbqQ0iyFL-ts5TDWOilQ/viewform
-
-MEDIA SOSIAL:
-• Instagram: https://www.instagram.com/mts.yasua_pilangwetan/
-• TikTok: https://www.tiktok.com/@mtsyasuapilangwetan
-
-BANTUAN & KONTAK PANITIA:
-WhatsApp: +62 812-2851-2345
-=====================================================`;
-
-      const blob = new Blob([brochureContent], { type: 'text/plain;charset=utf-8' });
-      const link = document.createElement('a');
-      link.href = URL.createObjectURL(blob);
-      link.download = 'Brosur_PPDB_MTs_YASUA_Pilangwetan.txt';
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
+      openBrochureModal();
     }
 
     // ==========================================
@@ -2498,14 +2689,17 @@ WhatsApp: +62 812-2851-2345
     window.addEventListener('click', (e) => {
       const newsModal = document.getElementById('newsModal');
       const teachersModal = document.getElementById('allTeachersModal');
+      const brochureModal = document.getElementById('brochureModal');
       if (e.target === newsModal) closeNewsModal();
       if (e.target === teachersModal) closeAllTeachersModal();
+      if (e.target === brochureModal) closeBrochureModal();
     });
 
     window.addEventListener('keydown', (e) => {
       if (e.key === 'Escape') {
         closeNewsModal();
         closeAllTeachersModal();
+        closeBrochureModal();
       }
     });
   </script>
