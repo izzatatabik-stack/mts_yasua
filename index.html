@@ -7,10 +7,59 @@
   <meta name="description" content="Website Resmi MTs. YASUA Pilangwetan, Kebonagung, Demak. Membentuk Generasi Qur'ani, Berakhlakul Karimah, Unggul Prestasi dan Menguasai Teknologi.">
   <meta name="keywords" content="MTs YASUA, MTs Yasua Pilangwetan, PPDB MTs Yasua, Madrasah Demak, Kebonagung Demak">
   
+  <!-- Favicon & Touch Icons -->
+  <link rel="icon" type="image/png" href="logo.png">
+  <link rel="apple-touch-icon" href="logo.png">
+  <link rel="canonical" href="https://mts-yasua.vercel.app/">
+
   <!-- Open Graph Meta -->
   <meta property="og:title" content="MTs. YASUA Pilangwetan — Berakhlak, Cerdas, Berprestasi">
   <meta property="og:description" content="Penerimaan Peserta Didik Baru (PPDB) MTs. YASUA Pilangwetan - Demak. Daftar online sekarang!">
   <meta property="og:type" content="website">
+  <meta property="og:url" content="https://mts-yasua.vercel.app/">
+  <meta property="og:image" content="foto-gedung.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Gedung MTs. YASUA Pilangwetan Demak">
+  <meta property="og:site_name" content="MTs. YASUA Pilangwetan">
+
+  <!-- Twitter Card Meta -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="MTs. YASUA Pilangwetan — Berakhlak, Cerdas, Berprestasi">
+  <meta name="twitter:description" content="Penerimaan Peserta Didik Baru (PPDB) MTs. YASUA Pilangwetan - Demak. Daftar online sekarang!">
+  <meta name="twitter:image" content="foto-gedung.jpg">
+
+  <!-- Schema.org Structured Data: EducationalOrganization -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "MiddleSchool",
+    "name": "MTs. YASUA Pilangwetan",
+    "alternateName": "Madrasah Tsanawiyah YASUA Pilangwetan",
+    "url": "https://mts-yasua.vercel.app/",
+    "logo": "logo.png",
+    "image": "foto-gedung.jpg",
+    "description": "Lembaga pendidikan formal tingkat menengah pertama berakhlakul karimah, unggul prestasi, dan berbasis Ahlus Sunnah Wal Jama'ah di bawah naungan Yayasan Islam Suada (YASUA) Pilangwetan, Demak.",
+    "identifier": {
+      "@type": "PropertyValue",
+      "propertyID": "NPSN",
+      "value": "20364357"
+    },
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Jl. Pilangwetan",
+      "addressLocality": "Kebonagung",
+      "addressRegion": "Jawa Tengah",
+      "postalCode": "59583",
+      "addressCountry": "ID"
+    },
+    "telephone": "+6281228512345",
+    "sameAs": [
+      "https://www.instagram.com/mts.yasua_pilangwetan/",
+      "https://www.tiktok.com/@mtsyasuapilangwetan"
+    ]
+  }
+  </script>
 
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -1888,6 +1937,55 @@
             </div>
           </div>
 
+        </div>
+
+        <!-- Interactive Google Maps Section -->
+        <div class="mt-12 bg-white rounded-3xl border border-emerald-100 p-6 sm:p-8 shadow-sm overflow-hidden">
+          <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
+            <div class="flex items-center gap-3">
+              <div class="w-12 h-12 rounded-2xl bg-emerald-50 text-brand-primary flex items-center justify-center shrink-0 shadow-sm">
+                <i data-lucide="map" class="w-6 h-6"></i>
+              </div>
+              <div>
+                <h3 class="font-extrabold text-slate-900 text-lg sm:text-xl">Peta Lokasi &amp; Navigasi Madrasah</h3>
+                <p class="text-xs sm:text-sm text-slate-500">Kunjungi langsung kampus MTs. YASUA di Desa Pilangwetan, Kec. Kebonagung, Demak</p>
+              </div>
+            </div>
+            <div class="flex items-center gap-3">
+              <a href="https://maps.google.com/?q=MTs+YASUA+Pilangwetan+Kebonagung+Demak" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-brand-primary hover:bg-brand-dark text-white font-bold text-xs sm:text-sm shadow-sm transition-all duration-200">
+                <i data-lucide="navigation" class="w-4 h-4 text-brand-gold"></i>
+                <span>Buka di Google Maps</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Maps Embed Container -->
+          <div class="relative w-full h-[320px] sm:h-[400px] rounded-2xl overflow-hidden border border-emerald-200/70 shadow-inner bg-slate-100">
+            <iframe 
+              src="https://maps.google.com/maps?q=MTs+YASUA+Pilangwetan+Kebonagung+Demak&t=&z=15&ie=UTF8&iwloc=&output=embed"
+              class="w-full h-full border-0"
+              allowfullscreen="" 
+              loading="lazy" 
+              referrerpolicy="no-referrer-when-downgrade"
+              title="Peta Lokasi MTs. YASUA Pilangwetan">
+            </iframe>
+          </div>
+
+          <!-- Quick Navigation Badges -->
+          <div class="mt-4 pt-4 border-t border-slate-100 grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs text-slate-600">
+            <div class="flex items-center gap-2">
+              <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-600 shrink-0"></i>
+              <span>Akses Jalan Utama Pilangwetan</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <i data-lucide="clock" class="w-4 h-4 text-emerald-600 shrink-0"></i>
+              <span>Jam Layanan: 07.30 - 14.00 WIB</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <i data-lucide="car" class="w-4 h-4 text-emerald-600 shrink-0"></i>
+              <span>Area Parkir Madrasah Tersedia</span>
+            </div>
+          </div>
         </div>
 
       </div>
