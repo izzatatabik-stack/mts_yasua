@@ -201,9 +201,27 @@
       .no-print {
         display: none !important;
       }
-      @page {
-        size: A4 portrait;
-        margin: 8mm;
+    /* Soft Scroll-Driven Entrance Animation */
+    .reveal-on-scroll {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+      will-change: opacity, transform;
+    }
+    .reveal-on-scroll.revealed {
+      opacity: 1 !important;
+      transform: translateY(0) !important;
+    }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+    .reveal-delay-4 { transition-delay: 0.4s; }
+
+    @media (prefers-reduced-motion: reduce) {
+      .reveal-on-scroll {
+        opacity: 1 !important;
+        transform: none !important;
+        transition: none !important;
       }
     }
   </style>
@@ -484,31 +502,31 @@
               MTs. YASUA Pilangwetan memadukan kurikulum madrasah nasional, pembinaan karakter Islami Ahlus Sunnah Wal Jama'ah, pembiasaan Al-Qur'an, dan penguasaan literasi digital di era modern.
             </p>
 
-            <!-- CTA Buttons -->
-            <div class="pt-1 flex flex-wrap items-center gap-3 sm:gap-4">
-              <a href="ppdb.html" class="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-2xl bg-gradient-to-r from-brand-accent to-amber-500 hover:from-amber-500 hover:to-brand-accent text-slate-950 font-black text-xs sm:text-sm shadow-glow-gold hover:scale-105 transition-all duration-200">
-                <i data-lucide="user-plus" class="w-4 h-4 text-slate-950"></i>
-                <span>Daftar PPDB Online</span>
-                <i data-lucide="arrow-right" class="w-4 h-4"></i>
+            <!-- CTA Buttons: 1 Baris Kanan Kiri di Mobile & Desktop -->
+            <div class="pt-2 grid grid-cols-2 gap-2 sm:gap-4 max-w-md w-full reveal-on-scroll reveal-delay-1">
+              <a href="ppdb.html" class="inline-flex items-center justify-center gap-1.5 sm:gap-2 px-2.5 sm:px-5 py-2.5 sm:py-3.5 rounded-xl sm:rounded-2xl bg-gradient-to-r from-brand-accent to-amber-500 hover:from-amber-500 hover:to-brand-accent text-slate-950 font-black text-xs sm:text-sm shadow-glow-gold hover:scale-[1.02] active:scale-95 transition-all duration-200 text-center whitespace-nowrap">
+                <i data-lucide="user-plus" class="w-3.5 h-3.5 sm:w-4 sm:h-4 text-slate-950 shrink-0"></i>
+                <span>Daftar PPDB</span>
+                <i data-lucide="arrow-right" class="w-3.5 h-3.5 sm:w-4 sm:h-4 shrink-0 hidden xs:inline-block sm:inline-block"></i>
               </a>
-              <a href="profil.html" class="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-2xl bg-white/10 hover:bg-white/20 backdrop-blur-md text-white font-bold text-xs sm:text-sm border border-white/25 transition-all duration-200">
-                <span>Kenali Madrasah Kami</span>
-                <i data-lucide="arrow-right" class="w-4 h-4"></i>
+              <a href="profil.html" class="inline-flex items-center justify-center gap-1.5 sm:gap-2 px-2.5 sm:px-5 py-2.5 sm:py-3.5 rounded-xl sm:rounded-2xl bg-white/10 hover:bg-white/20 backdrop-blur-md text-white font-bold text-xs sm:text-sm border border-white/25 hover:scale-[1.02] active:scale-95 transition-all duration-200 text-center whitespace-nowrap">
+                <span>Kenali Madrasah</span>
+                <i data-lucide="arrow-right" class="w-3.5 h-3.5 sm:w-4 sm:h-4 shrink-0"></i>
               </a>
             </div>
 
             <!-- Quick Counter Stats -->
-            <div class="pt-3 sm:pt-4 border-t border-white/20 grid grid-cols-3 gap-2 sm:gap-3">
+            <div class="pt-3 sm:pt-4 border-t border-white/20 grid grid-cols-3 gap-2 sm:gap-3 reveal-on-scroll reveal-delay-2">
               <div class="bg-white/5 backdrop-blur-sm p-2 sm:p-2.5 rounded-xl border border-white/10 text-center sm:text-left">
-                <span class="text-lg sm:text-xl lg:text-2xl font-black text-white block">Aswaja</span>
+                <span class="text-base sm:text-xl lg:text-2xl font-black text-white block">Aswaja</span>
                 <span class="text-[9px] sm:text-[10px] font-semibold text-emerald-200 uppercase tracking-wider block mt-0.5">Berhaluan Islami</span>
               </div>
               <div class="bg-white/5 backdrop-blur-sm p-2 sm:p-2.5 rounded-xl border border-white/10 text-center sm:text-left">
-                <span class="text-lg sm:text-xl lg:text-2xl font-black text-white block">100%</span>
+                <span class="text-base sm:text-xl lg:text-2xl font-black text-white block">100%</span>
                 <span class="text-[9px] sm:text-[10px] font-semibold text-emerald-200 uppercase tracking-wider block mt-0.5">Pendidik Berdedikasi</span>
               </div>
               <div class="bg-white/5 backdrop-blur-sm p-2 sm:p-2.5 rounded-xl border border-white/10 text-center sm:text-left">
-                <span class="text-lg sm:text-xl lg:text-2xl font-black text-brand-gold block">Akreditasi A</span>
+                <span class="text-base sm:text-xl lg:text-2xl font-black text-brand-gold block">Akreditasi A</span>
                 <span class="text-[9px] sm:text-[10px] font-semibold text-emerald-200 uppercase tracking-wider block mt-0.5">Madrasah Unggul</span>
               </div>
             </div>
@@ -653,7 +671,7 @@
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
           
           <!-- Left: Portrait -->
-          <div class="lg:col-span-4 flex flex-col items-center justify-center">
+          <div class="lg:col-span-4 flex flex-col items-center justify-center reveal-on-scroll">
             <div class="relative w-full max-w-[260px] group">
               <div class="relative rounded-2xl overflow-hidden shadow-xl border-2 border-emerald-100 bg-emerald-950">
                 <div class="relative aspect-[4/5] w-full overflow-hidden bg-emerald-900">
@@ -676,13 +694,13 @@
           </div>
 
           <!-- Right: Summary Speech & CTA to sambutan.html -->
-          <div class="lg:col-span-8 space-y-4 text-left">
+          <div class="lg:col-span-8 space-y-4 text-left reveal-on-scroll reveal-delay-1">
             <div>
               <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-emerald-100 text-brand-primary text-xs font-bold tracking-wider uppercase mb-2">
                 <i data-lucide="quote" class="w-3.5 h-3.5 text-brand-primary"></i>
                 SAMBUTAN KEPALA MADRASAH
               </span>
-              <h2 class="text-2xl sm:text-3xl font-extrabold text-brand-dark tracking-tight leading-snug">
+              <h2 class="text-xl sm:text-2xl lg:text-3xl font-extrabold text-brand-dark tracking-tight leading-snug">
                 Membina Karakter Islami, <span class="text-brand-primary">Menumbuhkan Generasi Berprestasi</span>
               </h2>
               <div class="flex items-center gap-2 text-xs sm:text-sm font-bold text-emerald-800 italic mt-1">
@@ -725,7 +743,7 @@
     <section class="py-12 sm:py-16 bg-gradient-to-br from-[#064e3b] via-[#043d2c] to-[#022419] text-white relative overflow-hidden border-y border-emerald-800/60">
       <div class="max-w-7xl mx-auto px-4 sm:px-8 relative z-10">
         
-        <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 sm:mb-10 gap-4">
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 sm:mb-10 gap-4 reveal-on-scroll">
           <div>
             <div class="flex items-center gap-2 mb-2">
               <span class="text-xl sm:text-2xl">🎓</span>
@@ -755,7 +773,7 @@
         </div>
 
         <!-- Marquee Slider Track Container -->
-        <div id="teacherMarqueeWrapper" class="teacher-marquee-container [mask-image:linear-gradient(to_right,transparent,black_3%,black_97%,transparent)] overflow-x-hidden">
+        <div id="teacherMarqueeWrapper" class="teacher-marquee-container [mask-image:linear-gradient(to_right,transparent,black_3%,black_97%,transparent)] overflow-x-hidden reveal-on-scroll reveal-delay-1">
           <div id="teacherMarqueeTrack" class="teacher-marquee-track py-2">
             
             <!-- TEACHER 1 -->
@@ -853,42 +871,42 @@
     </section>
 
     <!-- PROFIL & VISI HIGHLIGHT (Compact Section with Link to profil.html) -->
-    <section class="py-16 sm:py-20 bg-white relative">
+    <section class="py-12 sm:py-16 md:py-20 bg-white relative">
       <div class="max-w-7xl mx-auto px-4 sm:px-8">
         
-        <div class="text-center max-w-3xl mx-auto mb-12">
-          <span class="text-brand-primary font-bold text-xs sm:text-sm tracking-widest uppercase inline-block mb-2 px-3 py-1 rounded-full bg-emerald-100">
+        <div class="text-center max-w-3xl mx-auto mb-8 sm:mb-12 reveal-on-scroll">
+          <span class="text-brand-primary font-bold text-[11px] sm:text-xs md:text-sm tracking-widest uppercase inline-block mb-2 px-3 py-1 rounded-full bg-emerald-100">
             TENTANG MADRASAH
           </span>
-          <h2 class="text-2xl sm:text-3xl md:text-4xl font-extrabold text-brand-dark tracking-tight">
+          <h2 class="text-xl sm:text-2xl md:text-3xl font-extrabold text-brand-dark tracking-tight">
             Fondasi Nilai &amp; Warisan Perjuangan
           </h2>
-          <div class="w-16 h-1.5 bg-brand-primary mx-auto mt-3 rounded-full"></div>
-          <p class="text-slate-600 text-xs sm:text-sm md:text-base mt-3">
+          <div class="w-14 sm:w-16 h-1 sm:h-1.5 bg-brand-primary mx-auto mt-2.5 sm:mt-3 rounded-full"></div>
+          <p class="text-slate-600 text-xs sm:text-sm md:text-base mt-2.5 sm:mt-3 leading-relaxed">
             Berdiri sejak tahun 1949 di bawah naungan Yayasan Islam Suada (YASUA), mendidik generasi muda berakhlakul karimah dan cerdas berprestasi.
           </p>
         </div>
 
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 items-center">
           
           <!-- Visi Card -->
-          <div class="lg:col-span-6 bg-gradient-to-br from-emerald-50 via-[#F4FBF7] to-white p-7 sm:p-9 rounded-3xl border border-emerald-200/80 shadow-sm flex flex-col justify-between">
+          <div class="lg:col-span-6 bg-gradient-to-br from-emerald-50 via-[#F4FBF7] to-white p-5 sm:p-8 rounded-2xl sm:rounded-3xl border border-emerald-200/80 shadow-sm flex flex-col justify-between reveal-on-scroll">
             <div>
-              <div class="flex items-center gap-3 mb-4">
-                <div class="w-11 h-11 rounded-2xl bg-brand-primary text-white flex items-center justify-center font-bold shadow-sm">
-                  <i data-lucide="eye" class="w-5 h-5"></i>
+              <div class="flex items-center gap-3 mb-3 sm:mb-4">
+                <div class="w-10 h-10 sm:w-11 sm:h-11 rounded-xl sm:rounded-2xl bg-brand-primary text-white flex items-center justify-center font-bold shadow-sm shrink-0">
+                  <i data-lucide="eye" class="w-4 h-4 sm:w-5 sm:h-5"></i>
                 </div>
                 <div>
-                  <span class="text-[10px] font-bold text-emerald-700 uppercase tracking-wider block">Cita-Cita Luhur</span>
-                  <h3 class="text-xl font-black text-brand-dark">Visi MTs. YASUA</h3>
+                  <span class="text-[9px] sm:text-[10px] font-bold text-emerald-700 uppercase tracking-wider block">Cita-Cita Luhur</span>
+                  <h3 class="text-lg sm:text-xl font-black text-brand-dark">Visi MTs. YASUA</h3>
                 </div>
               </div>
-              <blockquote class="italic text-slate-800 text-sm sm:text-[15px] leading-relaxed border-l-4 border-brand-accent pl-4 py-3 bg-amber-50/60 rounded-r-2xl my-2">
+              <blockquote class="italic text-slate-800 text-xs sm:text-sm leading-relaxed border-l-4 border-brand-accent pl-3.5 py-2.5 bg-amber-50/60 rounded-r-xl my-2">
                 “Terwujudnya pendidikan yang islami, bermutu, memiliki sikap dan wawasan yang luas, beriman, bertaqwa, dan berahlakul karimah, menguasai ilmu pengetahuan dan tehnologi sesuai dengan perkembangan zaman.”
               </blockquote>
             </div>
 
-            <div class="pt-5 mt-4 border-t border-emerald-100 flex items-center justify-between">
+            <div class="pt-4 sm:pt-5 mt-3 sm:mt-4 border-t border-emerald-100 flex items-center justify-between">
               <span class="text-xs text-brand-primary font-bold">5 Pilar Misi Strategis</span>
               <a href="profil.html" class="inline-flex items-center gap-1.5 text-xs font-bold text-brand-primary hover:text-brand-dark transition-colors">
                 <span>Baca Selengkapnya</span>
@@ -898,15 +916,15 @@
           </div>
 
           <!-- Sejarah & Muassis Highlight -->
-          <div class="lg:col-span-6 bg-white p-7 sm:p-9 rounded-3xl border border-slate-200/80 shadow-sm flex flex-col justify-between">
-            <div class="space-y-4">
+          <div class="lg:col-span-6 bg-white p-5 sm:p-8 rounded-2xl sm:rounded-3xl border border-slate-200/80 shadow-sm flex flex-col justify-between reveal-on-scroll reveal-delay-1">
+            <div class="space-y-3 sm:space-y-4">
               <div class="flex items-center gap-3">
-                <div class="w-11 h-11 rounded-2xl bg-amber-100 text-amber-800 flex items-center justify-center font-bold shadow-sm">
-                  <i data-lucide="compass" class="w-5 h-5"></i>
+                <div class="w-10 h-10 sm:w-11 sm:h-11 rounded-xl sm:rounded-2xl bg-amber-100 text-amber-800 flex items-center justify-center font-bold shadow-sm shrink-0">
+                  <i data-lucide="compass" class="w-4 h-4 sm:w-5 sm:h-5"></i>
                 </div>
                 <div>
-                  <span class="text-[10px] font-bold text-amber-800 uppercase tracking-wider block">Sejarah 1949</span>
-                  <h3 class="text-xl font-black text-brand-dark">Didirikan Para Ulama Perintis</h3>
+                  <span class="text-[9px] sm:text-[10px] font-bold text-amber-800 uppercase tracking-wider block">Sejarah 1949</span>
+                  <h3 class="text-lg sm:text-xl font-black text-brand-dark">Didirikan Para Ulama Perintis</h3>
                 </div>
               </div>
 
@@ -914,19 +932,19 @@
                 MTs. YASUA berakar dari inisiatif para ulama dan tokoh masyarakat Pilangwetan pada tahun 1949 yang mendirikan Madrasah Diniyyah Suada, hingga berkembang menjadi Yayasan Islam Suada (YASUA) dengan akreditasi A.
               </p>
 
-              <div class="grid grid-cols-2 gap-2.5 pt-2">
-                <div class="p-3 rounded-xl bg-slate-50 border border-slate-100 text-center">
-                  <span class="text-lg font-black text-brand-primary block">1949</span>
-                  <span class="text-[10px] text-slate-500 font-bold uppercase">Tahun Berdiri</span>
+              <div class="grid grid-cols-2 gap-2 sm:gap-2.5 pt-1 sm:pt-2">
+                <div class="p-2.5 sm:p-3 rounded-xl bg-slate-50 border border-slate-100 text-center">
+                  <span class="text-base sm:text-lg font-black text-brand-primary block">1949</span>
+                  <span class="text-[9px] sm:text-[10px] text-slate-500 font-bold uppercase">Tahun Berdiri</span>
                 </div>
-                <div class="p-3 rounded-xl bg-slate-50 border border-slate-100 text-center">
-                  <span class="text-lg font-black text-brand-accent block">6 Tokoh</span>
-                  <span class="text-[10px] text-slate-500 font-bold uppercase">Muassis Perintis</span>
+                <div class="p-2.5 sm:p-3 rounded-xl bg-slate-50 border border-slate-100 text-center">
+                  <span class="text-base sm:text-lg font-black text-brand-accent block">6 Tokoh</span>
+                  <span class="text-[9px] sm:text-[10px] text-slate-500 font-bold uppercase">Muassis Perintis</span>
                 </div>
               </div>
             </div>
 
-            <div class="pt-5 mt-4 border-t border-slate-100 flex items-center justify-between">
+            <div class="pt-4 sm:pt-5 mt-3 sm:mt-4 border-t border-slate-100 flex items-center justify-between">
               <span class="text-xs text-slate-500 font-medium">Bagan Struktur Organisasi</span>
               <a href="profil.html#sejarah" class="inline-flex items-center gap-1.5 text-xs font-bold text-amber-700 hover:text-amber-900 transition-colors">
                 <span>Linimasa Sejarah &rarr;</span>
@@ -940,87 +958,87 @@
     </section>
 
     <!-- 4 PROGRAM UNGGULAN (Highlight with Link to program.html & ekskul.html) -->
-    <section class="py-16 sm:py-20 bg-[#F4FBF7] relative border-y border-emerald-100/60">
+    <section class="py-12 sm:py-16 md:py-20 bg-[#F4FBF7] relative border-y border-emerald-100/60">
       <div class="max-w-7xl mx-auto px-4 sm:px-8">
         
-        <div class="text-center max-w-3xl mx-auto mb-12">
-          <span class="text-brand-primary font-bold text-xs sm:text-sm tracking-widest uppercase inline-block mb-2 px-3 py-1 rounded-full bg-emerald-100">
+        <div class="text-center max-w-3xl mx-auto mb-8 sm:mb-12 reveal-on-scroll">
+          <span class="text-brand-primary font-bold text-[11px] sm:text-xs md:text-sm tracking-widest uppercase inline-block mb-2 px-3 py-1 rounded-full bg-emerald-100">
             PENDIDIKAN TERPADU
           </span>
-          <h2 class="text-2xl sm:text-3xl md:text-4xl font-extrabold text-brand-dark tracking-tight">
+          <h2 class="text-xl sm:text-2xl md:text-3xl font-extrabold text-brand-dark tracking-tight">
             Program Unggulan MTs. YASUA
           </h2>
-          <div class="w-16 h-1.5 bg-brand-primary mx-auto mt-3 rounded-full"></div>
-          <p class="text-slate-600 text-xs sm:text-sm md:text-base mt-3">
+          <div class="w-14 sm:w-16 h-1 sm:h-1.5 bg-brand-primary mx-auto mt-2.5 sm:mt-3 rounded-full"></div>
+          <p class="text-slate-600 text-xs sm:text-sm md:text-base mt-2.5 sm:mt-3 leading-relaxed">
             Membina potensi santri secara holistik: kecerdasan spiritual, ketangguhan akademis, dan kemahiran literasi digital.
           </p>
         </div>
 
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
           
           <!-- Card 1: Tahfiz & Kitab Salaf -->
-          <div class="bg-gradient-to-br from-brand-primary to-emerald-800 text-white rounded-3xl p-6 shadow-glow-green flex flex-col justify-between hover-lift">
+          <div class="bg-gradient-to-br from-brand-primary to-emerald-800 text-white rounded-2xl sm:rounded-3xl p-5 sm:p-6 shadow-glow-green flex flex-col justify-between hover-lift reveal-on-scroll">
             <div>
-              <div class="w-12 h-12 rounded-2xl bg-white/20 text-brand-gold flex items-center justify-center mb-4">
-                <i data-lucide="book-open" class="w-6 h-6"></i>
+              <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-xl sm:rounded-2xl bg-white/20 text-brand-gold flex items-center justify-center mb-3 sm:mb-4">
+                <i data-lucide="book-open" class="w-5 h-5 sm:w-6 sm:h-6"></i>
               </div>
-              <h3 class="text-lg font-bold text-white mb-2">Tahfiz &amp; Kitab Salaf</h3>
+              <h3 class="text-base sm:text-lg font-bold text-white mb-1.5 sm:mb-2">Tahfiz &amp; Kitab Salaf</h3>
               <p class="text-xs text-emerald-100 leading-relaxed">
                 Bimbingan tahfiz Juz ‘Amma &amp; surat pilihan, kajian tajwid tartil, dan pengenalan kitab kuning Aswaja kepesantrenan.
               </p>
             </div>
-            <a href="program.html" class="mt-6 pt-4 border-t border-white/20 text-xs font-bold text-amber-200 flex items-center justify-between">
+            <a href="program.html" class="mt-5 sm:mt-6 pt-3.5 sm:pt-4 border-t border-white/20 text-xs font-bold text-amber-200 flex items-center justify-between">
               <span>Pelajari Kurikulum</span>
               <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
             </a>
           </div>
 
           <!-- Card 2: Pembiasaan Ibadah -->
-          <div class="bg-white rounded-3xl p-6 border border-emerald-100 shadow-sm flex flex-col justify-between hover-lift">
+          <div class="bg-white rounded-2xl sm:rounded-3xl p-5 sm:p-6 border border-emerald-100 shadow-sm flex flex-col justify-between hover-lift reveal-on-scroll reveal-delay-1">
             <div>
-              <div class="w-12 h-12 rounded-2xl bg-emerald-50 text-brand-primary flex items-center justify-center mb-4">
-                <i data-lucide="heart" class="w-6 h-6"></i>
+              <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-xl sm:rounded-2xl bg-emerald-50 text-brand-primary flex items-center justify-center mb-3 sm:mb-4">
+                <i data-lucide="heart" class="w-5 h-5 sm:w-6 sm:h-6"></i>
               </div>
-              <h3 class="text-lg font-bold text-brand-dark mb-2">Pembiasaan Ibadah</h3>
+              <h3 class="text-base sm:text-lg font-bold text-brand-dark mb-1.5 sm:mb-2">Pembiasaan Ibadah</h3>
               <p class="text-xs text-slate-600 leading-relaxed">
                 Sholat Dhuha, Sholat Dzuhur berjamaah di masjid madrasah, pembacaan Asmaul Husna, dan istighosah mingguan.
               </p>
             </div>
-            <a href="program.html" class="mt-6 pt-4 border-t border-slate-100 text-xs font-bold text-brand-primary flex items-center justify-between">
+            <a href="program.html" class="mt-5 sm:mt-6 pt-3.5 sm:pt-4 border-t border-slate-100 text-xs font-bold text-brand-primary flex items-center justify-between">
               <span>Detail Pembiasaan</span>
               <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
             </a>
           </div>
 
           <!-- Card 3: Literasi Komputer & ANBK -->
-          <div class="bg-white rounded-3xl p-6 border border-emerald-100 shadow-sm flex flex-col justify-between hover-lift">
+          <div class="bg-white rounded-2xl sm:rounded-3xl p-5 sm:p-6 border border-emerald-100 shadow-sm flex flex-col justify-between hover-lift reveal-on-scroll reveal-delay-2">
             <div>
-              <div class="w-12 h-12 rounded-2xl bg-emerald-50 text-brand-primary flex items-center justify-center mb-4">
-                <i data-lucide="laptop" class="w-6 h-6"></i>
+              <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-xl sm:rounded-2xl bg-emerald-50 text-brand-primary flex items-center justify-center mb-3 sm:mb-4">
+                <i data-lucide="laptop" class="w-5 h-5 sm:w-6 sm:h-6"></i>
               </div>
-              <h3 class="text-lg font-bold text-brand-dark mb-2">Literasi Lab Komputer</h3>
+              <h3 class="text-base sm:text-lg font-bold text-brand-dark mb-1.5 sm:mb-2">Literasi Lab Komputer</h3>
               <p class="text-xs text-slate-600 leading-relaxed">
                 Laboratorium komputer representatif dengan internet fiber optik untuk praktik informatika, aplikasi perkantoran, dan asesmen ANBK.
               </p>
             </div>
-            <a href="program.html" class="mt-6 pt-4 border-t border-slate-100 text-xs font-bold text-brand-primary flex items-center justify-between">
+            <a href="program.html" class="mt-5 sm:mt-6 pt-3.5 sm:pt-4 border-t border-slate-100 text-xs font-bold text-brand-primary flex items-center justify-between">
               <span>Fasilitas Komputer</span>
               <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
             </a>
           </div>
 
           <!-- Card 4: Ekstrakurikuler -->
-          <div class="bg-white rounded-3xl p-6 border border-emerald-100 shadow-sm flex flex-col justify-between hover-lift">
+          <div class="bg-white rounded-2xl sm:rounded-3xl p-5 sm:p-6 border border-emerald-100 shadow-sm flex flex-col justify-between hover-lift reveal-on-scroll reveal-delay-3">
             <div>
-              <div class="w-12 h-12 rounded-2xl bg-amber-50 text-amber-600 flex items-center justify-center mb-4">
-                <i data-lucide="sparkles" class="w-6 h-6"></i>
+              <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-xl sm:rounded-2xl bg-amber-50 text-amber-600 flex items-center justify-center mb-3 sm:mb-4">
+                <i data-lucide="sparkles" class="w-5 h-5 sm:w-6 sm:h-6"></i>
               </div>
-              <h3 class="text-lg font-bold text-brand-dark mb-2">Bakat &amp; Ekskul</h3>
+              <h3 class="text-base sm:text-lg font-bold text-brand-dark mb-1.5 sm:mb-2">Bakat &amp; Ekskul</h3>
               <p class="text-xs text-slate-600 leading-relaxed">
                 Wadah penyaluran bakat kepemimpinan dan seni: Pramuka, Drumband Gita Bahana Nada, Rebana/Hadroh, dan Olahraga.
               </p>
             </div>
-            <a href="ekskul.html" class="mt-6 pt-4 border-t border-slate-100 text-xs font-bold text-amber-700 flex items-center justify-between">
+            <a href="ekskul.html" class="mt-5 sm:mt-6 pt-3.5 sm:pt-4 border-t border-slate-100 text-xs font-bold text-amber-700 flex items-center justify-between">
               <span>6 Ekstrakurikuler</span>
               <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
             </a>
@@ -1028,12 +1046,12 @@
 
         </div>
 
-        <div class="mt-10 text-center flex flex-wrap justify-center items-center gap-4">
-          <a href="program.html" class="px-6 py-3 rounded-2xl bg-brand-primary hover:bg-brand-dark text-white font-bold text-xs sm:text-sm shadow-md transition-all flex items-center gap-2">
+        <div class="mt-8 sm:mt-10 text-center flex flex-wrap justify-center items-center gap-3 sm:gap-4 reveal-on-scroll">
+          <a href="program.html" class="px-5 sm:px-6 py-2.5 sm:py-3 rounded-xl sm:rounded-2xl bg-brand-primary hover:bg-brand-dark text-white font-bold text-xs sm:text-sm shadow-md transition-all flex items-center gap-2">
             <span>Lihat Seluruh Program Unggulan</span>
             <i data-lucide="arrow-right" class="w-4 h-4 text-brand-gold"></i>
           </a>
-          <a href="ekskul.html" class="px-5 py-3 rounded-2xl bg-white hover:bg-emerald-50 text-brand-dark font-bold text-xs sm:text-sm border border-emerald-200 transition-colors flex items-center gap-2">
+          <a href="ekskul.html" class="px-4 sm:px-5 py-2.5 sm:py-3 rounded-xl sm:rounded-2xl bg-white hover:bg-emerald-50 text-brand-dark font-bold text-xs sm:text-sm border border-emerald-200 transition-colors flex items-center gap-2">
             <span>Buka Halaman Ekstrakurikuler</span>
             <i data-lucide="sparkles" class="w-4 h-4 text-amber-500"></i>
           </a>
@@ -1043,55 +1061,55 @@
     </section>
 
     <!-- KABAR & BERITA TERBARU HIGHLIGHT (Link to berita.html & galeri.html) -->
-    <section class="py-16 sm:py-20 bg-white relative">
+    <section class="py-12 sm:py-16 md:py-20 bg-white relative">
       <div class="max-w-7xl mx-auto px-4 sm:px-8">
         
-        <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 sm:mb-12 gap-4 reveal-on-scroll">
           <div>
-            <span class="text-brand-primary font-bold text-xs sm:text-sm tracking-widest uppercase inline-block mb-2 px-3 py-1 rounded-full bg-emerald-100">
+            <span class="text-brand-primary font-bold text-[11px] sm:text-xs md:text-sm tracking-widest uppercase inline-block mb-2 px-3 py-1 rounded-full bg-emerald-100">
               KABAR MADRASAH
             </span>
-            <h2 class="text-2xl sm:text-3xl md:text-4xl font-extrabold text-brand-dark tracking-tight">
+            <h2 class="text-xl sm:text-2xl md:text-3xl font-extrabold text-brand-dark tracking-tight">
               Berita, Prestasi &amp; Pengumuman
             </h2>
-            <div class="w-16 h-1.5 bg-brand-primary mt-3 rounded-full"></div>
+            <div class="w-14 sm:w-16 h-1 sm:h-1.5 bg-brand-primary mt-2.5 sm:mt-3 rounded-full"></div>
             <p class="text-slate-600 text-xs sm:text-sm mt-2">
               Agenda kegiatan belajar, prestasi santri, dan pengumuman resmi madrasah.
             </p>
           </div>
 
-          <div class="flex items-center gap-3">
-            <a href="berita.html" class="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-xl bg-brand-primary text-white font-bold text-xs hover:bg-brand-dark transition-colors">
+          <div class="flex items-center gap-2 sm:gap-3">
+            <a href="berita.html" class="inline-flex items-center gap-1.5 px-3.5 sm:px-4 py-2 sm:py-2.5 rounded-xl bg-brand-primary text-white font-bold text-xs hover:bg-brand-dark transition-colors">
               <span>Buka Semua Berita</span>
               <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
             </a>
-            <a href="galeri.html" class="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-xl bg-slate-100 text-slate-800 font-bold text-xs hover:bg-slate-200 transition-colors">
+            <a href="galeri.html" class="inline-flex items-center gap-1.5 px-3.5 sm:px-4 py-2 sm:py-2.5 rounded-xl bg-slate-100 text-slate-800 font-bold text-xs hover:bg-slate-200 transition-colors">
               <i data-lucide="camera" class="w-3.5 h-3.5 text-pink-600"></i>
               <span>Galeri Medsos</span>
             </a>
           </div>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-5 sm:gap-6">
           
           <!-- News 1: PTS Poster -->
-          <div class="bg-white rounded-3xl overflow-hidden border border-emerald-100 shadow-sm hover-lift flex flex-col justify-between">
+          <div class="bg-white rounded-2xl sm:rounded-3xl overflow-hidden border border-emerald-100 shadow-sm hover-lift flex flex-col justify-between reveal-on-scroll">
             <div>
               <div class="relative aspect-video overflow-hidden bg-slate-100">
                 <img src="poster_pts_berita.webp" alt="Poster PTS MTs YASUA" class="w-full h-full object-cover" loading="lazy">
                 <span class="absolute top-3 left-3 px-2.5 py-1 rounded-full text-[10px] font-black bg-blue-600 text-white shadow-sm">PENGUMUMAN</span>
               </div>
-              <div class="p-5">
-                <span class="text-[11px] text-slate-500 font-semibold block mb-1">5 - 10 Oktober 2026</span>
-                <h3 class="font-extrabold text-slate-900 text-base leading-snug line-clamp-2">
+              <div class="p-4 sm:p-5">
+                <span class="text-[10px] sm:text-[11px] text-slate-500 font-semibold block mb-1">5 - 10 Oktober 2026</span>
+                <h3 class="font-extrabold text-slate-900 text-sm sm:text-base leading-snug line-clamp-2">
                   Penilaian Tengah Semester (PTS) Gasal TA 2026/2027
                 </h3>
-                <p class="text-xs text-slate-600 mt-2 line-clamp-2">
+                <p class="text-xs text-slate-600 mt-1.5 sm:mt-2 line-clamp-2">
                   Jadwal terpadu pelaksanaan ujian berbasis kelas dan digital ANBK di lab komputer madrasah.
                 </p>
               </div>
             </div>
-            <div class="p-5 pt-0">
+            <div class="p-4 sm:p-5 pt-0">
               <button onclick="openNewsModal('pts')" class="w-full py-2 rounded-xl bg-emerald-50 hover:bg-emerald-100 text-brand-primary font-bold text-xs transition-colors flex items-center justify-center gap-1.5 cursor-pointer">
                 <span>Baca Pengumuman Lengkap</span>
                 <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
@@ -1100,23 +1118,23 @@
           </div>
 
           <!-- News 2: Prestasi Sains -->
-          <div class="bg-white rounded-3xl overflow-hidden border border-emerald-100 shadow-sm hover-lift flex flex-col justify-between">
+          <div class="bg-white rounded-2xl sm:rounded-3xl overflow-hidden border border-emerald-100 shadow-sm hover-lift flex flex-col justify-between reveal-on-scroll reveal-delay-1">
             <div>
               <div class="relative aspect-video overflow-hidden bg-slate-100">
                 <img src="foto-upacara.webp" alt="Prestasi Siswa MTs YASUA" class="w-full h-full object-cover" loading="lazy">
                 <span class="absolute top-3 left-3 px-2.5 py-1 rounded-full text-[10px] font-black bg-emerald-600 text-white shadow-sm">PRESTASI</span>
               </div>
-              <div class="p-5">
-                <span class="text-[11px] text-slate-500 font-semibold block mb-1">22 September 2026</span>
-                <h3 class="font-extrabold text-slate-900 text-base leading-snug line-clamp-2">
+              <div class="p-4 sm:p-5">
+                <span class="text-[10px] sm:text-[11px] text-slate-500 font-semibold block mb-1">22 September 2026</span>
+                <h3 class="font-extrabold text-slate-900 text-sm sm:text-base leading-snug line-clamp-2">
                   Siswa MTs. YASUA Raih Juara 1 Olimpiade Sains &amp; Robotika
                 </h3>
-                <p class="text-xs text-slate-600 mt-2 line-clamp-2">
+                <p class="text-xs text-slate-600 mt-1.5 sm:mt-2 line-clamp-2">
                   Delegasi madrasah berhasil mengukir prestasi gemilang di tingkat Provinsi Jawa Tengah.
                 </p>
               </div>
             </div>
-            <div class="p-5 pt-0">
+            <div class="p-4 sm:p-5 pt-0">
               <button onclick="openNewsModal('prestasi')" class="w-full py-2 rounded-xl bg-emerald-50 hover:bg-emerald-100 text-brand-primary font-bold text-xs transition-colors flex items-center justify-center gap-1.5 cursor-pointer">
                 <span>Baca Selengkapnya</span>
                 <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
@@ -1125,23 +1143,23 @@
           </div>
 
           <!-- News 3: Workshop Parenting -->
-          <div class="bg-white rounded-3xl overflow-hidden border border-emerald-100 shadow-sm hover-lift flex flex-col justify-between">
+          <div class="bg-white rounded-2xl sm:rounded-3xl overflow-hidden border border-emerald-100 shadow-sm hover-lift flex flex-col justify-between reveal-on-scroll reveal-delay-2">
             <div>
               <div class="relative aspect-video overflow-hidden bg-slate-100">
                 <img src="foto-kajian-santriwati.webp" alt="Workshop Parenting Akbar" class="w-full h-full object-cover" loading="lazy">
                 <span class="absolute top-3 left-3 px-2.5 py-1 rounded-full text-[10px] font-black bg-amber-600 text-white shadow-sm">PARENTING</span>
               </div>
-              <div class="p-5">
-                <span class="text-[11px] text-slate-500 font-semibold block mb-1">15 September 2026</span>
-                <h3 class="font-extrabold text-slate-900 text-base leading-snug line-clamp-2">
+              <div class="p-4 sm:p-5">
+                <span class="text-[10px] sm:text-[11px] text-slate-500 font-semibold block mb-1">15 September 2026</span>
+                <h3 class="font-extrabold text-slate-900 text-sm sm:text-base leading-snug line-clamp-2">
                   Workshop Parenting Akbar &amp; Silaturahmi Wali Siswa
                 </h3>
-                <p class="text-xs text-slate-600 mt-2 line-clamp-2">
+                <p class="text-xs text-slate-600 mt-1.5 sm:mt-2 line-clamp-2">
                   Membangun sinergi harmonis antara rumah dan sekolah menuju generasi Qur'ani yang berakhlak mulia.
                 </p>
               </div>
             </div>
-            <div class="p-5 pt-0">
+            <div class="p-4 sm:p-5 pt-0">
               <button onclick="openNewsModal('parenting')" class="w-full py-2 rounded-xl bg-emerald-50 hover:bg-emerald-100 text-brand-primary font-bold text-xs transition-colors flex items-center justify-center gap-1.5 cursor-pointer">
                 <span>Baca Selengkapnya</span>
                 <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
@@ -1155,40 +1173,40 @@
     </section>
 
     <!-- SECTION PPDB CALL-TO-ACTION BANNER (Dedicated Link to ppdb.html) -->
-    <section class="py-16 sm:py-20 bg-gradient-to-br from-[#022c1f] via-[#065F46] to-[#0A6B48] text-white relative overflow-hidden">
+    <section class="py-12 sm:py-16 md:py-20 bg-gradient-to-br from-[#022c1f] via-[#065F46] to-[#0A6B48] text-white relative overflow-hidden">
       <div class="max-w-7xl mx-auto px-4 sm:px-8 relative z-10">
         
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-          <div class="lg:col-span-8 space-y-4">
-            <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand-accent/20 border border-brand-accent/40 text-brand-gold text-xs font-bold uppercase tracking-wider">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center reveal-on-scroll">
+          <div class="lg:col-span-8 space-y-3 sm:space-y-4">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-accent/20 border border-brand-accent/40 text-brand-gold text-[10px] sm:text-xs font-bold uppercase tracking-wider">
               <i data-lucide="sparkles" class="w-3.5 h-3.5"></i>
               <span>PENERIMAAN PESERTA DIDIK BARU (PPDB) 2026/2027</span>
             </div>
-            <h2 class="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight leading-tight">
+            <h2 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black tracking-tight leading-tight">
               Ayo Bergabung Bersama <br>
               <span class="text-brand-gold">MTs. YASUA Pilangwetan</span>
             </h2>
             <p class="text-xs sm:text-sm md:text-base text-emerald-100/90 leading-relaxed max-w-2xl">
               Pendaftaran siswa baru dibuka secara daring melalui Google Form resmi atau secara langsung di sekretariat madrasah. Beasiswa khusus tersedia untuk santri tahfidz dan berprestasi.
             </p>
-            <div class="pt-2 flex flex-wrap items-center gap-3">
-              <a href="ppdb.html" class="inline-flex items-center gap-2 px-6 py-3.5 rounded-2xl bg-gradient-to-r from-brand-accent to-amber-500 hover:from-amber-500 hover:to-brand-accent text-slate-950 font-black text-xs sm:text-sm shadow-glow-gold hover:scale-105 transition-all">
+            <div class="pt-2 flex flex-wrap items-center gap-2.5 sm:gap-3">
+              <a href="ppdb.html" class="inline-flex items-center gap-2 px-5 sm:px-6 py-2.5 sm:py-3.5 rounded-xl sm:rounded-2xl bg-gradient-to-r from-brand-accent to-amber-500 hover:from-amber-500 hover:to-brand-accent text-slate-950 font-black text-xs sm:text-sm shadow-glow-gold hover:scale-105 transition-all">
                 <i data-lucide="user-plus" class="w-4 h-4"></i>
                 <span>Daftar PPDB Online Sekarang</span>
                 <i data-lucide="arrow-right" class="w-4 h-4"></i>
               </a>
-              <button onclick="openBrochureModal()" class="inline-flex items-center gap-2 px-5 py-3.5 rounded-2xl bg-white/10 hover:bg-white/20 text-white font-bold text-xs sm:text-sm border border-white/25 transition-all cursor-pointer">
+              <button onclick="openBrochureModal()" class="inline-flex items-center gap-2 px-4 sm:px-5 py-2.5 sm:py-3.5 rounded-xl sm:rounded-2xl bg-white/10 hover:bg-white/20 text-white font-bold text-xs sm:text-sm border border-white/25 transition-all cursor-pointer">
                 <i data-lucide="printer" class="w-4 h-4 text-brand-gold"></i>
                 <span>Cetak Brosur PDF Resmi</span>
               </button>
             </div>
           </div>
 
-          <div class="lg:col-span-4 bg-white/10 backdrop-blur-md rounded-3xl p-6 border border-white/20 text-center space-y-3">
-            <span class="text-brand-gold text-xs font-bold uppercase tracking-wider block">BANTUAN &amp; KONSULTASI</span>
-            <h3 class="text-lg font-black text-white">Hubungi Panitia PPDB</h3>
+          <div class="lg:col-span-4 bg-white/10 backdrop-blur-md rounded-2xl sm:rounded-3xl p-5 sm:p-6 border border-white/20 text-center space-y-3">
+            <span class="text-brand-gold text-[10px] sm:text-xs font-bold uppercase tracking-wider block">BANTUAN &amp; KONSULTASI</span>
+            <h3 class="text-base sm:text-lg font-black text-white">Hubungi Panitia PPDB</h3>
             <p class="text-xs text-emerald-100">Layanan ramah dan cepat tanggap via WhatsApp resmi madrasah.</p>
-            <a href="https://wa.me/6285649881966" target="_blank" rel="noopener noreferrer" class="block w-full py-3 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-black text-xs transition-colors">
+            <a href="https://wa.me/6285649881966" target="_blank" rel="noopener noreferrer" class="block w-full py-2.5 sm:py-3 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-black text-xs transition-colors">
               WhatsApp: +62 856-4988-1966
             </a>
             <a href="kontak.html" class="block text-xs font-bold text-white hover:underline mt-2">
@@ -1203,7 +1221,7 @@
   </main>
 
   <!-- GLOBAL FOOTER -->
-  <footer class="bg-gradient-to-br from-brand-dark via-emerald-950 to-brand-dark text-white border-t border-emerald-900/40 pt-16 pb-12 mt-auto">
+  <footer class="bg-gradient-to-br from-brand-dark via-emerald-950 to-brand-dark text-white border-t border-emerald-900/40 pt-16 pb-12 mt-auto reveal-on-scroll">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 lg:gap-12 pb-12 border-b border-emerald-900/60">
         
@@ -1680,6 +1698,43 @@
         closeBrochureModal();
       }
     });
+
+    // Soft Scroll-Driven Entrance Animation (Fade-in & Slide-up from bottom)
+    function initScrollReveal() {
+      const revealElements = document.querySelectorAll('.reveal-on-scroll');
+      if (!revealElements.length) return;
+
+      if (!('IntersectionObserver' in window)) {
+        // Fallback jika browser lama tidak mendukung observer
+        revealElements.forEach(el => el.classList.add('revealed'));
+        return;
+      }
+
+      const observerOptions = {
+        root: null,
+        rootMargin: '0px 0px -40px 0px',
+        threshold: 0.05
+      };
+
+      const revealObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('revealed');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, observerOptions);
+
+      revealElements.forEach(el => {
+        revealObserver.observe(el);
+      });
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initScrollReveal);
+    } else {
+      initScrollReveal();
+    }
   </script>
 
 </body>
