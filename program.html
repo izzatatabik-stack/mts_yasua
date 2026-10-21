@@ -67,11 +67,198 @@
     .nav-dropdown .dropdown-menu { transform: translateX(-50%) translateY(8px); transition: opacity 0.22s, transform 0.22s, visibility 0.22s; }
     .nav-dropdown:hover .dropdown-menu, .nav-dropdown.is-open .dropdown-menu { opacity: 1 !important; pointer-events: auto !important; visibility: visible !important; transform: translateX(-50%) translateY(0) !important; }
     .nav-dropdown:hover .dropdown-icon, .nav-dropdown.is-open .dropdown-icon { transform: rotate(180deg) !important; }
+    /* Print & PDF Export Optimization for Official Brochure Flyer (Fit 1 Page A4 Portrait) */
     @media print {
-      body * { visibility: hidden !important; }
-      #printableBrochure, #printableBrochure * { visibility: visible !important; }
-      #printableBrochure { position: absolute !important; left: 0 !important; top: 0 !important; width: 100% !important; box-shadow: none !important; border: none !important; background: white !important; color: #0f172a !important; display: block !important; }
-      .no-print { display: none !important; }
+      @page {
+        size: A4 portrait;
+        margin: 6mm 8mm;
+      }
+
+      *, *::before, *::after {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+        color-adjust: exact !important;
+        box-sizing: border-box !important;
+      }
+
+      html, body {
+        width: 100% !important;
+        height: auto !important;
+        min-height: 0 !important;
+        max-height: none !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        background: #ffffff !important;
+        color: #0f172a !important;
+        overflow: visible !important;
+      }
+
+      /* Sembunyikan seluruh struktur halaman web di luar modal brosur */
+      body > *:not(#brochureModal) {
+        display: none !important;
+      }
+
+      /* Nonaktifkan backdrop fixed overlay dan jadikan dokumen statis */
+      #brochureModal {
+        display: block !important;
+        position: static !important;
+        inset: auto !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        height: auto !important;
+        min-height: 0 !important;
+        max-height: none !important;
+        overflow: visible !important;
+        background: transparent !important;
+        backdrop-filter: none !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        box-shadow: none !important;
+        border: none !important;
+      }
+
+      #brochureModal > div {
+        display: block !important;
+        position: static !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        height: auto !important;
+        max-height: none !important;
+        overflow: visible !important;
+        background: transparent !important;
+        border: none !important;
+        box-shadow: none !important;
+        padding: 0 !important;
+        margin: 0 !important;
+      }
+
+      #brochureModal > div > div:not(.no-print) {
+        padding: 0 !important;
+        margin: 0 !important;
+        background: transparent !important;
+        overflow: visible !important;
+      }
+
+      .no-print {
+        display: none !important;
+      }
+
+      /* Lembar Cetak Brosur A4 Presisi */
+      #printableBrochure {
+        display: block !important;
+        position: static !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        box-sizing: border-box !important;
+        margin: 0 auto !important;
+        padding: 5mm 7mm !important;
+        background: #ffffff !important;
+        color: #0f172a !important;
+        border: 2px solid #065F46 !important;
+        border-radius: 10px !important;
+        box-shadow: none !important;
+        page-break-inside: avoid !important;
+        break-inside: avoid !important;
+      }
+
+      /* Jarak antar seksi vertikal agar pas 1 lembar A4 */
+      #printableBrochure > * + * {
+        margin-top: 3.5mm !important;
+      }
+
+      /* Header Kop Surat Brosur */
+      #printableBrochure > div:first-child {
+        display: flex !important;
+        flex-direction: row !important;
+        align-items: center !important;
+        justify-content: flex-start !important;
+        text-align: left !important;
+        gap: 12px !important;
+        border-bottom: 2px solid #065F46 !important;
+        padding-bottom: 3mm !important;
+      }
+
+      #printableBrochure img {
+        width: 58px !important;
+        height: 58px !important;
+        max-width: 58px !important;
+        max-height: 58px !important;
+        object-fit: contain !important;
+        flex-shrink: 0 !important;
+      }
+
+      /* Banner Hijau PPDB */
+      #printableBrochure > div:nth-child(2) {
+        background: #064E3B !important;
+        background-color: #064E3B !important;
+        background-image: linear-gradient(to right, #064E3B, #022C22) !important;
+        color: #ffffff !important;
+        border-radius: 8px !important;
+        padding: 2.5mm 4mm !important;
+        text-align: center !important;
+      }
+
+      #printableBrochure > div:nth-child(2) h3 {
+        color: #ffffff !important;
+        font-size: 13pt !important;
+        line-height: 1.2 !important;
+        margin: 1mm 0 !important;
+      }
+
+      #printableBrochure > div:nth-child(2) span {
+        color: #FBBF24 !important;
+        font-size: 8.5pt !important;
+      }
+
+      #printableBrochure > div:nth-child(2) p {
+        color: #A7F3D0 !important;
+        font-size: 8pt !important;
+        margin-top: 0.5mm !important;
+      }
+
+      /* Dua Kolom Grid (Visi & Program vs Jalur & Syarat) */
+      #printableBrochure .grid,
+      #printableBrochure > div:nth-child(3) {
+        display: grid !important;
+        grid-template-columns: 1fr 1fr !important;
+        gap: 4mm !important;
+      }
+
+      #printableBrochure > div:nth-child(3) > div {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 2.5mm !important;
+      }
+
+      #printableBrochure > div:nth-child(3) .p-3\.5 {
+        padding: 2.5mm 3.5mm !important;
+        border-radius: 6px !important;
+      }
+
+      #printableBrochure > div:nth-child(3) ul,
+      #printableBrochure > div:nth-child(3) ol {
+        margin: 0 !important;
+        padding-left: 4mm !important;
+      }
+
+      #printableBrochure > div:nth-child(3) li {
+        font-size: 8.5pt !important;
+        line-height: 1.35 !important;
+        margin-bottom: 1mm !important;
+      }
+
+      /* Footer Flyer (Info Kontak & Alamat Web) */
+      #printableBrochure > div:last-child {
+        display: flex !important;
+        flex-direction: row !important;
+        align-items: center !important;
+        justify-content: space-between !important;
+        text-align: left !important;
+        background: #F8FAFC !important;
+        border-top: 2px solid #065F46 !important;
+        border-radius: 6px !important;
+        padding: 2.5mm 4mm !important;
+      }
     }
   </style>
 </head>
@@ -697,7 +884,12 @@
       const modal = document.getElementById('brochureModal');
       if (modal) { modal.classList.add('hidden'); document.body.style.overflow = ''; }
     }
-    function printBrochure() { window.print(); }
+    function printBrochure() {
+      openBrochureModal();
+      setTimeout(() => {
+        window.print();
+      }, 150);
+    }
     window.addEventListener('click', (e) => {
       const modal = document.getElementById('brochureModal');
       if (e.target === modal) closeBrochureModal();
