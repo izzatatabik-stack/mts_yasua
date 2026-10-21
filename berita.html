@@ -1,0 +1,832 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Berita & Pengumuman — MTs. YASUA Pilangwetan</title>
+  <meta name="description" content="Kabar berita terkini, prestasi santri, agenda kegiatan sekolah, dan pengumuman resmi MTs. YASUA Pilangwetan, Kebonagung, Demak.">
+  <meta name="keywords" content="Berita MTs YASUA, Pengumuman PTS Demak, Prestasi Siswa MTs Yasua Pilangwetan, Kebonagung">
+  
+  <link rel="icon" type="image/png" href="logo.png">
+  <link rel="apple-touch-icon" href="logo.png">
+  <link rel="canonical" href="https://mts-yasua.vercel.app/berita.html">
+
+  <meta property="og:title" content="Berita & Pengumuman — MTs. YASUA Pilangwetan">
+  <meta property="og:description" content="Ikuti kabar prestasi siswa, agenda kegiatan resmi, serta pengumuman akademik terbaru dari MTs. YASUA Pilangwetan.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://mts-yasua.vercel.app/berita.html">
+  <meta property="og:image" content="poster_pts_berita.webp">
+  <meta property="og:site_name" content="MTs. YASUA Pilangwetan">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              dark: '#033324',
+              primary: '#065F46',
+              medium: '#0D7B58',
+              light: '#10B981',
+              pale: '#ECFDF5',
+              surface: '#F4FBF7',
+              accent: '#F59E0B',
+              accentHover: '#D97706',
+              gold: '#FBBF24'
+            }
+          },
+          fontFamily: {
+            sans: ['Plus Jakarta Sans', 'Inter', 'sans-serif'],
+            arabic: ['Amiri', 'serif']
+          },
+          boxShadow: {
+            'glow-green': '0 10px 30px -10px rgba(6, 95, 70, 0.35)',
+            'glow-gold': '0 10px 25px -5px rgba(245, 158, 11, 0.4)'
+          }
+        }
+      }
+    }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <style>
+    body { font-family: 'Plus Jakarta Sans', sans-serif; }
+    .glass-nav { background: rgba(255, 255, 255, 0.94); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); }
+    .hover-lift { transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s ease; }
+    .hover-lift:hover { transform: translateY(-4px); }
+    .nav-dropdown .dropdown-menu { transform: translateX(-50%) translateY(8px); transition: opacity 0.22s, transform 0.22s, visibility 0.22s; }
+    .nav-dropdown:hover .dropdown-menu, .nav-dropdown.is-open .dropdown-menu { opacity: 1 !important; pointer-events: auto !important; visibility: visible !important; transform: translateX(-50%) translateY(0) !important; }
+    .nav-dropdown:hover .dropdown-icon, .nav-dropdown.is-open .dropdown-icon { transform: rotate(180deg) !important; }
+    @media print {
+      body * { visibility: hidden !important; }
+      #printableBrochure, #printableBrochure * { visibility: visible !important; }
+      #printableBrochure { position: absolute !important; left: 0 !important; top: 0 !important; width: 100% !important; box-shadow: none !important; border: none !important; background: white !important; color: #0f172a !important; display: block !important; }
+      .no-print { display: none !important; }
+    }
+  </style>
+</head>
+<body class="antialiased text-slate-800 bg-[#F4FBF7] min-h-screen flex flex-col selection:bg-emerald-200 selection:text-brand-dark">
+
+  <!-- FLOATING NAVIGATION BAR -->
+  <header class="sticky top-3 sm:top-4 z-40 px-3 sm:px-6 lg:px-8 w-full transition-all duration-300 pointer-events-none mb-4">
+    <nav class="max-w-7xl mx-auto glass-nav rounded-full shadow-[0_12px_40px_rgba(6,95,70,0.12)] border border-white/80 px-4 sm:px-6 lg:px-8 py-2.5 sm:py-3 transition-all duration-300 pointer-events-auto">
+      <div class="flex items-center justify-between">
+        
+        <a href="index.html" class="flex items-center gap-3 group shrink-0">
+          <img src="logo.png" alt="Logo MTs. YASUA Pilangwetan" class="w-10 h-10 sm:w-11 sm:h-11 object-contain group-hover:scale-105 transition-transform duration-300 drop-shadow-sm">
+          <div class="flex flex-col justify-center">
+            <span class="text-brand-primary font-black text-base sm:text-lg tracking-tight whitespace-nowrap leading-none group-hover:text-brand-medium transition-colors">
+              MTs. YASUA
+            </span>
+            <span class="text-brand-accent font-extrabold text-[9px] sm:text-[10px] tracking-widest uppercase mt-0.5">
+              PILANGWETAN - DEMAK
+            </span>
+          </div>
+        </a>
+
+        <!-- Desktop Navigation Links -->
+        <div class="hidden lg:flex items-center space-x-1 xl:space-x-2 text-slate-700 font-semibold text-[13.5px]">
+          <a href="index.html" class="hover:text-brand-primary px-3 py-1.5 rounded-full hover:bg-emerald-50 transition-colors">
+            Beranda
+          </a>
+
+          <!-- Profil Dropdown -->
+          <div class="relative group nav-dropdown">
+            <button type="button" class="dropdown-trigger flex items-center gap-1.5 px-3 py-1.5 rounded-full hover:text-brand-primary hover:bg-emerald-50 transition-colors group-hover:text-brand-primary font-semibold text-[13.5px] cursor-pointer" aria-haspopup="true" aria-expanded="false">
+              <span>Profil</span>
+              <i data-lucide="chevron-down" class="dropdown-icon w-3.5 h-3.5 transition-transform duration-200 text-slate-400 group-hover:text-brand-primary"></i>
+            </button>
+            <div class="dropdown-menu absolute left-1/2 top-full pt-2 w-64 opacity-0 pointer-events-none transition-all duration-200 z-50">
+              <div class="bg-white/95 backdrop-blur-md rounded-2xl shadow-xl border border-emerald-100 p-2 space-y-1">
+                <a href="sambutan.html" class="flex items-center gap-2.5 px-3 py-2.5 rounded-xl hover:bg-emerald-50 text-slate-700 hover:text-brand-primary transition-colors text-xs font-semibold">
+                  <div class="w-7 h-7 rounded-lg bg-emerald-50 text-brand-primary flex items-center justify-center shrink-0"><i data-lucide="user-check" class="w-4 h-4"></i></div>
+                  <div><span class="block text-slate-900 font-bold">Sambutan Pimpinan</span><span class="text-[10px] text-slate-500 font-normal">Arah kepala madrasah</span></div>
+                </a>
+                <a href="profil.html" class="flex items-center gap-2.5 px-3 py-2.5 rounded-xl hover:bg-emerald-50 text-slate-700 hover:text-brand-primary transition-colors text-xs font-semibold">
+                  <div class="w-7 h-7 rounded-lg bg-emerald-50 text-brand-primary flex items-center justify-center shrink-0"><i data-lucide="compass" class="w-4 h-4"></i></div>
+                  <div><span class="block text-slate-900 font-bold">Visi, Misi &amp; Sejarah</span><span class="text-[10px] text-slate-500 font-normal">Landasan &amp; perintis 1949</span></div>
+                </a>
+                <a href="guru.html" class="flex items-center gap-2.5 px-3 py-2.5 rounded-xl hover:bg-emerald-50 text-slate-700 hover:text-brand-primary transition-colors text-xs font-semibold">
+                  <div class="w-7 h-7 rounded-lg bg-emerald-50 text-brand-primary flex items-center justify-center shrink-0"><i data-lucide="users" class="w-4 h-4"></i></div>
+                  <div><span class="block text-slate-900 font-bold">Dewan Guru &amp; Pendidik</span><span class="text-[10px] text-slate-500 font-normal">Pengajar kompeten bergelar</span></div>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Pendidikan Dropdown -->
+          <div class="relative group nav-dropdown">
+            <button type="button" class="dropdown-trigger flex items-center gap-1.5 px-3 py-1.5 rounded-full hover:text-brand-primary hover:bg-emerald-50 transition-colors group-hover:text-brand-primary font-semibold text-[13.5px] cursor-pointer" aria-haspopup="true" aria-expanded="false">
+              <span>Pendidikan</span>
+              <i data-lucide="chevron-down" class="dropdown-icon w-3.5 h-3.5 transition-transform duration-200 text-slate-400 group-hover:text-brand-primary"></i>
+            </button>
+            <div class="dropdown-menu absolute left-1/2 top-full pt-2 w-64 opacity-0 pointer-events-none transition-all duration-200 z-50">
+              <div class="bg-white/95 backdrop-blur-md rounded-2xl shadow-xl border border-emerald-100 p-2 space-y-1">
+                <a href="program.html" class="flex items-center gap-2.5 px-3 py-2.5 rounded-xl hover:bg-emerald-50 text-slate-700 hover:text-brand-primary transition-colors text-xs font-semibold">
+                  <div class="w-7 h-7 rounded-lg bg-emerald-50 text-brand-primary flex items-center justify-center shrink-0"><i data-lucide="book-open" class="w-4 h-4"></i></div>
+                  <div><span class="block text-slate-900 font-bold">Program Unggulan</span><span class="text-[10px] text-slate-500 font-normal">Tahfidz, Kitab Salaf, IT</span></div>
+                </a>
+                <a href="ekskul.html" class="flex items-center gap-2.5 px-3 py-2.5 rounded-xl hover:bg-emerald-50 text-slate-700 hover:text-brand-primary transition-colors text-xs font-semibold">
+                  <div class="w-7 h-7 rounded-lg bg-emerald-50 text-brand-primary flex items-center justify-center shrink-0"><i data-lucide="sparkles" class="w-4 h-4 text-amber-500"></i></div>
+                  <div><span class="block text-slate-900 font-bold">Ekstrakurikuler</span><span class="text-[10px] text-slate-500 font-normal">Pramuka, Drumband, Hadroh</span></div>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Kabar Madrasah Dropdown (Active) -->
+          <div class="relative group nav-dropdown">
+            <button type="button" class="dropdown-trigger flex items-center gap-1.5 px-3 py-1.5 rounded-full text-brand-primary bg-emerald-50 font-bold text-[13.5px] cursor-pointer" aria-haspopup="true" aria-expanded="false">
+              <span>Kabar Madrasah</span>
+              <i data-lucide="chevron-down" class="dropdown-icon w-3.5 h-3.5 transition-transform duration-200 text-brand-primary"></i>
+            </button>
+            <div class="dropdown-menu absolute left-1/2 top-full pt-2 w-64 opacity-0 pointer-events-none transition-all duration-200 z-50">
+              <div class="bg-white/95 backdrop-blur-md rounded-2xl shadow-xl border border-emerald-100 p-2 space-y-1">
+                <a href="berita.html" class="flex items-center gap-2.5 px-3 py-2.5 rounded-xl bg-emerald-50 text-brand-primary transition-colors text-xs font-bold">
+                  <div class="w-7 h-7 rounded-lg bg-emerald-100 text-brand-primary flex items-center justify-center shrink-0"><i data-lucide="newspaper" class="w-4 h-4"></i></div>
+                  <div><span class="block font-bold">Berita &amp; Pengumuman</span><span class="text-[10px] text-emerald-700 font-normal">PTS, Prestasi, Parenting, ANBK</span></div>
+                </a>
+                <a href="galeri.html" class="flex items-center gap-2.5 px-3 py-2.5 rounded-xl hover:bg-emerald-50 text-slate-700 hover:text-brand-primary transition-colors text-xs font-semibold">
+                  <div class="w-7 h-7 rounded-lg bg-emerald-50 text-brand-primary flex items-center justify-center shrink-0"><i data-lucide="camera" class="w-4 h-4 text-pink-600"></i></div>
+                  <div><span class="block text-slate-900 font-bold">Galeri Media Sosial</span><span class="text-[10px] text-slate-500 font-normal">Foto &amp; video kegiatan siswa</span></div>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <a href="kontak.html" class="hover:text-brand-primary px-3 py-1.5 rounded-full hover:bg-emerald-50 transition-colors">
+            Kontak
+          </a>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="hidden lg:flex items-center gap-3">
+          <button onclick="openBrochureModal()" class="w-9 h-9 rounded-full flex items-center justify-center bg-emerald-50 text-brand-primary hover:bg-emerald-100 transition-all cursor-pointer" title="Buka &amp; Cetak Brosur PPDB">
+            <i data-lucide="printer" class="w-4 h-4 text-brand-gold"></i>
+          </button>
+          <a href="ppdb.html" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-gradient-to-r from-brand-primary to-emerald-600 hover:from-brand-dark hover:to-brand-primary text-white font-extrabold text-xs sm:text-[13px] shadow-glow-green hover:shadow-lg transition-all duration-200">
+            <span>Daftar PPDB</span>
+            <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+          </a>
+        </div>
+
+        <!-- Mobile Menu Button -->
+        <div class="flex items-center gap-2 lg:hidden">
+          <a href="ppdb.html" class="px-3.5 py-1.5 rounded-full bg-brand-primary text-white text-xs font-bold shadow-sm">
+            PPDB
+          </a>
+          <button id="mobileMenuBtn" onclick="toggleMobileMenu()" class="w-9 h-9 rounded-full flex items-center justify-center bg-emerald-50 text-brand-primary hover:bg-emerald-100 transition-colors cursor-pointer" aria-label="Buka Menu">
+            <i data-lucide="menu" class="w-5 h-5"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Mobile Dropdown Menu -->
+      <div id="mobileMenu" class="hidden lg:hidden pt-4 pb-2 border-t border-slate-100 mt-3 text-slate-700 flex flex-col space-y-3 max-h-[75vh] overflow-y-auto">
+        <a href="index.html" class="px-3.5 py-2 rounded-xl text-slate-700 font-semibold hover:bg-emerald-50 flex items-center justify-between">
+          <span>Beranda</span>
+          <i data-lucide="home" class="w-4 h-4 text-slate-400"></i>
+        </a>
+
+        <div class="p-2.5 rounded-2xl bg-emerald-50/80 border border-emerald-100 space-y-1">
+          <span class="text-[10px] font-black uppercase tracking-wider text-emerald-800 px-2 block mb-1">PROFIL MADRASAH</span>
+          <a href="sambutan.html" class="px-2.5 py-1.5 rounded-lg text-xs font-semibold hover:bg-emerald-100/70 text-slate-700 flex items-center gap-2">
+            <i data-lucide="user-check" class="w-3.5 h-3.5 text-brand-primary"></i>
+            <span>Sambutan Pimpinan</span>
+          </a>
+          <a href="profil.html" class="px-2.5 py-1.5 rounded-lg text-xs font-semibold hover:bg-emerald-100/70 text-slate-700 flex items-center gap-2">
+            <i data-lucide="compass" class="w-3.5 h-3.5 text-brand-primary"></i>
+            <span>Visi, Misi &amp; Sejarah</span>
+          </a>
+          <a href="guru.html" class="px-2.5 py-1.5 rounded-lg text-xs font-semibold hover:bg-emerald-100/70 text-slate-700 flex items-center gap-2">
+            <i data-lucide="users" class="w-3.5 h-3.5 text-brand-primary"></i>
+            <span>Dewan Guru &amp; Tenaga Pendidik</span>
+          </a>
+        </div>
+
+        <div class="p-2.5 rounded-2xl bg-slate-50 border border-slate-200/60 space-y-1">
+          <span class="text-[10px] font-black uppercase tracking-wider text-slate-600 px-2 block mb-1">PENDIDIKAN &amp; KESISWAAN</span>
+          <a href="program.html" class="px-2.5 py-1.5 rounded-lg text-xs font-semibold hover:bg-slate-100 text-slate-700 flex items-center gap-2">
+            <i data-lucide="book-open" class="w-3.5 h-3.5 text-brand-primary"></i>
+            <span>Program Unggulan</span>
+          </a>
+          <a href="ekskul.html" class="px-2.5 py-1.5 rounded-lg text-xs font-semibold hover:bg-slate-100 text-slate-700 flex items-center gap-2">
+            <i data-lucide="sparkles" class="w-3.5 h-3.5 text-amber-500"></i>
+            <span>Ekstrakurikuler</span>
+          </a>
+        </div>
+
+        <div class="p-2.5 rounded-2xl bg-emerald-50/80 border border-emerald-100 space-y-1">
+          <span class="text-[10px] font-black uppercase tracking-wider text-emerald-800 px-2 block mb-1">KABAR &amp; INFORMASI</span>
+          <a href="berita.html" class="px-2.5 py-1.5 rounded-lg text-xs font-bold bg-emerald-100/80 text-brand-primary flex items-center gap-2">
+            <i data-lucide="newspaper" class="w-3.5 h-3.5 text-brand-primary"></i>
+            <span>Berita &amp; Pengumuman</span>
+          </a>
+          <a href="galeri.html" class="px-2.5 py-1.5 rounded-lg text-xs font-semibold hover:bg-slate-100 text-slate-700 flex items-center gap-2">
+            <i data-lucide="camera" class="w-3.5 h-3.5 text-pink-600"></i>
+            <span>Galeri Media Sosial</span>
+          </a>
+        </div>
+
+        <div class="grid grid-cols-2 gap-2 pt-1">
+          <button onclick="toggleMobileMenu(); openBrochureModal();" class="px-3 py-2.5 rounded-xl border border-emerald-200 bg-emerald-50 text-brand-primary font-bold text-xs flex items-center justify-center gap-1.5">
+            <i data-lucide="printer" class="w-3.5 h-3.5 text-brand-gold"></i>
+            <span>Brosur PDF</span>
+          </button>
+          <a href="kontak.html" class="px-3 py-2.5 rounded-xl border border-slate-200 bg-white text-slate-800 font-bold text-xs flex items-center justify-center gap-1.5">
+            <i data-lucide="phone" class="w-3.5 h-3.5 text-emerald-600"></i>
+            <span>Kontak Kami</span>
+          </a>
+        </div>
+
+        <div class="pt-1">
+          <a href="ppdb.html" class="w-full text-center block py-3 rounded-xl bg-gradient-to-r from-brand-accent to-amber-500 text-slate-950 font-black text-sm shadow-md flex items-center justify-center gap-2">
+            <i data-lucide="arrow-right-circle" class="w-4 h-4"></i>
+            <span>Pendaftaran Siswa Baru (PPDB Online)</span>
+          </a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- SUBPAGE HERO HEADER -->
+  <section class="bg-gradient-to-br from-[#022c1f] via-[#064E3B] to-[#0A6B48] text-white pt-12 pb-16 relative overflow-hidden">
+    <div class="absolute inset-0 opacity-[0.05] pointer-events-none bg-[radial-gradient(#FFFFFF_1px,transparent_1px)] [background-size:24px_24px]"></div>
+    <div class="absolute -right-20 -top-20 w-80 h-80 bg-emerald-400/10 rounded-full blur-3xl pointer-events-none"></div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-8 relative z-10">
+      <nav class="flex items-center gap-2 text-xs text-emerald-200/90 font-medium mb-4" aria-label="Breadcrumb">
+        <a href="index.html" class="hover:text-white transition-colors flex items-center gap-1">
+          <i data-lucide="home" class="w-3.5 h-3.5"></i>
+          <span>Beranda</span>
+        </a>
+        <i data-lucide="chevron-right" class="w-3 h-3 text-emerald-400/60"></i>
+        <span class="text-emerald-200">Kabar Madrasah</span>
+        <i data-lucide="chevron-right" class="w-3 h-3 text-emerald-400/60"></i>
+        <span class="text-white font-bold">Berita &amp; Pengumuman</span>
+      </nav>
+
+      <div class="max-w-3xl">
+        <span class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-brand-gold text-xs font-bold uppercase tracking-wider mb-3">
+          <i data-lucide="newspaper" class="w-3.5 h-3.5"></i>
+          <span>ARSIP INFORMASI RESMI</span>
+        </span>
+        <h1 class="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight leading-tight">
+          Berita &amp; Pengumuman Sekolah
+        </h1>
+        <p class="text-emerald-100/90 text-sm sm:text-base mt-3 leading-relaxed">
+          Pusat informasi kegiatan, agenda penilaian semester, prestasi kejuaraan santri, serta pengumuman resmi civitas akademika MTs. YASUA Pilangwetan.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- MAIN CONTENT: BERITA UTAMA & ARSIP -->
+  <main class="flex-1 py-12 sm:py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-8 space-y-12">
+      
+      <!-- FEATURED NEWS (BERITA UTAMA BESAR) -->
+      <section class="bg-white rounded-3xl overflow-hidden border border-emerald-100 shadow-md hover:shadow-xl transition-all duration-300 group cursor-pointer" onclick="openNewsModal('pts')">
+        <div class="grid grid-cols-1 lg:grid-cols-12 items-center">
+          <div class="lg:col-span-7 relative aspect-[16/10] sm:aspect-[16/9] lg:aspect-auto lg:h-full bg-slate-100 overflow-hidden">
+            <img src="poster_pts_berita.webp" alt="Poster Penilaian Tengah Semester PTS MTs YASUA" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+            <span class="absolute top-4 left-4 inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-blue-600 text-white font-black text-xs shadow-md">
+              <i data-lucide="bell" class="w-3.5 h-3.5"></i> PENGUMUMAN UTAMA
+            </span>
+            <span class="absolute top-4 right-4 inline-flex items-center gap-1 px-3 py-1 rounded-full bg-black/60 text-white font-medium text-xs backdrop-blur-md">
+              <i data-lucide="calendar" class="w-3.5 h-3.5 text-brand-gold"></i> 5 - 10 Oktober 2026
+            </span>
+          </div>
+          <div class="lg:col-span-5 p-6 sm:p-10 space-y-4">
+            <div class="flex items-center gap-2 text-xs font-bold text-amber-700">
+              <i data-lucide="clock" class="w-4 h-4"></i>
+              <span>Semester Ganjil TA 2026/2027</span>
+            </div>
+            <h2 class="text-xl sm:text-2xl lg:text-3xl font-black text-brand-dark group-hover:text-brand-primary transition-colors leading-snug">
+              Penilaian Tengah Semester (PTS) Gasal MTs. YASUA Pilangwetan
+            </h2>
+            <p class="text-slate-600 text-xs sm:text-sm leading-relaxed text-justify">
+              Diberitahukan kepada seluruh siswa-siswi kelas VII, VIII, dan IX serta Bapak/Ibu Wali Murid bahwa pelaksanaan PTS terpadu dilaksanakan berbasis asesmen tertulis dan digital komputer.
+            </p>
+            <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
+              <span class="text-xs font-bold text-brand-primary flex items-center gap-1.5 group-hover:translate-x-1 transition-transform">
+                <span>Baca Selengkapnya</span>
+                <i data-lucide="arrow-right" class="w-4 h-4"></i>
+              </span>
+              <span class="px-3 py-1 rounded-full bg-emerald-50 text-emerald-800 text-xs font-bold">
+                Akademik
+              </span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- BERITA GRID (4 ARTIKEL LAINNYA) -->
+      <section class="space-y-6">
+        <div class="flex items-center justify-between pb-3 border-b border-emerald-200">
+          <h3 class="text-lg sm:text-xl font-black text-brand-dark flex items-center gap-2">
+            <i data-lucide="newspaper" class="w-5 h-5 text-brand-primary"></i>
+            <span>Daftar Artikel &amp; Pengumuman Terkini</span>
+          </h3>
+          <span class="text-xs text-slate-500 font-semibold">5 Berita Tersedia</span>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          
+          <!-- Post 1: Prestasi Robotika -->
+          <div onclick="openNewsModal('prestasi')" class="bg-white rounded-3xl p-4 border border-emerald-100 shadow-sm hover:shadow-md hover:border-emerald-300 transition-all duration-200 group cursor-pointer flex flex-col justify-between">
+            <div>
+              <div class="relative aspect-video rounded-2xl overflow-hidden bg-slate-100 mb-3.5">
+                <img src="foto-upacara.webp" alt="Prestasi Robotika Siswa MTs YASUA" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy">
+                <span class="absolute bottom-2.5 left-2.5 px-2.5 py-0.5 rounded-full bg-emerald-600 text-white text-[10px] font-black shadow-sm">
+                  PRESTASI
+                </span>
+              </div>
+              <div class="flex items-center gap-1.5 text-[11px] text-slate-500 mb-1.5">
+                <i data-lucide="calendar" class="w-3.5 h-3.5"></i>
+                <span>22 September 2026</span>
+              </div>
+              <h4 class="font-extrabold text-slate-900 text-sm group-hover:text-brand-primary transition-colors leading-snug line-clamp-2">
+                Siswa MTs. YASUA Raih Juara 1 Olimpiade Sains &amp; Robotika Tingkat Provinsi Jawa Tengah
+              </h4>
+              <p class="text-xs text-slate-500 mt-2 line-clamp-2 leading-relaxed">
+                Kabar membanggakan diraih delegasi siswa madrasah dalam ajang bergengsi sains dan teknologi terapan.
+              </p>
+            </div>
+            <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-xs text-brand-primary font-bold">
+              <span>Baca Detail</span>
+              <i data-lucide="arrow-right" class="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform"></i>
+            </div>
+          </div>
+
+          <!-- Post 2: Workshop Parenting -->
+          <div onclick="openNewsModal('parenting')" class="bg-white rounded-3xl p-4 border border-emerald-100 shadow-sm hover:shadow-md hover:border-emerald-300 transition-all duration-200 group cursor-pointer flex flex-col justify-between">
+            <div>
+              <div class="relative aspect-video rounded-2xl overflow-hidden bg-slate-100 mb-3.5">
+                <img src="foto-kajian-santriwati.webp" alt="Workshop Parenting MTs YASUA" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy">
+                <span class="absolute bottom-2.5 left-2.5 px-2.5 py-0.5 rounded-full bg-blue-600 text-white text-[10px] font-black shadow-sm">
+                  BERITA
+                </span>
+              </div>
+              <div class="flex items-center gap-1.5 text-[11px] text-slate-500 mb-1.5">
+                <i data-lucide="calendar" class="w-3.5 h-3.5"></i>
+                <span>15 September 2026</span>
+              </div>
+              <h4 class="font-extrabold text-slate-900 text-sm group-hover:text-brand-primary transition-colors leading-snug line-clamp-2">
+                Workshop Parenting Akbar: Membangun Sinergi Rumah dan Sekolah Menuju Generasi Qur'ani
+              </h4>
+              <p class="text-xs text-slate-500 mt-2 line-clamp-2 leading-relaxed">
+                Silaturahmi wali murid dan komite madrasah mendiskusikan bimbingan moral anak di era serba digital.
+              </p>
+            </div>
+            <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-xs text-brand-primary font-bold">
+              <span>Baca Detail</span>
+              <i data-lucide="arrow-right" class="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform"></i>
+            </div>
+          </div>
+
+          <!-- Post 3: PPDB Dibuka -->
+          <div onclick="openNewsModal('ppdb')" class="bg-white rounded-3xl p-4 border border-emerald-100 shadow-sm hover:shadow-md hover:border-emerald-300 transition-all duration-200 group cursor-pointer flex flex-col justify-between">
+            <div>
+              <div class="relative aspect-video rounded-2xl overflow-hidden bg-slate-100 mb-3.5">
+                <img src="foto-gedung.webp" alt="Penerimaan Siswa Baru PPDB MTs YASUA" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy">
+                <span class="absolute bottom-2.5 left-2.5 px-2.5 py-0.5 rounded-full bg-amber-600 text-white text-[10px] font-black shadow-sm">
+                  PENGUMUMAN
+                </span>
+              </div>
+              <div class="flex items-center gap-1.5 text-[11px] text-slate-500 mb-1.5">
+                <i data-lucide="calendar" class="w-3.5 h-3.5"></i>
+                <span>10 September 2026</span>
+              </div>
+              <h4 class="font-extrabold text-slate-900 text-sm group-hover:text-brand-primary transition-colors leading-snug line-clamp-2">
+                Penerimaan Peserta Didik Baru (PPDB) Tahun Ajaran 2026/2027 Resmi Dibuka
+              </h4>
+              <p class="text-xs text-slate-500 mt-2 line-clamp-2 leading-relaxed">
+                Tersedia jalur prestasi beasiswa tahfidz serta jalur reguler bagi lulusan SD/MI se-Kabupaten Demak.
+              </p>
+            </div>
+            <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-xs text-brand-primary font-bold">
+              <span>Baca Detail</span>
+              <i data-lucide="arrow-right" class="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform"></i>
+            </div>
+          </div>
+
+          <!-- Post 4: ANBK Komputer -->
+          <div onclick="openNewsModal('anbk')" class="bg-white rounded-3xl p-4 border border-emerald-100 shadow-sm hover:shadow-md hover:border-emerald-300 transition-all duration-200 group cursor-pointer flex flex-col justify-between">
+            <div>
+              <div class="relative aspect-video rounded-2xl overflow-hidden bg-slate-100 mb-3.5">
+                <img src="foto-labkom.webp" alt="Pelaksanaan ANBK Komputer" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy">
+                <span class="absolute bottom-2.5 left-2.5 px-2.5 py-0.5 rounded-full bg-purple-600 text-white text-[10px] font-black shadow-sm">
+                  AKADEMIK
+                </span>
+              </div>
+              <div class="flex items-center gap-1.5 text-[11px] text-slate-500 mb-1.5">
+                <i data-lucide="calendar" class="w-3.5 h-3.5"></i>
+                <span>28 Agustus 2026</span>
+              </div>
+              <h4 class="font-extrabold text-slate-900 text-sm group-hover:text-brand-primary transition-colors leading-snug line-clamp-2">
+                Pelaksanaan Asesmen Nasional (ANBK) di Laboratorium Komputer Berlangsung Tertib &amp; Lancar
+              </h4>
+              <p class="text-xs text-slate-500 mt-2 line-clamp-2 leading-relaxed">
+                Infrastruktur jaringan komputer mandiri memastikan 100% peserta mengerjakan asesmen tanpa kendala.
+              </p>
+            </div>
+            <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-xs text-brand-primary font-bold">
+              <span>Baca Detail</span>
+              <i data-lucide="arrow-right" class="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform"></i>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- MODAL BACA BERITA LENGKAP -->
+  <div id="newsModal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-3 sm:p-5 bg-slate-950/70 backdrop-blur-sm transition-opacity duration-300">
+    <div class="bg-white rounded-3xl max-w-2xl w-full max-h-[90vh] overflow-y-auto shadow-2xl border border-emerald-100 flex flex-col relative animate-in fade-in zoom-in-95 duration-200">
+      
+      <button onclick="closeNewsModal()" class="absolute top-4 right-4 z-20 w-8 h-8 rounded-full bg-black/50 hover:bg-black/70 text-white flex items-center justify-center transition-colors" title="Tutup" aria-label="Tutup">
+        <i data-lucide="x" class="w-4 h-4"></i>
+      </button>
+
+      <div id="modalNewsImgContainer" class="relative aspect-video w-full overflow-hidden bg-slate-100">
+        <img id="modalNewsImg" src="" alt="Berita Image" class="w-full h-full object-cover">
+        <span id="modalNewsCategory" class="absolute bottom-3 left-4 px-3 py-1 rounded-full text-xs font-black shadow-md"></span>
+      </div>
+
+      <div class="p-6 sm:p-8 space-y-4">
+        <div class="flex items-center gap-2 text-xs text-slate-400 font-semibold">
+          <i data-lucide="calendar" class="w-4 h-4 text-brand-primary"></i>
+          <span id="modalNewsDate"></span>
+        </div>
+
+        <h3 id="modalNewsTitle" class="text-xl sm:text-2xl font-black text-slate-900 leading-snug"></h3>
+        <div id="modalNewsContent" class="text-slate-600 text-xs sm:text-sm leading-relaxed border-t border-emerald-100 pt-4"></div>
+
+        <div class="pt-4 flex justify-end">
+          <button onclick="closeNewsModal()" class="px-5 py-2.5 rounded-xl bg-brand-primary hover:bg-brand-dark text-white font-bold text-xs transition-colors">
+            Tutup Berita
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="bg-gradient-to-br from-[#022419] via-[#033324] to-[#044430] text-emerald-100 pt-16 pb-10 border-t border-emerald-900 mt-auto">
+    <div class="max-w-7xl mx-auto px-4 sm:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 pb-12 border-b border-emerald-800/60">
+        
+        <div class="lg:col-span-4 space-y-4">
+          <div class="flex items-center gap-3">
+            <img src="logo.png" alt="Logo MTs. YASUA" class="w-12 h-12 object-contain drop-shadow-md">
+            <div>
+              <span class="text-white font-black text-lg tracking-tight block">MTs. YASUA</span>
+              <span class="text-brand-gold text-[10px] font-bold tracking-widest uppercase block">PILANGWETAN - DEMAK</span>
+            </div>
+          </div>
+          <p class="text-xs sm:text-[13px] text-emerald-200/80 leading-relaxed">
+            Lembaga pendidikan formal tingkat menengah pertama berciri khas Islam Ahlus Sunnah Wal Jama’ah di bawah naungan Yayasan Islam Suada (YASUA).
+          </p>
+          <div class="pt-2 text-xs text-emerald-300/90 space-y-1">
+            <p><strong>NPSN:</strong> 20364357</p>
+            <p><strong>Status:</strong> Terakreditasi</p>
+            <p><strong>Alamat:</strong> Jl. Pilangwetan, Kec. Kebonagung, Kab. Demak 59583</p>
+          </div>
+        </div>
+
+        <div class="lg:col-span-2 space-y-3">
+          <h4 class="text-white font-bold text-sm uppercase tracking-wider">Halaman Profil</h4>
+          <ul class="space-y-2 text-xs">
+            <li><a href="sambutan.html" class="hover:text-brand-gold transition-colors">Sambutan Pimpinan</a></li>
+            <li><a href="profil.html" class="hover:text-brand-gold transition-colors">Visi &amp; Misi</a></li>
+            <li><a href="profil.html#sejarah" class="hover:text-brand-gold transition-colors">Sejarah 1949</a></li>
+            <li><a href="guru.html" class="hover:text-brand-gold transition-colors">Dewan Guru</a></li>
+          </ul>
+        </div>
+
+        <div class="lg:col-span-3 space-y-3">
+          <h4 class="text-white font-bold text-sm uppercase tracking-wider">Pendidikan &amp; Kabar</h4>
+          <ul class="space-y-2 text-xs">
+            <li><a href="program.html" class="hover:text-brand-gold transition-colors">Program Unggulan</a></li>
+            <li><a href="ekskul.html" class="hover:text-brand-gold transition-colors">Ekstrakurikuler</a></li>
+            <li><a href="berita.html" class="hover:text-brand-gold text-brand-gold font-bold transition-colors">Berita &amp; Pengumuman</a></li>
+            <li><a href="galeri.html" class="hover:text-brand-gold transition-colors">Galeri Media Sosial</a></li>
+          </ul>
+        </div>
+
+        <div class="lg:col-span-3 space-y-3">
+          <h4 class="text-white font-bold text-sm uppercase tracking-wider">Layanan &amp; Pendaftaran</h4>
+          <p class="text-xs text-emerald-200/80 leading-relaxed">
+            Penerimaan Peserta Didik Baru (PPDB) dibuka secara daring dan luring.
+          </p>
+          <div class="pt-2 flex flex-col gap-2">
+            <a href="ppdb.html" class="px-4 py-2.5 rounded-xl bg-gradient-to-r from-brand-accent to-amber-500 hover:from-amber-500 hover:to-brand-accent text-slate-950 font-bold text-xs text-center shadow-md transition-all">
+              Daftar PPDB Online
+            </a>
+            <button onclick="openBrochureModal()" class="px-4 py-2 rounded-xl bg-white/10 hover:bg-white/20 text-white font-semibold text-xs text-center border border-white/20 transition-all flex items-center justify-center gap-1.5">
+              <i data-lucide="printer" class="w-3.5 h-3.5 text-brand-gold"></i>
+              <span>Cetak Brosur PDF</span>
+            </button>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-emerald-300/70">
+        <p>© 2026 MTs. YASUA Pilangwetan. Seluruh Hak Cipta Dilindungi.</p>
+        <div class="flex items-center gap-4">
+          <a href="https://www.instagram.com/mts.yasua_pilangwetan/" target="_blank" class="hover:text-white transition-colors flex items-center gap-1">
+            <i data-lucide="instagram" class="w-4 h-4"></i>
+            <span>Instagram</span>
+          </a>
+          <a href="https://www.tiktok.com/@mtsyasuapilangwetan" target="_blank" class="hover:text-white transition-colors flex items-center gap-1">
+            <i data-lucide="video" class="w-4 h-4"></i>
+            <span>TikTok</span>
+          </a>
+          <a href="kontak.html" class="hover:text-white transition-colors">
+            Hubungi Kami
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- MODAL BROSUR & FLYER DIGITAL PPDB RESMI -->
+  <div id="brochureModal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-3 sm:p-6 bg-slate-950/80 backdrop-blur-md transition-opacity duration-300">
+    <div class="bg-slate-100 rounded-3xl max-w-4xl w-full max-h-[92vh] overflow-y-auto shadow-2xl border border-emerald-100 flex flex-col relative animate-in fade-in zoom-in-95 duration-200">
+      
+      <div class="sticky top-0 z-30 bg-white/95 backdrop-blur-md px-6 py-4 border-b border-slate-200 flex items-center justify-between no-print">
+        <div class="flex items-center gap-2">
+          <div class="w-8 h-8 rounded-lg bg-emerald-100 text-brand-primary flex items-center justify-center font-bold">
+            <i data-lucide="printer" class="w-4 h-4"></i>
+          </div>
+          <div>
+            <h3 class="text-sm sm:text-base font-black text-slate-900 leading-none">Brosur Resmi PPDB MTs. YASUA</h3>
+            <span class="text-[11px] text-slate-500 font-medium">Tahun Ajaran 2026/2027</span>
+          </div>
+        </div>
+        <button onclick="closeBrochureModal()" class="w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-600 flex items-center justify-center transition-colors">
+          <i data-lucide="x" class="w-4 h-4"></i>
+        </button>
+      </div>
+
+      <div class="p-4 sm:p-8 flex justify-center bg-slate-200/60 overflow-y-auto">
+        <div id="printableBrochure" class="bg-white rounded-2xl shadow-lg border border-slate-200 p-6 sm:p-10 max-w-3xl w-full text-slate-800 space-y-6">
+          <div class="flex flex-col sm:flex-row items-center justify-between gap-4 border-b-2 border-emerald-800 pb-4 text-center sm:text-left">
+            <div class="flex items-center gap-4">
+              <img src="logo.png" alt="Logo MTs. YASUA" class="w-16 h-16 object-contain shrink-0">
+              <div>
+                <span class="text-xs font-bold text-slate-500 tracking-widest uppercase block">YAYASAN ISLAM SUADA (YASUA)</span>
+                <h2 class="text-xl sm:text-2xl font-black text-brand-dark tracking-tight leading-tight">MTs. YASUA PILANGWETAN</h2>
+                <p class="text-[11px] sm:text-xs font-bold text-emerald-800">PILANGWETAN — KEBONAGUNG — DEMAK</p>
+                <div class="flex flex-wrap items-center justify-center sm:justify-start gap-2 mt-1 text-[10px] text-slate-600">
+                  <span class="bg-emerald-50 text-emerald-800 px-2 py-0.5 rounded font-bold">NPSN: 20364357</span>
+                  <span>•</span>
+                  <span>Alamat: Jl. Pilangwetan, Kebonagung, Demak 59583</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-gradient-to-r from-emerald-800 to-emerald-900 rounded-xl p-4 text-center text-white shadow-sm">
+            <span class="text-brand-gold text-[10px] sm:text-xs font-bold uppercase tracking-widest block">PENERIMAAN PESERTA DIDIK BARU (PPDB)</span>
+            <h3 class="text-base sm:text-xl font-extrabold mt-0.5">TAHUN PELAJARAN 2026 / 2027</h3>
+            <p class="text-[11px] sm:text-xs text-emerald-200 mt-1 italic">“Membentuk Generasi Qur'ani, Cerdas, Berakhlakul Karimah, &amp; Menguasai Teknologi”</p>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 text-xs leading-relaxed">
+            <div class="space-y-4">
+              <div class="p-3.5 rounded-xl bg-emerald-50/70 border border-emerald-100">
+                <h4 class="font-black text-brand-dark text-xs uppercase tracking-wider mb-1 flex items-center gap-1.5">
+                  <i data-lucide="eye" class="w-3.5 h-3.5 text-brand-primary"></i> Visi Madrasah
+                </h4>
+                <p class="italic text-[11px] text-slate-700">“Terwujudnya pendidikan yang islami, bermutu, berwawasan luas, beriman, bertaqwa, berakhlakul karimah, dan menguasai IPTEK.”</p>
+              </div>
+
+              <div class="space-y-2">
+                <h4 class="font-black text-brand-dark text-xs uppercase tracking-wider flex items-center gap-1.5 border-b border-slate-200 pb-1">
+                  <i data-lucide="award" class="w-3.5 h-3.5 text-amber-600"></i> Program Unggulan
+                </h4>
+                <ul class="space-y-1.5 text-[11.5px] text-slate-700">
+                  <li><strong>1. Tahfiz Al-Qur'an</strong> &amp; Kajian Kitab Salaf (Aswaja)</li>
+                  <li><strong>2. Pembiasaan Sholat Berjamaah</strong>, Dhuha &amp; Istighosah</li>
+                  <li><strong>3. Penguatan Bilingual</strong> (Bahasa Arab &amp; Inggris)</li>
+                  <li><strong>4. Literasi Digital &amp; Lab Komputer</strong> (Siap ANBK)</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="space-y-4">
+              <div class="p-3.5 rounded-xl bg-amber-50/70 border border-amber-200">
+                <h4 class="font-black text-amber-900 text-xs uppercase tracking-wider mb-1 flex items-center gap-1.5">
+                  <i data-lucide="check-circle" class="w-3.5 h-3.5 text-amber-600"></i> Jalur Pendaftaran
+                </h4>
+                <ul class="text-[11px] text-slate-700 space-y-1">
+                  <li>• <strong>Jalur Prestasi:</strong> Prioritas Beasiswa Tahfidz &amp; Prestasi Akademik/Non-Akademik.</li>
+                  <li>• <strong>Jalur Reguler:</strong> Pendaftaran terbuka untuk seluruh lulusan SD/MI.</li>
+                </ul>
+              </div>
+
+              <div class="space-y-2">
+                <h4 class="font-black text-brand-dark text-xs uppercase tracking-wider flex items-center gap-1.5 border-b border-slate-200 pb-1">
+                  <i data-lucide="file-check" class="w-3.5 h-3.5 text-brand-primary"></i> Syarat Pendaftaran
+                </h4>
+                <ol class="space-y-1 text-[11px] text-slate-700 list-decimal list-inside">
+                  <li>Mengisi Formulir Pendaftaran (Online / Offline)</li>
+                  <li>Fotokopi Ijazah / SKL SD/MI (2 Lembar)</li>
+                  <li>Fotokopi Kartu Keluarga (KK) &amp; Akta Kelahiran</li>
+                  <li>Pas Foto 3x4 Background Merah/Biru (3 Lembar)</li>
+                  <li>Fotokopi Kartu PIP / KIP / PKH (jika ada)</li>
+                </ol>
+              </div>
+            </div>
+          </div>
+
+          <div class="pt-4 border-t-2 border-emerald-800 flex flex-col sm:flex-row items-center justify-between gap-3 bg-slate-50 p-4 rounded-xl">
+            <div class="text-center sm:text-left">
+              <span class="text-[10px] font-bold text-slate-500 uppercase tracking-wider block">INFORMASI &amp; PENDAFTARAN RESMI</span>
+              <p class="text-xs font-black text-brand-dark mt-0.5">WhatsApp Panitia: <span class="text-brand-primary font-mono text-sm">+62 856-4988-1966</span></p>
+              <p class="text-[10px] text-slate-500">Instagram: @mts.yasua_pilangwetan • TikTok: @mtsyasuapilangwetan</p>
+            </div>
+            <div class="text-center sm:text-right shrink-0">
+              <span class="text-[10px] font-bold text-emerald-700 uppercase block">DAFTAR ONLINE SEKARANG</span>
+              <span class="text-[11px] font-extrabold text-slate-900 block font-mono">mts-yasua.vercel.app/ppdb.html</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-white px-6 py-4 border-t border-slate-200 flex flex-col sm:flex-row items-center justify-between gap-3 no-print">
+        <span class="text-xs text-slate-500">
+          💡 <em>Klik tombol "Cetak Brosur PDF" untuk menyimpan atau mencetak.</em>
+        </span>
+        <div class="flex items-center gap-2 w-full sm:w-auto">
+          <button onclick="closeBrochureModal()" class="w-full sm:w-auto px-4 py-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-xs transition-colors">
+            Tutup
+          </button>
+          <button onclick="printBrochure()" class="w-full sm:w-auto px-5 py-2.5 rounded-xl bg-brand-primary hover:bg-brand-dark text-white font-bold text-xs shadow-md transition-colors flex items-center justify-center gap-1.5">
+            <i data-lucide="printer" class="w-3.5 h-3.5"></i>
+            <span>Cetak Brosur PDF</span>
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+    lucide.createIcons();
+    function toggleMobileMenu() {
+      const menu = document.getElementById('mobileMenu');
+      if (menu) menu.classList.toggle('hidden');
+    }
+
+    // Modal Berita Logic
+    const newsDetails = {
+      pts: {
+        category: 'PENGUMUMAN RESMI',
+        badgeClass: 'bg-blue-600 text-white',
+        date: '5 - 10 Oktober 2026',
+        title: 'Penilaian Tengah Semester (PTS) MTs. YASUA Pilangwetan TA 2026/2027',
+        image: 'poster_pts_berita.webp',
+        content: `
+          <p class="mb-3">Assalamu’alaikum Warahmatullahi Wabarakatuh,</p>
+          <p class="mb-3">Diberitahukan kepada seluruh siswa-siswi dan Bapak/Ibu Wali Murid MTs. YASUA Pilangwetan bahwa kegiatan <strong>Penilaian Tengah Semester (PTS) Gasal Tahun Ajaran 2026/2027</strong> akan diselenggarakan secara terpadu pada:</p>
+          <div class="p-4 rounded-2xl bg-emerald-50 border border-emerald-200 mb-4 text-emerald-900 font-medium text-xs sm:text-sm">
+            <ul class="space-y-1.5 list-disc list-inside">
+              <li><strong>Hari/Tanggal:</strong> Senin, 5 Oktober 2026 s.d. Sabtu, 10 Oktober 2026</li>
+              <li><strong>Waktu Pelaksanaan:</strong> Pukul 07.30 WIB – Selesai</li>
+              <li><strong>Tempat:</strong> Ruang Kelas MTs. YASUA & Laboratorium Komputer Terpadu (Sesi Digital ANBK)</li>
+              <li><strong>Ketentuan:</strong> Hadir tepat waktu, berpakaian seragam madrasah lengkap, dan membawa perlengkapan alat tulis.</li>
+            </ul>
+          </div>
+          <p class="mb-3">Mari persiapkan diri dengan belajar tekun, menjaga kesehatan, senantiasa berikhtiar dan berdoa, serta menjunjung tinggi kejujuran untuk meraih prestasi gemilang.</p>
+          <p class="text-xs text-slate-500 italic mt-4">— Panitia PTS & Kurikulum MTs. YASUA Pilangwetan</p>
+        `
+      },
+      prestasi: {
+        category: 'PRESTASI SISWA',
+        badgeClass: 'bg-emerald-600 text-white',
+        date: '22 September 2026',
+        title: 'Siswa MTs. YASUA Raih Juara 1 Olimpiade Sains & Robotika Tingkat Provinsi Jawa Tengah',
+        image: 'foto-upacara.webp',
+        content: `
+          <p class="mb-3">Alhamdulillahirabbil 'alamin, kabar membanggakan kembali hadir mengharumkan almamater tercinta. Delegasi siswa MTs. YASUA Pilangwetan berhasil meraih <strong>Juara 1 Lomba Olimpiade Sains Terapan & Robotika Madrasah Tingkat Provinsi Jawa Tengah</strong>.</p>
+          <p class="mb-3">Prestasi membanggakan ini diraih berkat dedikasi, bimbingan intensif dewan guru, dan ketekunan para siswa dalam program bimbingan sains serta penguasaan teknologi digital madrasah.</p>
+          <div class="p-3.5 rounded-xl bg-amber-50 border-l-4 border-amber-500 text-amber-900 text-xs sm:text-sm font-semibold my-3">
+            “Semoga pencapaian gemilang ini memicu semangat seluruh siswa-siswi MTs. YASUA untuk terus berkarya, mengukir prestasi, dan menebar manfaat.”
+          </div>
+          <p class="text-xs text-slate-500 italic">— Humas & Kesiswaan MTs. YASUA</p>
+        `
+      },
+      parenting: {
+        category: 'BERITA & KEGIATAN',
+        badgeClass: 'bg-blue-600 text-white',
+        date: '15 September 2026',
+        title: 'Workshop Parenting Akbar: Membangun Sinergi Rumah dan Sekolah Menuju Generasi Qur\'ani',
+        image: 'foto-kajian-santriwati.webp',
+        content: `
+          <p class="mb-3">MTs. YASUA Pilangwetan sukses menggelar kegiatan <strong>Workshop Parenting Akbar dan Silaturahmi Wali Siswa</strong> di Aula Madrasah yang dihadiri oleh ratusan orang tua/wali murid dari kelas VII, VIII, dan IX.</p>
+          <p class="mb-3">Mengangkat tema <em>“Membina Karakter Islami di Era Serba Digital”</em>, narasumber membagikan wawasan aplikatif mengenai pentingnya keteladanan orang tua, pendampingan belajar di rumah, serta sinergi erat bersama bapak/ibu guru di madrasah.</p>
+          <p class="text-xs text-slate-500 italic mt-4">— Komite Madrasah & Dewan Guru MTs. YASUA</p>
+        `
+      },
+      ppdb: {
+        category: 'PENGUMUMAN RESMI',
+        badgeClass: 'bg-amber-600 text-white',
+        date: '10 September 2026',
+        title: 'Penerimaan Peserta Didik Baru (PPDB) Tahun Ajaran 2026/2027 Resmi Dibuka',
+        image: 'foto-gedung.webp',
+        content: `
+          <p class="mb-3">Penerimaan Peserta Didik Baru (PPDB) MTs. YASUA Pilangwetan untuk Tahun Pelajaran 2026/2027 resmi dibuka secara daring dan luring.</p>
+          <p class="mb-3">Kami mengundang putra-putri lulusan SD/MI untuk bergabung bersama keluarga besar MTs. YASUA melalui:</p>
+          <ul class="list-disc list-inside space-y-1.5 mb-3 text-xs sm:text-sm">
+            <li><strong>Jalur Prestasi:</strong> Bebas biaya pendaftaran dan prioritas beasiswa tahfidz/akademik.</li>
+            <li><strong>Jalur Reguler:</strong> Pendaftaran mudah melalui tautan Google Form resmi di website ini.</li>
+          </ul>
+          <p class="mb-3">Dapatkan bimbingan kurikulum terpadu berasaskan Ahlus Sunnah Wal Jama’ah dan fasilitas pembelajaran modern.</p>
+          <p class="text-xs text-slate-500 italic mt-4">— Panitia PPDB MTs. YASUA Pilangwetan</p>
+        `
+      },
+      anbk: {
+        category: 'AKADEMIK & LAB KOMPUTER',
+        badgeClass: 'bg-purple-600 text-white',
+        date: '28 Agustus 2026',
+        title: 'Pelaksanaan Asesmen Nasional (ANBK) di Laboratorium Komputer Berlangsung Tertib & Lancar',
+        image: 'foto-labkom.webp',
+        content: `
+          <p class="mb-3">Pelaksanaan Asesmen Nasional Berbasis Komputer (ANBK) di Laboratorium Komputer MTs. YASUA Pilangwetan berjalan tertib, aman, dan 100% lancar.</p>
+          <p class="mb-3">Dukungan infrastruktur komputer yang representatif, cadangan listrik UPS, serta koneksi fiber optik berkecepatan tinggi memastikan seluruh peserta dapat mengerjakan asesmen literasi dan numerasi tanpa kendala teknis.</p>
+          <p class="text-xs text-slate-500 italic mt-4">— Tim Proktor & Teknisi ANBK MTs. YASUA</p>
+        `
+      }
+    };
+
+    function openNewsModal(newsId) {
+      const data = newsDetails[newsId];
+      if (!data) return;
+
+      const modal = document.getElementById('newsModal');
+      const img = document.getElementById('modalNewsImg');
+      const category = document.getElementById('modalNewsCategory');
+      const date = document.getElementById('modalNewsDate');
+      const title = document.getElementById('modalNewsTitle');
+      const content = document.getElementById('modalNewsContent');
+
+      img.src = data.image;
+      img.alt = data.title;
+      category.textContent = data.category;
+      category.className = `absolute bottom-3 left-4 px-3 py-1 rounded-full text-xs font-black shadow-md ${data.badgeClass}`;
+      date.textContent = data.date;
+      title.textContent = data.title;
+      content.innerHTML = data.content;
+
+      modal.classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+      lucide.createIcons();
+    }
+
+    function closeNewsModal() {
+      const modal = document.getElementById('newsModal');
+      if (modal) {
+        modal.classList.add('hidden');
+        document.body.style.overflow = '';
+      }
+    }
+
+    function openBrochureModal() {
+      const modal = document.getElementById('brochureModal');
+      if (modal) { modal.classList.remove('hidden'); document.body.style.overflow = 'hidden'; lucide.createIcons(); }
+    }
+    function closeBrochureModal() {
+      const modal = document.getElementById('brochureModal');
+      if (modal) { modal.classList.add('hidden'); document.body.style.overflow = ''; }
+    }
+    function printBrochure() { window.print(); }
+
+    window.addEventListener('click', (e) => {
+      const newsModal = document.getElementById('newsModal');
+      const brochureModal = document.getElementById('brochureModal');
+      if (e.target === newsModal) closeNewsModal();
+      if (e.target === brochureModal) closeBrochureModal();
+    });
+
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        closeNewsModal();
+        closeBrochureModal();
+      }
+    });
+  </script>
+
+</body>
+</html>
