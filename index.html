@@ -108,6 +108,8 @@
 
   <!-- Lucide Icons CDN -->
   <script src="https://unpkg.com/lucide@latest"></script>
+  <!-- Interactive Live Search Component -->
+  <script src="search.js" defer></script>
 
   <style>
     body {
@@ -663,12 +665,17 @@
         </div>
 
         <!-- Action Buttons -->
-        <div class="hidden lg:flex items-center gap-3">
-          <button onclick="openBrochureModal()"
-            class="w-9 h-9 rounded-full flex items-center justify-center bg-emerald-50 text-brand-primary hover:bg-emerald-100 transition-all cursor-pointer"
-            title="Buka &amp; Cetak Brosur PPDB">
-            <i data-lucide="printer" class="w-4 h-4 text-brand-gold"></i>
+        <div class="hidden lg:flex items-center gap-2.5">
+          <!-- Interactive Search Trigger Button -->
+          <button onclick="openSearchModal()" type="button"
+            class="flex items-center gap-2 px-3.5 py-2 rounded-full bg-slate-50 hover:bg-emerald-50/80 border border-slate-200/80 hover:border-emerald-200 text-slate-600 hover:text-brand-primary transition-all duration-200 cursor-pointer shadow-xs group"
+            title="Cari Informasi (Ctrl+K)" aria-label="Buka Pencarian Website">
+            <i data-lucide="search" class="w-4 h-4 text-emerald-700 group-hover:scale-110 transition-transform"></i>
+            <span class="text-xs font-semibold text-slate-600 group-hover:text-brand-primary">Cari info...</span>
+            <kbd class="hidden xl:inline-flex items-center px-1.5 py-0.5 text-[10px] font-bold text-slate-400 bg-white border border-slate-200 rounded shadow-xs ml-0.5">Ctrl K</kbd>
           </button>
+
+          <!-- Primary CTA Button (PPDB) -->
           <a href="ppdb.html"
             class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-gradient-to-r from-brand-accent to-amber-500 hover:from-amber-500 hover:to-brand-accent text-slate-950 font-black text-xs sm:text-[13px] shadow-glow-gold hover:scale-105 transition-all duration-200">
             <span>Daftar PPDB</span>
@@ -676,8 +683,13 @@
           </a>
         </div>
 
-        <!-- Mobile Menu Button -->
-        <div class="flex items-center gap-2 lg:hidden">
+        <!-- Mobile Menu & Search Button -->
+        <div class="flex items-center gap-1.5 lg:hidden">
+          <button onclick="openSearchModal()" type="button"
+            class="w-9 h-9 rounded-full flex items-center justify-center bg-emerald-50 text-brand-primary hover:bg-emerald-100 transition-colors cursor-pointer"
+            title="Cari" aria-label="Buka Pencarian">
+            <i data-lucide="search" class="w-4 h-4 text-emerald-800"></i>
+          </button>
           <a href="ppdb.html"
             class="px-3.5 py-1.5 rounded-full bg-brand-accent text-slate-950 text-xs font-black shadow-sm">
             PPDB
@@ -693,6 +705,16 @@
       <!-- Mobile Dropdown Menu -->
       <div id="mobileMenu"
         class="hidden lg:hidden pt-4 pb-2 border-t border-slate-100 mt-3 text-slate-700 flex flex-col space-y-3 max-h-[75vh] overflow-y-auto">
+        <!-- Quick Search Bar in Mobile Menu -->
+        <button onclick="toggleMobileMenu(); openSearchModal();" type="button"
+          class="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-500 text-xs font-semibold flex items-center justify-between hover:bg-emerald-50 hover:border-emerald-200 transition-colors cursor-pointer">
+          <span class="flex items-center gap-2">
+            <i data-lucide="search" class="w-4 h-4 text-emerald-700"></i>
+            <span>Cari di website MTs YASUA...</span>
+          </span>
+          <span class="text-[10px] bg-white px-2 py-0.5 rounded border border-slate-200 text-slate-400 font-bold">Buka</span>
+        </button>
+
         <a href="index.html"
           class="px-3.5 py-2 rounded-xl text-brand-primary bg-emerald-50 font-bold flex items-center justify-between">
           <span>Beranda</span>
