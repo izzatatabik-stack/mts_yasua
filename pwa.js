@@ -1,10 +1,10 @@
 /**
  * MTs YASUA Pilangwetan — Progressive Web App (PWA) & Mobile UX Controller
+ * - 2-Mode Experience: Web Profil (sebelum instal) vs App Dashboard Asnawiyyah (setelah instal)
  * - Service Worker Registration & Resilient Caching
  * - PWA Install Prompts (Android & iPhone / iOS Safari)
- * - Mobile Bottom Navigation Dock (Active on Mobile & Installed Standalone App)
- * - Settings Modal ("Pengaturan") with Font Size, Cache Refresh, App Status, and Menu Access
- * - Native-feel Navigation & Mobile Drawer Interactivity
+ * - Real-time Islamic Clock, Demak Prayer Times, and Hijri Calendar Widget
+ * - Mobile Bottom Navigation Dock (5 Tab) & Settings Modal
  */
 
 (function () {
@@ -36,8 +36,52 @@
 
   // 2. Detection (iOS, Android, Standalone)
   const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
-  const isStandalone =
-    window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true;
+
+  let isUrlPwa = false;
+  try {
+    const urlParams = new URLSearchParams(window.location.search);
+    isUrlPwa = urlParams.get('source') === 'pwa' || urlParams.get('mode') === 'app';
+    if (isUrlPwa) {
+      localStorage.removeItem('mts_preview_mode');
+    }
+  } catch (e) {}
+
+  function isRunningStandalone() {
+    if (isUrlPwa) return true;
+
+    return (
+      window.matchMedia('(display-mode: standalone)').matches ||
+      window.navigator.standalone === true ||
+      Boolean(document.referrer && document.referrer.includes('android-app://'))
+    );
+  }
+
+  // Check manual preview preference in localStorage if set by user
+  const savedMode = localStorage.getItem('mts_preview_mode');
+  const isStandalone = isUrlPwa
+    ? true
+    : savedMode === 'app'
+    ? true
+    : savedMode === 'web'
+    ? false
+    : isRunningStandalone();
+
+  function applyStandaloneMode() {
+    if (document.body) {
+      document.body.classList.add('is-pwa-standalone');
+    }
+    if (document.documentElement) {
+      document.documentElement.classList.add('is-pwa-standalone');
+    }
+  }
+
+  if (isStandalone) {
+    if (document.body) {
+      applyStandaloneMode();
+    } else {
+      document.addEventListener('DOMContentLoaded', applyStandaloneMode);
+    }
+  }
 
   let deferredPrompt = null;
 
@@ -50,7 +94,7 @@
     // Reveal any manual install buttons
     document.querySelectorAll('.pwa-install-btn').forEach((btn) => btn.classList.remove('hidden'));
 
-    // Show floating prompt after short delay if not standalone and not dismissed recently
+    // Show floating prompt only in browser mode (not standalone)
     const dismissed = localStorage.getItem('mts_pwa_dismissed');
     const now = Date.now();
     if (!isStandalone && (!dismissed || now - parseInt(dismissed, 10) > 7 * 24 * 60 * 60 * 1000)) {
@@ -66,17 +110,19 @@
     hidePwaPrompt();
     showToast('Aplikasi MTs YASUA berhasil dipasang di layar HP Anda!');
     localStorage.setItem('mts_pwa_installed', 'true');
+    // Switch to standalone app experience
+    document.body.classList.add('is-pwa-standalone');
     updateSettingsPwaStatus();
   });
 
   // 3. Inject PWA UI Elements (Banner, iOS Modal, Bottom Dock, Settings Modal)
   function createPwaUI() {
-    // A. Floating Install Banner (Positioned above bottom nav on mobile)
+    // A. Floating Install Banner (Active in browser mode)
     if (!document.getElementById('pwaInstallPrompt')) {
       const banner = document.createElement('div');
       banner.id = 'pwaInstallPrompt';
       banner.className =
-        'fixed bottom-20 sm:bottom-6 left-3 right-3 sm:left-auto sm:right-6 sm:w-96 z-50 transform translate-y-36 opacity-0 transition-all duration-300 pointer-events-none';
+        'fixed bottom-6 left-3 right-3 sm:left-auto sm:right-6 sm:w-96 z-50 transform translate-y-36 opacity-0 transition-all duration-300 pointer-events-none';
       banner.innerHTML = `
         <div class="glass-nav bg-white/95 backdrop-blur-md p-3.5 sm:p-4 rounded-2xl shadow-[0_16px_40px_rgba(6,95,70,0.22)] border border-emerald-100 flex items-center gap-3 pointer-events-auto">
           <img src="icon-192.png" alt="Logo MTs YASUA" class="w-11 h-11 rounded-xl object-contain shadow-xs bg-emerald-50 p-1 shrink-0">
@@ -139,10 +185,8 @@
       document.body.appendChild(modal);
     }
 
-    // C. Mobile Bottom Dock (App-Like Quick Navigation: Always active on mobile, even after PWA install)
+    // C. Mobile Bottom Dock (App-Like Quick Navigation - Active in App Dashboard Mode)
     if (!document.getElementById('mobileBottomDock')) {
-      document.body.classList.add('pb-20', 'lg:pb-0'); // prevent content being hidden behind bottom bar
-
       const currentPath = window.location.pathname.toLowerCase();
       const isHome = currentPath.endsWith('/') || currentPath.endsWith('/index.html') || currentPath === '';
       const isProg = currentPath.includes('program') || currentPath.includes('ekskul');
@@ -215,7 +259,27 @@
           </div>
 
           <div class="space-y-3.5">
-            <!-- 1. Aksesibilitas: Ukuran Teks -->
+            <!-- 1. Pilihan Gaya Tampilan Mobile -->
+            <div class="p-3.5 bg-slate-50 rounded-2xl border border-slate-100">
+              <div class="flex items-center justify-between mb-1.5">
+                <span class="text-xs font-bold text-slate-700 flex items-center gap-2">
+                  <svg class="w-4 h-4 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+                  <span>Gaya Tampilan Mobile</span>
+                </span>
+                <span id="currentModeLabel" class="text-[10px] bg-white px-2 py-0.5 rounded-full border border-slate-200 text-slate-600 font-bold">Otomatis</span>
+              </div>
+              <p class="text-[11px] text-slate-500 mb-2.5">Pilih tampilan Dashboard Aplikasi (ala Asnawiyyah) atau Web Profil Lengkap.</p>
+              <div class="grid grid-cols-2 gap-2">
+                <button onclick="window.setMobileExperienceMode('app')" class="py-2 px-3 rounded-xl text-xs font-bold border transition-all cursor-pointer text-center bg-emerald-50 text-brand-primary border-brand-primary shadow-2xs">
+                  Dashboard App
+                </button>
+                <button onclick="window.setMobileExperienceMode('web')" class="py-2 px-3 rounded-xl text-xs font-bold border border-slate-200 bg-white text-slate-700 hover:bg-slate-50 transition-all cursor-pointer text-center">
+                  Web Profil
+                </button>
+              </div>
+            </div>
+
+            <!-- 2. Aksesibilitas: Ukuran Teks -->
             <div class="p-3.5 bg-slate-50 rounded-2xl border border-slate-100">
               <div class="flex items-center justify-between mb-1.5">
                 <span class="text-xs font-bold text-slate-700 flex items-center gap-2">
@@ -235,7 +299,7 @@
               </div>
             </div>
 
-            <!-- 2. Status Aplikasi PWA -->
+            <!-- 3. Status Aplikasi PWA -->
             <div class="p-3.5 bg-slate-50 rounded-2xl border border-slate-100">
               <span class="text-xs font-bold text-slate-700 flex items-center gap-2 mb-1">
                 <svg class="w-4 h-4 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"/></svg>
@@ -246,7 +310,7 @@
               </div>
             </div>
 
-            <!-- 3. Sinkronisasi & Cache -->
+            <!-- 4. Sinkronisasi & Cache -->
             <div class="p-3.5 bg-slate-50 rounded-2xl border border-slate-100">
               <span class="text-xs font-bold text-slate-700 flex items-center gap-2 mb-1">
                 <svg class="w-4 h-4 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
@@ -259,16 +323,8 @@
               </button>
             </div>
 
-            <!-- 4. Navigasi Cepat & Bantuan Humas -->
+            <!-- 5. Navigasi Cepat & Bantuan Humas -->
             <div class="space-y-2 pt-1">
-              <button onclick="window.closeSettingsModal(); window.toggleMobileMenu();" class="w-full py-2.5 px-3.5 rounded-xl bg-emerald-50 hover:bg-emerald-100 text-brand-primary text-xs font-bold flex items-center justify-between transition-colors cursor-pointer border border-emerald-200">
-                <span class="flex items-center gap-2">
-                  <svg class="w-4 h-4 text-emerald-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
-                  <span>Buka Seluruh Menu Madrasah</span>
-                </span>
-                <svg class="w-4 h-4 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
-              </button>
-
               <a href="https://wa.me/6285649881966?text=Assalamu%27alaikum%20Admin%20MTs%20YASUA,%20saya%20butuh%20bantuan%20terkait%20layanan%20madrasah." target="_blank" rel="noopener noreferrer" class="w-full py-2.5 px-3.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold flex items-center justify-between transition-colors">
                 <span class="flex items-center gap-2">
                   <svg class="w-4 h-4 text-emerald-600" fill="currentColor" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
@@ -376,12 +432,18 @@
     if (modal) modal.classList.add('hidden');
   };
 
-  // 5. Settings Modal Controls
+  // 5. Settings Modal Controls & Mode Switcher
   window.openSettingsModal = function () {
     const modal = document.getElementById('settingsModal');
     if (!modal) return;
     updateSettingsPwaStatus();
     updateFontSizeUI();
+    const modeLabel = document.getElementById('currentModeLabel');
+    if (modeLabel) {
+      modeLabel.textContent = document.body.classList.contains('is-pwa-standalone')
+        ? 'Dashboard App'
+        : 'Web Profil';
+    }
     modal.classList.remove('hidden');
     hidePwaPrompt();
   };
@@ -389,6 +451,28 @@
   window.closeSettingsModal = function () {
     const modal = document.getElementById('settingsModal');
     if (modal) modal.classList.add('hidden');
+  };
+
+  window.setMobileExperienceMode = function (mode) {
+    if (mode === 'app') {
+      document.body.classList.add('is-pwa-standalone');
+      localStorage.setItem('mts_preview_mode', 'app');
+      showToast('Beralih ke tampilan Dashboard Aplikasi (Asnawiyyah).');
+    } else {
+      document.body.classList.remove('is-pwa-standalone');
+      localStorage.setItem('mts_preview_mode', 'web');
+      showToast('Beralih ke tampilan Web Profil Lengkap.');
+    }
+    window.closeSettingsModal();
+    if (window.lucide) window.lucide.createIcons();
+  };
+
+  window.togglePreviewWebMode = function () {
+    if (document.body.classList.contains('is-pwa-standalone')) {
+      window.setMobileExperienceMode('web');
+    } else {
+      window.setMobileExperienceMode('app');
+    }
   };
 
   function updateSettingsPwaStatus() {
@@ -462,12 +546,6 @@
     }
   }
 
-  // Initialize saved font size preference
-  const savedFontSize = localStorage.getItem('mts_text_size');
-  if (savedFontSize === 'large') {
-    document.documentElement.classList.add('text-lg-active');
-  }
-
   // Clear Cache and Refresh
   window.refreshAppCache = function () {
     if ('caches' in window) {
@@ -482,7 +560,75 @@
     }
   };
 
-  // 6. Toast Notifications
+  // 6. Real-time Clock, Demak Prayer Times & Pasaran Widget Controller
+  function initPrayerAndClockWidget() {
+    function updateClockAndPrayer() {
+      const now = new Date();
+
+      // Digital Clock
+      const hours = String(now.getHours()).padStart(2, '0');
+      const mins = String(now.getMinutes()).padStart(2, '0');
+      const secs = String(now.getSeconds()).padStart(2, '0');
+      const clockStr = `${hours}:${mins}:${secs} WIB`;
+      const clockEl = document.getElementById('home-digital-clock');
+      if (clockEl) clockEl.textContent = clockStr;
+
+      // Hari & Pasaran Jawa
+      const dayNames = ['Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu'];
+      const pasaranNames = ['Wage', 'Kliwon', 'Legi', 'Pahing', 'Pon'];
+      const daysSince1970 = Math.floor((now.getTime() + 7 * 3600 * 1000) / 86400000);
+      const pasaran = pasaranNames[(daysSince1970 + 3) % 5];
+      const dayName = dayNames[now.getDay()];
+
+      const dayEl = document.getElementById('home-current-day');
+      if (dayEl) dayEl.textContent = `${dayName} ${pasaran}`;
+
+      // Tanggal Masehi
+      const months = [
+        'Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni',
+        'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'
+      ];
+      const masehiStr = `${now.getDate()} ${months[now.getMonth()]} ${now.getFullYear()}`;
+      const masehiEl = document.getElementById('home-date-masehi');
+      if (masehiEl) masehiEl.textContent = masehiStr;
+
+      // Tanggal Hijriyah (Approximate Islamic Lunar for 2026/2027)
+      const hijriEl = document.getElementById('home-date-hijri');
+      if (hijriEl && !hijriEl.textContent.trim()) {
+        hijriEl.textContent = '15 Jumadil Ula 1448 H';
+      }
+
+      // Waktu Shalat Demak (Kemenag standard approx)
+      const prayers = [
+        { name: 'Subuh', h: 4, m: 2 },
+        { name: 'Terbit', h: 5, m: 20 },
+        { name: 'Zuhur', h: 11, m: 35 },
+        { name: 'Ashar', h: 14, m: 52 },
+        { name: 'Maghrib', h: 17, m: 46 },
+        { name: 'Isya', h: 18, m: 58 }
+      ];
+
+      const currentMins = now.getHours() * 60 + now.getMinutes();
+      let nextP = prayers.find((p) => p.h * 60 + p.m > currentMins);
+      if (!nextP) nextP = prayers[0];
+
+      const prayerNameEl = document.getElementById('home-next-prayer-name');
+      const prayerTimeEl = document.getElementById('home-next-prayer-time');
+      if (prayerNameEl && prayerTimeEl) {
+        if (prayerNameEl.childNodes[0]) {
+          prayerNameEl.childNodes[0].textContent = nextP.name + ' ';
+        } else {
+          prayerNameEl.textContent = nextP.name + ' ';
+        }
+        prayerTimeEl.textContent = `${String(nextP.h).padStart(2, '0')}:${String(nextP.m).padStart(2, '0')} WIB`;
+      }
+    }
+
+    updateClockAndPrayer();
+    setInterval(updateClockAndPrayer, 1000);
+  }
+
+  // 7. Toast Notifications
   function showToast(msg) {
     const toast = document.createElement('div');
     toast.className =
@@ -512,7 +658,7 @@
     document.body.appendChild(toast);
   }
 
-  // 7. Enhanced Mobile Navigation Controller
+  // 8. Enhanced Mobile Navigation Controller
   function initMobileNav() {
     const nav = document.querySelector('header nav');
     const mobileMenu = document.getElementById('mobileMenu');
@@ -591,18 +737,34 @@
     }
   }
 
-  // 8. Network Online/Offline Indicators
-  window.addEventListener('online', () => showToast('Koneksi pulih. Anda kembali online.'));
-  window.addEventListener('offline', () => showToast('Mode offline aktif. Halaman tersimpan tetap dapat dibaca.'));
+  // 9. Banner Auto Slide in App Mode
+  function initAppBannerSlider() {
+    const track = document.getElementById('appBannerTrack');
+    if (!track) return;
+    let slideIdx = 0;
+    const total = track.children.length;
+    if (total <= 1) return;
+
+    setInterval(() => {
+      slideIdx = (slideIdx + 1) % total;
+      track.style.transform = `translateX(-${slideIdx * 100}%)`;
+    }, 4500);
+  }
 
   // Initialize
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', () => {
       createPwaUI();
       initMobileNav();
+      initPrayerAndClockWidget();
+      initAppBannerSlider();
+      if (window.lucide) window.lucide.createIcons();
     });
   } else {
     createPwaUI();
     initMobileNav();
+    initPrayerAndClockWidget();
+    initAppBannerSlider();
+    if (window.lucide) window.lucide.createIcons();
   }
 })();

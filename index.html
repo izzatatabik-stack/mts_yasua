@@ -124,6 +124,83 @@
   <script src="pwa.js" defer></script>
 
   <style>
+    
+    /* ==========================================================================
+       ADAPTASI TAMPILAN MOBILE: SEBELUM DIINSTAL vs SETELAH DIINSTAL (PERSIS ASNAWIYYAH)
+       ========================================================================== */
+    /* Mode 1: Mobile Web Sebelum Diinstal (Browser Chrome/Safari di Layar < 1024px):
+       - Menampilkan konten portal profil institusional (#beranda-portal-content)
+       - Menyembunyikan #beranda-mobile-app
+       - Menyembunyikan #mobileBottomDock agar tidak mengganggu pembacaan web */
+    #beranda-portal-content {
+      display: block;
+    }
+    #beranda-mobile-app {
+      display: none;
+    }
+    #mobileBottomDock {
+      display: none;
+    }
+
+    /* Mode 2: Mobile Setelah Diinstal (PWA Standalone di Layar Utama HP - Persis Asnawiyyah):
+       - Menyembunyikan #beranda-portal-content (Landing Page Luar)
+       - Menampilkan #beranda-mobile-app (Widget Sholat, 8 Ikon Layanan, Banner Slider, Headline)
+       - Menampilkan #mobileBottomDock (Dok 5 tab: Beranda, Program, PPDB, Agenda, Pengaturan)
+       - Menyembunyikan floating web header di mobile, diganti dengan App Header */
+    @media all and (display-mode: standalone) and (max-width: 1023px) {
+      #main-web-header { display: none !important; }
+      #beranda-portal-content { display: none !important; }
+      #beranda-mobile-app { display: block !important; }
+      #mobileBottomDock { display: block !important; }
+      #pwaInstallPrompt { display: none !important; }
+      body { padding-bottom: 5rem !important; }
+    }
+    html.is-pwa-standalone #main-web-header,
+    body.is-pwa-standalone #main-web-header {
+      display: none !important;
+    }
+    html.is-pwa-standalone #beranda-portal-content,
+    body.is-pwa-standalone #beranda-portal-content {
+      display: none !important;
+    }
+    html.is-pwa-standalone #beranda-mobile-app,
+    body.is-pwa-standalone #beranda-mobile-app {
+      display: block !important;
+    }
+    html.is-pwa-standalone #mobileBottomDock,
+    body.is-pwa-standalone #mobileBottomDock {
+      display: block !important;
+    }
+    html.is-pwa-standalone #pwaInstallPrompt,
+    body.is-pwa-standalone #pwaInstallPrompt {
+      display: none !important;
+    }
+    html.is-pwa-standalone,
+    body.is-pwa-standalone {
+      padding-bottom: 5rem !important;
+    }
+
+    /* Layar Desktop / Tablet Lebar (>= 1024px) pada Web Browser biasa (sebelum diinstal):
+       Selalu tampilkan konten portal institusional dan sembunyikan mobile app */
+    @media (min-width: 1024px) {
+      html:not(.is-pwa-standalone) #main-web-header,
+      body:not(.is-pwa-standalone) #main-web-header {
+        display: block !important;
+      }
+      html:not(.is-pwa-standalone) #beranda-portal-content,
+      body:not(.is-pwa-standalone) #beranda-portal-content {
+        display: block !important;
+      }
+      html:not(.is-pwa-standalone) #beranda-mobile-app,
+      body:not(.is-pwa-standalone) #beranda-mobile-app {
+        display: none !important;
+      }
+      html:not(.is-pwa-standalone) #mobileBottomDock,
+      body:not(.is-pwa-standalone) #mobileBottomDock {
+        display: none !important;
+      }
+    }
+
     /* Mobile Viewport, Touch & Safe-Area Adjustments (Android & iPhone) */
     html {
       overflow-x: hidden;
@@ -527,7 +604,7 @@
   class="antialiased text-slate-800 bg-[#F4FBF7] min-h-screen flex flex-col selection:bg-emerald-200 selection:text-brand-dark">
 
   <!-- FLOATING NAVIGATION BAR (Glassmorphism Header) -->
-  <header
+  <header id="main-web-header"
     class="sticky top-3 sm:top-4 z-40 px-3 sm:px-6 lg:px-8 w-full transition-all duration-300 -mb-[76px] sm:-mb-[84px] lg:-mb-[88px] pointer-events-none">
     <nav
       class="max-w-7xl mx-auto glass-nav rounded-full shadow-[0_12px_40px_rgba(6,95,70,0.12)] border border-white/80 px-4 sm:px-6 lg:px-8 py-2.5 sm:py-3 transition-all duration-300 pointer-events-auto">
@@ -885,6 +962,11 @@
       </div>
     </nav>
   </header>
+
+  <!-- =================================================================== -->
+  <!-- 1. TAMPILAN WEB PORTAL SEBELUM DIINSTAL (Mobile Browser & Desktop)  -->
+  <!-- =================================================================== -->
+  <div id="beranda-portal-content" class="flex flex-col flex-1">
 
   <!-- MAIN CONTENT -->
   <main class="flex-1">
@@ -1938,6 +2020,248 @@
       </div>
     </div>
   </footer>
+    </div>
+    <!-- END #beranda-portal-content -->
+
+    <!-- =================================================================== -->
+    <!-- 2. KHUSUS TAMPILAN MOBILE SETELAH DIINSTAL (PWA STANDALONE ASNAWIYYAH) -->
+    <!-- =================================================================== -->
+    <div id="beranda-mobile-app" class="max-w-xl mx-auto px-3 pt-2 pb-6 space-y-2.5">
+
+      <!-- Header Bar App Mobile (Emerald Gradient) -->
+      <header class="bg-gradient-to-r from-[#022c1f] via-[#065F46] to-[#0A6B48] text-white p-3 rounded-2xl shadow-sm border border-emerald-700/80 flex items-center justify-between">
+        <div class="flex items-center gap-2.5">
+          <img src="logo.png" alt="Logo MTs YASUA" class="w-10 h-10 object-contain drop-shadow p-0.5 bg-white/10 rounded-xl">
+          <div class="flex flex-col">
+            <span class="arabic-font text-amber-300 text-xs leading-none font-bold">المعهد الإسلامي سعادة - فيلانجويتان</span>
+            <span class="font-brand-title font-black text-white text-sm sm:text-base tracking-wide leading-tight mt-0.5">MTs YASUA PILANGWETAN</span>
+            <span class="text-[9px] font-extrabold tracking-widest text-emerald-200 uppercase">PILANGWETAN — KEBONAGUNG — DEMAK</span>
+          </div>
+        </div>
+        <div class="flex items-center gap-1.5">
+          <button onclick="openSearchModal()" type="button" class="w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-white transition-colors cursor-pointer" title="Cari Informasi" aria-label="Cari">
+            <i data-lucide="search" class="w-4 h-4"></i>
+          </button>
+          <button onclick="window.openSettingsModal()" type="button" class="w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-amber-300 relative transition-colors cursor-pointer" title="Pemberitahuan &amp; Pengaturan" aria-label="Pengaturan">
+            <i data-lucide="bell" class="w-4 h-4"></i>
+            <span class="absolute top-1 right-1 w-2 h-2 rounded-full bg-amber-400 animate-ping"></span>
+            <span class="absolute top-1 right-1 w-2 h-2 rounded-full bg-amber-400"></span>
+          </button>
+        </div>
+      </header>
+
+      <!-- Widget Lokasi & Jadwal Sholat Demak Real-Time (Persis Asnawiyyah) -->
+      <section class="bg-gradient-to-r from-emerald-950 via-teal-950 to-emerald-900 text-white px-3.5 py-2.5 rounded-2xl shadow-sm border border-emerald-700/80 relative overflow-hidden space-y-2">
+        <!-- Background Watermark -->
+        <div class="absolute -right-4 -bottom-4 text-white/5 pointer-events-none">
+          <i data-lucide="moon" class="w-24 h-24"></i>
+        </div>
+
+        <!-- Baris 1: Lokasi & Hari Pasaran Jawa (Kiri) | Shalat Terdekat & Jam Digital (Kanan) -->
+        <div class="flex justify-between items-start gap-2 relative z-10">
+          <!-- Kiri -->
+          <div class="flex flex-col items-start space-y-1 min-w-0 flex-1">
+            <div class="flex items-center space-x-1 font-bold text-white leading-tight text-[11px] truncate w-full">
+              <i data-lucide="map-pin" class="w-3 h-3 text-amber-400 shrink-0"></i>
+              <span class="truncate">Kab. Demak, Jawa Tengah</span>
+            </div>
+            <div id="home-current-day" class="font-mono font-bold text-amber-300 bg-black/40 px-2 py-0.5 rounded-md border border-amber-400/20 text-[10.5px] inline-flex items-center tracking-wide">
+              Selasa Pahing
+            </div>
+          </div>
+
+          <!-- Kanan -->
+          <div class="flex flex-col items-end space-y-1 shrink-0 ml-1">
+            <div id="home-next-prayer-name" class="font-bold text-white text-right leading-tight text-[11.5px]">
+              Subuh <span id="home-next-prayer-time" class="text-amber-300 font-semibold ml-1">04:02 WIB</span>
+            </div>
+            <div id="home-digital-clock" class="font-mono font-bold text-amber-300 bg-black/40 px-2 py-0.5 rounded-md border border-amber-400/20 text-[10.5px] inline-flex items-center tracking-wider">
+              08:48:58 WIB
+            </div>
+          </div>
+        </div>
+
+        <!-- Baris 2: Tanggal Masehi (Kiri) & Tanggal Hijriyah (Kanan) -->
+        <div class="flex justify-between items-center text-emerald-100/90 relative z-10 pt-1 border-t border-emerald-800/60 text-[10px]">
+          <div class="flex items-center space-x-1.5 text-slate-200 font-medium">
+            <i data-lucide="calendar" class="w-3 h-3 text-emerald-300"></i>
+            <span id="home-date-masehi">27 Oktober 2026</span>
+          </div>
+          <div class="flex items-center space-x-1.5 text-amber-300 font-medium">
+            <i data-lucide="sparkles" class="w-3 h-3 text-amber-400"></i>
+            <span id="home-date-hijri">15 Jumadil Ula 1448 H</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Menu Grid Layanan Cepat (4 Kolom x 2 Baris = 8 Ikon - Persis Asnawiyyah) -->
+      <div class="bg-white p-3 rounded-2xl border border-emerald-100/80 shadow-xs">
+        <div class="grid grid-cols-4 gap-y-3 gap-x-2">
+          <!-- 1. Program Pilihan -->
+          <a href="program.html" class="flex flex-col items-center group active:scale-95 transition-transform text-center">
+            <div class="w-12 h-12 bg-amber-50 text-amber-600 rounded-2xl flex items-center justify-center text-lg shadow-2xs border border-amber-100 group-hover:bg-amber-500 group-hover:text-white transition-colors">
+              <i data-lucide="book-open" class="w-5 h-5"></i>
+            </div>
+            <span class="text-[10px] mt-1.5 font-bold text-slate-700 leading-tight">Program Pilihan</span>
+          </a>
+
+          <!-- 2. Jadwal Kegiatan -->
+          <a href="agenda.html" class="flex flex-col items-center group active:scale-95 transition-transform text-center">
+            <div class="w-12 h-12 bg-rose-50 text-rose-600 rounded-2xl flex items-center justify-center text-lg shadow-2xs border border-rose-100 group-hover:bg-rose-500 group-hover:text-white transition-colors">
+              <i data-lucide="calendar-days" class="w-5 h-5"></i>
+            </div>
+            <span class="text-[10px] mt-1.5 font-bold text-slate-700 leading-tight">Jadwal Kegiatan</span>
+          </a>
+
+          <!-- 3. Unit Ekskul -->
+          <a href="ekskul.html" class="flex flex-col items-center group active:scale-95 transition-transform text-center">
+            <div class="w-12 h-12 bg-blue-50 text-blue-600 rounded-2xl flex items-center justify-center text-lg shadow-2xs border border-blue-100 group-hover:bg-blue-500 group-hover:text-white transition-colors">
+              <i data-lucide="users" class="w-5 h-5"></i>
+            </div>
+            <span class="text-[10px] mt-1.5 font-bold text-slate-700 leading-tight">Unit Ekskul</span>
+          </a>
+
+          <!-- 4. Prestasi Siswa -->
+          <a href="prestasi.html" class="flex flex-col items-center group active:scale-95 transition-transform text-center">
+            <div class="w-12 h-12 bg-purple-50 text-purple-600 rounded-2xl flex items-center justify-center text-lg shadow-2xs border border-purple-100 group-hover:bg-purple-500 group-hover:text-white transition-colors">
+              <i data-lucide="trophy" class="w-5 h-5"></i>
+            </div>
+            <span class="text-[10px] mt-1.5 font-bold text-slate-700 leading-tight">Prestasi Siswa</span>
+          </a>
+
+          <!-- 5. Profil Madrasah -->
+          <a href="profil.html" class="flex flex-col items-center group active:scale-95 transition-transform text-center">
+            <div class="w-12 h-12 bg-teal-50 text-teal-700 rounded-2xl flex items-center justify-center text-lg shadow-2xs border border-teal-100 group-hover:bg-teal-600 group-hover:text-white transition-colors">
+              <i data-lucide="landmark" class="w-5 h-5"></i>
+            </div>
+            <span class="text-[10px] mt-1.5 font-bold text-slate-700 leading-tight">Profil YASUA</span>
+          </a>
+
+          <!-- 6. Portal Alumni -->
+          <a href="alumni.html" class="flex flex-col items-center group active:scale-95 transition-transform text-center">
+            <div class="w-12 h-12 bg-orange-50 text-orange-600 rounded-2xl flex items-center justify-center text-lg shadow-2xs border border-orange-100 group-hover:bg-orange-500 group-hover:text-white transition-colors">
+              <i data-lucide="graduation-cap" class="w-5 h-5"></i>
+            </div>
+            <span class="text-[10px] mt-1.5 font-bold text-slate-700 leading-tight">Alumni IKAMAS</span>
+          </a>
+
+          <!-- 7. Galeri Media -->
+          <a href="galeri.html" class="flex flex-col items-center group active:scale-95 transition-transform text-center">
+            <div class="w-12 h-12 bg-sky-50 text-sky-600 rounded-2xl flex items-center justify-center text-lg shadow-2xs border border-sky-100 group-hover:bg-sky-500 group-hover:text-white transition-colors">
+              <i data-lucide="camera" class="w-5 h-5"></i>
+            </div>
+            <span class="text-[10px] mt-1.5 font-bold text-slate-700 leading-tight">Galeri Foto</span>
+          </a>
+
+          <!-- 8. Pendaftaran PPDB -->
+          <a href="ppdb.html" class="flex flex-col items-center group active:scale-95 transition-transform text-center">
+            <div class="w-12 h-12 bg-emerald-50 text-emerald-700 rounded-2xl flex items-center justify-center text-lg shadow-2xs border border-emerald-200 group-hover:bg-brand-primary group-hover:text-white transition-colors ring-2 ring-emerald-500/20">
+              <i data-lucide="user-plus" class="w-5 h-5"></i>
+            </div>
+            <span class="text-[10px] mt-1.5 font-black text-brand-dark leading-tight">Daftar PPDB</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Banner Slider Promo / Pengumuman -->
+      <div class="relative overflow-hidden rounded-2xl shadow-xs border border-emerald-100 bg-white">
+        <div id="appBannerTrack" class="flex transition-transform duration-500 ease-out">
+          <!-- Slide 1 -->
+          <div class="w-full shrink-0 relative aspect-[21/9] bg-gradient-to-r from-emerald-900 to-[#022c1f] text-white p-3.5 flex flex-col justify-center">
+            <span class="text-[9px] font-bold text-amber-300 uppercase tracking-widest">PENERIMAAN SANTRI BARU (PPDB)</span>
+            <h4 class="font-black text-xs sm:text-sm leading-snug mt-0.5">Gelombang 1 Dibuka: Beasiswa Tahfidz &amp; Prestasi</h4>
+            <p class="text-[9.5px] text-emerald-200 mt-0.5">Daftarkan putra-putri Anda segera secara online.</p>
+          </div>
+          <!-- Slide 2 -->
+          <div class="w-full shrink-0 relative aspect-[21/9] bg-gradient-to-r from-amber-700 to-emerald-900 text-white p-3.5 flex flex-col justify-center">
+            <span class="text-[9px] font-bold text-white uppercase tracking-widest">SEMARAK MADRASAH</span>
+            <h4 class="font-black text-xs sm:text-sm leading-snug mt-0.5">Membentuk Karakter Aswaja &amp; Unggul Digital</h4>
+            <p class="text-[9.5px] text-amber-100 mt-0.5">Kajian Kitab Salaf, Tahfidzul Qur'an, &amp; Lab CBT.</p>
+          </div>
+        </div>
+        <!-- Banner Dots Indicator -->
+        <div class="absolute bottom-1.5 left-1/2 -translate-x-1/2 flex items-center gap-1.5 z-10">
+          <span class="w-2 h-2 rounded-full bg-white shadow-xs"></span>
+          <span class="w-1.5 h-1.5 rounded-full bg-white/50"></span>
+        </div>
+      </div>
+
+      <!-- Headline Kabar Madrasah (Format List Ringkas ala Asnawiyyah) -->
+      <div class="bg-white p-3.5 rounded-2xl border border-emerald-100/80 shadow-xs space-y-2.5">
+        <div class="flex items-center justify-between border-b border-slate-100 pb-2">
+          <div class="flex items-center gap-2">
+            <span class="w-2 h-4 bg-brand-primary rounded-full"></span>
+            <h3 class="font-black text-slate-900 text-xs sm:text-sm">Headline Madrasah</h3>
+          </div>
+          <a href="berita.html" class="text-[11px] font-bold text-brand-primary hover:underline flex items-center gap-0.5">
+            <span>Lihat Semua</span>
+            <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i>
+          </a>
+        </div>
+
+        <!-- List Berita 1 -->
+        <a href="berita.html" class="flex items-center gap-3 p-2 rounded-xl hover:bg-slate-50 transition-colors group">
+          <div class="flex-1 min-w-0">
+            <div class="flex items-center gap-2 mb-1">
+              <span class="px-2 py-0.5 rounded bg-emerald-100 text-emerald-800 font-extrabold text-[9px] uppercase">KEGIATAN</span>
+              <span class="text-[10px] text-slate-400 flex items-center gap-1">
+                <i data-lucide="eye" class="w-2.5 h-2.5"></i> 142
+              </span>
+            </div>
+            <h4 class="font-bold text-slate-800 group-hover:text-brand-primary text-xs line-clamp-2 leading-snug">
+              Penilaian Tengah Semester (PTS) Gasal Berbasis CBT di Lab Komputer
+            </h4>
+            <span class="text-[10px] text-slate-400 mt-1 block">24 Oktober 2026</span>
+          </div>
+          <img src="foto-labkom.webp" alt="Lab Komputer" class="w-18 h-14 rounded-xl object-cover shrink-0 border border-slate-100">
+        </a>
+
+        <!-- List Berita 2 -->
+        <a href="berita.html" class="flex items-center gap-3 p-2 rounded-xl hover:bg-slate-50 transition-colors group border-t border-slate-50">
+          <div class="flex-1 min-w-0">
+            <div class="flex items-center gap-2 mb-1">
+              <span class="px-2 py-0.5 rounded bg-amber-100 text-amber-800 font-extrabold text-[9px] uppercase">PRESTASI</span>
+              <span class="text-[10px] text-slate-400 flex items-center gap-1">
+                <i data-lucide="eye" class="w-2.5 h-2.5"></i> 89
+              </span>
+            </div>
+            <h4 class="font-bold text-slate-800 group-hover:text-brand-primary text-xs line-clamp-2 leading-snug">
+              Santri MTs YASUA Borong Juara Kaligrafi &amp; MTQ Tingkat Kabupaten Demak
+            </h4>
+            <span class="text-[10px] text-slate-400 mt-1 block">18 Oktober 2026</span>
+          </div>
+          <img src="foto-kajian-santriwati.webp" alt="Santriwati Kajian" class="w-18 h-14 rounded-xl object-cover shrink-0 border border-slate-100">
+        </a>
+
+        <!-- List Berita 3 -->
+        <a href="berita.html" class="flex items-center gap-3 p-2 rounded-xl hover:bg-slate-50 transition-colors group border-t border-slate-50">
+          <div class="flex-1 min-w-0">
+            <div class="flex items-center gap-2 mb-1">
+              <span class="px-2 py-0.5 rounded bg-blue-100 text-blue-800 font-extrabold text-[9px] uppercase">KESISWAAN</span>
+              <span class="text-[10px] text-slate-400 flex items-center gap-1">
+                <i data-lucide="eye" class="w-2.5 h-2.5"></i> 210
+              </span>
+            </div>
+            <h4 class="font-bold text-slate-800 group-hover:text-brand-primary text-xs line-clamp-2 leading-snug">
+              Pembiasaan Sholat Berjamaah, Dhuha &amp; Istighosah Rutin Santri
+            </h4>
+            <span class="text-[10px] text-slate-400 mt-1 block">12 Oktober 2026</span>
+          </div>
+          <img src="foto-sholat-santri.webp" alt="Sholat Berjamaah" class="w-18 h-14 rounded-xl object-cover shrink-0 border border-slate-100">
+        </a>
+      </div>
+
+      <!-- Mode Switcher Pill (Bisa beralih melihat Web Profil kapanpun) -->
+      <div class="text-center pt-2 pb-4">
+        <button onclick="window.togglePreviewWebMode()" class="px-4 py-2 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-600 text-[11px] font-bold border border-slate-200 transition-colors cursor-pointer inline-flex items-center gap-1.5">
+          <i data-lucide="globe" class="w-3.5 h-3.5 text-brand-primary"></i>
+          <span>Beralih ke Tampilan Web Profil Lengkap</span>
+        </button>
+      </div>
+
+    </div>
+    <!-- END #beranda-mobile-app -->
+
 
   <!-- MODAL BACA DETAIL BERITA & PENGUMUMAN -->
   <div id="newsModal"
