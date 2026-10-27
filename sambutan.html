@@ -2,14 +2,24 @@
 <html lang="id" class="scroll-smooth">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>Sambutan Kepala Madrasah — MTs YASUA Pilangwetan</title>
   <meta name="description" content="Sambutan resmi Kepala Madrasah MTs YASUA Pilangwetan, Muthohar, S.Pd. Membina karakter Islami berlandaskan Ahlus Sunnah Wal Jama'ah dan literasi digital.">
   <meta name="keywords" content="Sambutan Kepala Madrasah, MTs YASUA, Muthohar SPd, Madrasah Demak, Kebonagung Demak">
   
   <!-- Favicon & Touch Icons -->
   <link rel="icon" type="image/png" href="logo.png">
-  <link rel="apple-touch-icon" href="logo.png">
+    <!-- PWA & Mobile Web App Meta (Android & iOS Safari) -->
+  <meta name="theme-color" content="#065F46">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="MTs YASUA">
+  <meta name="application-name" content="MTs YASUA">
+  <meta name="format-detection" content="telephone=no">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
   <link rel="canonical" href="https://mts-yasua.vercel.app/sambutan.html">
 
   <!-- Open Graph Meta -->
@@ -63,8 +73,24 @@
   <script src="https://unpkg.com/lucide@latest"></script>
   <!-- Interactive Live Search Component -->
   <script src="search.js" defer></script>
+  <!-- Progressive Web App (PWA) & Mobile Interaction Controller -->
+  <script src="pwa.js" defer></script>
 
   <style>
+    /* Mobile Viewport, Touch & Safe-Area Adjustments (Android & iPhone) */
+    html {
+      overflow-x: hidden;
+      width: 100%;
+      -webkit-text-size-adjust: 100%;
+      touch-action: manipulation;
+    }
+
+    body {
+      overflow-x: hidden;
+      width: 100%;
+      -webkit-tap-highlight-color: transparent;
+    }
+
     body {
       font-family: 'Plus Jakarta Sans', sans-serif;
     }

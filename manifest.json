@@ -1,0 +1,80 @@
+{
+  "$schema": "https://json.schemastore.org/web-manifest-combined.json",
+  "id": "id.sch.mtsyasua.portal",
+  "name": "MTs YASUA Pilangwetan",
+  "short_name": "MTs YASUA",
+  "description": "Website Resmi dan Portal Informasi Madrasah Tsanawiyah YASUA Pilangwetan, Kebonagung, Demak.",
+  "start_url": "index.html",
+  "scope": "./",
+  "display": "standalone",
+  "display_override": ["standalone", "minimal-ui", "window-controls-overlay"],
+  "orientation": "portrait-primary",
+  "background_color": "#F4FBF7",
+  "theme_color": "#065F46",
+  "lang": "id",
+  "dir": "ltr",
+  "categories": ["education", "social", "productivity"],
+  "icons": [
+    {
+      "src": "icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icon-maskable.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Pendaftaran PPDB",
+      "short_name": "PPDB",
+      "description": "Pendaftaran Santri Baru MTs YASUA",
+      "url": "ppdb.html",
+      "icons": [{ "src": "icon-192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Jadwal & Agenda",
+      "short_name": "Agenda",
+      "description": "Kalender Pendidikan & Rutinitas Madrasah",
+      "url": "agenda.html",
+      "icons": [{ "src": "icon-192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Prestasi Siswa",
+      "short_name": "Prestasi",
+      "description": "Galeri Juara & Medali Siswa",
+      "url": "prestasi.html",
+      "icons": [{ "src": "icon-192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Portal Alumni",
+      "short_name": "Alumni",
+      "description": "Jejaring Alumni IKAMAS YASUA",
+      "url": "alumni.html",
+      "icons": [{ "src": "icon-192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Kontak Madrasah",
+      "short_name": "Kontak",
+      "description": "Hubungi Admin & Layanan Informasi",
+      "url": "kontak.html",
+      "icons": [{ "src": "icon-192.png", "sizes": "192x192" }]
+    }
+  ]
+}
