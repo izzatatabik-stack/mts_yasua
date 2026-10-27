@@ -2026,29 +2026,34 @@
     <!-- =================================================================== -->
     <!-- 2. KHUSUS TAMPILAN MOBILE SETELAH DIINSTAL (PWA STANDALONE ASNAWIYYAH) -->
     <!-- =================================================================== -->
-    <div id="beranda-mobile-app" class="max-w-xl mx-auto px-3 pt-2 pb-6 space-y-2.5">
+    <div id="beranda-mobile-app" class="w-full">
 
-      <!-- Header Bar App Mobile (Emerald Gradient) -->
-      <header class="bg-gradient-to-r from-[#022c1f] via-[#065F46] to-[#0A6B48] text-white p-3 rounded-2xl shadow-sm border border-emerald-700/80 flex items-center justify-between">
-        <div class="flex items-center gap-2.5">
-          <img src="logo.png" alt="Logo MTs YASUA" class="w-10 h-10 object-contain drop-shadow p-0.5 bg-white/10 rounded-xl">
-          <div class="flex flex-col">
-            <span class="arabic-font text-amber-300 text-xs leading-none font-bold">المعهد الإسلامي سعادة - فيلانجويتان</span>
-            <span class="font-brand-title font-black text-white text-sm sm:text-base tracking-wide leading-tight mt-0.5">MTs YASUA PILANGWETAN</span>
-            <span class="text-[9px] font-extrabold tracking-widest text-emerald-200 uppercase">PILANGWETAN — KEBONAGUNG — DEMAK</span>
+      <!-- Header Bar App Mobile (Menyatu ke atas seperti bottom navbar, full-width) -->
+      <header class="sticky top-0 z-30 w-full bg-gradient-to-r from-[#022c1f] via-[#065F46] to-[#0A6B48] text-white shadow-md border-b border-emerald-700/80 pt-[max(0.75rem,env(safe-area-inset-top,0px))] pb-3 px-3.5 sm:px-4">
+        <div class="max-w-xl mx-auto flex items-center justify-between">
+          <div class="flex items-center gap-2.5">
+            <img src="logo.png" alt="Logo MTs YASUA" class="w-10 h-10 object-contain drop-shadow p-0.5 bg-white/10 rounded-xl shrink-0">
+            <div class="flex flex-col">
+              <span class="arabic-font text-amber-300 text-xs sm:text-sm leading-none font-bold">المدرسة الثانوية الإسلامية ياسوا</span>
+              <span class="font-brand-title font-black text-white text-base sm:text-lg tracking-wide leading-tight mt-0.5">MTs YASUA</span>
+              <span class="text-[10px] font-bold tracking-wide text-emerald-200 mt-0.5">Pilangwetan - Demak</span>
+            </div>
+          </div>
+          <div class="flex items-center gap-1.5">
+            <button onclick="openSearchModal()" type="button" class="w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-white transition-colors cursor-pointer" title="Cari Informasi" aria-label="Cari">
+              <i data-lucide="search" class="w-4 h-4"></i>
+            </button>
+            <button onclick="window.openSettingsModal()" type="button" class="w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-amber-300 relative transition-colors cursor-pointer" title="Pemberitahuan &amp; Pengaturan" aria-label="Pengaturan">
+              <i data-lucide="bell" class="w-4 h-4"></i>
+              <span class="absolute top-1 right-1 w-2 h-2 rounded-full bg-amber-400 animate-ping"></span>
+              <span class="absolute top-1 right-1 w-2 h-2 rounded-full bg-amber-400"></span>
+            </button>
           </div>
         </div>
-        <div class="flex items-center gap-1.5">
-          <button onclick="openSearchModal()" type="button" class="w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-white transition-colors cursor-pointer" title="Cari Informasi" aria-label="Cari">
-            <i data-lucide="search" class="w-4 h-4"></i>
-          </button>
-          <button onclick="window.openSettingsModal()" type="button" class="w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-amber-300 relative transition-colors cursor-pointer" title="Pemberitahuan &amp; Pengaturan" aria-label="Pengaturan">
-            <i data-lucide="bell" class="w-4 h-4"></i>
-            <span class="absolute top-1 right-1 w-2 h-2 rounded-full bg-amber-400 animate-ping"></span>
-            <span class="absolute top-1 right-1 w-2 h-2 rounded-full bg-amber-400"></span>
-          </button>
-        </div>
       </header>
+
+      <!-- Area Konten Utama Mobile App (Widget Sholat, 8 Ikon, Slider, Berita) -->
+      <div class="max-w-xl mx-auto px-3 pt-2.5 pb-6 space-y-2.5">
 
       <!-- Widget Lokasi & Jadwal Sholat Demak Real-Time (Persis Asnawiyyah) -->
       <section class="bg-gradient-to-r from-emerald-950 via-teal-950 to-emerald-900 text-white px-3.5 py-2.5 rounded-2xl shadow-sm border border-emerald-700/80 relative overflow-hidden space-y-2">
@@ -2258,6 +2263,9 @@
           <span>Beralih ke Tampilan Web Profil Lengkap</span>
         </button>
       </div>
+
+      </div>
+      <!-- END Area Konten Utama Mobile App -->
 
     </div>
     <!-- END #beranda-mobile-app -->
