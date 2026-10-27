@@ -115,6 +115,46 @@
       keywords: ["guru", "pendidik", "ustadz", "ustadzah", "pengajar", "staf", "wali kelas", "tenaga kependidikan", "dewan guru"]
     },
     {
+      title: "Kemitraan & Nota Kesepahaman (MOU)",
+      category: "Profil",
+      categoryLabel: "Kemitraan & Relasi",
+      badgeColor: "bg-teal-100 text-teal-800 border-teal-200",
+      icon: "handshake",
+      url: "mou.html",
+      snippet: "Jejaring kemitraan resmi dengan Kemenag Demak, Puskesmas, Polsek, BSI/BRI, pesantren, dan mitra dunia industri.",
+      keywords: ["mou", "kemitraan", "kerjasama", "instansi", "puskesmas", "kemenag", "polsek", "bank", "bsi", "bri", "pesantren", "komite", "relasi"]
+    },
+    {
+      title: "Jadwal & Agenda Kegiatan Madrasah",
+      category: "Program",
+      categoryLabel: "Kalender Akademik",
+      badgeColor: "bg-emerald-100 text-emerald-800 border-emerald-200",
+      icon: "calendar-days",
+      url: "agenda.html",
+      snippet: "Kalender akademik, agenda kegiatan tahunan, PHBI, asesmen/ujian madrasah, dan rutinitas harian santri.",
+      keywords: ["agenda", "jadwal", "kalender", "kegiatan", "akademik", "matsama", "kemah", "anbk", "pts", "pas", "phbi", "hari santri"]
+    },
+    {
+      title: "Prestasi Siswa MTs YASUA (Galeri Juara)",
+      category: "Program",
+      categoryLabel: "Prestasi Siswa",
+      badgeColor: "bg-amber-100 text-amber-800 border-amber-200",
+      icon: "trophy",
+      url: "prestasi.html",
+      snippet: "Daftar juara sains madrasah (KSM), MTQ, kaligrafi kontemporer, festival drumband, dan beasiswa prestasi yayasan.",
+      keywords: ["prestasi", "juara", "trofi", "ksm", "mtq", "kaligrafi", "drumband", "silat", "pramuka", "beasiswa", "medali", "lomba"]
+    },
+    {
+      title: "Portal Alumni MTs YASUA (IKAMAS)",
+      category: "Program",
+      categoryLabel: "Jejaring Alumni",
+      badgeColor: "bg-indigo-100 text-indigo-800 border-indigo-200",
+      icon: "graduation-cap",
+      url: "alumni.html",
+      snippet: "Ikatan Alumni MTs YASUA (IKAMAS), tracer study sebaran lulusan, kisah inspiratif santri, dan registrasi alumni.",
+      keywords: ["alumni", "ikamas", "tracer", "lulusan", "reuni", "pesantren", "mahasiswa", "kisah sukses", "pendataan alumni"]
+    },
+    {
       title: "Berita: Penilaian Tengah Semester (PTS) TA 2026/2027",
       category: "Berita",
       categoryLabel: "Pengumuman",
