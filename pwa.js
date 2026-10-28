@@ -858,13 +858,25 @@
   function initAppBannerSlider() {
     const track = document.getElementById('appBannerTrack');
     if (!track) return;
+    const dots = document.querySelectorAll('#appBannerDots span');
     let slideIdx = 0;
     const total = track.children.length;
     if (total <= 1) return;
 
+    function updateDots(idx) {
+      dots.forEach((dot, i) => {
+        if (i === idx) {
+          dot.className = 'w-4 h-1.5 rounded-full bg-amber-400 shadow-xs transition-all duration-300';
+        } else {
+          dot.className = 'w-1.5 h-1.5 rounded-full bg-white/60 transition-all duration-300';
+        }
+      });
+    }
+
     setInterval(() => {
       slideIdx = (slideIdx + 1) % total;
       track.style.transform = `translateX(-${slideIdx * 100}%)`;
+      updateDots(slideIdx);
     }, 4500);
   }
 

@@ -3,7 +3,7 @@
  * Progressive Web App (PWA) Offline Cache & Fast Loading
  */
 
-const CACHE_NAME = 'mts-yasua-cache-v1.2';
+const CACHE_NAME = 'mts-yasua-cache-v1.3';
 const OFFLINE_URL = 'index.html';
 
 // Critical core assets to pre-cache on install
@@ -34,7 +34,10 @@ const PRECACHE_ASSETS = [
   'icon-maskable.png',
   'apple-touch-icon.png',
   'foto-gedung.webp',
-  'kepala-madrasah.webp'
+  'kepala-madrasah.webp',
+  'banner_1.jpg',
+  'banner_2.jpg',
+  'banner_3.jpg'
 ];
 
 // Install Event: pre-cache static assets
