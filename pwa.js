@@ -189,8 +189,8 @@
     if (!document.getElementById('mobileBottomDock')) {
       const currentPath = window.location.pathname.toLowerCase();
       const isHome = currentPath.endsWith('/') || currentPath.endsWith('/index.html') || currentPath === '';
-      const isProg = currentPath.includes('program') || currentPath.includes('ekskul');
-      const isAgenda = currentPath.includes('agenda') || currentPath.includes('prestasi');
+      const isNews = currentPath.includes('berita') || currentPath.includes('kabar') || currentPath.includes('artikel');
+      const isCalendar = currentPath.includes('agenda') || currentPath.includes('kalender') || currentPath.includes('jadwal');
 
       const dock = document.createElement('nav');
       dock.id = 'mobileBottomDock';
@@ -204,24 +204,24 @@
             <span class="text-[9.5px] tracking-tight mt-0.5">Beranda</span>
           </a>
 
-          <!-- 2. Program -->
-          <a href="program.html" class="flex flex-col items-center justify-center py-1 ${isProg ? 'text-brand-primary font-bold' : 'text-slate-500 hover:text-brand-primary'} transition-colors">
-            <svg class="w-5 h-5 ${isProg ? 'stroke-[2.5]' : ''}" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
-            <span class="text-[9.5px] tracking-tight mt-0.5">Program</span>
+          <!-- 2. Berita (Menggantikan Program) -->
+          <a href="berita.html" class="flex flex-col items-center justify-center py-1 ${isNews ? 'text-brand-primary font-bold' : 'text-slate-500 hover:text-brand-primary'} transition-colors">
+            <svg class="w-5 h-5 ${isNews ? 'stroke-[2.5]' : ''}" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z"/></svg>
+            <span class="text-[9.5px] tracking-tight mt-0.5">Berita</span>
           </a>
 
-          <!-- 3. PPDB Online (Highlight Center Button) -->
-          <a href="ppdb.html" class="flex flex-col items-center justify-center -mt-5 group">
+          <!-- 3. QR Code (Highlight Center Button - Menggantikan PPDB) -->
+          <button onclick="window.openQrModal()" type="button" class="flex flex-col items-center justify-center -mt-5 group cursor-pointer focus:outline-none" title="Pindai & Tampilkan QR Code" aria-label="QR Code">
             <div class="w-12 h-12 rounded-full bg-gradient-to-tr from-brand-accent to-amber-500 text-slate-950 flex items-center justify-center shadow-glow-gold group-active:scale-95 transition-transform border-2 border-white">
-              <svg class="w-5 h-5 text-slate-950 stroke-[2.5]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z"/></svg>
+              <svg class="w-5 h-5 text-slate-950 stroke-[2.2]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v1m6 11h2m-6 0h-2v4m0-11v3m0 0h.01M12 12h4.01M16 20h4M4 12h4m12 0h.01M5 8h2a1 1 0 001-1V5a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1zm12 0h2a1 1 0 001-1V5a1 1 0 00-1-1h-2a1 1 0 00-1 1v2a1 1 0 001 1zM5 20h2a1 1 0 001-1v-2a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1z"/></svg>
             </div>
-            <span class="text-[10px] font-black text-brand-dark mt-0.5">PPDB</span>
-          </a>
+            <span class="text-[10px] font-black text-brand-dark mt-0.5">QR Code</span>
+          </button>
 
-          <!-- 4. Agenda -->
-          <a href="agenda.html" class="flex flex-col items-center justify-center py-1 ${isAgenda ? 'text-brand-primary font-bold' : 'text-slate-500 hover:text-brand-primary'} transition-colors">
-            <svg class="w-5 h-5 ${isAgenda ? 'stroke-[2.5]' : ''}" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
-            <span class="text-[9.5px] tracking-tight mt-0.5">Agenda</span>
+          <!-- 4. Kalender (Menggantikan Agenda) -->
+          <a href="agenda.html" class="flex flex-col items-center justify-center py-1 ${isCalendar ? 'text-brand-primary font-bold' : 'text-slate-500 hover:text-brand-primary'} transition-colors">
+            <svg class="w-5 h-5 ${isCalendar ? 'stroke-[2.5]' : ''}" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+            <span class="text-[9.5px] tracking-tight mt-0.5">Kalender</span>
           </a>
 
           <!-- 5. Pengaturan (Settings Modal Trigger) -->
@@ -337,6 +337,82 @@
         </div>
       `;
       document.body.appendChild(settingsModal);
+    }
+
+    // E. QR Code Modal ("Layanan QR Code & QRIS Madrasah")
+    if (!document.getElementById('qrCodeModal')) {
+      const qrModal = document.createElement('div');
+      qrModal.id = 'qrCodeModal';
+      qrModal.className =
+        'fixed inset-0 z-50 hidden bg-slate-900/60 backdrop-blur-xs flex items-end sm:items-center justify-center p-3 sm:p-4 transition-opacity';
+      qrModal.innerHTML = `
+        <div class="bg-white rounded-3xl max-w-sm sm:max-w-md w-full p-5 sm:p-6 shadow-2xl border border-emerald-100 transform transition-all text-slate-800 animate-in fade-in zoom-in-95 max-h-[90vh] overflow-y-auto">
+          <!-- Header -->
+          <div class="flex items-center justify-between pb-3.5 border-b border-slate-100 mb-4">
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 rounded-2xl bg-amber-50 text-amber-600 flex items-center justify-center border border-amber-200 shrink-0">
+                <svg class="w-5 h-5 stroke-[2.2]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v1m6 11h2m-6 0h-2v4m0-11v3m0 0h.01M12 12h4.01M16 20h4M4 12h4m12 0h.01M5 8h2a1 1 0 001-1V5a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1zm12 0h2a1 1 0 001-1V5a1 1 0 00-1-1h-2a1 1 0 00-1 1v2a1 1 0 001 1zM5 20h2a1 1 0 001-1v-2a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1z"/></svg>
+              </div>
+              <div>
+                <h3 class="font-bold text-base text-slate-900 leading-tight">Layanan QR Code &amp; QRIS</h3>
+                <p class="text-[11px] text-slate-500">MTs YASUA Pilangwetan</p>
+              </div>
+            </div>
+            <button onclick="window.closeQrModal()" class="w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-500 flex items-center justify-center cursor-pointer">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+            </button>
+          </div>
+
+          <!-- Tab Selector -->
+          <div class="flex items-center bg-slate-100 p-1 rounded-xl text-xs font-semibold mb-4">
+            <button id="qrTabPortalBtn" onclick="window.switchQrTab('portal')" class="flex-1 py-1.5 rounded-lg bg-white text-brand-dark shadow-xs transition-all cursor-pointer font-bold">
+              QR Portal Madrasah
+            </button>
+            <button id="qrTabQrisBtn" onclick="window.switchQrTab('qris')" class="flex-1 py-1.5 rounded-lg text-slate-500 hover:text-slate-800 transition-all cursor-pointer font-normal">
+              QRIS Infaq &amp; PPDB
+            </button>
+          </div>
+
+          <!-- Tab 1: QR Portal Madrasah -->
+          <div id="qrContentPortal" class="text-center space-y-3">
+            <div class="bg-emerald-50/70 border border-emerald-100 rounded-2xl p-4 inline-block shadow-inner">
+              <img src="https://api.qrserver.com/v1/create-qr-code/?size=220x220&data=https://www.mtsyasua.sch.id&margin=1" alt="QR Code MTs YASUA" class="w-44 h-44 mx-auto rounded-xl bg-white p-2 shadow-xs" onerror="this.onerror=null; this.src='logo.png';">
+            </div>
+            <p class="text-xs font-bold text-slate-800">Pindai untuk Membuka Website Resmi</p>
+            <p class="text-[11px] text-slate-500">Arahkan kamera HP Anda untuk langsung membuka portal madrasah &amp; informasi PPDB.</p>
+            <div class="pt-1 flex gap-2">
+              <button onclick="navigator.clipboard.writeText('https://www.mtsyasua.sch.id'); window.showToast('Tautan portal berhasil disalin!');" class="flex-1 py-2 px-3 rounded-xl bg-emerald-100 hover:bg-emerald-200 text-brand-dark font-bold text-xs transition-colors flex items-center justify-center gap-1.5 cursor-pointer">
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
+                <span>Salin Tautan</span>
+              </button>
+              <a href="https://www.mtsyasua.sch.id" target="_blank" class="flex-1 py-2 px-3 rounded-xl bg-brand-primary hover:bg-emerald-700 text-white font-bold text-xs transition-colors flex items-center justify-center gap-1.5">
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+                <span>Buka Link</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Tab 2: QRIS Infaq & PPDB -->
+          <div id="qrContentQris" class="hidden text-center space-y-3">
+            <div class="bg-slate-50 border border-slate-200 rounded-2xl p-4 inline-block shadow-inner w-full">
+              <div class="bg-white p-3.5 rounded-xl border border-slate-200 shadow-xs space-y-2">
+                <div class="flex items-center justify-between border-b pb-1.5 px-1">
+                  <span class="text-[11px] font-black text-rose-600 tracking-wider">QRIS</span>
+                  <span class="text-[9px] font-bold text-slate-500">PEMBAYARAN DIGITAL</span>
+                </div>
+                <img src="https://api.qrserver.com/v1/create-qr-code/?size=220x220&data=https://www.mtsyasua.sch.id/ppdb.html&margin=1" alt="QRIS MTs YASUA" class="w-44 h-44 mx-auto rounded-lg" onerror="this.onerror=null; this.src='logo.png';">
+                <div class="text-[10px] font-extrabold text-slate-800 uppercase">
+                  MTs YASUA PILANGWETAN
+                </div>
+                <p class="text-[9px] text-slate-400">NMID: ID102026364357 • Kemenag Demak</p>
+              </div>
+            </div>
+            <p class="text-xs font-bold text-slate-800">Infaq, Shodaqoh &amp; Pembayaran PPDB</p>
+            <p class="text-[11px] text-slate-500">Mendukung semua aplikasi e-wallet &amp; mobile banking (BSI, BCA, Mandiri, BRI, GoPay, OVO, ShopeePay, Dana, LinkAja).</p>
+          </div>
+        </div>
+      `;
+      document.body.appendChild(qrModal);
     }
   }
 
@@ -472,6 +548,47 @@
       window.setMobileExperienceMode('web');
     } else {
       window.setMobileExperienceMode('app');
+    }
+  };
+
+  // 6. QR Code Modal Controls
+  window.openQrModal = function () {
+    const modal = document.getElementById('qrCodeModal');
+    if (modal) {
+      modal.classList.remove('hidden');
+      hidePwaPrompt();
+    }
+  };
+
+  window.closeQrModal = function () {
+    const modal = document.getElementById('qrCodeModal');
+    if (modal) modal.classList.add('hidden');
+  };
+
+  window.switchQrTab = function (tab) {
+    const portalTab = document.getElementById('qrTabPortalBtn');
+    const qrisTab = document.getElementById('qrTabQrisBtn');
+    const portalContent = document.getElementById('qrContentPortal');
+    const qrisContent = document.getElementById('qrContentQris');
+
+    if (tab === 'portal') {
+      if (portalTab) {
+        portalTab.className = 'flex-1 py-1.5 rounded-lg bg-white text-brand-dark shadow-xs transition-all cursor-pointer font-bold';
+      }
+      if (qrisTab) {
+        qrisTab.className = 'flex-1 py-1.5 rounded-lg text-slate-500 hover:text-slate-800 transition-all cursor-pointer font-normal';
+      }
+      if (portalContent) portalContent.classList.remove('hidden');
+      if (qrisContent) qrisContent.classList.add('hidden');
+    } else {
+      if (portalTab) {
+        portalTab.className = 'flex-1 py-1.5 rounded-lg text-slate-500 hover:text-slate-800 transition-all cursor-pointer font-normal';
+      }
+      if (qrisTab) {
+        qrisTab.className = 'flex-1 py-1.5 rounded-lg bg-white text-brand-dark shadow-xs transition-all cursor-pointer font-bold';
+      }
+      if (portalContent) portalContent.classList.add('hidden');
+      if (qrisContent) qrisContent.classList.remove('hidden');
     }
   };
 
