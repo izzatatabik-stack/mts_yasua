@@ -1,0 +1,1059 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Kalender Islam &amp; Jawa — MTs YASUA Pilangwetan</title>
+  <meta name="description" content="Kalender interaktif MTs YASUA Pilangwetan dengan Tri-Penanggalan: Masehi, Hijriyah Standar LF PBNU, dan Pasaran Jawa, jadwal puasa sunnah, agenda madrasah serta hari besar Islam.">
+  <meta name="keywords" content="Kalender MTs YASUA, Kalender Hijriyah PBNU, Pasaran Jawa, Kalender Madrasah Demak, Jadwal Puasa Sunnah, PHBI">
+  
+  <link rel="icon" type="image/png" href="logo.png">
+  <!-- PWA & Mobile Web App Meta (Android & iOS Safari) -->
+  <meta name="theme-color" content="#065F46">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="MTs YASUA">
+  <meta name="application-name" content="MTs YASUA">
+  <meta name="format-detection" content="telephone=no">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+  <link rel="canonical" href="https://mts-yasua.vercel.app/kalender.html">
+
+  <meta property="og:title" content="Kalender Islam &amp; Jawa — MTs YASUA Pilangwetan">
+  <meta property="og:description" content="Tri-Penanggalan Masehi, Hijriyah Standar LF PBNU, dan Pasaran Jawa lengkap dengan jadwal puasa sunnah dan agenda madrasah.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://mts-yasua.vercel.app/kalender.html">
+  <meta property="og:image" content="foto-upacara.webp">
+  <meta property="og:site_name" content="MTs YASUA Pilangwetan">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              dark: '#033324',
+              primary: '#065F46',
+              medium: '#0D7B58',
+              light: '#10B981',
+              pale: '#ECFDF5',
+              surface: '#F4FBF7',
+              accent: '#F59E0B',
+              accentHover: '#D97706',
+              gold: '#FBBF24',
+              900: '#064e3b',
+              800: '#065f46',
+              700: '#047857',
+              600: '#059669'
+            }
+          },
+          fontFamily: {
+            sans: ['Plus Jakarta Sans', 'Inter', 'sans-serif'],
+            arabic: ['Amiri', 'serif']
+          },
+          boxShadow: {
+            'glow-green': '0 10px 30px -10px rgba(6, 95, 70, 0.35)',
+            'glow-gold': '0 10px 25px -5px rgba(245, 158, 11, 0.4)'
+          }
+        }
+      }
+    }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@700&family=Montserrat:wght@800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <!-- Font Awesome 6 (for Asnawiyyah Calendar icons) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <!-- Interactive Live Search Component -->
+  <script src="search.js" defer></script>
+  <!-- Progressive Web App (PWA) & Mobile Interaction Controller -->
+  <script src="pwa.js" defer></script>
+
+  <style>
+    html {
+      overflow-x: hidden;
+      width: 100%;
+      -webkit-text-size-adjust: 100%;
+      touch-action: manipulation;
+    }
+    body {
+      overflow-x: hidden;
+      width: 100%;
+      -webkit-tap-highlight-color: transparent;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+    .font-brand-title {
+      font-family: 'Montserrat', 'Plus Jakarta Sans', sans-serif;
+      font-weight: 900;
+      letter-spacing: 0.04em;
+    }
+    .glass-nav {
+      background: rgba(255, 255, 255, 0.94);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+    }
+    .nav-dropdown .dropdown-menu {
+      transform: translateX(-50%) translateY(8px);
+      transition: opacity 0.22s, transform 0.22s, visibility 0.22s;
+    }
+    .nav-dropdown:hover .dropdown-menu, .nav-dropdown.is-open .dropdown-menu {
+      opacity: 1 !important;
+      pointer-events: auto !important;
+      visibility: visible !important;
+      transform: translateX(-50%) translateY(0) !important;
+    }
+    .nav-dropdown:hover .dropdown-icon, .nav-dropdown.is-open .dropdown-icon {
+      transform: rotate(180deg) !important;
+    }
+
+    /* Standalone App Header */
+    body.is-pwa-standalone #publicTopNav {
+      display: none !important;
+    }
+    body.is-pwa-standalone #pwaAppHeader {
+      display: block !important;
+    }
+
+    /* Print & PDF Export */
+    @media print {
+      @page { size: A4 portrait; margin: 8mm; }
+      body > *:not(#brochureModal) { display: none !important; }
+      #brochureModal { display: block !important; position: static !important; }
+    }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased flex flex-col min-h-screen selection:bg-brand-primary selection:text-white">
+
+  <!-- ==================== TOP NAVIGATION BAR ==================== -->
+  <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-emerald-100/80 shadow-2xs">
+    
+    <!-- A. STANDALONE APP HEADER (Mode Aplikasi / HP - Persis Asnawiyyah) -->
+    <div id="pwaAppHeader" class="hidden bg-gradient-to-r from-brand-900 via-brand-primary to-brand-900 text-white px-4 pt-[calc(0.5rem+env(safe-area-inset-top,0px))] pb-2.5 shadow-md">
+      <div class="max-w-md mx-auto flex items-center justify-between">
+        <div class="flex items-center gap-2.5">
+          <img src="logo.png" alt="Logo MTs YASUA" class="w-9 h-9 rounded-xl object-contain bg-white/10 p-1 border border-white/20">
+          <div>
+            <span class="font-arabic text-amber-300 text-xs block leading-tight tracking-wide font-bold">المدرسة الثانوية الإسلامية ياسوا</span>
+            <h1 class="text-sm font-black text-white leading-none tracking-tight">MTs YASUA</h1>
+            <p class="text-[9.5px] font-semibold text-emerald-100/90 leading-tight">Pilangwetan - Demak</p>
+          </div>
+        </div>
+        <div class="flex items-center gap-1.5">
+          <button onclick="window.openSearchModal()" type="button" class="w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center transition-colors" title="Pencarian">
+            <i data-lucide="search" class="w-4 h-4"></i>
+          </button>
+          <button onclick="window.openSettingsModal()" type="button" class="w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center transition-colors" title="Pengaturan">
+            <i data-lucide="settings" class="w-4 h-4"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- B. PUBLIC WEB NAVBAR (Mode Web Browser & Desktop) -->
+    <nav id="publicTopNav" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16 sm:h-20">
+        
+        <!-- Logo & Branding -->
+        <a href="index.html" class="flex items-center gap-3 group">
+          <img src="logo.png" alt="Logo MTs YASUA Pilangwetan" class="w-10 h-10 sm:w-12 sm:h-12 object-contain group-hover:scale-105 transition-transform shrink-0">
+          <div class="flex flex-col">
+            <span class="font-brand-title text-base sm:text-xl text-brand-dark tracking-tight leading-none group-hover:text-brand-primary transition-colors">
+              MTs YASUA
+            </span>
+            <span class="text-[10px] sm:text-xs text-slate-500 font-semibold uppercase tracking-wider mt-0.5">
+              Pilangwetan Kebonagung
+            </span>
+          </div>
+        </a>
+
+        <!-- Desktop Navigation Links -->
+        <div class="hidden lg:flex items-center gap-1 font-medium text-slate-700 text-sm">
+          <a href="index.html" class="hover:text-brand-primary px-3 py-1.5 rounded-full hover:bg-emerald-50 transition-colors">
+            Beranda
+          </a>
+
+          <!-- Profil Dropdown -->
+          <div class="relative group nav-dropdown">
+            <button type="button" class="dropdown-trigger flex items-center gap-1.5 px-3 py-1.5 rounded-full hover:text-brand-primary hover:bg-emerald-50 transition-colors font-semibold text-[13.5px] cursor-pointer" aria-haspopup="true" aria-expanded="false">
+              <span>Profil</span>
+              <i data-lucide="chevron-down" class="dropdown-icon w-3.5 h-3.5 transition-transform duration-200 text-slate-400 group-hover:text-brand-primary"></i>
+            </button>
+            <div class="dropdown-menu absolute left-1/2 top-full pt-2 w-64 opacity-0 pointer-events-none transition-all duration-200 z-50">
+              <div class="bg-white/95 backdrop-blur-md rounded-2xl shadow-xl border border-emerald-100 p-2 space-y-1">
+                <a href="profil.html" class="flex items-center gap-2.5 px-3 py-2.5 rounded-xl hover:bg-emerald-50 text-slate-700 hover:text-brand-primary transition-colors text-xs font-semibold">
+                  <div class="w-7 h-7 rounded-lg bg-emerald-50 text-brand-primary flex items-center justify-center shrink-0"><i data-lucide="landmark" class="w-4 h-4"></i></div>
+                  <div><span class="block text-slate-900 font-bold">Tentang Madrasah</span><span class="text-[10px] text-slate-500 font-normal">Visi, misi &amp; sejarah</span></div>
+                </a>
+                <a href="sambutan.html" class="flex items-center gap-2.5 px-3 py-2.5 rounded-xl hover:bg-emerald-50 text-slate-700 hover:text-brand-primary transition-colors text-xs font-semibold">
+                  <div class="w-7 h-7 rounded-lg bg-emerald-50 text-brand-primary flex items-center justify-center shrink-0"><i data-lucide="message-square" class="w-4 h-4"></i></div>
+                  <div><span class="block text-slate-900 font-bold">Sambutan Kepala</span><span class="text-[10px] text-slate-500 font-normal">Pesan &amp; arahan pimpinan</span></div>
+                </a>
+                <a href="guru.html" class="flex items-center gap-2.5 px-3 py-2.5 rounded-xl hover:bg-emerald-50 text-slate-700 hover:text-brand-primary transition-colors text-xs font-semibold">
+                  <div class="w-7 h-7 rounded-lg bg-emerald-50 text-brand-primary flex items-center justify-center shrink-0"><i data-lucide="users" class="w-4 h-4"></i></div>
+                  <div><span class="block text-slate-900 font-bold">Dewan Guru</span><span class="text-[10px] text-slate-500 font-normal">Pengajar kompeten bergelar</span></div>
+                </a>
+                <a href="mou.html" class="flex items-center gap-2.5 px-3 py-2.5 rounded-xl hover:bg-emerald-50 text-slate-700 hover:text-brand-primary transition-colors text-xs font-semibold">
+                  <div class="w-7 h-7 rounded-lg bg-emerald-50 text-brand-primary flex items-center justify-center shrink-0"><i data-lucide="handshake" class="w-4 h-4 text-brand-primary"></i></div>
+                  <div><span class="block text-slate-900 font-bold">Kemitraan &amp; MOU</span><span class="text-[10px] text-slate-500 font-normal">Jejaring instansi &amp; industri</span></div>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Program & Kegiatan Dropdown (Active) -->
+          <div class="relative group nav-dropdown">
+            <button type="button" class="dropdown-trigger flex items-center gap-1.5 px-3 py-1.5 rounded-full text-brand-primary bg-emerald-50 font-bold text-[13.5px] cursor-pointer" aria-haspopup="true" aria-expanded="false">
+              <span>Program &amp; Kegiatan</span>
+              <i data-lucide="chevron-down" class="dropdown-icon w-3.5 h-3.5 transition-transform duration-200 text-brand-primary"></i>
+            </button>
+            <div class="dropdown-menu absolute left-1/2 top-full pt-2 w-72 opacity-0 pointer-events-none transition-all duration-200 z-50">
+              <div class="bg-white/95 backdrop-blur-md rounded-2xl shadow-xl border border-emerald-100 p-2 space-y-1">
+                <a href="program.html" class="flex items-center gap-2.5 px-3 py-2.5 rounded-xl hover:bg-emerald-50 text-slate-700 hover:text-brand-primary transition-colors text-xs font-semibold">
+                  <div class="w-7 h-7 rounded-lg bg-emerald-50 text-brand-primary flex items-center justify-center shrink-0"><i data-lucide="book-open" class="w-4 h-4"></i></div>
+                  <div><span class="block text-slate-900 font-bold">Program Unggulan</span><span class="text-[10px] text-slate-500 font-normal">Tahfidz, Kitab Salaf, IT</span></div>
+                </a>
+                <a href="kalender.html" class="flex items-center gap-2.5 px-3 py-2.5 rounded-xl bg-emerald-50 text-brand-primary transition-colors text-xs font-bold">
+                  <div class="w-7 h-7 rounded-lg bg-emerald-100 text-brand-primary flex items-center justify-center shrink-0"><i data-lucide="calendar" class="w-4 h-4"></i></div>
+                  <div><span class="block font-bold">Kalender Islam &amp; Jawa</span><span class="text-[10px] text-emerald-700 font-normal">Tri-penanggalan ala Asnawiyyah</span></div>
+                </a>
+                <a href="agenda.html" class="flex items-center gap-2.5 px-3 py-2.5 rounded-xl hover:bg-emerald-50 text-slate-700 hover:text-brand-primary transition-colors text-xs font-semibold">
+                  <div class="w-7 h-7 rounded-lg bg-emerald-50 text-brand-primary flex items-center justify-center shrink-0"><i data-lucide="clock" class="w-4 h-4 text-emerald-600"></i></div>
+                  <div><span class="block text-slate-900 font-bold">Jadwal Harian Santri</span><span class="text-[10px] text-slate-500 font-normal">Rutinitas harian KBM</span></div>
+                </a>
+                <a href="ekskul.html" class="flex items-center gap-2.5 px-3 py-2.5 rounded-xl hover:bg-emerald-50 text-slate-700 hover:text-brand-primary transition-colors text-xs font-semibold">
+                  <div class="w-7 h-7 rounded-lg bg-emerald-50 text-brand-primary flex items-center justify-center shrink-0"><i data-lucide="sparkles" class="w-4 h-4 text-amber-500"></i></div>
+                  <div><span class="block text-slate-900 font-bold">Unit Kegiatan &amp; Ekskul</span><span class="text-[10px] text-slate-500 font-normal">Pramuka, Drumband, Hadroh</span></div>
+                </a>
+                <a href="prestasi.html" class="flex items-center gap-2.5 px-3 py-2.5 rounded-xl hover:bg-emerald-50 text-slate-700 hover:text-brand-primary transition-colors text-xs font-semibold">
+                  <div class="w-7 h-7 rounded-lg bg-emerald-50 text-brand-primary flex items-center justify-center shrink-0"><i data-lucide="trophy" class="w-4 h-4 text-amber-500"></i></div>
+                  <div><span class="block text-slate-900 font-bold">Prestasi Siswa</span><span class="text-[10px] text-slate-500 font-normal">Rekam jejak juara santri</span></div>
+                </a>
+                <a href="alumni.html" class="flex items-center gap-2.5 px-3 py-2.5 rounded-xl hover:bg-emerald-50 text-slate-700 hover:text-brand-primary transition-colors text-xs font-semibold">
+                  <div class="w-7 h-7 rounded-lg bg-emerald-50 text-brand-primary flex items-center justify-center shrink-0"><i data-lucide="graduation-cap" class="w-4 h-4 text-indigo-600"></i></div>
+                  <div><span class="block text-slate-900 font-bold">Portal Alumni</span><span class="text-[10px] text-slate-500 font-normal">Tracer alumni &amp; jejaring IKAMAS</span></div>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Kabar Madrasah Dropdown -->
+          <div class="relative group nav-dropdown">
+            <button type="button" class="dropdown-trigger flex items-center gap-1.5 px-3 py-1.5 rounded-full hover:text-brand-primary hover:bg-emerald-50 transition-colors font-semibold text-[13.5px] cursor-pointer" aria-haspopup="true" aria-expanded="false">
+              <span>Kabar Madrasah</span>
+              <i data-lucide="chevron-down" class="dropdown-icon w-3.5 h-3.5 transition-transform duration-200 text-slate-400 group-hover:text-brand-primary"></i>
+            </button>
+            <div class="dropdown-menu absolute left-1/2 top-full pt-2 w-64 opacity-0 pointer-events-none transition-all duration-200 z-50">
+              <div class="bg-white/95 backdrop-blur-md rounded-2xl shadow-xl border border-emerald-100 p-2 space-y-1">
+                <a href="berita.html" class="flex items-center gap-2.5 px-3 py-2.5 rounded-xl hover:bg-emerald-50 text-slate-700 hover:text-brand-primary transition-colors text-xs font-semibold">
+                  <div class="w-7 h-7 rounded-lg bg-emerald-50 text-brand-primary flex items-center justify-center shrink-0"><i data-lucide="newspaper" class="w-4 h-4 text-blue-600"></i></div>
+                  <div><span class="block text-slate-900 font-bold">Berita &amp; Pengumuman</span><span class="text-[10px] text-slate-500 font-normal">Warta kegiatan madrasah</span></div>
+                </a>
+                <a href="galeri.html" class="flex items-center gap-2.5 px-3 py-2.5 rounded-xl hover:bg-emerald-50 text-slate-700 hover:text-brand-primary transition-colors text-xs font-semibold">
+                  <div class="w-7 h-7 rounded-lg bg-emerald-50 text-brand-primary flex items-center justify-center shrink-0"><i data-lucide="camera" class="w-4 h-4 text-pink-600"></i></div>
+                  <div><span class="block text-slate-900 font-bold">Galeri Media Sosial</span><span class="text-[10px] text-slate-500 font-normal">Dokumentasi foto &amp; video</span></div>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <a href="kontak.html" class="hover:text-brand-primary px-3 py-1.5 rounded-full hover:bg-emerald-50 transition-colors">
+            Kontak
+          </a>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="hidden lg:flex items-center gap-2.5">
+          <button onclick="window.openSearchModal()" type="button"
+            class="flex items-center gap-2 px-3.5 py-2 rounded-full bg-slate-50 hover:bg-emerald-50/80 border border-slate-200/80 hover:border-emerald-200 text-slate-600 hover:text-brand-primary transition-all duration-200 cursor-pointer shadow-xs group"
+            title="Cari Informasi (Ctrl+K)" aria-label="Buka Pencarian Website">
+            <i data-lucide="search" class="w-4 h-4 text-emerald-700 group-hover:scale-110 transition-transform"></i>
+            <span class="text-xs font-semibold text-slate-600 group-hover:text-brand-primary">Cari info...</span>
+            <kbd class="hidden xl:inline-flex items-center px-1.5 py-0.5 text-[10px] font-bold text-slate-400 bg-white border border-slate-200 rounded shadow-xs ml-0.5">Ctrl K</kbd>
+          </button>
+
+          <a href="ppdb.html" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-gradient-to-r from-brand-primary to-emerald-600 hover:from-brand-dark hover:to-brand-primary text-white font-extrabold text-xs sm:text-[13px] shadow-glow-green hover:shadow-lg transition-all duration-200">
+            <span>Daftar PPDB</span>
+            <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+          </a>
+        </div>
+
+        <!-- Mobile Menu & Search Button -->
+        <div class="flex items-center gap-2 lg:hidden">
+          <button onclick="window.openSearchModal()" type="button"
+            class="w-9 h-9 rounded-full bg-slate-50 border border-slate-200 text-slate-600 flex items-center justify-center hover:bg-emerald-50 hover:text-brand-primary transition-colors"
+            title="Cari Informasi" aria-label="Buka Pencarian Mobile">
+            <i data-lucide="search" class="w-4 h-4 text-emerald-700"></i>
+          </button>
+
+          <button id="mobileMenuBtn" type="button" class="p-2 rounded-xl text-slate-700 hover:text-brand-primary hover:bg-slate-100 transition-colors focus:outline-none" aria-label="Buka Menu Navigasi">
+            <i data-lucide="menu" class="w-6 h-6"></i>
+          </button>
+        </div>
+
+      </div>
+
+      <!-- Mobile Dropdown Navigation Drawer -->
+      <div id="mobileMenu" class="hidden lg:hidden border-t border-slate-200/80 py-4 space-y-3 animate-in fade-in slide-in-from-top-2 duration-200">
+        <div class="grid grid-cols-2 gap-2 text-xs font-bold text-slate-700">
+          <a href="index.html" class="px-3 py-2.5 rounded-xl hover:bg-slate-100 flex items-center gap-2"><i data-lucide="home" class="w-4 h-4 text-emerald-600"></i> Beranda</a>
+          <a href="profil.html" class="px-3 py-2.5 rounded-xl hover:bg-slate-100 flex items-center gap-2"><i data-lucide="landmark" class="w-4 h-4 text-emerald-600"></i> Profil</a>
+          <a href="program.html" class="px-3 py-2.5 rounded-xl hover:bg-slate-100 flex items-center gap-2"><i data-lucide="book-open" class="w-4 h-4 text-emerald-600"></i> Program</a>
+          <a href="kalender.html" class="px-3 py-2.5 rounded-xl bg-emerald-50 text-brand-primary flex items-center gap-2"><i data-lucide="calendar" class="w-4 h-4 text-emerald-600"></i> Kalender</a>
+          <a href="agenda.html" class="px-3 py-2.5 rounded-xl hover:bg-slate-100 flex items-center gap-2"><i data-lucide="clock" class="w-4 h-4 text-emerald-600"></i> Jadwal Harian</a>
+          <a href="ekskul.html" class="px-3 py-2.5 rounded-xl hover:bg-slate-100 flex items-center gap-2"><i data-lucide="sparkles" class="w-4 h-4 text-amber-500"></i> Ekskul</a>
+          <a href="prestasi.html" class="px-3 py-2.5 rounded-xl hover:bg-slate-100 flex items-center gap-2"><i data-lucide="trophy" class="w-4 h-4 text-amber-500"></i> Prestasi</a>
+          <a href="berita.html" class="px-3 py-2.5 rounded-xl hover:bg-slate-100 flex items-center gap-2"><i data-lucide="newspaper" class="w-4 h-4 text-blue-600"></i> Berita</a>
+          <a href="galeri.html" class="px-3 py-2.5 rounded-xl hover:bg-slate-100 flex items-center gap-2"><i data-lucide="camera" class="w-4 h-4 text-pink-600"></i> Galeri</a>
+          <a href="kontak.html" class="px-3 py-2.5 rounded-xl hover:bg-slate-100 flex items-center gap-2"><i data-lucide="phone" class="w-4 h-4 text-emerald-600"></i> Kontak</a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- ==================== MAIN CONTENT: KALENDER ASNAWIYYAH ==================== -->
+  <main class="flex-grow pt-2 sm:pt-4 pb-20">
+    <div class="max-w-4xl mx-auto px-3 sm:px-6 space-y-4 sm:space-y-6">
+
+      <!-- Breadcrumbs & Quick Switcher -->
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pt-2">
+        <div class="space-y-1">
+          <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-50 border border-emerald-200/80 text-brand-primary text-[11px] font-extrabold uppercase tracking-wider">
+            <i class="fa-solid fa-moon text-emerald-600"></i>
+            <span>Tri-Penanggalan Masehi, Hijriyah &amp; Jawa</span>
+          </div>
+          <h1 class="text-xl sm:text-2xl md:text-3xl font-black text-brand-dark tracking-tight leading-tight">
+            Kalender Islam &amp; Pasaran Jawa
+          </h1>
+          <p class="text-slate-500 text-xs sm:text-sm">
+            Standar hisab Lembaga Falakiyah PBNU, jadwal puasa sunnah, pasaran Jawa, dan agenda resmi MTs YASUA.
+          </p>
+        </div>
+
+        <!-- Quick Switcher to Routine Schedule -->
+        <div class="flex items-center gap-2 shrink-0">
+          <button onclick="goToCurrentMonth()" class="px-3 py-1.5 rounded-xl bg-white border border-slate-200 hover:border-emerald-500 text-slate-700 hover:text-brand-primary font-bold text-xs shadow-2xs transition active:scale-95 flex items-center gap-1.5 cursor-pointer">
+            <i class="fa-solid fa-calendar-day text-brand-primary"></i>
+            <span>Hari Ini</span>
+          </button>
+          <a href="agenda.html" class="px-3.5 py-1.5 rounded-xl bg-emerald-50 hover:bg-emerald-100 text-brand-primary font-bold text-xs border border-emerald-200/80 shadow-2xs transition active:scale-95 flex items-center gap-1.5">
+            <i class="fa-solid fa-clock-rotate-left"></i>
+            <span>Jadwal Harian KBM</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- ==================== KARTU UTAMA KALENDER (ADOPASI PERSIS ASNAWIYYAH) ==================== -->
+      <div class="bg-white p-3.5 sm:p-5 md:p-6 rounded-3xl shadow-sm border border-emerald-100/90 space-y-3.5 sm:space-y-4">
+
+        <!-- 1. Navigasi Bulan & Tahun Kalender (Pusat & Elegan, Hemat Ruang) -->
+        <div class="flex items-center justify-between bg-slate-50 p-1.5 sm:p-2 rounded-2xl border border-slate-200/70">
+          <button onclick="changeCalMonth(-1)"
+            class="w-9 h-9 bg-white hover:bg-emerald-50 text-slate-700 hover:text-brand-primary rounded-xl flex items-center justify-center shadow-xs transition active:scale-90 border border-slate-200/60 cursor-pointer"
+            title="Bulan Sebelumnya">
+            <i class="fa-solid fa-chevron-left text-xs"></i>
+          </button>
+          <div class="text-center px-2">
+            <span id="cal-month-year-text" class="text-sm sm:text-base md:text-lg font-black text-brand-900 block leading-tight">
+              Oktober 2026
+            </span>
+            <span id="cal-hijri-month-text" class="text-[10px] sm:text-xs font-bold text-emerald-700 block leading-tight mt-0.5">
+              Rabi'ul Akhir - Jumadil Ula 1448 H
+            </span>
+          </div>
+          <button onclick="changeCalMonth(1)"
+            class="w-9 h-9 bg-white hover:bg-emerald-50 text-slate-700 hover:text-brand-primary rounded-xl flex items-center justify-center shadow-xs transition active:scale-90 border border-slate-200/60 cursor-pointer"
+            title="Bulan Berikutnya">
+            <i class="fa-solid fa-chevron-right text-xs"></i>
+          </button>
+        </div>
+
+        <!-- 2. Kartu Hijau: Detail Tanggal Terpilih (Sesuai Susunan 3 Baris Elegan Asnawiyyah) -->
+        <div id="selected-date-card"
+          class="bg-gradient-to-br from-brand-900 via-brand-800 to-emerald-900 text-white p-3.5 sm:p-4 rounded-2xl shadow-sm border border-brand-700/40 space-y-1.5 transition-all">
+          
+          <!-- Baris 1: Status Badge ("Hari Ini") dan Tag ("Puasa Sunnah / Kegiatan Normal") -->
+          <div class="flex items-center justify-between gap-2">
+            <span id="selected-date-status-badge"
+              class="text-[9.5px] font-black uppercase bg-amber-400/25 text-amber-300 px-2 py-0.5 rounded tracking-wider shrink-0">
+              Hari Ini
+            </span>
+            <div id="selected-date-tag"
+              class="bg-white/10 px-2.5 py-0.5 rounded-full border border-white/10 text-[10px] sm:text-[11px] font-semibold text-emerald-200 truncate max-w-[75%]">
+              <i class="fa-solid fa-book-quran text-amber-300 mr-1.5"></i> Kegiatan Normal
+            </div>
+          </div>
+
+          <!-- Baris 2: Hari, tgl bln thn MASEHI & PASARAN JAWA -->
+          <div id="selected-date-title" class="text-sm sm:text-base md:text-lg font-extrabold text-white tracking-wide leading-tight pt-0.5">
+            Rabu Pon, 28 Oktober 2026
+          </div>
+
+          <!-- Baris 3: Hari, tgl bln thn HIJRIYAH (Standar Hisab LF PBNU) -->
+          <div id="selected-date-subtitle" class="text-xs sm:text-sm font-semibold text-amber-300 leading-tight">
+            Rabu Pon, 16 Jumadil Ula 1448 H
+          </div>
+        </div>
+
+        <!-- 3. Mini Legend Penanggalan: 1 Baris Kompak -->
+        <div class="flex flex-wrap items-center justify-between text-[9px] sm:text-[10px] text-slate-500 px-1 gap-1.5 bg-slate-50/80 p-2 rounded-xl border border-slate-100">
+          <div class="flex items-center space-x-2.5">
+            <span class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-emerald-500 inline-block"></span> Puasa Sunnah</span>
+            <span class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-amber-400 inline-block"></span> Hari Besar Islam / Agenda</span>
+            <span class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-teal-400 inline-block"></span> Sayyidul Ayyam</span>
+          </div>
+          <div class="flex items-center space-x-2 font-medium">
+            <span class="text-slate-800 font-extrabold">28 Masehi</span>
+            <span class="text-emerald-700 font-extrabold">16 Hijriyah</span>
+            <span class="text-amber-700 font-bold">Pon (Jawa)</span>
+          </div>
+        </div>
+
+        <!-- 4. Grid Nama Hari (Ahad - Sabtu) -->
+        <div class="grid grid-cols-7 gap-1 text-center font-bold text-[10.5px] sm:text-xs text-slate-500 py-1.5 border-y border-slate-100">
+          <div class="text-red-500">Ahad</div>
+          <div>Senin</div>
+          <div>Selasa</div>
+          <div>Rabu</div>
+          <div>Kamis</div>
+          <div class="text-emerald-700 font-extrabold">Jumat</div>
+          <div>Sabtu</div>
+        </div>
+
+        <!-- 5. Grid Angka Tanggal, Hijriyah & Pasaran (Direncanakan Dinamis via JS) -->
+        <div id="calendar-days-grid" class="grid grid-cols-7 gap-1 sm:gap-1.5">
+          <!-- Diisi otomatis oleh renderCalendar() -->
+        </div>
+
+        <!-- 6. Agenda & Hari Besar Islam Bulan Ini -->
+        <div class="pt-4 border-t border-slate-100 space-y-3">
+          <div class="flex items-center justify-between">
+            <h3 class="text-xs font-black text-slate-600 uppercase tracking-wider flex items-center">
+              <span class="w-1.5 h-4 bg-brand-primary rounded-full mr-2"></span>
+              Agenda Madrasah &amp; Hari Besar Islam Bulan Ini
+            </h3>
+            <span id="cal-events-count" class="text-[10px] sm:text-[11px] font-bold text-emerald-800 bg-emerald-50 px-2.5 py-0.5 rounded-full border border-emerald-200">
+              0 Agenda
+            </span>
+          </div>
+          <div id="calendar-events-container" class="grid grid-cols-1 md:grid-cols-2 gap-2.5">
+            <!-- Diisi otomatis oleh renderCalendarEvents() -->
+          </div>
+        </div>
+
+      </div>
+
+      <!-- ==================== PEDOMAN PENANGGALAN ISLAM & JAWA ==================== -->
+      <section class="bg-emerald-50/50 rounded-2xl p-4 sm:p-5 border border-emerald-100 space-y-3 text-xs sm:text-sm text-slate-700">
+        <h3 class="font-bold text-brand-dark flex items-center gap-2 text-sm sm:text-base">
+          <i class="fa-solid fa-circle-info text-brand-primary"></i>
+          Pedoman Penanggalan Hijriyah &amp; Pasaran Jawa MTs YASUA
+        </h3>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-3 pt-1">
+          <div class="p-3 bg-white rounded-xl border border-emerald-100 space-y-1">
+            <h4 class="font-bold text-slate-900 text-xs flex items-center gap-1.5">
+              <span class="w-2 h-2 rounded-full bg-emerald-600"></span> Standar Falakiyah LF PBNU
+            </h4>
+            <p class="text-[11px] text-slate-500 leading-relaxed">
+              Hisab kriteria imkanur rukyah MABIMS / LF PBNU dengan koreksi zona waktu WIB Indonesia, akurat untuk jadwal ibadah puasa dan PHBI santri.
+            </p>
+          </div>
+          <div class="p-3 bg-white rounded-xl border border-emerald-100 space-y-1">
+            <h4 class="font-bold text-slate-900 text-xs flex items-center gap-1.5">
+              <span class="w-2 h-2 rounded-full bg-amber-500"></span> 5 Hari Pasaran Jawa
+            </h4>
+            <p class="text-[11px] text-slate-500 leading-relaxed">
+              Siklus pancawara Jawa: <em>Legi, Pahing, Pon, Wage, Kliwon</em> dihitung konsisten berdasarkan siklus astronomis dan tradisi masyarakat santri Jawa.
+            </p>
+          </div>
+          <div class="p-3 bg-white rounded-xl border border-emerald-100 space-y-1">
+            <h4 class="font-bold text-slate-900 text-xs flex items-center gap-1.5">
+              <span class="w-2 h-2 rounded-full bg-rose-500"></span> Hari Haram Puasa
+            </h4>
+            <p class="text-[11px] text-slate-500 leading-relaxed">
+              Dilarang berpuasa pada 1 Syawal (Idul Fitri), 10 Dzulhijjah (Idul Adha), dan 11-13 Dzulhijjah (Hari Tasyrik Qurban).
+            </p>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="bg-brand-dark text-white border-t border-emerald-900/60 pt-12 pb-10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 pb-8 border-b border-emerald-900/40">
+        
+        <div class="lg:col-span-4 space-y-3">
+          <div class="flex items-center gap-3">
+            <img src="logo.png" alt="Logo MTs YASUA" class="w-10 h-10 object-contain bg-white/10 p-1 rounded-xl">
+            <div>
+              <span class="font-bold text-base block leading-none">MTs YASUA Pilangwetan</span>
+              <span class="text-[10px] text-emerald-300 uppercase tracking-wider">Madrasah Tsanawiyah Terakreditasi</span>
+            </div>
+          </div>
+          <p class="text-xs text-emerald-100/70 leading-relaxed">
+            Membentuk generasi Qur'ani berakhlak mulia, berprestasi akademik, dan unggul dalam kitab salafiyah serta teknologi.
+          </p>
+          <div class="text-xs text-emerald-200/90 space-y-0.5 pt-1">
+            <p><strong>NSM:</strong> 121233210007 &bull; <strong>NPSN:</strong> 20364357</p>
+            <p><strong>Alamat:</strong> Jl. Pilangwetan, Kec. Kebonagung, Kab. Demak 59583</p>
+          </div>
+        </div>
+
+        <div class="lg:col-span-2 space-y-3">
+          <h4 class="text-white font-bold text-sm uppercase tracking-wider">Halaman Profil</h4>
+          <ul class="space-y-2 text-xs">
+            <li><a href="profil.html" class="hover:text-brand-gold transition-colors">Visi &amp; Misi</a></li>
+            <li><a href="sambutan.html" class="hover:text-brand-gold transition-colors">Sambutan Pimpinan</a></li>
+            <li><a href="guru.html" class="hover:text-brand-gold transition-colors">Dewan Guru</a></li>
+            <li><a href="mou.html" class="hover:text-brand-gold transition-colors">Kemitraan &amp; MOU</a></li>
+          </ul>
+        </div>
+
+        <div class="lg:col-span-3 space-y-3">
+          <h4 class="text-white font-bold text-sm uppercase tracking-wider">Program &amp; Kegiatan</h4>
+          <ul class="space-y-2 text-xs">
+            <li><a href="program.html" class="hover:text-brand-gold transition-colors">Program Unggulan</a></li>
+            <li><a href="kalender.html" class="hover:text-brand-gold text-brand-gold font-bold transition-colors">Kalender Islam &amp; Jawa</a></li>
+            <li><a href="agenda.html" class="hover:text-brand-gold transition-colors">Jadwal Harian Santri</a></li>
+            <li><a href="ekskul.html" class="hover:text-brand-gold transition-colors">Unit Kegiatan &amp; Ekskul</a></li>
+            <li><a href="prestasi.html" class="hover:text-brand-gold transition-colors">Prestasi Siswa</a></li>
+            <li><a href="alumni.html" class="hover:text-brand-gold transition-colors">Portal Alumni</a></li>
+          </ul>
+        </div>
+
+        <div class="lg:col-span-3 space-y-3">
+          <h4 class="text-white font-bold text-sm uppercase tracking-wider">Layanan &amp; Pendaftaran</h4>
+          <p class="text-xs text-emerald-200/80 leading-relaxed">
+            Penerimaan Peserta Didik Baru (PPDB) dibuka secara daring dan luring.
+          </p>
+          <div class="pt-2 flex flex-col gap-2">
+            <a href="ppdb.html" class="px-4 py-2.5 rounded-xl bg-gradient-to-r from-brand-accent to-amber-500 hover:from-amber-500 hover:to-brand-accent text-slate-950 font-bold text-xs text-center shadow-md transition-all">
+              Daftar PPDB Online
+            </a>
+            <button onclick="openBrochureModal()" class="px-4 py-2 rounded-xl bg-white/10 hover:bg-white/20 text-white font-semibold text-xs text-center border border-white/20 transition-all flex items-center justify-center gap-1.5 cursor-pointer">
+              <i class="fa-solid fa-print text-brand-gold"></i>
+              <span>Cetak Brosur PDF</span>
+            </button>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="pt-4 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-emerald-300/70">
+        <p>© 2026 MTs YASUA Pilangwetan. Seluruh Hak Cipta Dilindungi.</p>
+        <div class="flex items-center gap-4">
+          <a href="https://www.instagram.com/mts.yasua_pilangwetan/" target="_blank" class="hover:text-white transition-colors flex items-center gap-1">
+            <i class="fa-brands fa-instagram"></i>
+            <span>Instagram</span>
+          </a>
+          <a href="https://www.tiktok.com/@mtsyasuapilangwetan" target="_blank" class="hover:text-white transition-colors flex items-center gap-1">
+            <i class="fa-brands fa-tiktok"></i>
+            <span>TikTok</span>
+          </a>
+          <a href="kontak.html" class="hover:text-white transition-colors">
+            Hubungi Kami
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==================== MODAL BROSUR RESMI ==================== -->
+  <div id="brochureModal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-3 sm:p-6 bg-slate-950/80 backdrop-blur-md transition-opacity duration-300">
+    <div class="bg-slate-100 rounded-3xl max-w-4xl w-full max-h-[92vh] overflow-y-auto shadow-2xl border border-emerald-100 flex flex-col relative animate-in fade-in zoom-in-95 duration-200">
+      <div class="sticky top-0 z-30 bg-white/95 backdrop-blur-md px-6 py-4 border-b border-slate-200 flex items-center justify-between no-print">
+        <div class="flex items-center gap-2">
+          <div class="w-8 h-8 rounded-lg bg-emerald-100 text-brand-primary flex items-center justify-center font-bold">
+            <i data-lucide="printer" class="w-4 h-4"></i>
+          </div>
+          <div>
+            <h3 class="text-sm sm:text-base font-black text-slate-900 leading-none">Brosur Resmi PPDB MTs YASUA</h3>
+            <span class="text-[11px] text-slate-500 font-medium">Tahun Ajaran 2026/2027</span>
+          </div>
+        </div>
+        <button onclick="closeBrochureModal()" class="w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-600 flex items-center justify-center transition-colors">
+          <i data-lucide="x" class="w-4 h-4"></i>
+        </button>
+      </div>
+
+      <div class="p-4 sm:p-8 flex justify-center bg-slate-200/60 overflow-y-auto">
+        <div id="printableBrochure" class="bg-white rounded-2xl shadow-lg border border-slate-200 p-6 sm:p-10 max-w-3xl w-full text-slate-800 space-y-6">
+          <div class="flex flex-col sm:flex-row items-center justify-between gap-4 border-b-2 border-emerald-800 pb-4 text-center sm:text-left">
+            <div class="flex items-center gap-4">
+              <img src="logo.png" alt="Logo MTs YASUA" class="w-16 h-16 object-contain shrink-0">
+              <div>
+                <span class="text-xs font-bold text-slate-500 tracking-widest uppercase block">YAYASAN ISLAM SUADA (YASUA)</span>
+                <h2 class="text-xl sm:text-2xl font-black text-brand-dark tracking-tight leading-tight">MTs YASUA PILANGWETAN</h2>
+                <p class="text-[11px] sm:text-xs font-bold text-emerald-800">PILANGWETAN — KEBONAGUNG — DEMAK</p>
+                <div class="flex flex-wrap items-center justify-center sm:justify-start gap-2 mt-1 text-[10px] text-slate-600">
+                  <span class="bg-emerald-50 text-emerald-800 px-2 py-0.5 rounded font-bold">NPSN: 20364357</span>
+                  <span>•</span>
+                  <span>Alamat: Jl. Pilangwetan, Kebonagung, Demak 59583</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="bg-gradient-to-r from-emerald-800 to-emerald-900 rounded-xl p-4 text-center text-white shadow-sm">
+            <h3 class="font-extrabold text-sm sm:text-base tracking-wide">PENERIMAAN PESERTA DIDIK BARU (PPDB) 2026/2027</h3>
+            <p class="text-xs text-amber-300 font-semibold mt-0.5">Program Tahfidz &bull; Kitab Salafiyah &bull; Keterampilan Terpadu</p>
+          </div>
+          <div class="flex justify-between items-center pt-2">
+            <button onclick="window.print()" class="px-4 py-2 rounded-xl bg-emerald-700 text-white font-bold text-xs flex items-center gap-1.5 cursor-pointer">
+              <i class="fa-solid fa-print"></i> Cetak Dokumen
+            </button>
+            <button onclick="closeBrochureModal()" class="px-4 py-2 rounded-xl bg-slate-200 text-slate-700 font-bold text-xs cursor-pointer">
+              Tutup
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== KALENDER ENGINE JAVASCRIPT ==================== -->
+  <script>
+    // --- Data & Kalender Engine Asnawiyyah ---
+    let currentCalDate = new Date();
+    const namaBulanIndo = ["Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "November", "Desember"];
+    const namaHariIndo = ["Minggu", "Senin", "Selasa", "Rabu", "Kamis", "Jumat", "Sabtu"];
+    const pasaranJawa = ["Legi", "Pahing", "Pon", "Wage", "Kliwon"];
+
+    const namaBulanHijriyah = [
+      "",
+      "Muharram",
+      "Safar",
+      "Rabi'ul Awwal",
+      "Rabi'ul Akhir",
+      "Jumadil Ula",
+      "Jumadil Akhirah",
+      "Rajab",
+      "Sya'ban",
+      "Ramadhan",
+      "Syawal",
+      "Dzulqa'dah",
+      "Dzulhijjah"
+    ];
+
+    // Database Hari Besar Islam Berdasarkan Kalender Hijriyah (Format: "Bulan-Tanggal")
+    const HARI_BESAR_ISLAM = {
+      "1-1": { title: "Tahun Baru Islam", desc: "1 Muharram - Awal Tahun Baru Hijriyah", type: "holiday", badgeColor: "amber", icon: "fa-star-and-crescent" },
+      "1-9": { title: "Puasa Tasu'a", desc: "9 Muharram - Puasa Sunnah Tasu'a", type: "fasting", badgeColor: "emerald", icon: "fa-moon" },
+      "1-10": { title: "Hari Asyura & Puasa Asyura", desc: "10 Muharram - Puasa Sunnah Pelebur Dosa Setahun", type: "fasting", badgeColor: "emerald", icon: "fa-moon" },
+      "3-12": { title: "Maulid Nabi Muhammad SAW", desc: "12 Rabi'ul Awwal - Peringatan Kelahiran Rasulullah SAW & Khotmil Qur'an", type: "holiday", badgeColor: "amber", icon: "fa-mosque" },
+      "7-27": { title: "Isra' Mi'raj Nabi Muhammad SAW", desc: "27 Rajab - Peristiwa Agung Isra' & Mi'raj", type: "holiday", badgeColor: "amber", icon: "fa-mosque" },
+      "8-15": { title: "Malam Nisfu Sya'ban", desc: "15 Sya'ban - Malam Pertengahan Bulan Sya'ban & Istighosah", type: "event", badgeColor: "indigo", icon: "fa-star" },
+      "9-1": { title: "Awal Puasa Ramadhan", desc: "1 Ramadhan - Pembuka Ibadah Puasa Wajib Umat Islam", type: "ramadhan", badgeColor: "emerald", icon: "fa-moon" },
+      "9-17": { title: "Peringatan Nuzulul Qur'an", desc: "17 Ramadhan - Peringatan Turunnya Al-Qur'anul Karim", type: "holiday", badgeColor: "amber", icon: "fa-book-quran" },
+      "10-1": { title: "Hari Raya Idul Fitri", desc: "1 Syawal - Hari Kemenangan & Shalat Ied (Haram Puasa)", type: "eid", badgeColor: "rose", icon: "fa-mosque" },
+      "10-2": { title: "Hari Raya Idul Fitri Ke-2", desc: "2 Syawal - Silaturahmi Syawal & Halalbihalal Madrasah", type: "eid", badgeColor: "rose", icon: "fa-mosque" },
+      "12-8": { title: "Hari Tarwiyah", desc: "8 Dzulhijjah - Puasa Sunnah Tarwiyah", type: "fasting", badgeColor: "emerald", icon: "fa-moon" },
+      "12-9": { title: "Hari Arafah", desc: "9 Dzulhijjah - Puasa Sunnah Arafah Penghapus Dosa 2 Tahun", type: "fasting", badgeColor: "emerald", icon: "fa-moon" },
+      "12-10": { title: "Hari Raya Idul Adha", desc: "10 Dzulhijjah - Shalat Ied Qurban & Penyembelihan (Haram Puasa)", type: "eid", badgeColor: "rose", icon: "fa-cow" },
+      "12-11": { title: "Hari Tasyrik Ke-1", desc: "11 Dzulhijjah - Hari Tasyrik Qurban (Haram Puasa)", type: "tasyrik", badgeColor: "rose", icon: "fa-ban" },
+      "12-12": { title: "Hari Tasyrik Ke-2", desc: "12 Dzulhijjah - Hari Tasyrik Qurban (Haram Puasa)", type: "tasyrik", badgeColor: "rose", icon: "fa-ban" },
+      "12-13": { title: "Hari Tasyrik Ke-3", desc: "13 Dzulhijjah - Hari Tasyrik Qurban (Haram Puasa)", type: "tasyrik", badgeColor: "rose", icon: "fa-ban" }
+    };
+
+    // Agenda Nasional & Kalender Akademik MTs YASUA (Format Masehi: "Bulan-Tanggal")
+    const AGENDA_MASEHI = {
+      "1-1": { title: "Tahun Baru Masehi", desc: "1 Januari - Libur Nasional", type: "national", badgeColor: "red", icon: "fa-calendar" },
+      "1-4": { title: "Awal Masuk KBM Semester Genap", desc: "4 Januari - Mulai Pembelajaran Semester Genap", type: "madrasah", badgeColor: "emerald", icon: "fa-graduation-cap" },
+      "2-22": { title: "Penilaian Tengah Semester (PTS) Genap", desc: "Pekan Asesmen Sumatif Tengah Semester", type: "madrasah", badgeColor: "blue", icon: "fa-pen-to-square" },
+      "3-15": { title: "Asesmen Madrasah (AM) Kelas 9", desc: "Ujian Akhir Jenjang Santri Kelas IX", type: "madrasah", badgeColor: "purple", icon: "fa-file-lines" },
+      "5-1": { title: "Hari Buruh Internasional", desc: "1 Mei - Libur Nasional", type: "national", badgeColor: "red", icon: "fa-flag" },
+      "5-2": { title: "Hari Pendidikan Nasional", desc: "2 Mei - Upacara Hardiknas Civitas MTs YASUA", type: "national", badgeColor: "blue", icon: "fa-award" },
+      "6-1": { title: "Asesmen Akhir Tahun (AAT)", desc: "Ujian Kenaikan Kelas VII & VIII", type: "madrasah", badgeColor: "emerald", icon: "fa-pen-ruler" },
+      "6-19": { title: "Wisuda Santri & Pembagian Rapor", desc: "Haflah Akhirussanah & Pembagian Rapor Genap", type: "madrasah", badgeColor: "amber", icon: "fa-crown" },
+      "7-13": { title: "Tahun Ajaran Baru & MATSAMA", desc: "Masa Ta'aruf Santri Madrasah (MATSAMA)", type: "madrasah", badgeColor: "emerald", icon: "fa-users" },
+      "8-17": { title: "HUT Kemerdekaan RI", desc: "17 Agustus - Upacara Bendera Santri & Asatidz", type: "national", badgeColor: "red", icon: "fa-flag" },
+      "9-21": { title: "Penilaian Tengah Semester (PTS) Gasal", desc: "Pekan Asesmen Sumatif Tengah Semester Gasal", type: "madrasah", badgeColor: "blue", icon: "fa-pen-to-square" },
+      "10-22": { title: "Hari Santri Nasional", desc: "22 Oktober - Apel Akbar & Kirab Resolusi Jihad Santri YASUA", type: "madrasah", badgeColor: "emerald", icon: "fa-users" },
+      "10-28": { title: "Hari Sumpah Pemuda", desc: "28 Oktober - Peringatan Sumpah Pemuda", type: "national", badgeColor: "amber", icon: "fa-flag" },
+      "11-10": { title: "Hari Pahlawan Nasional", desc: "10 November - Upacara Peringatan Hari Pahlawan", type: "national", badgeColor: "red", icon: "fa-medal" },
+      "11-25": { title: "Hari Guru Nasional", desc: "25 November - Peringatan Hari Guru Civitas Madrasah", type: "madrasah", badgeColor: "teal", icon: "fa-chalkboard-user" },
+      "12-7": { title: "Penilaian Akhir Semester (PAS) Gasal", desc: "Pekan Ujian Asesmen Akhir Semester Gasal", type: "madrasah", badgeColor: "emerald", icon: "fa-file-lines" },
+      "12-19": { title: "Pembagian Rapor Semester Gasal", desc: "Penyerahan Buku Laporan Belajar Santri", type: "madrasah", badgeColor: "amber", icon: "fa-award" }
+    };
+
+    // Standar Koreksi Kalender Hijriyah Lembaga Falakiyah PBNU (LF PBNU) & Kemenag RI
+    const HIJRI_OFFSET_PBNU = -1;
+
+    function getPasaranJawa(dateObj) {
+      const timestamp = dateObj.getTime();
+      const totalHari = Math.floor((timestamp + (7 * 3600 * 1000)) / 86400000);
+      const pasaranIdx = (totalHari + 3) % 5;
+      return pasaranJawa[(pasaranIdx + 5) % 5];
+    }
+
+    function getHijriDate(dateObj, offsetDays = HIJRI_OFFSET_PBNU) {
+      if (!dateObj) dateObj = new Date();
+      try {
+        const targetTime = dateObj.getTime() + (offsetDays * 86400000);
+        const adjustedDate = new Date(targetTime);
+
+        let fmt;
+        try {
+          fmt = new Intl.DateTimeFormat('id-ID-u-ca-islamic-umalqura', {
+            day: 'numeric',
+            month: 'numeric',
+            year: 'numeric'
+          });
+        } catch (e1) {
+          fmt = new Intl.DateTimeFormat('id-ID-u-ca-islamic', {
+            day: 'numeric',
+            month: 'numeric',
+            year: 'numeric'
+          });
+        }
+        const parts = fmt.formatToParts(adjustedDate);
+        let day = 1, month = 1, year = 1448;
+        for (const p of parts) {
+          if (p.type === 'day') day = parseInt(p.value, 10);
+          if (p.type === 'month') month = parseInt(p.value, 10);
+          if (p.type === 'year') {
+            const cleanYear = p.value.replace(/[^0-9]/g, '');
+            if (cleanYear) year = parseInt(cleanYear, 10);
+          }
+        }
+        const monthName = namaBulanHijriyah[month] || `Bulan ${month}`;
+        return {
+          day,
+          month,
+          year,
+          monthName,
+          formatted: `${day} ${monthName} ${year} H`
+        };
+      } catch (e) {
+        return {
+          day: 1,
+          month: 1,
+          year: 1448,
+          monthName: "Hijriyah",
+          formatted: "1448 H"
+        };
+      }
+    }
+
+    function getIslamicCalendarInfo(dateObj) {
+      const hijri = getHijriDate(dateObj);
+      const dayOfWeek = dateObj.getDay();
+      const masehiKey = `${dateObj.getMonth() + 1}-${dateObj.getDate()}`;
+      const hijriKey = `${hijri.month}-${hijri.day}`;
+
+      const holiday = HARI_BESAR_ISLAM[hijriKey] || null;
+      const national = AGENDA_MASEHI[masehiKey] || null;
+
+      // Hari Haram Berpuasa (1 Syawal & 10-13 Dzulhijjah)
+      const isHaramPuasa = (hijri.month === 10 && hijri.day === 1) ||
+                           (hijri.month === 12 && [10, 11, 12, 13].includes(hijri.day));
+
+      // Puasa Wajib Ramadhan
+      const isRamadhan = (hijri.month === 9);
+
+      // Puasa Sunnah Ayyamul Bidh (13, 14, 15 Hijriyah) kecuali Ramadhan & 13 Dzulhijjah
+      const isAyyamulBidh = !isRamadhan && !isHaramPuasa && [13, 14, 15].includes(hijri.day);
+
+      // Puasa Sunnah Rutin Senin & Kamis
+      const isSeninKamis = !isRamadhan && !isHaramPuasa && (dayOfWeek === 1 || dayOfWeek === 4);
+
+      let fastingInfo = null;
+      if (isRamadhan) {
+        fastingInfo = { name: `Puasa Ramadhan (Hari Ke-${hijri.day})`, type: 'ramadhan' };
+      } else if (isAyyamulBidh) {
+        const urutan = hijri.day === 13 ? "Hari Ke-1" : hijri.day === 14 ? "Hari Ke-2" : "Hari Ke-3";
+        fastingInfo = { name: `Puasa Sunnah Ayyamul Bidh (${urutan})`, type: 'ayyamul-bidh' };
+      } else if (isSeninKamis) {
+        fastingInfo = { name: `Puasa Sunnah ${dayOfWeek === 1 ? 'Senin' : 'Kamis'}`, type: 'senin-kamis' };
+      }
+
+      return {
+        hijri,
+        holiday,
+        national,
+        fastingInfo,
+        isHaramPuasa,
+        isSayyidulAyyam: dayOfWeek === 5
+      };
+    }
+
+    function renderCalendar() {
+      const year = currentCalDate.getFullYear();
+      const month = currentCalDate.getMonth();
+
+      const monthYearText = document.getElementById('cal-month-year-text');
+      if (monthYearText) monthYearText.innerText = `${namaBulanIndo[month]} ${year}`;
+
+      const firstDateObj = new Date(year, month, 1);
+      const lastDate = new Date(year, month + 1, 0).getDate();
+      const lastDateObj = new Date(year, month, lastDate);
+
+      // Subheader Rentang Bulan Hijriyah
+      const hijriMonthText = document.getElementById('cal-hijri-month-text');
+      if (hijriMonthText) {
+        const hStart = getHijriDate(firstDateObj);
+        const hEnd = getHijriDate(lastDateObj);
+        if (hStart.month === hEnd.month) {
+          hijriMonthText.innerText = `${hStart.monthName} ${hStart.year} H`;
+        } else if (hStart.year === hEnd.year) {
+          hijriMonthText.innerText = `${hStart.monthName} - ${hEnd.monthName} ${hEnd.year} H`;
+        } else {
+          hijriMonthText.innerText = `${hStart.monthName} ${hStart.year} - ${hEnd.monthName} ${hEnd.year} H`;
+        }
+      }
+
+      const gridContainer = document.getElementById('calendar-days-grid');
+      if (!gridContainer) return;
+      gridContainer.innerHTML = "";
+
+      const firstDayIndex = firstDateObj.getDay();
+
+      // Empty cells sebelum hari pertama
+      for (let i = 0; i < firstDayIndex; i++) {
+        const emptyCell = document.createElement('div');
+        emptyCell.className = "p-1 min-h-[46px] sm:min-h-[56px] md:min-h-[62px] bg-slate-50/50 rounded-xl";
+        gridContainer.appendChild(emptyCell);
+      }
+
+      const today = new Date();
+      const eventsInMonth = [];
+
+      for (let day = 1; day <= lastDate; day++) {
+        const thisDate = new Date(year, month, day);
+        const dayOfWeek = thisDate.getDay();
+        const pasaran = getPasaranJawa(thisDate);
+        const calInfo = getIslamicCalendarInfo(thisDate);
+        const isToday = day === today.getDate() && month === today.getMonth() && year === today.getFullYear();
+
+        // Koleksi Agenda & Hari Besar Bulan Ini
+        if (calInfo.holiday) {
+          eventsInMonth.push({
+            day,
+            title: calInfo.holiday.title,
+            desc: calInfo.holiday.desc,
+            badgeText: "Hari Besar Islam",
+            badgeClass: "bg-amber-100 text-amber-800",
+            boxBg: "bg-amber-100 text-amber-900"
+          });
+        }
+        if (calInfo.national) {
+          eventsInMonth.push({
+            day,
+            title: calInfo.national.title,
+            desc: calInfo.national.desc,
+            badgeText: calInfo.national.type === "madrasah" ? "Agenda Madrasah" : "Nasional",
+            badgeClass: calInfo.national.type === "madrasah" ? "bg-emerald-100 text-brand-dark" : "bg-rose-100 text-rose-800",
+            boxBg: calInfo.national.type === "madrasah" ? "bg-emerald-100 text-brand-dark" : "bg-rose-100 text-rose-900"
+          });
+        }
+        if (calInfo.hijri.day === 13 && !calInfo.isHaramPuasa && calInfo.hijri.month !== 9) {
+          eventsInMonth.push({
+            day,
+            title: `Awal Puasa Ayyamul Bidh (${calInfo.hijri.monthName})`,
+            desc: `Puasa Sunnah 13, 14, 15 ${calInfo.hijri.monthName} ${calInfo.hijri.year} H`,
+            badgeText: "Puasa Sunnah",
+            badgeClass: "bg-emerald-100 text-emerald-800",
+            boxBg: "bg-emerald-100 text-emerald-900"
+          });
+        }
+
+        // Dot Indikator di Kotak Kalender
+        let dotIndicator = `<span class="w-1.5 h-1.5 inline-block"></span>`;
+        if (calInfo.holiday) {
+          dotIndicator = `<span class="w-1.5 h-1.5 rounded-full bg-amber-400 shrink-0" title="${calInfo.holiday.title}"></span>`;
+        } else if (calInfo.national) {
+          dotIndicator = `<span class="w-1.5 h-1.5 rounded-full bg-rose-400 shrink-0" title="${calInfo.national.title}"></span>`;
+        } else if (calInfo.fastingInfo) {
+          dotIndicator = `<span class="w-1.5 h-1.5 rounded-full bg-emerald-500 shrink-0" title="${calInfo.fastingInfo.name}"></span>`;
+        } else if (calInfo.isSayyidulAyyam) {
+          dotIndicator = `<span class="w-1.5 h-1.5 rounded-full bg-teal-400 shrink-0" title="Sayyidul Ayyam"></span>`;
+        }
+
+        const dayCell = document.createElement('div');
+        let cellStyle = "p-1 min-h-[46px] sm:min-h-[56px] md:min-h-[62px] rounded-xl flex flex-col justify-between items-center cursor-pointer transition border border-slate-100 hover:border-brand-primary active:scale-95 ";
+
+        if (isToday) {
+          cellStyle += "bg-brand-primary text-white font-bold shadow-md ring-2 ring-emerald-400/40";
+        } else if (dayOfWeek === 0) {
+          cellStyle += "bg-red-50/60 text-red-600 hover:bg-red-100";
+        } else if (dayOfWeek === 5) {
+          cellStyle += "bg-emerald-50/70 text-emerald-800 hover:bg-emerald-100";
+        } else {
+          cellStyle += "bg-slate-50/80 text-slate-700 hover:bg-slate-100";
+        }
+
+        dayCell.className = cellStyle;
+        dayCell.onclick = () => selectCalDate(year, month, day, pasaran, dayOfWeek);
+
+        const hijriColor = isToday ? "text-amber-200" : "text-emerald-700 font-bold";
+        const pasaranColor = isToday ? "text-amber-300" : (dayOfWeek === 0 ? "text-red-400" : "text-slate-400");
+
+        dayCell.innerHTML = `
+          <div class="flex justify-between items-center w-full px-0.5 sm:px-1 leading-none">
+            <div class="flex items-center">${dotIndicator}</div>
+            <span class="text-[8.5px] sm:text-[9.5px] ${hijriColor}">${calInfo.hijri.day}</span>
+          </div>
+          <span class="text-xs sm:text-sm md:text-base font-black my-0 leading-tight">${day}</span>
+          <span class="text-[7.5px] sm:text-[8.5px] font-semibold leading-none ${pasaranColor}">${pasaran}</span>
+        `;
+        gridContainer.appendChild(dayCell);
+      }
+
+      // Render Daftar Agenda & Hari Besar Bulan Ini
+      renderCalendarEvents(eventsInMonth, month);
+
+      // Set Tanggal Terpilih Default
+      if (month === today.getMonth() && year === today.getFullYear()) {
+        selectCalDate(today.getFullYear(), today.getMonth(), today.getDate(), getPasaranJawa(today), today.getDay());
+      } else {
+        selectCalDate(year, month, 1, getPasaranJawa(firstDateObj), firstDateObj.getDay());
+      }
+    }
+
+    function renderCalendarEvents(events, month) {
+      const container = document.getElementById('calendar-events-container');
+      const countEl = document.getElementById('cal-events-count');
+      if (!container) return;
+
+      if (countEl) {
+        countEl.innerText = `${events.length} Agenda`;
+      }
+
+      if (events.length === 0) {
+        container.innerHTML = `
+          <div class="col-span-full p-4 text-center rounded-2xl bg-slate-50 border border-dashed border-slate-200 text-xs text-slate-400">
+            <i class="fa-solid fa-calendar-check text-base text-slate-300 mb-1 block"></i>
+            Tidak ada agenda khusus di bulan ${namaBulanIndo[month]}. Kegiatan pembelajaran &amp; kepesantrenan santri berjalan normal.
+          </div>
+        `;
+        return;
+      }
+
+      const shortMonth = namaBulanIndo[month].substring(0, 3);
+      container.innerHTML = events.map(ev => `
+        <div class="p-3 bg-slate-50 rounded-2xl border border-slate-100 flex items-center space-x-3 transition hover:border-emerald-400">
+          <div class="w-10 h-10 ${ev.boxBg} rounded-xl flex flex-col items-center justify-center font-bold shrink-0 shadow-2xs">
+            <span class="text-xs font-black leading-none">${ev.day}</span>
+            <span class="text-[8px] uppercase font-bold leading-none mt-0.5">${shortMonth}</span>
+          </div>
+          <div class="min-w-0 flex-1">
+            <div class="flex items-center gap-1.5 flex-wrap">
+              <h4 class="text-xs font-bold text-slate-800 truncate">${ev.title}</h4>
+              <span class="text-[8.5px] font-bold px-1.5 py-0.5 rounded-md ${ev.badgeClass}">${ev.badgeText}</span>
+            </div>
+            <p class="text-[10px] text-slate-500 mt-0.5 truncate">${ev.desc}</p>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function changeCalMonth(delta) {
+      currentCalDate.setMonth(currentCalDate.getMonth() + delta);
+      renderCalendar();
+    }
+
+    function goToCurrentMonth() {
+      currentCalDate = new Date();
+      renderCalendar();
+    }
+
+    function selectCalDate(year, month, day, pasaran, dayOfWeek) {
+      const thisDate = new Date(year, month, day);
+      const today = new Date();
+      const isToday = (day === today.getDate() && month === today.getMonth() && year === today.getFullYear());
+      const info = getIslamicCalendarInfo(thisDate);
+      const hari = namaHariIndo[dayOfWeek];
+      const bulan = namaBulanIndo[month];
+
+      const statusBadgeEl = document.getElementById('selected-date-status-badge');
+      const titleEl = document.getElementById('selected-date-title');
+      const subtitleEl = document.getElementById('selected-date-subtitle');
+      const tagEl = document.getElementById('selected-date-tag');
+
+      // Baris 1: Status Badge (Hari Ini / Tanggal Terpilih)
+      if (statusBadgeEl) {
+        if (isToday) {
+          statusBadgeEl.innerText = "Hari Ini";
+          statusBadgeEl.className = "text-[9.5px] font-black uppercase bg-amber-400/25 text-amber-300 px-2 py-0.5 rounded tracking-wider shrink-0";
+        } else {
+          statusBadgeEl.innerText = "Tanggal Terpilih";
+          statusBadgeEl.className = "text-[9.5px] font-bold uppercase bg-white/15 text-slate-200 px-2 py-0.5 rounded tracking-wider shrink-0";
+        }
+      }
+
+      // Baris 1: Tag Ibadah / Peringatan / Agenda
+      if (tagEl) {
+        if (info.holiday) {
+          tagEl.innerHTML = `<i class="fa-solid ${info.holiday.icon} text-amber-300 mr-1.5"></i> ${info.holiday.title}`;
+        } else if (info.isHaramPuasa) {
+          tagEl.innerHTML = `<i class="fa-solid fa-ban text-rose-300 mr-1.5"></i> Hari Diharamkan Berpuasa`;
+        } else if (info.fastingInfo) {
+          tagEl.innerHTML = `<i class="fa-solid fa-moon text-emerald-300 mr-1.5"></i> ${info.fastingInfo.name}`;
+        } else if (info.national) {
+          tagEl.innerHTML = `<i class="fa-solid ${info.national.icon} text-amber-300 mr-1.5"></i> ${info.national.title}`;
+        } else if (hari === "Jumat") {
+          tagEl.innerHTML = `<i class="fa-solid fa-mosque text-emerald-300 mr-1.5"></i> Sayyidul Ayyam`;
+        } else if (hari === "Minggu") {
+          tagEl.innerHTML = `<i class="fa-solid fa-mug-hot text-amber-300 mr-1.5"></i> Libur KBM Santri`;
+        } else {
+          tagEl.innerHTML = `<i class="fa-solid fa-book-quran text-amber-300 mr-1.5"></i> Kegiatan Normal`;
+        }
+      }
+
+      // Baris 2: Hari, tgl bln thn MASEHI
+      if (titleEl) {
+        titleEl.innerText = `${hari} ${pasaran}, ${day} ${bulan} ${year}`;
+      }
+
+      // Baris 3: Hari, tgl bln thn HIJRIYAH (Standar LF PBNU)
+      if (subtitleEl) {
+        subtitleEl.innerText = `${hari} ${pasaran}, ${info.hijri.day} ${info.hijri.monthName} ${info.hijri.year} H`;
+      }
+    }
+
+    // Modal Brosur Handlers
+    function openBrochureModal() {
+      const modal = document.getElementById('brochureModal');
+      if (modal) modal.classList.remove('hidden');
+    }
+    function closeBrochureModal() {
+      const modal = document.getElementById('brochureModal');
+      if (modal) modal.classList.add('hidden');
+    }
+
+    // Mobile Drawer Toggle
+    document.addEventListener('DOMContentLoaded', () => {
+      const mobileBtn = document.getElementById('mobileMenuBtn');
+      const mobileMenu = document.getElementById('mobileMenu');
+      if (mobileBtn && mobileMenu) {
+        mobileBtn.addEventListener('click', () => {
+          mobileMenu.classList.toggle('hidden');
+        });
+      }
+
+      // Inisialisasi Kalender Asnawiyyah
+      renderCalendar();
+
+      // Render Lucide icons
+      if (typeof lucide !== 'undefined') {
+        lucide.createIcons();
+      }
+    });
+
+    window.renderCalendar = renderCalendar;
+    window.changeCalMonth = changeCalMonth;
+    window.goToCurrentMonth = goToCurrentMonth;
+    window.selectCalDate = selectCalDate;
+    window.openBrochureModal = openBrochureModal;
+    window.closeBrochureModal = closeBrochureModal;
+  </script>
+
+</body>
+</html>

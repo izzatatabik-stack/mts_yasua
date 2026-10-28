@@ -49,10 +49,10 @@
       "icons": [{ "src": "icon-192.png", "sizes": "192x192" }]
     },
     {
-      "name": "Jadwal & Agenda",
-      "short_name": "Agenda",
-      "description": "Kalender Pendidikan & Rutinitas Madrasah",
-      "url": "agenda.html",
+      "name": "Kalender Islam & Jawa",
+      "short_name": "Kalender",
+      "description": "Tri-Penanggalan Masehi, Hijriyah & Pasaran Jawa",
+      "url": "kalender.html",
       "icons": [{ "src": "icon-192.png", "sizes": "192x192" }]
     },
     {

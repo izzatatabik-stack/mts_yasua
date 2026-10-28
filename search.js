@@ -125,14 +125,24 @@
       keywords: ["mou", "kemitraan", "kerjasama", "instansi", "puskesmas", "kemenag", "polsek", "bank", "bsi", "bri", "pesantren", "komite", "relasi"]
     },
     {
-      title: "Jadwal & Agenda Kegiatan Madrasah",
+      title: "Kalender Islam & Jawa (Tri-Penanggalan Asnawiyyah)",
       category: "Program",
-      categoryLabel: "Kalender Akademik",
+      categoryLabel: "Kalender Islam",
       badgeColor: "bg-emerald-100 text-emerald-800 border-emerald-200",
-      icon: "calendar-days",
+      icon: "calendar",
+      url: "kalender.html",
+      snippet: "Tri-penanggalan Masehi, Hijriyah standar hisab LF PBNU, dan Pasaran Jawa (Legi, Pahing, Pon, Wage, Kliwon) serta jadwal puasa sunnah.",
+      keywords: ["kalender", "hijriyah", "pasaran", "jawa", "legi", "pahing", "pon", "wage", "kliwon", "puasa", "ayyamul bidh", "senin kamis", "phbi", "pbnu"]
+    },
+    {
+      title: "Jadwal & Agenda Rutinitas Santri",
+      category: "Program",
+      categoryLabel: "Jadwal KBM",
+      badgeColor: "bg-emerald-100 text-emerald-800 border-emerald-200",
+      icon: "clock",
       url: "agenda.html",
-      snippet: "Kalender akademik, agenda kegiatan tahunan, PHBI, asesmen/ujian madrasah, dan rutinitas harian santri.",
-      keywords: ["agenda", "jadwal", "kalender", "kegiatan", "akademik", "matsama", "kemah", "anbk", "pts", "pas", "phbi", "hari santri"]
+      snippet: "Jadwal kegiatan belajar mengajar (KBM), rutinitas pembiasaan santri harian, dan agenda tahunan madrasah.",
+      keywords: ["agenda", "jadwal", "kegiatan", "akademik", "matsama", "kemah", "anbk", "pts", "pas", "phbi", "hari santri"]
     },
     {
       title: "Prestasi Siswa MTs YASUA (Galeri Juara)",
