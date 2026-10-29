@@ -2815,6 +2815,140 @@
     } else {
       initScrollReveal();
     }
+
+    // ===================================================================
+    // SINKRONISASI DINAMIS BANNER SLIDER DARI GOOGLE SPREADSHEET
+    // ===================================================================
+    (function () {
+      const API_URL = 'https://script.google.com/macros/s/AKfycbxNFLoL96Ch_8QOKhp5AFauIGb9GcMpd9eb3my_zqikL0sDuncgRhDPD6tez-fuY6wT/exec?action=getBanners';
+
+      fetch(API_URL)
+        .then((res) => res.json())
+        .then((json) => {
+          if (json.status === 'success' && Array.isArray(json.data) && json.data.length > 0) {
+            const track = document.getElementById('appBannerTrack');
+            const dots = document.getElementById('appBannerDots');
+            if (!track) return;
+
+            const activeBanners = json.data.filter(
+              (b) => b.status_aktif === true || String(b.status_aktif).toLowerCase() === 'true'
+            );
+            if (activeBanners.length === 0) return;
+
+            activeBanners.sort((a, b) => (Number(a.urutan) || 0) - (Number(b.urutan) || 0));
+
+            track.innerHTML = activeBanners
+              .map((b) => {
+                const color = b.badge_color || 'emerald';
+                const badgeBg =
+                  color === 'amber'
+                    ? 'bg-amber-500 text-slate-950 font-black'
+                    : color === 'teal'
+                    ? 'bg-teal-600 text-white font-extrabold'
+                    : color === 'blue'
+                    ? 'bg-blue-600 text-white font-extrabold'
+                    : 'bg-emerald-500/90 text-white font-extrabold';
+
+                const link = b.link_url || 'program.html';
+
+                return `
+                  <a href="${link}" class="w-full shrink-0 relative aspect-[3/1] overflow-hidden flex items-center block group">
+                    <img src="${b.gambar_url || 'banner_1.jpg'}" alt="${b.judul}" class="absolute inset-0 w-full h-full object-cover object-center transform group-hover:scale-105 transition-transform duration-700" onerror="this.src='banner_1.jpg'">
+                    <div class="absolute inset-0 bg-gradient-to-r from-slate-950/90 via-slate-950/50 to-transparent"></div>
+                    <div class="relative z-10 p-3 sm:p-4 max-w-[75%] sm:max-w-[70%] text-white space-y-0.5">
+                      <span class="inline-block px-1.5 py-0.5 rounded ${badgeBg} text-[8px] sm:text-[9px] uppercase tracking-wider">
+                        ${b.badge || 'Madrasah'}
+                      </span>
+                      <h4 class="font-black text-xs sm:text-sm text-white leading-snug drop-shadow-xs line-clamp-1">
+                        ${b.judul}
+                      </h4>
+                      <p class="text-[9px] sm:text-[10px] text-emerald-100/90 line-clamp-1">
+                        ${b.deskripsi}
+                      </p>
+                    </div>
+                  </a>
+                `;
+              })
+              .join('');
+
+            if (dots) {
+              dots.innerHTML = activeBanners
+                .map(
+                  (_, i) =>
+                    `<span class="${
+                      i === 0 ? 'w-4 h-1.5 rounded-full bg-amber-400' : 'w-1.5 h-1.5 rounded-full bg-white/60'
+                    } transition-all duration-300"></span>`
+                )
+                .join('');
+            }
+          }
+        })
+        .catch((err) => {
+          console.log('[MTs YASUA] Menggunakan banner statis bawaan:', err);
+        });
+    })();
+
+    // ===================================================================
+    // SINKRONISASI DINAMIS HERO SLIDER DESKTOP DARI GOOGLE SPREADSHEET
+    // ===================================================================
+    (function () {
+      const HERO_API_URL = 'https://script.google.com/macros/s/AKfycbxNFLoL96Ch_8QOKhp5AFauIGb9GcMpd9eb3my_zqikL0sDuncgRhDPD6tez-fuY6wT/exec?action=getHeroSlides';
+
+      fetch(HERO_API_URL)
+        .then((res) => res.json())
+        .then((json) => {
+          if (json.status === 'success' && Array.isArray(json.data) && json.data.length > 0) {
+            const heroSlides = json.data;
+            heroSlides.sort((a, b) => (Number(a.urutan) || 0) - (Number(b.urutan) || 0));
+
+            const slideEls = document.querySelectorAll('.hero-slide');
+            const thumbEls = document.querySelectorAll('.hero-thumb');
+
+            heroSlides.forEach((slideData, idx) => {
+              if (idx < slideEls.length) {
+                const sEl = slideEls[idx];
+                const img = sEl.querySelector('img');
+                if (img && slideData.gambar_url) {
+                  img.src = slideData.gambar_url;
+                  if (slideData.judul) img.alt = slideData.judul;
+                }
+                const badgeWrap = sEl.querySelector('.absolute.top-3\\.5');
+                if (badgeWrap) {
+                  const badgeText = badgeWrap.querySelector('span');
+                  if (badgeText && slideData.badge_text) badgeText.textContent = slideData.badge_text;
+                  const badgeIcon = badgeWrap.querySelector('i');
+                  if (badgeIcon && slideData.badge_icon) {
+                    badgeIcon.setAttribute('data-lucide', slideData.badge_icon);
+                  }
+                }
+                const textWrap = sEl.querySelector('.absolute.bottom-3\\.5');
+                if (textWrap) {
+                  const titleEl = textWrap.querySelector('span');
+                  if (titleEl && slideData.judul) titleEl.textContent = slideData.judul;
+                  const descEl = textWrap.querySelector('p');
+                  if (descEl && slideData.deskripsi) descEl.textContent = slideData.deskripsi;
+                }
+              }
+
+              if (idx < thumbEls.length) {
+                const tEl = thumbEls[idx];
+                const tImg = tEl.querySelector('img');
+                if (tImg && slideData.gambar_url) {
+                  tImg.src = slideData.gambar_url;
+                }
+                if (slideData.thumb_title) {
+                  tEl.title = slideData.thumb_title;
+                }
+              }
+            });
+
+            if (window.lucide) window.lucide.createIcons();
+          }
+        })
+        .catch((err) => {
+          console.log('[MTs YASUA] Menggunakan foto hero statis bawaan:', err);
+        });
+    })();
   </script>
 
 </body>

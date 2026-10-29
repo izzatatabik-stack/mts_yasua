@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth is-pwa-standalone">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <title>Aplikasi MTs YASUA — Dashboard Mobile Resmi</title>
+  <meta name="description"
+    content="Aplikasi Mobile Resmi Madrasah Tsanawiyah YASUA Pilangwetan, Kebonagung, Demak. Akses cepat jadwal shalat, kalender Islam/Jawa, PPDB, dan informasi madrasah.">
+
+  <!-- Favicon & Touch Icons -->
+  <link rel="icon" type="image/png" href="logo.png">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+
+  <!-- PWA & Mobile Web App Meta -->
+  <meta name="theme-color" content="#065F46">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="MTs YASUA">
+  <meta name="application-name" content="MTs YASUA">
+  <meta name="format-detection" content="telephone=no">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Tailwind Theme Configuration -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              dark: '#033324',
+              primary: '#065F46',
+              medium: '#0D7B58',
+              light: '#10B981',
+              pale: '#ECFDF5',
+              surface: '#F4FBF7',
+              accent: '#F59E0B',
+              accentHover: '#D97706',
+              gold: '#FBBF24'
+            }
+          },
+          fontFamily: {
+            sans: ['Plus Jakarta Sans', 'Inter', 'sans-serif'],
+            arabic: ['Amiri', 'serif']
+          },
+          boxShadow: {
+            'glow-green': '0 10px 30px -10px rgba(6, 95, 70, 0.35)',
+            'glow-gold': '0 10px 25px -5px rgba(245, 158, 11, 0.4)'
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Google Fonts: Plus Jakarta Sans & Amiri -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <!-- Lucide Icons CDN -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <!-- Search & PWA Controller -->
+  <script src="search.js" defer></script>
+  <script src="pwa.js" defer></script>
+
+  <style>
+    /* Mobile App Safe-Area & Base Reset */
+    * {
+      -webkit-tap-highlight-color: transparent;
+      user-select: none;
+    }
+
+    body {
+      background-color: #F4FBF7;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      padding-bottom: calc(5rem + env(safe-area-inset-bottom, 16px));
+      min-height: 100vh;
+    }
+
+    .arabic-font {
+      font-family: 'Amiri', serif;
+    }
+
+    /* Pull to refresh & overscroll prevention */
+    html, body {
+      overscroll-behavior-y: contain;
+    }
+  </style>
+</head>
+
+<body class="is-pwa-standalone text-slate-800">
+
+  <!-- Status Offline Banner -->
+  <div id="app-offline-bar" class="hidden bg-rose-600 text-white text-center text-xs py-1.5 px-3 font-semibold sticky top-0 z-50 flex items-center justify-center gap-2">
+    <i data-lucide="wifi-off" class="w-3.5 h-3.5"></i>
+    <span>Anda sedang dalam mode offline. Membuka konten cache tersimpan.</span>
+  </div>
+
+  <!-- Header Bar App Mobile (Sticky Native Style) -->
+  <header class="sticky top-0 z-30 w-full bg-gradient-to-r from-[#022c1f] via-[#065F46] to-[#0A6B48] text-white shadow-md border-b border-emerald-700/80 pt-[max(0.75rem,env(safe-area-inset-top,0px))] pb-3 px-3.5 sm:px-4">
+    <div class="max-w-xl mx-auto flex items-center justify-between">
+      <div class="flex items-center gap-2.5">
+        <img src="logo.png" alt="Logo MTs YASUA" class="w-10 h-10 object-contain drop-shadow p-0.5 bg-white/10 rounded-xl shrink-0">
+        <div class="flex flex-col">
+          <span class="arabic-font text-amber-300 text-xs sm:text-sm leading-none font-bold">المدرسة الثانوية الإسلامية ياسوا</span>
+          <span class="font-extrabold text-white text-base sm:text-lg tracking-wide leading-tight mt-0.5">MTs YASUA</span>
+          <span class="text-[10px] font-bold tracking-wide text-emerald-200 mt-0.5">Pilangwetan - Demak</span>
+        </div>
+      </div>
+      <div class="flex items-center gap-1.5">
+        <!-- Cari Informasi -->
+        <button onclick="openSearchModal()" type="button" class="w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 active:scale-95 flex items-center justify-center text-white transition-all cursor-pointer" title="Cari Informasi" aria-label="Cari">
+          <i data-lucide="search" class="w-4 h-4"></i>
+        </button>
+        <!-- Notifikasi & Pengaturan -->
+        <button onclick="window.openSettingsModal()" type="button" class="w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 active:scale-95 flex items-center justify-center text-amber-300 relative transition-all cursor-pointer" title="Pengaturan Aplikasi" aria-label="Pengaturan">
+          <i data-lucide="bell" class="w-4 h-4"></i>
+          <span class="absolute top-1 right-1 w-2 h-2 rounded-full bg-amber-400 animate-ping"></span>
+          <span class="absolute top-1 right-1 w-2 h-2 rounded-full bg-amber-400"></span>
+        </button>
+        <!-- Buka Web Portal -->
+        <a href="index.html" class="w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 active:scale-95 flex items-center justify-center text-emerald-200 transition-all" title="Buka Versi Web Lengkap" aria-label="Web Portal">
+          <i data-lucide="globe" class="w-4 h-4"></i>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Area Konten Utama Mobile App -->
+  <main class="max-w-xl mx-auto px-3 pt-2.5 pb-6 space-y-2.5">
+
+    <!-- Widget Lokasi & Jadwal Sholat Demak Real-Time (Persis Asnawiyyah) -->
+    <section class="bg-gradient-to-r from-emerald-950 via-teal-950 to-emerald-900 text-white px-3.5 py-2.5 rounded-2xl shadow-sm border border-emerald-700/80 relative overflow-hidden space-y-2">
+      <!-- Watermark Background -->
+      <div class="absolute -right-4 -bottom-4 text-white/5 pointer-events-none">
+        <i data-lucide="moon" class="w-24 h-24"></i>
+      </div>
+
+      <!-- Baris 1: Lokasi & Hari Pasaran Jawa (Kiri) | Shalat Terdekat & Jam Digital (Kanan) -->
+      <div class="flex justify-between items-start gap-2 relative z-10">
+        <!-- Kiri -->
+        <div class="flex flex-col items-start space-y-1 min-w-0 flex-1">
+          <div class="flex items-center space-x-1 font-bold text-white leading-tight text-[11px] truncate w-full">
+            <i data-lucide="map-pin" class="w-3 h-3 text-amber-400 shrink-0"></i>
+            <span class="truncate">Kab. Demak, Jawa Tengah</span>
+          </div>
+          <div id="home-current-day" class="font-mono font-bold text-amber-300 bg-black/40 px-2 py-0.5 rounded-md border border-amber-400/20 text-[10.5px] inline-flex items-center tracking-wide">
+            Memuat...
+          </div>
+        </div>
+
+        <!-- Kanan -->
+        <div class="flex flex-col items-end space-y-1 shrink-0 ml-1">
+          <div id="home-next-prayer-name" class="font-bold text-white text-right leading-tight text-[11.5px]">
+            Waktu Shalat <span id="home-next-prayer-time" class="text-amber-300 font-semibold ml-1">--:-- WIB</span>
+          </div>
+          <div id="home-digital-clock" class="font-mono font-bold text-amber-300 bg-black/40 px-2 py-0.5 rounded-md border border-amber-400/20 text-[10.5px] inline-flex items-center tracking-wider">
+            --:--:-- WIB
+          </div>
+        </div>
+      </div>
+
+      <!-- Baris 2: Tanggal Masehi & Tanggal Hijriyah -->
+      <div class="flex justify-between items-center text-emerald-100/90 relative z-10 pt-1 border-t border-emerald-800/60 text-[10px]">
+        <div class="flex items-center space-x-1.5 text-slate-200 font-medium">
+          <i data-lucide="calendar" class="w-3 h-3 text-emerald-300"></i>
+          <span id="home-date-masehi">--</span>
+        </div>
+        <div class="flex items-center space-x-1.5 text-amber-300 font-medium">
+          <i data-lucide="sparkles" class="w-3 h-3 text-amber-400"></i>
+          <span id="home-date-hijri">15 Jumadil Ula 1448 H</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Menu Grid Layanan Cepat (8 Ikon Layanan) -->
+    <div class="bg-white p-3 rounded-2xl border border-emerald-100/80 shadow-xs">
+      <div class="grid grid-cols-4 gap-y-3 gap-x-2">
+        <!-- 1. Program Pilihan -->
+        <a href="program.html" class="flex flex-col items-center group active:scale-95 transition-transform text-center">
+          <div class="w-12 h-12 bg-amber-50 text-amber-600 rounded-2xl flex items-center justify-center text-lg shadow-2xs border border-amber-100 group-hover:bg-amber-500 group-hover:text-white transition-colors">
+            <i data-lucide="book-open" class="w-5 h-5"></i>
+          </div>
+          <span class="text-[10px] mt-1.5 font-bold text-slate-700 leading-tight">Program</span>
+        </a>
+
+        <!-- 2. Kalender Islam & Jawa -->
+        <a href="kalender.html" class="flex flex-col items-center group active:scale-95 transition-transform text-center">
+          <div class="w-12 h-12 bg-rose-50 text-rose-600 rounded-2xl flex items-center justify-center text-lg shadow-2xs border border-rose-100 group-hover:bg-rose-500 group-hover:text-white transition-colors">
+            <i data-lucide="calendar" class="w-5 h-5"></i>
+          </div>
+          <span class="text-[10px] mt-1.5 font-bold text-slate-700 leading-tight">Kalender</span>
+        </a>
+
+        <!-- 3. Unit Ekskul -->
+        <a href="ekskul.html" class="flex flex-col items-center group active:scale-95 transition-transform text-center">
+          <div class="w-12 h-12 bg-blue-50 text-blue-600 rounded-2xl flex items-center justify-center text-lg shadow-2xs border border-blue-100 group-hover:bg-blue-500 group-hover:text-white transition-colors">
+            <i data-lucide="users" class="w-5 h-5"></i>
+          </div>
+          <span class="text-[10px] mt-1.5 font-bold text-slate-700 leading-tight">Ekskul</span>
+        </a>
+
+        <!-- 4. Guru & Tendik -->
+        <a href="guru.html" class="flex flex-col items-center group active:scale-95 transition-transform text-center">
+          <div class="w-12 h-12 bg-emerald-50 text-emerald-700 rounded-2xl flex items-center justify-center text-lg shadow-2xs border border-emerald-100 group-hover:bg-emerald-600 group-hover:text-white transition-colors">
+            <i data-lucide="graduation-cap" class="w-5 h-5"></i>
+          </div>
+          <span class="text-[10px] mt-1.5 font-bold text-slate-700 leading-tight">Guru</span>
+        </a>
+
+        <!-- 5. Prestasi Siswa -->
+        <a href="prestasi.html" class="flex flex-col items-center group active:scale-95 transition-transform text-center">
+          <div class="w-12 h-12 bg-purple-50 text-purple-600 rounded-2xl flex items-center justify-center text-lg shadow-2xs border border-purple-100 group-hover:bg-purple-500 group-hover:text-white transition-colors">
+            <i data-lucide="trophy" class="w-5 h-5"></i>
+          </div>
+          <span class="text-[10px] mt-1.5 font-bold text-slate-700 leading-tight">Prestasi</span>
+        </a>
+
+        <!-- 6. Profil YASUA -->
+        <a href="profil.html" class="flex flex-col items-center group active:scale-95 transition-transform text-center">
+          <div class="w-12 h-12 bg-teal-50 text-teal-700 rounded-2xl flex items-center justify-center text-lg shadow-2xs border border-teal-100 group-hover:bg-teal-600 group-hover:text-white transition-colors">
+            <i data-lucide="landmark" class="w-5 h-5"></i>
+          </div>
+          <span class="text-[10px] mt-1.5 font-bold text-slate-700 leading-tight">Profil</span>
+        </a>
+
+        <!-- 7. Galeri Foto -->
+        <a href="galeri.html" class="flex flex-col items-center group active:scale-95 transition-transform text-center">
+          <div class="w-12 h-12 bg-sky-50 text-sky-600 rounded-2xl flex items-center justify-center text-lg shadow-2xs border border-sky-100 group-hover:bg-sky-500 group-hover:text-white transition-colors">
+            <i data-lucide="camera" class="w-5 h-5"></i>
+          </div>
+          <span class="text-[10px] mt-1.5 font-bold text-slate-700 leading-tight">Galeri</span>
+        </a>
+
+        <!-- 8. Pendaftaran PPDB -->
+        <a href="ppdb.html" class="flex flex-col items-center group active:scale-95 transition-transform text-center">
+          <div class="w-12 h-12 bg-amber-500 text-slate-950 rounded-2xl flex items-center justify-center text-lg shadow-2xs border border-amber-400 group-hover:bg-amber-600 transition-colors ring-2 ring-amber-500/30">
+            <i data-lucide="user-plus" class="w-5 h-5"></i>
+          </div>
+          <span class="text-[10px] mt-1.5 font-black text-brand-dark leading-tight">PPDB</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Banner Slider Mobile App (Rasio 3:1) -->
+    <div class="relative overflow-hidden rounded-2xl shadow-sm border border-emerald-100/90 bg-slate-900 group">
+      <div id="appBannerTrack" class="flex transition-transform duration-500 ease-out">
+        <!-- Slide 1: Madrasah Digital & CBT -->
+        <div class="w-full shrink-0 relative aspect-[3/1] overflow-hidden flex items-center">
+          <img src="banner_1.jpg" alt="Madrasah Digital & Lab CBT MTs YASUA" class="absolute inset-0 w-full h-full object-cover object-center transform group-hover:scale-105 transition-transform duration-700">
+          <div class="absolute inset-0 bg-gradient-to-r from-slate-950/90 via-slate-950/50 to-transparent"></div>
+          <div class="relative z-10 p-3 sm:p-4 max-w-[75%] sm:max-w-[70%] text-white space-y-0.5">
+            <span class="inline-block px-1.5 py-0.5 rounded bg-emerald-500/90 text-white font-extrabold text-[8px] sm:text-[9px] uppercase tracking-wider">
+              Madrasah Digital
+            </span>
+            <h4 class="font-black text-xs sm:text-sm text-white leading-snug drop-shadow-xs line-clamp-1">
+              Unggul Teknologi &amp; Kurikulum Terpadu
+            </h4>
+            <p class="text-[9px] sm:text-[10px] text-emerald-100/90 line-clamp-1">
+              Lab CBT modern, literasi digital Islami, &amp; pembelajaran interaktif.
+            </p>
+          </div>
+        </div>
+
+        <!-- Slide 2: Tahfidz Al-Qur'an & Prestasi -->
+        <div class="w-full shrink-0 relative aspect-[3/1] overflow-hidden flex items-center">
+          <img src="banner_2.jpg" alt="Tahfidz Al-Quran & Prestasi Santri MTs YASUA" class="absolute inset-0 w-full h-full object-cover object-center transform group-hover:scale-105 transition-transform duration-700">
+          <div class="absolute inset-0 bg-gradient-to-r from-emerald-950/90 via-emerald-950/50 to-transparent"></div>
+          <div class="relative z-10 p-3 sm:p-4 max-w-[75%] sm:max-w-[70%] text-white space-y-0.5">
+            <span class="inline-block px-1.5 py-0.5 rounded bg-amber-500 text-slate-950 font-black text-[8px] sm:text-[9px] uppercase tracking-wider">
+              Tahfidz &amp; Prestasi
+            </span>
+            <h4 class="font-black text-xs sm:text-sm text-white leading-snug drop-shadow-xs line-clamp-1">
+              Generasi Qur'ani Berprestasi Juara
+            </h4>
+            <p class="text-[9px] sm:text-[10px] text-amber-100/90 line-clamp-1">
+              Bimbingan tahfidz intensif, akhlak mulia, &amp; rekam jejak juara.
+            </p>
+          </div>
+        </div>
+
+        <!-- Slide 3: Kajian Kitab Salaf & Karakter Santri -->
+        <div class="w-full shrink-0 relative aspect-[3/1] overflow-hidden flex items-center">
+          <img src="banner_3.jpg" alt="Kajian Kitab Salaf MTs YASUA" class="absolute inset-0 w-full h-full object-cover object-center transform group-hover:scale-105 transition-transform duration-700">
+          <div class="absolute inset-0 bg-gradient-to-r from-slate-950/90 via-slate-950/50 to-transparent"></div>
+          <div class="relative z-10 p-3 sm:p-4 max-w-[75%] sm:max-w-[70%] text-white space-y-0.5">
+            <span class="inline-block px-1.5 py-0.5 rounded bg-teal-600 text-white font-extrabold text-[8px] sm:text-[9px] uppercase tracking-wider">
+              Tradisi Salafiyah
+            </span>
+            <h4 class="font-black text-xs sm:text-sm text-white leading-snug drop-shadow-xs line-clamp-1">
+              Kajian Kitab Salaf &amp; Karakter Santri
+            </h4>
+            <p class="text-[9px] sm:text-[10px] text-teal-100/90 line-clamp-1">
+              Sorogan, bandongan fiqih-akhlak, &amp; pembiasaan adab kepesantrenan.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Banner Dots Indicator -->
+      <div id="appBannerDots" class="absolute bottom-1.5 right-3 flex items-center gap-1.5 z-10 bg-black/40 px-2 py-0.5 rounded-full backdrop-blur-xs">
+        <span class="w-4 h-1.5 rounded-full bg-amber-400 shadow-xs transition-all duration-300"></span>
+        <span class="w-1.5 h-1.5 rounded-full bg-white/60 transition-all duration-300"></span>
+        <span class="w-1.5 h-1.5 rounded-full bg-white/60 transition-all duration-300"></span>
+      </div>
+    </div>
+
+    <!-- Quick Action Card: PPDB & QRIS -->
+    <div class="grid grid-cols-2 gap-2">
+      <a id="homePpdbLink" href="https://wa.me/6285649881966" target="_blank" class="p-3 bg-gradient-to-br from-emerald-600 to-brand-primary text-white rounded-2xl shadow-sm flex items-center gap-2.5 active:scale-98 transition-transform">
+        <div class="w-9 h-9 rounded-xl bg-white/20 flex items-center justify-center shrink-0">
+          <i data-lucide="clipboard-check" class="w-5 h-5 text-amber-300"></i>
+        </div>
+        <div class="min-w-0">
+          <span id="homePpdbTitle" class="block text-xs font-black leading-tight">PPDB Online</span>
+          <span id="homePpdbDesc" class="text-[9.5px] text-emerald-100 truncate block">Pendaftaran Santri Baru</span>
+        </div>
+      </a>
+
+      <button onclick="window.openQrModal()" type="button" class="p-3 bg-white border border-emerald-100 text-slate-800 rounded-2xl shadow-sm flex items-center gap-2.5 active:scale-98 transition-transform text-left cursor-pointer">
+        <div class="w-9 h-9 rounded-xl bg-amber-50 text-amber-600 border border-amber-200 flex items-center justify-center shrink-0">
+          <i data-lucide="qr-code" class="w-5 h-5"></i>
+        </div>
+        <div class="min-w-0">
+          <span class="block text-xs font-black leading-tight text-brand-dark">QR Portal &amp; QRIS</span>
+          <span class="text-[9.5px] text-slate-500 truncate block">Infaq &amp; Pembayaran</span>
+        </div>
+      </button>
+    </div>
+
+    <!-- Headline Kabar Madrasah -->
+    <div class="bg-white p-3.5 rounded-2xl border border-emerald-100/80 shadow-xs space-y-2.5">
+      <div class="flex items-center justify-between border-b border-slate-100 pb-2">
+        <div class="flex items-center gap-2">
+          <span class="w-2 h-4 bg-brand-primary rounded-full"></span>
+          <h3 class="font-black text-slate-900 text-xs sm:text-sm">Headline Madrasah</h3>
+        </div>
+        <a href="berita.html" class="text-[11px] font-bold text-brand-primary hover:underline flex items-center gap-0.5">
+          <span>Lihat Semua</span>
+          <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i>
+        </a>
+      </div>
+
+      <!-- List Berita 1 -->
+      <a href="berita.html" class="flex items-center gap-3 p-2 rounded-xl hover:bg-slate-50 transition-colors group">
+        <div class="flex-1 min-w-0">
+          <div class="flex items-center gap-2 mb-1">
+            <span class="px-2 py-0.5 rounded bg-emerald-100 text-emerald-800 font-extrabold text-[9px] uppercase">KEGIATAN</span>
+            <span class="text-[10px] text-slate-400 flex items-center gap-1">
+              <i data-lucide="eye" class="w-2.5 h-2.5"></i> 142
+            </span>
+          </div>
+          <h4 class="font-bold text-slate-800 group-hover:text-brand-primary text-xs line-clamp-2 leading-snug">
+            Penilaian Tengah Semester (PTS) Gasal Berbasis CBT di Lab Komputer
+          </h4>
+          <span class="text-[10px] text-slate-400 mt-1 block">24 Oktober 2026</span>
+        </div>
+        <img src="foto-labkom.webp" alt="Lab Komputer" class="w-18 h-14 rounded-xl object-cover shrink-0 border border-slate-100">
+      </a>
+
+      <!-- List Berita 2 -->
+      <a href="berita.html" class="flex items-center gap-3 p-2 rounded-xl hover:bg-slate-50 transition-colors group border-t border-slate-50">
+        <div class="flex-1 min-w-0">
+          <div class="flex items-center gap-2 mb-1">
+            <span class="px-2 py-0.5 rounded bg-amber-100 text-amber-800 font-extrabold text-[9px] uppercase">PRESTASI</span>
+            <span class="text-[10px] text-slate-400 flex items-center gap-1">
+              <i data-lucide="eye" class="w-2.5 h-2.5"></i> 89
+            </span>
+          </div>
+          <h4 class="font-bold text-slate-800 group-hover:text-brand-primary text-xs line-clamp-2 leading-snug">
+            Santri MTs YASUA Borong Juara Kaligrafi &amp; MTQ Tingkat Kabupaten Demak
+          </h4>
+          <span class="text-[10px] text-slate-400 mt-1 block">18 Oktober 2026</span>
+        </div>
+        <img src="foto-kajian-santriwati.webp" alt="Santriwati Kajian" class="w-18 h-14 rounded-xl object-cover shrink-0 border border-slate-100">
+      </a>
+
+      <!-- List Berita 3 -->
+      <a href="berita.html" class="flex items-center gap-3 p-2 rounded-xl hover:bg-slate-50 transition-colors group border-t border-slate-50">
+        <div class="flex-1 min-w-0">
+          <div class="flex items-center gap-2 mb-1">
+            <span class="px-2 py-0.5 rounded bg-blue-100 text-blue-800 font-extrabold text-[9px] uppercase">KESISWAAN</span>
+            <span class="text-[10px] text-slate-400 flex items-center gap-1">
+              <i data-lucide="eye" class="w-2.5 h-2.5"></i> 210
+            </span>
+          </div>
+          <h4 class="font-bold text-slate-800 group-hover:text-brand-primary text-xs line-clamp-2 leading-snug">
+            Pembiasaan Sholat Berjamaah, Dhuha &amp; Istighosah Rutin Santri
+          </h4>
+          <span class="text-[10px] text-slate-400 mt-1 block">12 Oktober 2026</span>
+        </div>
+        <img src="foto-sholat-santri.webp" alt="Sholat Berjamaah" class="w-18 h-14 rounded-xl object-cover shrink-0 border border-slate-100">
+      </a>
+    </div>
+
+    <!-- Mode Switcher Pill & Share WA -->
+    <div class="text-center pt-2 pb-6 space-y-2">
+      <div>
+        <a href="index.html" class="px-4 py-2 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-600 text-[11px] font-bold border border-slate-200 transition-colors inline-flex items-center gap-1.5">
+          <i data-lucide="globe" class="w-3.5 h-3.5 text-brand-primary"></i>
+          <span>Buka Tampilan Website Profil Lengkap</span>
+        </a>
+      </div>
+      <div>
+        <a href="https://api.whatsapp.com/send?text=*Aplikasi%20Resmi%20MTs%20YASUA%20Pilangwetan*%20Demak%3A%0Ahttps%3A%2F%2Fwww.mtsyasua.sch.id%2Fapp.html" target="_blank" rel="noopener noreferrer" class="px-4 py-2 rounded-full bg-emerald-50 hover:bg-emerald-100 text-brand-primary text-[11px] font-bold border border-emerald-200 transition-colors inline-flex items-center gap-1.5 shadow-2xs">
+          <svg class="w-3.5 h-3.5 fill-current text-emerald-600" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86s.275.072.376-.043c.101-.116.433-.506.549-.68.116-.173.231-.145.39-.087s1.011.477 1.184.564.289.13.332.202c.045.072.045.419-.1.824zm-3.423-10.416c-4.408 0-7.99 3.582-7.99 7.99 0 1.408.365 2.73 1.001 3.877l-1.062 3.883 3.985-1.045c1.11.606 2.379.945 3.731.945 4.409 0 7.991-3.582 7.991-7.99 0-4.408-3.582-7.99-7.991-7.99z"/></svg>
+          <span>Bagikan Aplikasi ke WhatsApp</span>
+        </a>
+      </div>
+    </div>
+
+  </main>
+
+  <script>
+    // Offline detection
+    const offlineBar = document.getElementById('app-offline-bar');
+    function updateOnlineStatus() {
+      if (!navigator.onLine) {
+        offlineBar.classList.remove('hidden');
+      } else {
+        offlineBar.classList.add('hidden');
+      }
+    }
+    window.addEventListener('online', updateOnlineStatus);
+    window.addEventListener('offline', updateOnlineStatus);
+    updateOnlineStatus();
+
+    // Inisialisasi ikon Lucide
+    document.addEventListener('DOMContentLoaded', () => {
+      if (window.lucide) {
+        window.lucide.createIcons();
+      }
+    });
+
+    // ===================================================================
+    // SINKRONISASI DINAMIS BANNER SLIDER & PENGUMUMAN DARI SPREADSHEET
+    // ===================================================================
+    (function () {
+      const API_URL = 'https://script.google.com/macros/s/AKfycbxNFLoL96Ch_8QOKhp5AFauIGb9GcMpd9eb3my_zqikL0sDuncgRhDPD6tez-fuY6wT/exec?action=getHomeData';
+
+      fetch(API_URL)
+        .then((res) => res.json())
+        .then((json) => {
+          if (json.status === 'success') {
+            if (json.banners && Array.isArray(json.banners) && json.banners.length > 0) {
+              renderDynamicBanners(json.banners);
+            }
+            if (json.announcement) {
+              renderDynamicAnnouncement(json.announcement);
+            }
+          }
+        })
+        .catch((err) => {
+          console.log('[MTs YASUA] Menggunakan banner statis bawaan:', err);
+        });
+
+      function renderDynamicBanners(banners) {
+        const track = document.getElementById('appBannerTrack');
+        const dots = document.getElementById('appBannerDots');
+        if (!track) return;
+
+        const activeBanners = banners.filter(
+          (b) => b.status_aktif === true || String(b.status_aktif).toLowerCase() === 'true'
+        );
+        if (activeBanners.length === 0) return;
+
+        activeBanners.sort((a, b) => (Number(a.urutan) || 0) - (Number(b.urutan) || 0));
+
+        track.innerHTML = activeBanners
+          .map((b) => {
+            const color = b.badge_color || 'emerald';
+            const badgeBg =
+              color === 'amber'
+                ? 'bg-amber-500 text-slate-950 font-black'
+                : color === 'teal'
+                ? 'bg-teal-600 text-white font-extrabold'
+                : color === 'blue'
+                ? 'bg-blue-600 text-white font-extrabold'
+                : color === 'rose'
+                ? 'bg-rose-600 text-white font-extrabold'
+                : color === 'purple'
+                ? 'bg-purple-600 text-white font-extrabold'
+                : 'bg-emerald-500/90 text-white font-extrabold';
+
+            const link = b.link_url || 'program.html';
+
+            return `
+              <a href="${link}" class="w-full shrink-0 relative aspect-[3/1] overflow-hidden flex items-center block group">
+                <img src="${b.gambar_url || 'banner_1.jpg'}" alt="${b.judul}" class="absolute inset-0 w-full h-full object-cover object-center transform group-hover:scale-105 transition-transform duration-700" onerror="this.src='banner_1.jpg'">
+                <div class="absolute inset-0 bg-gradient-to-r from-slate-950/90 via-slate-950/50 to-transparent"></div>
+                <div class="relative z-10 p-3 sm:p-4 max-w-[75%] sm:max-w-[70%] text-white space-y-0.5">
+                  <span class="inline-block px-1.5 py-0.5 rounded ${badgeBg} text-[8px] sm:text-[9px] uppercase tracking-wider">
+                    ${b.badge || 'Madrasah'}
+                  </span>
+                  <h4 class="font-black text-xs sm:text-sm text-white leading-snug drop-shadow-xs line-clamp-1">
+                    ${b.judul}
+                  </h4>
+                  <p class="text-[9px] sm:text-[10px] text-emerald-100/90 line-clamp-1">
+                    ${b.deskripsi}
+                  </p>
+                </div>
+              </a>
+            `;
+          })
+          .join('');
+
+        if (dots) {
+          dots.innerHTML = activeBanners
+            .map(
+              (_, i) =>
+                `<span class="${
+                  i === 0 ? 'w-4 h-1.5 rounded-full bg-amber-400' : 'w-1.5 h-1.5 rounded-full bg-white/60'
+                } transition-all duration-300"></span>`
+            )
+            .join('');
+        }
+      }
+
+      function renderDynamicAnnouncement(announcement) {
+        const titleEl = document.getElementById('homePpdbTitle');
+        const descEl = document.getElementById('homePpdbDesc');
+        const linkEl = document.getElementById('homePpdbLink');
+
+        if (titleEl && announcement.title) titleEl.textContent = announcement.title;
+        if (descEl && announcement.desc) descEl.textContent = announcement.desc;
+        if (linkEl && announcement.link) linkEl.href = announcement.link;
+      }
+    })();
+  </script>
+</body>
+</html>
+

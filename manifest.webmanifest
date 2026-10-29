@@ -4,7 +4,7 @@
   "name": "MTs YASUA Pilangwetan",
   "short_name": "MTs YASUA",
   "description": "Website Resmi dan Portal Informasi Madrasah Tsanawiyah YASUA Pilangwetan, Kebonagung, Demak.",
-  "start_url": "index.html?source=pwa",
+  "start_url": "app.html?source=pwa",
   "scope": "./",
   "display": "standalone",
   "display_override": ["standalone", "minimal-ui", "window-controls-overlay"],

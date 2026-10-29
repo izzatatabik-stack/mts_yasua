@@ -188,9 +188,10 @@
     // C. Mobile Bottom Dock (App-Like Quick Navigation - Active in App Dashboard Mode)
     if (!document.getElementById('mobileBottomDock')) {
       const currentPath = window.location.pathname.toLowerCase();
-      const isHome = currentPath.endsWith('/') || currentPath.endsWith('/index.html') || currentPath === '';
+      const isHome = currentPath.endsWith('/') || currentPath.endsWith('/index.html') || currentPath.includes('app.html') || currentPath === '';
       const isNews = currentPath.includes('berita') || currentPath.includes('kabar') || currentPath.includes('artikel');
       const isCalendar = currentPath.includes('agenda') || currentPath.includes('kalender') || currentPath.includes('jadwal');
+      const homeLink = (isStandalone || currentPath.includes('app.html')) ? 'app.html' : 'index.html';
 
       const dock = document.createElement('nav');
       dock.id = 'mobileBottomDock';
@@ -199,7 +200,7 @@
       dock.innerHTML = `
         <div class="max-w-md mx-auto grid grid-cols-5 items-center text-center">
           <!-- 1. Beranda -->
-          <a href="index.html" class="flex flex-col items-center justify-center py-1 ${isHome ? 'text-brand-primary font-bold' : 'text-slate-500 hover:text-brand-primary'} transition-colors">
+          <a href="${homeLink}" class="flex flex-col items-center justify-center py-1 ${isHome ? 'text-brand-primary font-bold' : 'text-slate-500 hover:text-brand-primary'} transition-colors">
             <svg class="w-5 h-5 ${isHome ? 'stroke-[2.5]' : ''}" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
             <span class="text-[9.5px] tracking-tight mt-0.5">Beranda</span>
           </a>
@@ -531,12 +532,20 @@
 
   window.setMobileExperienceMode = function (mode) {
     if (mode === 'app') {
-      document.body.classList.add('is-pwa-standalone');
       localStorage.setItem('mts_preview_mode', 'app');
+      if (!window.location.pathname.includes('app.html')) {
+        window.location.href = 'app.html?source=pwa';
+        return;
+      }
+      document.body.classList.add('is-pwa-standalone');
       showToast('Beralih ke tampilan Dashboard Aplikasi (Asnawiyyah).');
     } else {
-      document.body.classList.remove('is-pwa-standalone');
       localStorage.setItem('mts_preview_mode', 'web');
+      if (window.location.pathname.includes('app.html')) {
+        window.location.href = 'index.html';
+        return;
+      }
+      document.body.classList.remove('is-pwa-standalone');
       showToast('Beralih ke tampilan Web Profil Lengkap.');
     }
     window.closeSettingsModal();
@@ -544,10 +553,10 @@
   };
 
   window.togglePreviewWebMode = function () {
-    if (document.body.classList.contains('is-pwa-standalone')) {
-      window.setMobileExperienceMode('web');
+    if (window.location.pathname.includes('app.html') || document.body.classList.contains('is-pwa-standalone')) {
+      window.location.href = 'index.html';
     } else {
-      window.setMobileExperienceMode('app');
+      window.location.href = 'app.html?source=pwa';
     }
   };
 

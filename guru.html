@@ -746,7 +746,7 @@
         class="bg-gradient-to-r from-emerald-900 via-brand-dark to-[#032e21] rounded-3xl p-6 sm:p-10 text-white shadow-xl border border-emerald-700/50">
         <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
 
-          <div class="md:col-span-4 flex justify-center">
+          <div id="kepalaMadrasahCard" class="md:col-span-4 flex justify-center">
             <div
               class="relative w-48 sm:w-56 aspect-[4/5] rounded-2xl overflow-hidden shadow-2xl border-4 border-white/20 bg-emerald-950 group">
               <img src="kepala-madrasah.webp" alt="Muthohar, S.Pd"
@@ -755,7 +755,7 @@
               <div class="absolute bottom-3 left-3 right-3 text-center">
                 <span class="text-[10px] text-brand-gold font-bold uppercase tracking-wider block">Kepala
                   Madrasah</span>
-                <span class="font-black text-sm text-white">Muthohar, S.Pd.</span>
+                <span id="kepalaMadrasahTagNama" class="font-black text-sm text-white">Muthohar, S.Pd.</span>
               </div>
             </div>
           </div>
@@ -765,13 +765,13 @@
               class="px-3 py-1 rounded-full bg-white/10 text-brand-gold text-xs font-bold uppercase tracking-wider inline-block">
               PIMPINAN MADRASAH
             </span>
-            <h2 class="text-2xl sm:text-3xl font-extrabold text-white">
+            <h2 id="kepalaMadrasahNama" class="text-2xl sm:text-3xl font-extrabold text-white">
               Muthohar, S.Pd.
             </h2>
             <p class="text-xs sm:text-sm text-emerald-200 uppercase tracking-widest font-bold">
               Kepala MTs YASUA Pilangwetan • Masa Khidmah 2026/2027
             </p>
-            <p class="text-xs sm:text-sm text-emerald-100 leading-relaxed text-justify">
+            <p id="kepalaMadrasahDeskripsi" class="text-xs sm:text-sm text-emerald-100 leading-relaxed text-justify">
               Memimpin tata kelola akademik dan pembinaan karakter madrasah berlandaskan nilai-nilai luhur Ahlus Sunnah
               Wal Jama'ah. Berkomitmen menghadirkan iklim pembelajaran yang ramah anak, berprestasi, dan siap menghadapi
               tantangan era literasi digital.
@@ -805,7 +805,7 @@
           </p>
         </div>
 
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div id="teachersGridContainer" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
 
           <!-- Guru 1: Susriandi -->
           <div
@@ -1346,6 +1346,101 @@
     window.addEventListener('keydown', (e) => {
       if (e.key === 'Escape') closeBrochureModal();
     });
+
+    // ===================================================================
+    // SINKRONISASI DINAMIS DATA GURU DARI GOOGLE SPREADSHEET API
+    // ===================================================================
+    (function () {
+      const API_URL = 'https://script.google.com/macros/s/AKfycbxNFLoL96Ch_8QOKhp5AFauIGb9GcMpd9eb3my_zqikL0sDuncgRhDPD6tez-fuY6wT/exec?action=getTeachers';
+
+      // Background fetch data dewan guru terbaru
+      fetch(API_URL)
+        .then((res) => res.json())
+        .then((json) => {
+          if (json.status === 'success' && Array.isArray(json.data) && json.data.length > 0) {
+            renderDynamicTeachers(json.data);
+          }
+        })
+        .catch((err) => {
+          console.log('[MTs YASUA] Mode offline/fallback: menggunakan data guru statis bawaan.', err);
+        });
+
+      function renderDynamicTeachers(teachers) {
+        // 1. Sinkronisasi Profil Pimpinan / Kepala Madrasah
+        const pimpinan = teachers.find((t) => t.kategori === 'pimpinan');
+        if (pimpinan) {
+          const kepalaImg = document.querySelector('#kepalaMadrasahCard img');
+          const kepalaTagNama = document.getElementById('kepalaMadrasahTagNama');
+          const kepalaNama = document.getElementById('kepalaMadrasahNama');
+          const kepalaDeskripsi = document.getElementById('kepalaMadrasahDeskripsi');
+
+          if (kepalaImg && pimpinan.foto_url) kepalaImg.src = pimpinan.foto_url;
+          if (kepalaTagNama && pimpinan.nama_lengkap) kepalaTagNama.textContent = pimpinan.nama_lengkap;
+          if (kepalaNama && pimpinan.nama_lengkap) kepalaNama.textContent = pimpinan.nama_lengkap;
+          if (kepalaDeskripsi && pimpinan.deskripsi) kepalaDeskripsi.textContent = pimpinan.deskripsi;
+        }
+
+        // 2. Sinkronisasi Grid Guru Mapel & Staf Tendik
+        const grid = document.getElementById('teachersGridContainer');
+        if (!grid) return;
+
+        // Hanya tampilkan guru yang aktif
+        const activeTeachers = teachers.filter(
+          (t) => t.kategori !== 'pimpinan' && (t.status_aktif === true || String(t.status_aktif).toLowerCase() === 'true')
+        );
+
+        if (activeTeachers.length === 0) return;
+
+        // Urutkan berdasarkan kolom urutan
+        activeTeachers.sort((a, b) => (Number(a.urutan) || 0) - (Number(b.urutan) || 0));
+
+        grid.innerHTML = activeTeachers
+          .map((t) => {
+            const bidang = t.badge_bidang || 'Pendidik';
+            let badgeColor = 'bg-brand-primary/90';
+            if (bidang.includes('Bahasa')) badgeColor = 'bg-blue-600/90';
+            else if (bidang.includes('TIK') || bidang.includes('Digital')) badgeColor = 'bg-emerald-700/90';
+            else if (bidang.includes('Sains') || bidang.includes('Matematika')) badgeColor = 'bg-amber-600/90';
+            else if (bidang.includes('Karakter') || bidang.includes('Kebangsaan')) badgeColor = 'bg-red-600/90';
+            else if (bidang.includes('Sosial') || bidang.includes('Keagamaan')) badgeColor = 'bg-purple-600/90';
+
+            const foto = t.foto_url || 'guru_1.webp';
+
+            return `
+              <div class="bg-white rounded-3xl p-5 border border-emerald-100 shadow-md hover-lift flex flex-col justify-between group">
+                <div>
+                  <div class="aspect-[4/3] rounded-2xl overflow-hidden bg-slate-100 mb-4 relative">
+                    <img src="${foto}" alt="${t.nama_lengkap}"
+                      class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                      loading="lazy" onerror="this.src='logo.png'">
+                    <span class="absolute top-3 left-3 px-2.5 py-1 rounded-full ${badgeColor} text-white text-[10px] font-bold backdrop-blur-xs">
+                      ${bidang}
+                    </span>
+                  </div>
+                  <h3 class="font-extrabold text-slate-900 text-base leading-snug group-hover:text-brand-primary transition-colors">
+                    ${t.nama_lengkap}
+                  </h3>
+                  <p class="text-xs font-bold text-amber-700 mt-1">
+                    ${t.jabatan || ('Guru ' + (t.mata_pelajaran || ''))}
+                  </p>
+                  <p class="text-xs text-slate-500 mt-2 leading-relaxed">
+                    ${t.deskripsi || ''}
+                  </p>
+                </div>
+                <div class="pt-4 mt-4 border-t border-slate-100 flex items-center justify-between text-[11px] text-slate-500">
+                  <span class="flex items-center gap-1 font-semibold text-emerald-800">
+                    <i data-lucide="check-circle" class="w-3.5 h-3.5 text-brand-primary"></i> ${t.pendidikan_terakhir || 'Sarjana Pendidikan'}
+                  </span>
+                  <span class="bg-emerald-50 text-emerald-800 px-2 py-0.5 rounded font-bold">Aktif Mengajar</span>
+                </div>
+              </div>
+            `;
+          })
+          .join('');
+
+        if (window.lucide) window.lucide.createIcons();
+      }
+    })();
   </script>
 
 </body>
