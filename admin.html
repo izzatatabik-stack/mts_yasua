@@ -184,10 +184,14 @@
         <!-- Section 4 -->
         <div class="space-y-1">
           <span class="text-[10px] font-extrabold uppercase tracking-wider text-emerald-400/80 px-3">PORTAL &amp; PUBLIKASI</span>
-          <a href="#" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-slate-400 hover:text-slate-200 transition-colors opacity-60 cursor-not-allowed" title="Segera hadir">
-            <i data-lucide="newspaper" class="w-4 h-4"></i>
-            <span>Berita &amp; Artikel</span>
-          </a>
+          <button onclick="switchAdminView('news')" id="navBtnNews"
+            class="w-full flex items-center justify-between px-3 py-2.5 rounded-xl text-slate-300 hover:text-white hover:bg-emerald-900/50 transition-all text-left cursor-pointer font-medium">
+            <span class="flex items-center gap-3">
+              <i data-lucide="newspaper" class="w-4 h-4 text-emerald-400"></i>
+              <span>Berita &amp; Artikel</span>
+            </span>
+            <span id="sidebarNewsCount" class="text-[10px] bg-emerald-900/80 px-2 py-0.5 rounded-full font-bold">5 Berita</span>
+          </button>
           <a href="#" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-slate-400 hover:text-slate-200 transition-colors opacity-60 cursor-not-allowed" title="Segera hadir">
             <i data-lucide="image" class="w-4 h-4"></i>
             <span>Galeri Madrasah</span>
@@ -613,6 +617,164 @@
 
         </div>
 
+        <!-- ================================================================= -->
+        <!-- VIEW 3: BERITA & PENGUMUMAN (Portal & Publikasi Module)           -->
+        <!-- ================================================================= -->
+        <div id="viewNews" class="space-y-6 hidden">
+          <!-- Header Banner -->
+          <div class="bg-gradient-to-r from-emerald-50 via-teal-50 to-emerald-50 border border-emerald-200 rounded-2xl p-4 sm:p-5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 shadow-2xs">
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 rounded-xl bg-brand-primary text-white flex items-center justify-center shrink-0 shadow-sm">
+                <i data-lucide="newspaper" class="w-5 h-5 text-brand-gold"></i>
+              </div>
+              <div>
+                <div class="flex items-center gap-2">
+                  <h2 class="text-sm sm:text-base font-black text-slate-900">Pengelolaan Berita &amp; Pengumuman</h2>
+                  <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-amber-100 text-amber-900 font-bold text-[10px]">
+                    <span class="w-1.5 h-1.5 rounded-full bg-amber-500 animate-ping"></span> Live Web (berita.html)
+                  </span>
+                </div>
+                <p class="text-xs text-slate-600 mt-0.5">Kelola publikasi kabar prestasi santri, agenda ujian, kegiatan sekolah, dan pengumuman resmi.</p>
+              </div>
+            </div>
+
+            <div class="flex items-center gap-2 w-full sm:w-auto">
+              <button onclick="fetchNews()"
+                class="px-3.5 py-2 rounded-xl bg-white border border-slate-200 hover:bg-slate-50 text-slate-700 text-xs font-bold transition-all flex items-center justify-center gap-1.5 cursor-pointer shadow-2xs">
+                <i data-lucide="refresh-cw" id="refreshNewsIcon" class="w-3.5 h-3.5 text-brand-primary"></i>
+                <span>Segarkan</span>
+              </button>
+              <a href="berita.html" target="_blank"
+                class="px-3.5 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold transition-all flex items-center justify-center gap-1.5 shadow-2xs">
+                <i data-lucide="external-link" class="w-3.5 h-3.5 text-brand-primary"></i>
+                <span class="hidden sm:inline">Web Publik</span>
+              </a>
+              <button onclick="openModalAddNews()"
+                class="px-4 py-2 rounded-xl bg-brand-primary hover:bg-emerald-700 text-white text-xs font-bold transition-all flex items-center justify-center gap-1.5 shadow-md cursor-pointer">
+                <i data-lucide="plus" class="w-4 h-4 text-amber-300"></i>
+                <span>Tulis Berita Baru</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Metrik Ringkas Berita -->
+          <div class="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
+            <div class="bg-gradient-to-br from-emerald-800 to-emerald-950 rounded-2xl p-4 text-white shadow-sm flex items-center justify-between">
+              <div>
+                <span class="text-xs font-semibold text-emerald-200 block">Total Berita</span>
+                <h3 id="statNewsTotal" class="text-2xl font-black mt-1">5</h3>
+                <span class="text-[10px] text-emerald-300">Arsip Dokumentasi</span>
+              </div>
+              <div class="w-11 h-11 rounded-2xl bg-white/10 flex items-center justify-center">
+                <i data-lucide="layers" class="w-6 h-6 text-brand-gold"></i>
+              </div>
+            </div>
+
+            <div class="bg-gradient-to-br from-blue-600 to-indigo-700 rounded-2xl p-4 text-white shadow-sm flex items-center justify-between">
+              <div>
+                <span class="text-xs font-semibold text-blue-100 block">Berita Terbit</span>
+                <h3 id="statNewsActive" class="text-2xl font-black mt-1">5</h3>
+                <span class="text-[10px] text-blue-200">Tampil di Publik</span>
+              </div>
+              <div class="w-11 h-11 rounded-2xl bg-white/20 flex items-center justify-center">
+                <i data-lucide="check-circle" class="w-6 h-6 text-white"></i>
+              </div>
+            </div>
+
+            <div class="bg-gradient-to-br from-amber-500 to-orange-600 rounded-2xl p-4 text-white shadow-sm flex items-center justify-between">
+              <div>
+                <span class="text-xs font-semibold text-amber-100 block">Berita Utama</span>
+                <h3 id="statNewsFeatured" class="text-2xl font-black mt-1">1</h3>
+                <span class="text-[10px] text-amber-200">Pinned Banner Teratas</span>
+              </div>
+              <div class="w-11 h-11 rounded-2xl bg-white/20 flex items-center justify-center">
+                <i data-lucide="star" class="w-6 h-6 text-white"></i>
+              </div>
+            </div>
+
+            <div class="bg-gradient-to-br from-purple-600 to-pink-700 rounded-2xl p-4 text-white shadow-sm flex items-center justify-between">
+              <div>
+                <span class="text-xs font-semibold text-purple-100 block">Kategori Populer</span>
+                <h3 id="statNewsTopCategory" class="text-lg font-black mt-1 truncate">Akademik</h3>
+                <span class="text-[10px] text-purple-200">Topik Terbanyak</span>
+              </div>
+              <div class="w-11 h-11 rounded-2xl bg-white/20 flex items-center justify-center">
+                <i data-lucide="tag" class="w-6 h-6 text-white"></i>
+              </div>
+            </div>
+          </div>
+
+          <!-- Featured News Preview Box (Banner Utama) -->
+          <div id="featuredNewsContainer" class="bg-white rounded-3xl p-5 border border-amber-200 shadow-sm space-y-3">
+            <div class="flex items-center justify-between">
+              <div class="flex items-center gap-2">
+                <span class="w-2.5 h-2.5 rounded-full bg-amber-500 animate-pulse"></span>
+                <h3 class="text-xs font-extrabold uppercase tracking-wider text-slate-800 flex items-center gap-1.5">
+                  <i data-lucide="star" class="w-3.5 h-3.5 text-amber-500 fill-amber-500"></i>
+                  <span>Berita Utama Teratas Saat Ini (Tampil di Banner Besar berita.html)</span>
+                </h3>
+              </div>
+              <span class="text-[11px] text-slate-400">Dapat diatur lewat tombol bintang pada setiap artikel</span>
+            </div>
+
+            <div id="featuredNewsCard" class="bg-slate-50 rounded-2xl p-4 border border-slate-200">
+              <!-- Injected by JavaScript -->
+            </div>
+          </div>
+
+          <!-- Filter & Search Controls -->
+          <div class="bg-white rounded-2xl p-4 border border-slate-200 shadow-2xs flex flex-col md:flex-row items-center justify-between gap-3">
+            <div class="flex items-center gap-1.5 overflow-x-auto w-full md:w-auto pb-1 md:pb-0 custom-scrollbar">
+              <button onclick="setNewsCategoryFilter('all')" id="newsFilterAll"
+                class="px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all cursor-pointer bg-brand-primary text-white shadow-xs">
+                Semua (<span id="countNewsFilterAll">5</span>)
+              </button>
+              <button onclick="setNewsCategoryFilter('Akademik')" id="newsFilterAkademik"
+                class="px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all cursor-pointer bg-slate-100 text-slate-600 hover:bg-slate-200">
+                Akademik
+              </button>
+              <button onclick="setNewsCategoryFilter('Prestasi')" id="newsFilterPrestasi"
+                class="px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all cursor-pointer bg-slate-100 text-slate-600 hover:bg-slate-200">
+                Prestasi
+              </button>
+              <button onclick="setNewsCategoryFilter('Pengumuman')" id="newsFilterPengumuman"
+                class="px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all cursor-pointer bg-slate-100 text-slate-600 hover:bg-slate-200">
+                Pengumuman
+              </button>
+              <button onclick="setNewsCategoryFilter('Berita & Kegiatan')" id="newsFilterKegiatan"
+                class="px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all cursor-pointer bg-slate-100 text-slate-600 hover:bg-slate-200">
+                Kegiatan
+              </button>
+            </div>
+
+            <div class="relative w-full md:w-72">
+              <i data-lucide="search" class="w-4 h-4 text-slate-400 absolute left-3 top-3"></i>
+              <input type="text" id="searchNewsInput" oninput="handleSearchNews()" placeholder="Cari judul berita, isi, penulis..."
+                class="w-full pl-9 pr-4 py-2 rounded-xl border border-slate-200 text-xs focus:outline-none focus:ring-2 focus:ring-brand-primary transition-all">
+            </div>
+          </div>
+
+          <!-- News Grid -->
+          <div class="space-y-3">
+            <div class="flex items-center justify-between">
+              <h3 class="text-xs font-extrabold uppercase tracking-wider text-slate-500">Daftar Seluruh Artikel &amp; Pengumuman</h3>
+              <span id="showingNewsCount" class="text-xs text-slate-400 font-semibold">Memuat berita...</span>
+            </div>
+
+            <div id="newsGrid" class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4">
+              <!-- Injected by JavaScript -->
+            </div>
+
+            <div id="emptyNewsState" class="hidden bg-white rounded-3xl p-12 text-center border border-slate-200 space-y-3">
+              <div class="w-16 h-16 rounded-full bg-slate-100 text-slate-400 mx-auto flex items-center justify-center">
+                <i data-lucide="newspaper" class="w-8 h-8"></i>
+              </div>
+              <h4 class="font-bold text-slate-700 text-base">Tidak ada berita yang cocok</h4>
+              <p class="text-xs text-slate-500">Coba ubah kata kunci pencarian atau bersihkan filter kategori.</p>
+            </div>
+          </div>
+        </div>
+
       </main>
     </div>
   </div>
@@ -983,6 +1145,129 @@
   </div>
 
   <!-- TOAST NOTIFICATION CONTAINER -->
+  <!-- =================================================================== -->
+  <!-- MODAL FORM: TAMBAH / EDIT BERITA & ARTIKEL                          -->
+  <!-- =================================================================== -->
+  <div id="newsModalAdmin" class="fixed inset-0 z-50 hidden bg-slate-900/60 backdrop-blur-xs flex items-center justify-center p-3 sm:p-4">
+    <div class="bg-white rounded-3xl max-w-2xl w-full max-h-[90vh] overflow-y-auto shadow-2xl border border-emerald-100 p-5 sm:p-7 space-y-5 animate-in fade-in zoom-in-95">
+      <div class="flex items-center justify-between pb-3 border-b border-slate-100">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-2xl bg-emerald-50 text-brand-primary flex items-center justify-center border border-emerald-100">
+            <i data-lucide="newspaper" class="w-5 h-5 text-brand-primary"></i>
+          </div>
+          <div>
+            <h3 id="newsModalAdminTitle" class="font-extrabold text-slate-900 text-base">Tulis Berita Baru</h3>
+            <p class="text-xs text-slate-500">Publikasikan kabar madrasah ke halaman berita web</p>
+          </div>
+        </div>
+        <button onclick="closeModalNews()" class="w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-500 flex items-center justify-center cursor-pointer">
+          <i data-lucide="x" class="w-4 h-4"></i>
+        </button>
+      </div>
+
+      <form id="newsFormAdmin" onsubmit="handleSaveNews(event)" class="space-y-4 text-xs">
+        <input type="hidden" id="newsId">
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+          <div class="sm:col-span-2">
+            <label class="block font-bold text-slate-700 mb-1">Judul Berita / Pengumuman <span class="text-rose-500">*</span></label>
+            <input type="text" id="newsJudul" required placeholder="Contoh: Siswa MTs YASUA Raih Juara 1 Robotika Tingkat Provinsi"
+              class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-brand-primary font-bold">
+          </div>
+
+          <div>
+            <label class="block font-bold text-slate-700 mb-1">Kategori <span class="text-rose-500">*</span></label>
+            <select id="newsKategori" required
+              class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-brand-primary bg-white">
+              <option value="Akademik">Akademik (Ujian, ANBK, KBM)</option>
+              <option value="Prestasi">Prestasi (Juara Lomba, Beasiswa)</option>
+              <option value="Pengumuman">Pengumuman Resmi (PPDB, Libur)</option>
+              <option value="Berita & Kegiatan">Berita &amp; Kegiatan (Parenting, PHBI)</option>
+            </select>
+          </div>
+
+          <div>
+            <label class="block font-bold text-slate-700 mb-1">Tanggal Terbit <span class="text-rose-500">*</span></label>
+            <input type="text" id="newsTanggal" required placeholder="Contoh: 28 Oktober 2026"
+              class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-brand-primary">
+          </div>
+
+          <div class="sm:col-span-2">
+            <label class="block font-bold text-slate-700 mb-1">Penulis / Sumber Redaksi</label>
+            <input type="text" id="newsPenulis" placeholder="Contoh: Humas MTs YASUA / Waka Kurikulum"
+              class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-brand-primary">
+          </div>
+        </div>
+
+        <!-- Foto Sampul / Poster Berita -->
+        <div class="p-3 bg-slate-50 rounded-2xl border border-slate-200 space-y-2.5">
+          <label class="block font-bold text-slate-700">Foto Sampul / Poster Berita:</label>
+          <div class="grid grid-cols-1 sm:grid-cols-12 gap-3 items-center">
+            <div class="sm:col-span-4 flex justify-center">
+              <div class="w-full aspect-video rounded-xl bg-white border border-slate-200 overflow-hidden flex items-center justify-center relative shadow-xs">
+                <img id="newsPhotoPreview" src="poster_pts_berita.webp" alt="Preview" class="w-full h-full object-cover" onerror="this.src='poster_pts_berita.webp'">
+              </div>
+            </div>
+            <div class="sm:col-span-8 space-y-2">
+              <div>
+                <span class="text-[11px] text-slate-500 font-semibold block mb-1">Upload Foto Baru (Otomatis ke Google Drive):</span>
+                <input type="file" id="newsFileInput" accept="image/*" onchange="handleNewsFileSelected(event)"
+                  class="w-full text-[11px] text-slate-500 file:mr-2 file:py-1 file:px-2.5 file:rounded-xl file:border-0 file:text-xs file:font-bold file:bg-emerald-100 file:text-brand-primary hover:file:bg-emerald-200 cursor-pointer">
+              </div>
+              <div>
+                <span class="text-[11px] text-slate-500 font-semibold block mb-1">Atau Gunakan Nama File / URL:</span>
+                <input type="text" id="newsGambarUrl" oninput="updateNewsModalPreview()" placeholder="poster_pts_berita.webp atau https://..."
+                  class="w-full px-3 py-1.5 rounded-xl border border-slate-200 text-xs focus:outline-none focus:ring-2 focus:ring-brand-primary">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <label class="block font-bold text-slate-700 mb-1">Ringkasan Singkat (Muncul di Kartu Depan) <span class="text-rose-500">*</span></label>
+          <textarea id="newsRingkasan" rows="2" required placeholder="Tuliskan 1-2 kalimat ringkasan pengantar berita..."
+            class="w-full px-3.5 py-2 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-brand-primary"></textarea>
+        </div>
+
+        <div>
+          <label class="block font-bold text-slate-700 mb-1">Isi Lengkap Berita (Paragraf Penuh) <span class="text-rose-500">*</span></label>
+          <textarea id="newsKonten" rows="5" required placeholder="Tuliskan isi berita lengkap di sini (paragraf baru otomatis diformat rapi)..."
+            class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-brand-primary leading-relaxed font-sans"></textarea>
+          <span class="text-[10px] text-slate-400 mt-1 block">Tips: Beri spasi baris baru (Enter) untuk memisahkan paragraf.</span>
+        </div>
+
+        <div class="p-3 bg-emerald-50/70 rounded-2xl border border-emerald-100 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+          <label class="flex items-center gap-2 cursor-pointer font-bold text-slate-800">
+            <input type="checkbox" id="newsIsFeatured"
+              class="w-4 h-4 rounded text-amber-500 focus:ring-amber-500 accent-amber-500">
+            <span class="flex items-center gap-1.5">
+              <i data-lucide="star" class="w-4 h-4 text-amber-500 fill-amber-500"></i>
+              <span>Jadikan Berita Utama Teratas (Banner Besar)</span>
+            </span>
+          </label>
+
+          <label class="flex items-center gap-2 cursor-pointer font-bold text-slate-800">
+            <input type="checkbox" id="newsStatusAktif" checked
+              class="w-4 h-4 rounded text-brand-primary focus:ring-brand-primary accent-emerald-600">
+            <span>Status Publikasi (Aktif Terbit)</span>
+          </label>
+        </div>
+
+        <div class="pt-3 border-t border-slate-100 flex items-center justify-end gap-2.5">
+          <button type="button" onclick="closeModalNews()"
+            class="px-4 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-600 font-bold transition-colors cursor-pointer">
+            Batal
+          </button>
+          <button type="submit" id="saveNewsBtn"
+            class="px-5 py-2 rounded-xl bg-brand-primary hover:bg-emerald-700 text-white font-bold transition-all shadow-md flex items-center gap-2 cursor-pointer">
+            <i data-lucide="save" class="w-4 h-4"></i>
+            <span>Simpan Berita</span>
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
   <div id="toastContainer" class="fixed top-5 right-5 z-50 space-y-2 pointer-events-none"></div>
 
   <!-- =================================================================== -->
@@ -994,6 +1279,12 @@
     let allTeachers = [];
     let allBanners = [];
     let allHeroSlides = [];
+    let allNews = [];
+    let currentNewsFilter = 'all';
+    let searchNewsQuery = '';
+    let uploadedNewsBase64 = null;
+    let uploadedNewsName = null;
+    let uploadedNewsMime = null;
     let currentHeroPreviewIdx = 0;
     let uploadedHeroBase64 = null;
     let uploadedHeroName = null;
@@ -1027,6 +1318,7 @@
         fetchHeroSlides();
         fetchBanners();
         fetchAnnouncement();
+        fetchNews();
       } else {
         loginScreen.classList.remove('hidden');
       }
@@ -1057,6 +1349,7 @@
           fetchHeroSlides();
           fetchBanners();
           fetchAnnouncement();
+        fetchNews();
         } else {
           err.textContent = 'Kata sandi tidak valid. Silakan coba lagi.';
           err.classList.remove('hidden');
@@ -1090,23 +1383,36 @@
       sidebar.classList.toggle('-translate-x-full');
     }
 
-    // View Switcher (Teachers vs Banners)
+    // View Switcher (Teachers vs Banners vs News)
     function switchAdminView(view) {
       const viewTeachers = document.getElementById('viewTeachers');
       const viewBanners = document.getElementById('viewBanners');
+      const viewNews = document.getElementById('viewNews');
+
       const navBtnTeachers = document.getElementById('navBtnTeachers');
       const navBtnBanners = document.getElementById('navBtnBanners');
+      const navBtnNews = document.getElementById('navBtnNews');
+
       const breadcrumbCat = document.getElementById('breadcrumbCategory');
       const breadcrumbPage = document.getElementById('breadcrumbPage');
       const webPublikBtn = document.getElementById('topbarWebPublikBtn');
       const webPublikLabel = document.getElementById('topbarWebPublikLabel');
 
-      if (view === 'banners') {
-        viewTeachers.classList.add('hidden');
-        viewBanners.classList.remove('hidden');
+      const inactiveClass = 'w-full flex items-center justify-between px-3 py-2.5 rounded-xl text-slate-300 hover:text-white hover:bg-emerald-900/50 transition-all text-left cursor-pointer font-medium';
+      const activeClass = 'w-full flex items-center justify-between px-3 py-2.5 rounded-xl bg-brand-primary text-white font-bold shadow-sm text-left transition-all cursor-pointer';
 
-        navBtnTeachers.className = 'w-full flex items-center justify-between px-3 py-2.5 rounded-xl text-slate-300 hover:text-white hover:bg-emerald-900/50 transition-all text-left cursor-pointer font-medium';
-        navBtnBanners.className = 'w-full flex items-center justify-between px-3 py-2.5 rounded-xl bg-brand-primary text-white font-bold shadow-sm text-left transition-all cursor-pointer';
+      // Hide all
+      viewTeachers.classList.add('hidden');
+      viewBanners.classList.add('hidden');
+      if (viewNews) viewNews.classList.add('hidden');
+
+      navBtnTeachers.className = inactiveClass;
+      navBtnBanners.className = inactiveClass;
+      if (navBtnNews) navBtnNews.className = inactiveClass;
+
+      if (view === 'banners') {
+        viewBanners.classList.remove('hidden');
+        navBtnBanners.className = activeClass;
 
         breadcrumbCat.textContent = 'Web Builder & Konten';
         breadcrumbPage.textContent = 'Hero & Banner Beranda';
@@ -1114,12 +1420,19 @@
         webPublikLabel.textContent = 'Lihat Beranda (index.html)';
 
         switchBannerSubTab(currentBannerSubTab);
+      } else if (view === 'news') {
+        if (viewNews) viewNews.classList.remove('hidden');
+        if (navBtnNews) navBtnNews.className = activeClass;
+
+        breadcrumbCat.textContent = 'Portal & Publikasi';
+        breadcrumbPage.textContent = 'Berita & Pengumuman';
+        webPublikBtn.href = 'berita.html';
+        webPublikLabel.textContent = 'Web Publik (berita.html)';
+
+        renderNews();
       } else {
         viewTeachers.classList.remove('hidden');
-        viewBanners.classList.add('hidden');
-
-        navBtnTeachers.className = 'w-full flex items-center justify-between px-3 py-2.5 rounded-xl bg-brand-primary text-white font-bold shadow-sm text-left transition-all cursor-pointer';
-        navBtnBanners.className = 'w-full flex items-center justify-between px-3 py-2.5 rounded-xl text-slate-300 hover:text-white hover:bg-emerald-900/50 transition-all text-left cursor-pointer font-medium';
+        navBtnTeachers.className = activeClass;
 
         breadcrumbCat.textContent = 'Kesiswaan & SDM';
         breadcrumbPage.textContent = 'Data Dewan Guru';
@@ -2157,6 +2470,536 @@
     }
 
     // Toast UI
+    // ========================================== 
+    // BERITA & PENGUMUMAN CRUD
+    // ========================================== 
+    const DEFAULT_NEWS = [
+      {
+        id: 'NEWS-001',
+        urutan: 1,
+        judul: 'Penilaian Tengah Semester (PTS) Gasal MTs YASUA Pilangwetan',
+        kategori: 'Akademik',
+        badge_class: 'bg-blue-600 text-white',
+        tanggal: '5 - 10 Oktober 2026',
+        penulis: 'Waka Kurikulum',
+        gambar_url: 'poster_pts_berita.webp',
+        ringkasan: 'Diberitahukan kepada seluruh siswa-siswi kelas VII, VIII, dan IX serta Bapak/Ibu Wali Murid bahwa pelaksanaan PTS terpadu dilaksanakan berbasis asesmen tertulis dan digital komputer.',
+        konten: 'Pelaksanaan Penilaian Tengah Semester (PTS) Gasal Tahun Ajaran 2026/2027 MTs YASUA Pilangwetan diselenggarakan serentak untuk seluruh jenjang kelas VII, VIII, dan IX.\n\nAsesmen menggabungkan ujian tertulis pendalaman materi keagamaan (Kitab Salaf, Fiqih, Al-Qur\'an Hadits) dan Computer Based Test (CBT) di Laboratorium Komputer untuk mata pelajaran umum.\n\n— Panitia PTS Gasal MTs YASUA Pilangwetan',
+        is_featured: true,
+        status_aktif: true,
+        created_at: '2026-10-05T08:00:00Z',
+        updated_at: '2026-10-05T08:00:00Z'
+      },
+      {
+        id: 'NEWS-002',
+        urutan: 2,
+        judul: 'Siswa MTs YASUA Raih Juara 1 Olimpiade Sains & Robotika Tingkat Provinsi Jawa Tengah',
+        kategori: 'Prestasi',
+        badge_class: 'bg-emerald-600 text-white',
+        tanggal: '22 September 2026',
+        penulis: 'Humas & Pembina Robotika',
+        gambar_url: 'foto-upacara.webp',
+        ringkasan: 'Kabar membanggakan diraih delegasi siswa madrasah dalam ajang bergengsi sains dan teknologi terapan.',
+        konten: 'Prestasi gemilang kembali ditorehkan santri MTs YASUA Pilangwetan dalam ajang Olimpiade Sains dan Robotika Madrasah Tingkat Provinsi Jawa Tengah.\n\nMelalui inovasi alat penyiram tanaman otomatis berbasis sensor mikrokontroler ramah lingkungan, tim siswa berhasil menyisihkan puluhan peserta dari berbagai kabupaten dan membawa pulang Trofi Juara 1 serta beasiswa pembinaan.\n\n— Humas & Tim Pembina Prestasi MTs YASUA',
+        is_featured: false,
+        status_aktif: true,
+        created_at: '2026-09-22T08:00:00Z',
+        updated_at: '2026-09-22T08:00:00Z'
+      },
+      {
+        id: 'NEWS-003',
+        urutan: 3,
+        judul: 'Workshop Parenting Akbar: Membangun Sinergi Rumah dan Sekolah Menuju Generasi Qur\'ani',
+        kategori: 'Berita & Kegiatan',
+        badge_class: 'bg-blue-600 text-white',
+        tanggal: '15 September 2026',
+        penulis: 'Komite Madrasah',
+        gambar_url: 'foto-kajian-santriwati.webp',
+        ringkasan: 'Silaturahmi wali murid dan komite madrasah mendiskusikan bimbingan moral anak di era serba digital.',
+        konten: 'MTs YASUA Pilangwetan sukses menggelar kegiatan Workshop Parenting Akbar dan Silaturahmi Wali Siswa di Aula Madrasah yang dihadiri oleh ratusan orang tua/wali murid dari kelas VII, VIII, dan IX.\n\nMengangkat tema “Membina Karakter Islami di Era Serba Digital”, narasumber membagikan wawasan aplikatif mengenai pentingnya keteladanan orang tua, pendampingan belajar di rumah, serta sinergi erat bersama bapak/ibu guru di madrasah.\n\n— Komite Madrasah & Dewan Guru MTs YASUA',
+        is_featured: false,
+        status_aktif: true,
+        created_at: '2026-09-15T08:00:00Z',
+        updated_at: '2026-09-15T08:00:00Z'
+      },
+      {
+        id: 'NEWS-004',
+        urutan: 4,
+        judul: 'Penerimaan Peserta Didik Baru (PPDB) Tahun Ajaran 2026/2027 Resmi Dibuka',
+        kategori: 'Pengumuman',
+        badge_class: 'bg-amber-600 text-white',
+        tanggal: '10 September 2026',
+        penulis: 'Panitia PPDB',
+        gambar_url: 'foto-gedung.webp',
+        ringkasan: 'Tersedia jalur prestasi beasiswa tahfidz serta jalur reguler bagi lulusan SD/MI se-Kabupaten Demak.',
+        konten: 'Penerimaan Peserta Didik Baru (PPDB) MTs YASUA Pilangwetan untuk Tahun Pelajaran 2026/2027 resmi dibuka secara daring dan luring.\n\nKami mengundang putra-putri lulusan SD/MI untuk bergabung bersama keluarga besar MTs YASUA melalui:\n1. Jalur Prestasi: Bebas biaya pendaftaran dan prioritas beasiswa tahfidz/akademik.\n2. Jalur Reguler: Pendaftaran mudah melalui tautan resmi.\n\n— Panitia PPDB MTs YASUA Pilangwetan',
+        is_featured: false,
+        status_aktif: true,
+        created_at: '2026-09-10T08:00:00Z',
+        updated_at: '2026-09-10T08:00:00Z'
+      },
+      {
+        id: 'NEWS-005',
+        urutan: 5,
+        judul: 'Pelaksanaan Asesmen Nasional (ANBK) di Laboratorium Komputer Berlangsung Tertib & Lancar',
+        kategori: 'Akademik',
+        badge_class: 'bg-purple-600 text-white',
+        tanggal: '28 Agustus 2026',
+        penulis: 'Tim Proktor & Teknisi',
+        gambar_url: 'foto-labkom.webp',
+        ringkasan: 'Infrastruktur jaringan komputer mandiri memastikan 100% peserta mengerjakan asesmen tanpa kendala.',
+        konten: 'Pelaksanaan Asesmen Nasional Berbasis Komputer (ANBK) di Laboratorium Komputer MTs YASUA Pilangwetan berjalan tertib, aman, dan 100% lancar.\n\nDukungan infrastruktur komputer yang representatif, cadangan listrik UPS, serta koneksi fiber optik berkecepatan tinggi memastikan seluruh peserta dapat mengerjakan asesmen literasi dan numerasi tanpa kendala teknis.\n\n— Tim Proktor & Teknisi ANBK MTs YASUA',
+        is_featured: false,
+        status_aktif: true,
+        created_at: '2026-08-28T08:00:00Z',
+        updated_at: '2026-08-28T08:00:00Z'
+      }
+    ];
+
+    async function fetchNews() {
+      const icon = document.getElementById('refreshNewsIcon');
+      if (icon) icon.classList.add('animate-spin');
+
+      try {
+        const res = await fetch(`${API_URL}?action=getNews`);
+        const json = await res.json();
+        if (json.status === 'success' && Array.isArray(json.data) && json.data.length > 0) {
+          allNews = json.data;
+        } else {
+          allNews = [...DEFAULT_NEWS];
+        }
+      } catch (err) {
+        console.warn('Gagal memuat berita dari API, menggunakan fallback lokal:', err);
+        allNews = [...DEFAULT_NEWS];
+      } finally {
+        if (icon) icon.classList.remove('animate-spin');
+        updateNewsMetrics();
+        renderNews();
+      }
+    }
+
+    function updateNewsMetrics() {
+      const total = allNews.length;
+      const active = allNews.filter(n => n.status_aktif === true || String(n.status_aktif).toLowerCase() === 'true').length;
+      const featured = allNews.filter(n => n.is_featured === true || String(n.is_featured).toLowerCase() === 'true').length;
+
+      const catCounts = {};
+      allNews.forEach(n => {
+        catCounts[n.kategori] = (catCounts[n.kategori] || 0) + 1;
+      });
+      let topCat = 'Akademik';
+      let maxCount = 0;
+      for (const cat in catCounts) {
+        if (catCounts[cat] > maxCount) {
+          maxCount = catCounts[cat];
+          topCat = cat;
+        }
+      }
+
+      const statTotalEl = document.getElementById('statNewsTotal');
+      const statActiveEl = document.getElementById('statNewsActive');
+      const statFeaturedEl = document.getElementById('statNewsFeatured');
+      const statTopCatEl = document.getElementById('statNewsTopCategory');
+      const sidebarCountEl = document.getElementById('sidebarNewsCount');
+      const filterAllEl = document.getElementById('countNewsFilterAll');
+
+      if (statTotalEl) statTotalEl.textContent = total;
+      if (statActiveEl) statActiveEl.textContent = active;
+      if (statFeaturedEl) statFeaturedEl.textContent = featured;
+      if (statTopCatEl) statTopCatEl.textContent = topCat;
+      if (sidebarCountEl) sidebarCountEl.textContent = `${total} Berita`;
+      if (filterAllEl) filterAllEl.textContent = total;
+    }
+
+    function setNewsCategoryFilter(cat) {
+      currentNewsFilter = cat;
+      const buttons = [
+        { id: 'newsFilterAll', cat: 'all' },
+        { id: 'newsFilterAkademik', cat: 'Akademik' },
+        { id: 'newsFilterPrestasi', cat: 'Prestasi' },
+        { id: 'newsFilterPengumuman', cat: 'Pengumuman' },
+        { id: 'newsFilterKegiatan', cat: 'Berita & Kegiatan' }
+      ];
+
+      buttons.forEach(b => {
+        const btn = document.getElementById(b.id);
+        if (btn) {
+          if (b.cat === cat) {
+            btn.className = 'px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all cursor-pointer bg-brand-primary text-white shadow-xs';
+          } else {
+            btn.className = 'px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all cursor-pointer bg-slate-100 text-slate-600 hover:bg-slate-200';
+          }
+        }
+      });
+
+      renderNews();
+    }
+
+    function handleSearchNews() {
+      searchNewsQuery = document.getElementById('searchNewsInput').value.trim().toLowerCase();
+      renderNews();
+    }
+
+    function renderNews() {
+      if (allNews.length === 0) allNews = [...DEFAULT_NEWS];
+
+      // 1. Render Featured Card
+      const featuredCard = document.getElementById('featuredNewsCard');
+      const featuredItem = allNews.find(n => n.is_featured === true || String(n.is_featured).toLowerCase() === 'true') || allNews[0];
+
+      if (featuredCard && featuredItem) {
+        featuredCard.innerHTML = `
+          <div class="flex flex-col sm:flex-row items-center gap-4">
+            <div class="relative w-full sm:w-56 aspect-video rounded-xl overflow-hidden bg-slate-900 shrink-0 border border-slate-200">
+              <img src="${featuredItem.gambar_url || 'poster_pts_berita.webp'}" alt="${featuredItem.judul}" class="w-full h-full object-cover" onerror="this.src='poster_pts_berita.webp'">
+              <span class="absolute top-2 left-2 px-2 py-0.5 rounded-full bg-blue-600 text-white text-[9px] font-black shadow-sm uppercase tracking-wider">
+                ${featuredItem.kategori}
+              </span>
+            </div>
+            <div class="space-y-1.5 flex-1 min-w-0">
+              <div class="flex items-center gap-2 text-[11px] text-amber-700 font-bold">
+                <i data-lucide="calendar" class="w-3.5 h-3.5"></i>
+                <span>${featuredItem.tanggal}</span>
+                <span class="text-slate-300">•</span>
+                <span class="text-slate-500">${featuredItem.penulis || 'Humas'}</span>
+              </div>
+              <h4 class="font-black text-slate-900 text-sm sm:text-base leading-snug line-clamp-2">${featuredItem.judul}</h4>
+              <p class="text-xs text-slate-500 line-clamp-2 leading-relaxed">${featuredItem.ringkasan}</p>
+              <div class="pt-1.5 flex items-center gap-2">
+                <button onclick="openModalEditNews('${featuredItem.id}')" 
+                  class="px-3 py-1.5 rounded-xl bg-amber-50 hover:bg-amber-100 text-amber-800 text-xs font-bold transition-colors cursor-pointer flex items-center gap-1.5">
+                  <i data-lucide="edit-3" class="w-3.5 h-3.5"></i>
+                  <span>Edit Berita Utama</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        `;
+      }
+
+      // 2. Filter & Search List
+      let filtered = allNews.filter(n => {
+        const matchesCategory = currentNewsFilter === 'all' || n.kategori === currentNewsFilter;
+        const matchesSearch = !searchNewsQuery ||
+          (n.judul && n.judul.toLowerCase().includes(searchNewsQuery)) ||
+          (n.ringkasan && n.ringkasan.toLowerCase().includes(searchNewsQuery)) ||
+          (n.penulis && n.penulis.toLowerCase().includes(searchNewsQuery));
+        return matchesCategory && matchesSearch;
+      });
+
+      const grid = document.getElementById('newsGrid');
+      const emptyState = document.getElementById('emptyNewsState');
+      const showingCount = document.getElementById('showingNewsCount');
+
+      if (showingCount) {
+        showingCount.textContent = `Menampilkan ${filtered.length} dari ${allNews.length} berita`;
+      }
+
+      if (filtered.length === 0) {
+        if (grid) grid.innerHTML = '';
+        if (emptyState) emptyState.classList.remove('hidden');
+        return;
+      }
+
+      if (emptyState) emptyState.classList.add('hidden');
+
+      grid.innerHTML = filtered.map(n => {
+        const isAktif = n.status_aktif === true || String(n.status_aktif).toLowerCase() === 'true';
+        const isFeatured = n.is_featured === true || String(n.is_featured).toLowerCase() === 'true';
+
+        return `
+          <div class="bg-white rounded-3xl p-4 border border-slate-200 shadow-sm space-y-3 flex flex-col justify-between group hover:border-emerald-300 transition-all">
+            <div class="space-y-3">
+              <div class="relative aspect-video rounded-2xl overflow-hidden shadow-xs border border-slate-200 bg-slate-900">
+                <img src="${n.gambar_url || 'poster_pts_berita.webp'}" alt="${n.judul}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" onerror="this.src='poster_pts_berita.webp'">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+                <span class="absolute top-2 left-2 px-2 py-0.5 rounded-full bg-emerald-600 text-white text-[9px] font-black uppercase tracking-wider shadow-sm">
+                  ${n.kategori}
+                </span>
+                ${isFeatured ? `
+                  <span class="absolute top-2 right-2 px-2 py-0.5 rounded-full bg-amber-500 text-slate-950 text-[9px] font-black flex items-center gap-1 shadow-sm">
+                    <i data-lucide="star" class="w-3 h-3 fill-slate-950"></i>
+                    <span>Utama</span>
+                  </span>
+                ` : ''}
+                <span class="absolute bottom-1.5 left-2 right-2 text-white text-[10px] font-medium flex items-center gap-1">
+                  <i data-lucide="calendar" class="w-3 h-3 text-brand-gold"></i>
+                  <span>${n.tanggal}</span>
+                </span>
+              </div>
+
+              <div class="space-y-1.5 text-xs">
+                <div class="flex items-center justify-between">
+                  <span class="text-[10px] text-slate-400 font-mono">${n.penulis || 'Humas MTs YASUA'}</span>
+                  <span class="px-1.5 py-0.5 rounded-full text-[9px] font-bold ${isAktif ? 'bg-emerald-50 text-emerald-700' : 'bg-slate-100 text-slate-500'}">
+                    ${isAktif ? '● Terbit' : '○ Draf'}
+                  </span>
+                </div>
+                <h4 class="font-extrabold text-slate-900 text-xs sm:text-sm leading-snug line-clamp-2 group-hover:text-brand-primary transition-colors">
+                  ${n.judul}
+                </h4>
+                <p class="text-[11px] text-slate-500 line-clamp-2 leading-relaxed">
+                  ${n.ringkasan}
+                </p>
+              </div>
+            </div>
+
+            <div class="pt-3 border-t border-slate-100 flex items-center justify-between">
+              <span class="text-[10px] font-mono text-slate-400">${n.id}</span>
+              <div class="flex items-center gap-1.5">
+                <button onclick="handleToggleFeatured('${n.id}')" 
+                  class="p-1.5 rounded-xl ${isFeatured ? 'bg-amber-100 text-amber-800' : 'bg-slate-100 hover:bg-amber-50 text-slate-500 hover:text-amber-600'} transition-colors cursor-pointer"
+                  title="${isFeatured ? 'Hapus dari Berita Utama' : 'Jadikan Berita Utama Teratas'}">
+                  <i data-lucide="star" class="w-3.5 h-3.5 ${isFeatured ? 'fill-amber-600 text-amber-600' : ''}"></i>
+                </button>
+                <button onclick="openModalEditNews('${n.id}')" 
+                  class="p-1.5 rounded-xl bg-slate-100 hover:bg-emerald-50 text-slate-600 hover:text-brand-primary transition-colors cursor-pointer"
+                  title="Edit Berita">
+                  <i data-lucide="edit-3" class="w-3.5 h-3.5"></i>
+                </button>
+                <button onclick="handleDeleteNews('${n.id}', '${n.judul.replace(/'/g, "\\'")}')" 
+                  class="p-1.5 rounded-xl bg-slate-100 hover:bg-rose-50 text-slate-600 hover:text-rose-600 transition-colors cursor-pointer"
+                  title="Hapus Berita">
+                  <i data-lucide="trash-2" class="w-3.5 h-3.5"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        `;
+      }).join('');
+
+      if (window.lucide) window.lucide.createIcons();
+    }
+
+    function openModalAddNews() {
+      document.getElementById('newsId').value = '';
+      document.getElementById('newsModalAdminTitle').textContent = 'Tulis Berita Baru';
+      document.getElementById('newsJudul').value = '';
+      document.getElementById('newsKategori').value = 'Akademik';
+
+      const now = new Date();
+      const months = ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'];
+      document.getElementById('newsTanggal').value = `${now.getDate()} ${months[now.getMonth()]} ${now.getFullYear()}`;
+      document.getElementById('newsPenulis').value = 'Humas MTs YASUA';
+      document.getElementById('newsGambarUrl').value = 'poster_pts_berita.webp';
+      document.getElementById('newsRingkasan').value = '';
+      document.getElementById('newsKonten').value = '';
+      document.getElementById('newsIsFeatured').checked = false;
+      document.getElementById('newsStatusAktif').checked = true;
+
+      uploadedNewsBase64 = null;
+      updateNewsModalPreview();
+      document.getElementById('newsModalAdmin').classList.remove('hidden');
+      if (window.lucide) window.lucide.createIcons();
+    }
+
+    function openModalEditNews(id) {
+      const n = allNews.find(item => String(item.id) === String(id));
+      if (!n) return;
+
+      document.getElementById('newsId').value = n.id;
+      document.getElementById('newsModalAdminTitle').textContent = `Edit Berita (${n.id})`;
+      document.getElementById('newsJudul').value = n.judul || '';
+      document.getElementById('newsKategori').value = n.kategori || 'Akademik';
+      document.getElementById('newsTanggal').value = n.tanggal || '';
+      document.getElementById('newsPenulis').value = n.penulis || 'Humas MTs YASUA';
+      document.getElementById('newsGambarUrl').value = n.gambar_url || '';
+      document.getElementById('newsRingkasan').value = n.ringkasan || '';
+
+      let rawContent = n.konten || '';
+      rawContent = rawContent.replace(/<p class="mb-3">/gi, '').replace(/<\/p>/gi, '\n\n').replace(/<br\s*\/?>/gi, '\n').trim();
+      document.getElementById('newsKonten').value = rawContent;
+
+      document.getElementById('newsIsFeatured').checked = (n.is_featured === true || String(n.is_featured).toLowerCase() === 'true');
+      document.getElementById('newsStatusAktif').checked = (n.status_aktif === true || String(n.status_aktif).toLowerCase() === 'true');
+
+      uploadedNewsBase64 = null;
+      updateNewsModalPreview();
+      document.getElementById('newsModalAdmin').classList.remove('hidden');
+      if (window.lucide) window.lucide.createIcons();
+    }
+
+    function closeModalNews() {
+      document.getElementById('newsModalAdmin').classList.add('hidden');
+    }
+
+    function updateNewsModalPreview() {
+      const img = document.getElementById('newsGambarUrl').value.trim() || 'poster_pts_berita.webp';
+      if (!uploadedNewsBase64) {
+        document.getElementById('newsPhotoPreview').src = img;
+      }
+    }
+
+    function handleNewsFileSelected(e) {
+      const file = e.target.files[0];
+      if (!file) return;
+
+      const reader = new FileReader();
+      reader.onload = function(evt) {
+        document.getElementById('newsPhotoPreview').src = evt.target.result;
+        uploadedNewsBase64 = evt.target.result.split(',')[1];
+        uploadedNewsName = file.name;
+        uploadedNewsMime = file.type;
+      };
+      reader.readAsDataURL(file);
+    }
+
+    async function handleSaveNews(e) {
+      e.preventDefault();
+      const saveBtn = document.getElementById('saveNewsBtn');
+      saveBtn.disabled = true;
+      saveBtn.innerHTML = '<span>Menyimpan ke Spreadsheet...</span>';
+
+      const id = document.getElementById('newsId').value;
+      const isNew = !id;
+      let gambarUrl = document.getElementById('newsGambarUrl').value.trim() || 'poster_pts_berita.webp';
+
+      if (uploadedNewsBase64) {
+        saveBtn.innerHTML = '<span>Mengunggah foto ke Google Drive...</span>';
+        try {
+          const uploadRes = await fetch(API_URL, {
+            method: 'POST',
+            body: JSON.stringify({
+              action: 'uploadNewsPhoto',
+              base64Data: uploadedNewsBase64,
+              fileName: uploadedNewsName,
+              mimeType: uploadedNewsMime
+            })
+          });
+          const uploadJson = await uploadRes.json();
+          if (uploadJson.status === 'success' && uploadJson.url) {
+            gambarUrl = uploadJson.url;
+          }
+        } catch (err) {
+          console.warn('Gagal upload foto berita ke Drive:', err);
+        }
+      }
+
+      const rawKonten = document.getElementById('newsKonten').value.trim();
+      const paragraphs = rawKonten.split(/\n\s*\n/).filter(p => p.trim().length > 0);
+      const formattedKonten = paragraphs.map(p => `<p class="mb-3">${p.trim().replace(/\n/g, '<br>')}</p>`).join('');
+
+      const isFeatured = document.getElementById('newsIsFeatured').checked;
+
+      const payload = {
+        judul: document.getElementById('newsJudul').value.trim(),
+        kategori: document.getElementById('newsKategori').value,
+        tanggal: document.getElementById('newsTanggal').value.trim(),
+        penulis: document.getElementById('newsPenulis').value.trim() || 'Humas MTs YASUA',
+        gambar_url: gambarUrl,
+        ringkasan: document.getElementById('newsRingkasan').value.trim(),
+        konten: formattedKonten,
+        is_featured: isFeatured,
+        status_aktif: document.getElementById('newsStatusAktif').checked
+      };
+
+      try {
+        const action = isNew ? 'addNews' : 'updateNews';
+        const res = await fetch(API_URL, {
+          method: 'POST',
+          body: JSON.stringify({
+            action: action,
+            id: id,
+            data: payload
+          })
+        });
+        const json = await res.json();
+        if (json.status === 'success') {
+          showToast(isNew ? 'Berita baru berhasil diterbitkan!' : 'Berita berhasil diperbarui!');
+          closeModalNews();
+          fetchNews();
+        } else {
+          if (isNew) {
+            const tempId = 'NEWS-' + String(allNews.length + 1).padStart(3, '0');
+            allNews.unshift({ id: tempId, ...payload });
+          } else {
+            const idx = allNews.findIndex(item => String(item.id) === String(id));
+            if (idx !== -1) allNews[idx] = { ...allNews[idx], ...payload };
+          }
+          if (isFeatured) {
+            allNews.forEach(n => { if (n.id !== (isNew ? allNews[0].id : id)) n.is_featured = false; });
+          }
+          showToast('Tersimpan di tampilan lokal! (Pastikan Kode Apps Script terbaru sudah di-Deploy)', 'warning');
+          closeModalNews();
+          updateNewsMetrics();
+          renderNews();
+        }
+      } catch (err) {
+        if (isNew) {
+          const tempId = 'NEWS-' + String(allNews.length + 1).padStart(3, '0');
+          allNews.unshift({ id: tempId, ...payload });
+        } else {
+          const idx = allNews.findIndex(item => String(item.id) === String(id));
+          if (idx !== -1) allNews[idx] = { ...allNews[idx], ...payload };
+        }
+        if (isFeatured) {
+          allNews.forEach(n => { if (n.id !== (isNew ? allNews[0].id : id)) n.is_featured = false; });
+        }
+        showToast('Tersimpan di browser! Perbarui Apps Script untuk menyimpan ke Spreadsheet.', 'warning');
+        closeModalNews();
+        updateNewsMetrics();
+        renderNews();
+      } finally {
+        saveBtn.disabled = false;
+        saveBtn.innerHTML = '<i data-lucide="save" class="w-4 h-4"></i><span>Simpan Berita</span>';
+        if (window.lucide) window.lucide.createIcons();
+      }
+    }
+
+    async function handleToggleFeatured(id) {
+      const n = allNews.find(item => String(item.id) === String(id));
+      if (!n) return;
+
+      const newFeaturedStatus = !(n.is_featured === true || String(n.is_featured).toLowerCase() === 'true');
+
+      allNews.forEach(item => {
+        if (String(item.id) === String(id)) {
+          item.is_featured = newFeaturedStatus;
+        } else if (newFeaturedStatus) {
+          item.is_featured = false;
+        }
+      });
+      renderNews();
+      updateNewsMetrics();
+
+      try {
+        await fetch(API_URL, {
+          method: 'POST',
+          body: JSON.stringify({
+            action: 'updateNews',
+            id: id,
+            data: { is_featured: newFeaturedStatus }
+          })
+        });
+        showToast(newFeaturedStatus ? `"${n.judul}" dijadikan Berita Utama Teratas!` : 'Berita utama direset.');
+      } catch (err) {
+        showToast('Status berita utama diperbarui di tampilan browser.', 'info');
+      }
+    }
+
+    async function handleDeleteNews(id, title) {
+      if (!confirm(`Apakah Anda yakin ingin menghapus berita:\n"${title}"?`)) {
+        return;
+      }
+
+      allNews = allNews.filter(item => String(item.id) !== String(id));
+      renderNews();
+      updateNewsMetrics();
+
+      try {
+        const res = await fetch(API_URL, {
+          method: 'POST',
+          body: JSON.stringify({ action: 'deleteNews', id: id })
+        });
+        const json = await res.json();
+        if (json.status === 'success') {
+          showToast('Berita berhasil dihapus.');
+        }
+      } catch (err) {
+        showToast('Berita dihapus dari tampilan lokal.', 'info');
+      }
+    }
+
     function showToast(msg, type = 'success') {
       const container = document.getElementById('toastContainer');
       const toast = document.createElement('div');

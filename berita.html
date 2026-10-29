@@ -568,7 +568,7 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-8 space-y-12">
       
       <!-- FEATURED NEWS (BERITA UTAMA BESAR) -->
-      <section class="bg-white rounded-3xl overflow-hidden border border-emerald-100 shadow-md hover:shadow-xl transition-all duration-300 group cursor-pointer" onclick="openNewsModal('pts')">
+      <section id="featuredNewsSection" class="bg-white rounded-3xl overflow-hidden border border-emerald-100 shadow-md hover:shadow-xl transition-all duration-300 group cursor-pointer" onclick="openNewsModal('pts')">
         <div class="grid grid-cols-1 lg:grid-cols-12 items-center">
           <div class="lg:col-span-7 relative aspect-[16/10] sm:aspect-[16/9] lg:aspect-auto lg:h-full bg-slate-100 overflow-hidden">
             <img src="poster_pts_berita.webp" alt="Poster Penilaian Tengah Semester PTS MTs YASUA" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
@@ -610,10 +610,10 @@
             <i data-lucide="newspaper" class="w-5 h-5 text-brand-primary"></i>
             <span>Daftar Artikel &amp; Pengumuman Terkini</span>
           </h3>
-          <span class="text-xs text-slate-500 font-semibold">5 Berita Tersedia</span>
+          <span id="newsCountPublic" class="text-xs text-slate-500 font-semibold">5 Berita Tersedia</span>
         </div>
 
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div id="newsGridPublic" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           
           <!-- Post 1: Prestasi Robotika -->
           <div onclick="openNewsModal('prestasi')" class="bg-white rounded-3xl p-4 border border-emerald-100 shadow-sm hover:shadow-md hover:border-emerald-300 transition-all duration-200 group cursor-pointer flex flex-col justify-between">
@@ -1120,6 +1120,112 @@
         closeBrochureModal();
       }
     });
+
+    // ===================================================================
+    // SINKRONISASI DINAMIS BERITA & PENGUMUMAN DARI GOOGLE SPREADSHEET
+    // ===================================================================
+    (function () {
+      const NEWS_API_URL = 'https://script.google.com/macros/s/AKfycbxNFLoL96Ch_8QOKhp5AFauIGb9GcMpd9eb3my_zqikL0sDuncgRhDPD6tez-fuY6wT/exec?action=getNews';
+
+      fetch(NEWS_API_URL)
+        .then(res => res.json())
+        .then(json => {
+          if (json.status === 'success' && Array.isArray(json.data) && json.data.length > 0) {
+            const activeNews = json.data.filter(n => n.status_aktif === true || String(n.status_aktif).toLowerCase() === 'true');
+            if (activeNews.length === 0) return;
+
+            // Update in-memory newsDetails for modal reading
+            activeNews.forEach(n => {
+              const key = n.id;
+              const color = n.kategori === 'Prestasi' ? 'bg-emerald-600 text-white' :
+                            n.kategori === 'Pengumuman' ? 'bg-amber-600 text-white' :
+                            n.kategori === 'Akademik' ? 'bg-blue-600 text-white' : 'bg-purple-600 text-white';
+
+              newsDetails[key] = {
+                category: n.kategori.toUpperCase(),
+                badgeClass: n.badge_class || color,
+                date: n.tanggal,
+                title: n.judul,
+                image: n.gambar_url || 'poster_pts_berita.webp',
+                content: n.konten
+              };
+            });
+
+            // 1. Featured News (is_featured === true, or first item)
+            const featured = activeNews.find(n => n.is_featured === true || String(n.is_featured).toLowerCase() === 'true') || activeNews[0];
+            const featuredSection = document.getElementById('featuredNewsSection');
+            if (featuredSection && featured) {
+              featuredSection.setAttribute('onclick', `openNewsModal('${featured.id}')`);
+              const img = featuredSection.querySelector('img');
+              if (img) {
+                img.src = featured.gambar_url || 'poster_pts_berita.webp';
+                img.alt = featured.judul;
+              }
+              const dateEl = featuredSection.querySelector('.top-4.right-4');
+              if (dateEl) {
+                dateEl.innerHTML = `<i data-lucide="calendar" class="w-3.5 h-3.5 text-brand-gold"></i> ${featured.tanggal}`;
+              }
+              const catBadge = featuredSection.querySelector('.top-4.left-4');
+              if (catBadge) {
+                catBadge.innerHTML = `<i data-lucide="bell" class="w-3.5 h-3.5"></i> ${featured.kategori.toUpperCase()}`;
+              }
+              const titleEl = featuredSection.querySelector('h2');
+              if (titleEl) titleEl.textContent = featured.judul;
+              const descEl = featuredSection.querySelector('p');
+              if (descEl) descEl.textContent = featured.ringkasan;
+              const subCat = featuredSection.querySelector('.border-t span.rounded-full');
+              if (subCat) subCat.textContent = featured.kategori;
+            }
+
+            // 2. Regular Grid (excluding primary featured)
+            const regularNews = activeNews.filter(n => n.id !== featured.id);
+            const grid = document.getElementById('newsGridPublic');
+            const countEl = document.getElementById('newsCountPublic');
+
+            if (countEl) countEl.textContent = `${activeNews.length} Berita Tersedia`;
+
+            if (grid && regularNews.length > 0) {
+              grid.innerHTML = regularNews.map(n => {
+                const color = n.kategori === 'Prestasi' ? 'bg-emerald-600 text-white' :
+                              n.kategori === 'Pengumuman' ? 'bg-amber-600 text-white' :
+                              n.kategori === 'Akademik' ? 'bg-blue-600 text-white' : 'bg-purple-600 text-white';
+
+                return `
+                  <div onclick="openNewsModal('${n.id}')" class="bg-white rounded-3xl p-4 border border-emerald-100 shadow-sm hover:shadow-md hover:border-emerald-300 transition-all duration-200 group cursor-pointer flex flex-col justify-between">
+                    <div>
+                      <div class="relative aspect-video rounded-2xl overflow-hidden bg-slate-100 mb-3.5">
+                        <img src="${n.gambar_url || 'poster_pts_berita.webp'}" alt="${n.judul}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" onerror="this.src='poster_pts_berita.webp'">
+                        <span class="absolute bottom-2.5 left-2.5 px-2.5 py-0.5 rounded-full ${color} text-[10px] font-black shadow-sm uppercase tracking-wider">
+                          ${n.kategori}
+                        </span>
+                      </div>
+                      <div class="flex items-center gap-1.5 text-[11px] text-slate-500 mb-1.5">
+                        <i data-lucide="calendar" class="w-3.5 h-3.5"></i>
+                        <span>${n.tanggal}</span>
+                      </div>
+                      <h4 class="font-extrabold text-slate-900 text-sm group-hover:text-brand-primary transition-colors leading-snug line-clamp-2">
+                        ${n.judul}
+                      </h4>
+                      <p class="text-xs text-slate-500 mt-2 line-clamp-2 leading-relaxed">
+                        ${n.ringkasan}
+                      </p>
+                    </div>
+                    <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-xs text-brand-primary font-bold">
+                      <span>Baca Detail</span>
+                      <i data-lucide="arrow-right" class="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform"></i>
+                    </div>
+                  </div>
+                `;
+              }).join('');
+            }
+
+            if (window.lucide) window.lucide.createIcons();
+          }
+        })
+        .catch(err => {
+          console.log('[MTs YASUA] Menggunakan berita statis bawaan:', err);
+        });
+    })();
   </script>
 
 </body>
