@@ -1614,6 +1614,8 @@
       document.getElementById('teacherUrutan').value = allTeachers.length + 1;
       document.getElementById('photoPreview').src = 'guru_1.webp';
       uploadedPhotoBase64 = null;
+      uploadedPhotoDataUrl = null;
+      const fi = document.getElementById('photoFileInput'); if (fi) fi.value = '';
       document.getElementById('teacherModal').classList.remove('hidden');
       if (window.lucide) window.lucide.createIcons();
     }
@@ -1673,7 +1675,7 @@
       if (uploadedPhotoBase64) {
         saveBtn.innerHTML = '<span>Mengunggah foto ke Google Drive...</span>';
         try {
-          const dUrl = (typeof uploadedPhotoDataUrl !== 'undefined' && uploadedPhotoDataUrl) ? uploadedPhotoDataUrl : ('data:' + uploadedPhotoMime + ';base64,' + uploadedPhotoBase64);
+          const dUrl = (typeof uploadedPhotoDataUrl !== 'undefined' && uploadedPhotoDataUrl) ? uploadedPhotoDataUrl : ('data:' + (uploadedPhotoMime || 'image/jpeg') + ';base64,' + uploadedPhotoBase64);
           const uploadRes = await fetch(API_URL, {
             method: 'POST',
             body: JSON.stringify({
@@ -1682,21 +1684,36 @@
               base64: dUrl,
               data: dUrl,
               file: dUrl,
-              fileName: uploadedPhotoName,
-              name: uploadedPhotoName,
-              mimeType: uploadedPhotoMime,
-              contentType: uploadedPhotoMime,
-              type: uploadedPhotoMime
+              filename: uploadedPhotoName || 'guru.jpg',
+              fileName: uploadedPhotoName || 'guru.jpg',
+              name: uploadedPhotoName || 'guru.jpg',
+              mimeType: uploadedPhotoMime || 'image/jpeg',
+              contentType: uploadedPhotoMime || 'image/jpeg',
+              type: uploadedPhotoMime || 'image/jpeg'
             })
           });
           const uploadJson = await uploadRes.json();
           const newUrl = (uploadJson.data && (uploadJson.data.direct_url || uploadJson.data.url)) || uploadJson.url;
           if (uploadJson.status === 'success' && newUrl) {
             fotoUrl = newUrl;
+            document.getElementById('teacherFotoUrl').value = newUrl;
+            document.getElementById('photoPreview').src = newUrl;
             showToast('Foto guru berhasil diunggah ke Google Drive!');
+          } else {
+            console.error('Gagal upload foto guru:', uploadJson);
+            showToast('Gagal mengunggah foto: ' + (uploadJson.message || 'Error server'), 'error');
+            saveBtn.disabled = false;
+            saveBtn.innerHTML = '<i data-lucide="save" class="w-4 h-4"></i><span>Simpan Data</span>';
+            if (window.lucide) window.lucide.createIcons();
+            return;
           }
         } catch (err) {
-          console.warn('Gagal upload ke Drive, menggunakan URL fallback:', err);
+          console.error('Koneksi terputus saat upload foto guru:', err);
+          showToast('Koneksi terputus saat mengunggah foto ke Drive.', 'error');
+          saveBtn.disabled = false;
+          saveBtn.innerHTML = '<i data-lucide="save" class="w-4 h-4"></i><span>Simpan Data</span>';
+          if (window.lucide) window.lucide.createIcons();
+          return;
         }
       }
 
@@ -2117,11 +2134,12 @@
               base64: dUrl,
               data: dUrl,
               file: dUrl,
-              fileName: uploadedHeroName,
-              name: uploadedHeroName,
-              mimeType: uploadedHeroMime,
-              contentType: uploadedHeroMime,
-              type: uploadedHeroMime
+              filename: uploadedHeroName || 'hero.jpg',
+              fileName: uploadedHeroName || 'hero.jpg',
+              name: uploadedHeroName || 'hero.jpg',
+              mimeType: uploadedHeroMime || 'image/jpeg',
+              contentType: uploadedHeroMime || 'image/jpeg',
+              type: uploadedHeroMime || 'image/jpeg'
             })
           });
           const uploadJson = await uploadRes.json();
@@ -2409,11 +2427,12 @@
               base64: dUrl,
               data: dUrl,
               file: dUrl,
-              fileName: uploadedBannerName,
-              name: uploadedBannerName,
-              mimeType: uploadedBannerMime,
-              contentType: uploadedBannerMime,
-              type: uploadedBannerMime
+              filename: uploadedBannerName || 'banner.jpg',
+              fileName: uploadedBannerName || 'banner.jpg',
+              name: uploadedBannerName || 'banner.jpg',
+              mimeType: uploadedBannerMime || 'image/jpeg',
+              contentType: uploadedBannerMime || 'image/jpeg',
+              type: uploadedBannerMime || 'image/jpeg'
             })
           });
           const uploadJson = await uploadRes.json();
@@ -2913,11 +2932,12 @@
               base64: dUrl,
               data: dUrl,
               file: dUrl,
-              fileName: uploadedNewsName,
-              name: uploadedNewsName,
-              mimeType: uploadedNewsMime,
-              contentType: uploadedNewsMime,
-              type: uploadedNewsMime
+              filename: uploadedNewsName || 'berita.jpg',
+              fileName: uploadedNewsName || 'berita.jpg',
+              name: uploadedNewsName || 'berita.jpg',
+              mimeType: uploadedNewsMime || 'image/jpeg',
+              contentType: uploadedNewsMime || 'image/jpeg',
+              type: uploadedNewsMime || 'image/jpeg'
             })
           });
           const uploadJson = await uploadRes.json();
