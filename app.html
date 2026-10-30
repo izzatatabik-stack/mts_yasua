@@ -12,6 +12,7 @@
   <link rel="icon" type="image/png" href="logo.png">
   <link rel="manifest" href="manifest.webmanifest">
   <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <link rel="canonical" href="https://www.mtsyasua.sch.id/app">
 
   <!-- PWA & Mobile Web App Meta -->
   <meta name="theme-color" content="#065F46">
@@ -61,6 +62,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <!-- Lucide Icons CDN -->
   <script src="https://unpkg.com/lucide@latest"></script>
   <!-- Search & PWA Controller -->
@@ -133,6 +136,9 @@
   <!-- Area Konten Utama Mobile App -->
   <main class="max-w-xl mx-auto px-3 pt-2.5 pb-6 space-y-2.5">
 
+    <!-- ==================== TAB 1: BERANDA ==================== -->
+    <div id="tab-beranda" class="space-y-2.5">
+
     <!-- Widget Lokasi & Jadwal Sholat Demak Real-Time (Persis Asnawiyyah) -->
     <section class="bg-gradient-to-r from-emerald-950 via-teal-950 to-emerald-900 text-white px-3.5 py-2.5 rounded-2xl shadow-sm border border-emerald-700/80 relative overflow-hidden space-y-2">
       <!-- Watermark Background -->
@@ -181,7 +187,7 @@
     <div class="bg-white p-3 rounded-2xl border border-emerald-100/80 shadow-xs">
       <div class="grid grid-cols-4 gap-y-3 gap-x-2">
         <!-- 1. Program Pilihan -->
-        <a href="program.html" class="flex flex-col items-center group active:scale-95 transition-transform text-center">
+        <a href="javascript:void(0)" onclick="switchAppTab('program')" class="flex flex-col items-center group active:scale-95 transition-transform text-center cursor-pointer">
           <div class="w-12 h-12 bg-amber-50 text-amber-600 rounded-2xl flex items-center justify-center text-lg shadow-2xs border border-amber-100 group-hover:bg-amber-500 group-hover:text-white transition-colors">
             <i data-lucide="book-open" class="w-5 h-5"></i>
           </div>
@@ -189,7 +195,7 @@
         </a>
 
         <!-- 2. Kalender Islam & Jawa -->
-        <a href="kalender.html" class="flex flex-col items-center group active:scale-95 transition-transform text-center">
+        <a href="javascript:void(0)" onclick="switchAppTab('kalender')" class="flex flex-col items-center group active:scale-95 transition-transform text-center cursor-pointer">
           <div class="w-12 h-12 bg-rose-50 text-rose-600 rounded-2xl flex items-center justify-center text-lg shadow-2xs border border-rose-100 group-hover:bg-rose-500 group-hover:text-white transition-colors">
             <i data-lucide="calendar" class="w-5 h-5"></i>
           </div>
@@ -197,7 +203,7 @@
         </a>
 
         <!-- 3. Unit Ekskul -->
-        <a href="ekskul.html" class="flex flex-col items-center group active:scale-95 transition-transform text-center">
+        <a href="javascript:void(0)" onclick="switchAppTab('ekskul')" class="flex flex-col items-center group active:scale-95 transition-transform text-center cursor-pointer">
           <div class="w-12 h-12 bg-blue-50 text-blue-600 rounded-2xl flex items-center justify-center text-lg shadow-2xs border border-blue-100 group-hover:bg-blue-500 group-hover:text-white transition-colors">
             <i data-lucide="users" class="w-5 h-5"></i>
           </div>
@@ -205,7 +211,7 @@
         </a>
 
         <!-- 4. Guru & Tendik -->
-        <a href="guru.html" class="flex flex-col items-center group active:scale-95 transition-transform text-center">
+        <a href="javascript:void(0)" onclick="switchAppTab('guru')" class="flex flex-col items-center group active:scale-95 transition-transform text-center cursor-pointer">
           <div class="w-12 h-12 bg-emerald-50 text-emerald-700 rounded-2xl flex items-center justify-center text-lg shadow-2xs border border-emerald-100 group-hover:bg-emerald-600 group-hover:text-white transition-colors">
             <i data-lucide="graduation-cap" class="w-5 h-5"></i>
           </div>
@@ -213,7 +219,7 @@
         </a>
 
         <!-- 5. Prestasi Siswa -->
-        <a href="prestasi.html" class="flex flex-col items-center group active:scale-95 transition-transform text-center">
+        <a href="javascript:void(0)" onclick="switchAppTab('prestasi')" class="flex flex-col items-center group active:scale-95 transition-transform text-center cursor-pointer">
           <div class="w-12 h-12 bg-purple-50 text-purple-600 rounded-2xl flex items-center justify-center text-lg shadow-2xs border border-purple-100 group-hover:bg-purple-500 group-hover:text-white transition-colors">
             <i data-lucide="trophy" class="w-5 h-5"></i>
           </div>
@@ -221,7 +227,7 @@
         </a>
 
         <!-- 6. Profil YASUA -->
-        <a href="profil.html" class="flex flex-col items-center group active:scale-95 transition-transform text-center">
+        <a href="javascript:void(0)" onclick="switchAppTab('profil')" class="flex flex-col items-center group active:scale-95 transition-transform text-center cursor-pointer">
           <div class="w-12 h-12 bg-teal-50 text-teal-700 rounded-2xl flex items-center justify-center text-lg shadow-2xs border border-teal-100 group-hover:bg-teal-600 group-hover:text-white transition-colors">
             <i data-lucide="landmark" class="w-5 h-5"></i>
           </div>
@@ -229,7 +235,7 @@
         </a>
 
         <!-- 7. Galeri Foto -->
-        <a href="galeri.html" class="flex flex-col items-center group active:scale-95 transition-transform text-center">
+        <a href="javascript:void(0)" onclick="switchAppTab('galeri')" class="flex flex-col items-center group active:scale-95 transition-transform text-center cursor-pointer">
           <div class="w-12 h-12 bg-sky-50 text-sky-600 rounded-2xl flex items-center justify-center text-lg shadow-2xs border border-sky-100 group-hover:bg-sky-500 group-hover:text-white transition-colors">
             <i data-lucide="camera" class="w-5 h-5"></i>
           </div>
@@ -237,7 +243,7 @@
         </a>
 
         <!-- 8. Pendaftaran PPDB -->
-        <a href="ppdb.html" class="flex flex-col items-center group active:scale-95 transition-transform text-center">
+        <a href="javascript:void(0)" onclick="switchAppTab('ppdb')" class="flex flex-col items-center group active:scale-95 transition-transform text-center cursor-pointer">
           <div class="w-12 h-12 bg-amber-500 text-slate-950 rounded-2xl flex items-center justify-center text-lg shadow-2xs border border-amber-400 group-hover:bg-amber-600 transition-colors ring-2 ring-amber-500/30">
             <i data-lucide="user-plus" class="w-5 h-5"></i>
           </div>
@@ -311,7 +317,7 @@
 
     <!-- Quick Action Card: PPDB & QRIS -->
     <div class="grid grid-cols-2 gap-2">
-      <a id="homePpdbLink" href="https://wa.me/6285649881966" target="_blank" class="p-3 bg-gradient-to-br from-emerald-600 to-brand-primary text-white rounded-2xl shadow-sm flex items-center gap-2.5 active:scale-98 transition-transform">
+      <a id="homePpdbLink" href="javascript:void(0)" onclick="switchAppTab('ppdb')" class="p-3 bg-gradient-to-br from-emerald-600 to-brand-primary text-white rounded-2xl shadow-sm flex items-center gap-2.5 active:scale-98 transition-transform cursor-pointer">
         <div class="w-9 h-9 rounded-xl bg-white/20 flex items-center justify-center shrink-0">
           <i data-lucide="clipboard-check" class="w-5 h-5 text-amber-300"></i>
         </div>
@@ -339,14 +345,14 @@
           <span class="w-2 h-4 bg-brand-primary rounded-full"></span>
           <h3 class="font-black text-slate-900 text-xs sm:text-sm">Headline Madrasah</h3>
         </div>
-        <a href="berita.html" class="text-[11px] font-bold text-brand-primary hover:underline flex items-center gap-0.5">
+        <a href="javascript:void(0)" onclick="switchAppTab('berita')" class="text-[11px] font-bold text-brand-primary hover:underline flex items-center gap-0.5">
           <span>Lihat Semua</span>
           <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i>
         </a>
       </div>
 
       <!-- List Berita 1 -->
-      <a href="berita.html" class="flex items-center gap-3 p-2 rounded-xl hover:bg-slate-50 transition-colors group">
+      <a href="javascript:void(0)" onclick="switchAppTab('berita')" class="flex items-center gap-3 p-2 rounded-xl hover:bg-slate-50 transition-colors group">
         <div class="flex-1 min-w-0">
           <div class="flex items-center gap-2 mb-1">
             <span class="px-2 py-0.5 rounded bg-emerald-100 text-emerald-800 font-extrabold text-[9px] uppercase">KEGIATAN</span>
@@ -363,7 +369,7 @@
       </a>
 
       <!-- List Berita 2 -->
-      <a href="berita.html" class="flex items-center gap-3 p-2 rounded-xl hover:bg-slate-50 transition-colors group border-t border-slate-50">
+      <a href="javascript:void(0)" onclick="switchAppTab('berita')" class="flex items-center gap-3 p-2 rounded-xl hover:bg-slate-50 transition-colors group border-t border-slate-50">
         <div class="flex-1 min-w-0">
           <div class="flex items-center gap-2 mb-1">
             <span class="px-2 py-0.5 rounded bg-amber-100 text-amber-800 font-extrabold text-[9px] uppercase">PRESTASI</span>
@@ -380,7 +386,7 @@
       </a>
 
       <!-- List Berita 3 -->
-      <a href="berita.html" class="flex items-center gap-3 p-2 rounded-xl hover:bg-slate-50 transition-colors group border-t border-slate-50">
+      <a href="javascript:void(0)" onclick="switchAppTab('berita')" class="flex items-center gap-3 p-2 rounded-xl hover:bg-slate-50 transition-colors group border-t border-slate-50">
         <div class="flex-1 min-w-0">
           <div class="flex items-center gap-2 mb-1">
             <span class="px-2 py-0.5 rounded bg-blue-100 text-blue-800 font-extrabold text-[9px] uppercase">KESISWAAN</span>
@@ -406,10 +412,798 @@
         </a>
       </div>
       <div>
-        <a href="https://api.whatsapp.com/send?text=*Aplikasi%20Resmi%20MTs%20YASUA%20Pilangwetan*%20Demak%3A%0Ahttps%3A%2F%2Fwww.mtsyasua.sch.id%2Fapp.html" target="_blank" rel="noopener noreferrer" class="px-4 py-2 rounded-full bg-emerald-50 hover:bg-emerald-100 text-brand-primary text-[11px] font-bold border border-emerald-200 transition-colors inline-flex items-center gap-1.5 shadow-2xs">
+        <a href="https://api.whatsapp.com/send?text=*Aplikasi%20Resmi%20MTs%20YASUA%20Pilangwetan*%20Demak%3A%0Ahttps%3A%2F%2Fwww.mtsyasua.sch.id%2Fapp" target="_blank" rel="noopener noreferrer" class="px-4 py-2 rounded-full bg-emerald-50 hover:bg-emerald-100 text-brand-primary text-[11px] font-bold border border-emerald-200 transition-colors inline-flex items-center gap-1.5 shadow-2xs">
           <svg class="w-3.5 h-3.5 fill-current text-emerald-600" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86s.275.072.376-.043c.101-.116.433-.506.549-.68.116-.173.231-.145.39-.087s1.011.477 1.184.564.289.13.332.202c.045.072.045.419-.1.824zm-3.423-10.416c-4.408 0-7.99 3.582-7.99 7.99 0 1.408.365 2.73 1.001 3.877l-1.062 3.883 3.985-1.045c1.11.606 2.379.945 3.731.945 4.409 0 7.991-3.582 7.991-7.99 0-4.408-3.582-7.99-7.991-7.99z"/></svg>
           <span>Bagikan Aplikasi ke WhatsApp</span>
         </a>
+      </div>
+    </div>
+
+  
+    </div><!-- End #tab-beranda -->
+
+    <!-- ==================== TAB 2: BERITA & WARTA MADRASAH ==================== -->
+    <div id="tab-berita" class="hidden space-y-3.5">
+      <!-- Header Banner Tab Berita -->
+      <div class="bg-gradient-to-r from-emerald-950 via-teal-950 to-emerald-900 text-white p-3.5 rounded-2xl shadow-sm border border-emerald-700/80 flex items-center justify-between">
+        <div class="flex items-center gap-2.5">
+          <div class="w-9 h-9 rounded-xl bg-white/10 flex items-center justify-center text-amber-300">
+            <i data-lucide="newspaper" class="w-5 h-5"></i>
+          </div>
+          <div>
+            <h2 class="text-sm font-black text-white leading-tight">Warta &amp; Berita Madrasah</h2>
+            <p class="text-[10px] text-emerald-200 mt-0.5">Kabar prestasi, agenda ujian, &amp; informasi resmi</p>
+          </div>
+        </div>
+        <button onclick="fetchTabNews()" class="px-2.5 py-1 rounded-lg bg-white/10 hover:bg-white/20 text-white text-[10.5px] font-bold flex items-center gap-1 active:scale-95 transition-all cursor-pointer">
+          <i data-lucide="refresh-cw" class="w-3 h-3 text-amber-300"></i>
+          <span>Segarkan</span>
+        </button>
+      </div>
+
+      <!-- Featured News Card -->
+      <div id="tabFeaturedNews" onclick="openNewsModal('pts')" class="bg-white rounded-2xl overflow-hidden border border-emerald-100 shadow-sm cursor-pointer group hover:border-emerald-300 transition-all">
+        <div class="relative aspect-[16/9] bg-slate-100 overflow-hidden">
+          <img id="tabFeaturedImg" src="poster_pts_berita.webp" alt="Berita Utama" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+          <span id="tabFeaturedBadge" class="absolute top-2.5 left-2.5 px-2.5 py-0.5 rounded-full bg-blue-600 text-white font-black text-[9px] uppercase tracking-wider shadow-sm">
+            PENGUMUMAN UTAMA
+          </span>
+          <span id="tabFeaturedDate" class="absolute top-2.5 right-2.5 px-2.5 py-0.5 rounded-full bg-black/60 text-white font-semibold text-[9.5px] backdrop-blur-xs">
+            5 - 10 Oktober 2026
+          </span>
+        </div>
+        <div class="p-3.5 space-y-2">
+          <h3 id="tabFeaturedTitle" class="font-extrabold text-slate-900 text-sm leading-snug group-hover:text-brand-primary transition-colors">
+            Penilaian Tengah Semester (PTS) Gasal MTs YASUA Pilangwetan
+          </h3>
+          <p id="tabFeaturedSummary" class="text-xs text-slate-500 line-clamp-2 leading-relaxed">
+            Diberitahukan kepada seluruh siswa-siswi kelas VII, VIII, dan IX serta Bapak/Ibu Wali Murid bahwa pelaksanaan PTS terpadu dilaksanakan berbasis asesmen tertulis dan digital komputer.
+          </p>
+          <div class="pt-2 border-t border-slate-100 flex items-center justify-between text-xs text-brand-primary font-bold">
+            <span>Baca Selengkapnya</span>
+            <i data-lucide="arrow-right" class="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform"></i>
+          </div>
+        </div>
+      </div>
+
+      <!-- Grid Berita Lainnya -->
+      <div class="space-y-2.5">
+        <div class="flex items-center justify-between px-1">
+          <h4 class="text-xs font-black text-slate-700 flex items-center gap-1.5 uppercase tracking-wider">
+            <span class="w-1.5 h-3.5 bg-brand-primary rounded-full"></span>
+            <span>Semua Kabar Terkini</span>
+          </h4>
+          <span id="tabNewsCount" class="text-[10px] font-bold text-slate-400">Memuat...</span>
+        </div>
+
+        <div id="tabNewsGrid" class="space-y-2.5">
+          <!-- Populated dynamically via JS -->
+        </div>
+      </div>
+    </div><!-- End #tab-berita -->
+
+    <!-- ==================== TAB 3: KALENDER ISLAM & PASARAN JAWA ==================== -->
+    <div id="tab-kalender" class="hidden space-y-3.5">
+      <!-- Header Banner Tab Kalender -->
+      <div class="bg-gradient-to-r from-emerald-950 via-teal-950 to-emerald-900 text-white p-3.5 rounded-2xl shadow-sm border border-emerald-700/80 flex items-center justify-between">
+        <div class="flex items-center gap-2.5">
+          <div class="w-9 h-9 rounded-xl bg-white/10 flex items-center justify-center text-amber-300">
+            <i data-lucide="calendar" class="w-5 h-5"></i>
+          </div>
+          <div>
+            <h2 class="text-sm font-black text-white leading-tight">Kalender Islam &amp; Pasaran Jawa</h2>
+            <p class="text-[10px] text-emerald-200 mt-0.5">Hisab LF PBNU, puasa sunnah, &amp; agenda madrasah</p>
+          </div>
+        </div>
+        <button onclick="goToCurrentMonth()" class="px-2.5 py-1 rounded-lg bg-white/10 hover:bg-white/20 text-white text-[10.5px] font-bold flex items-center gap-1 active:scale-95 transition-all cursor-pointer">
+          <i data-lucide="calendar-check" class="w-3 h-3 text-amber-300"></i>
+          <span>Hari Ini</span>
+        </button>
+      </div>
+
+      <!-- Kartu Kalender Interaktif -->
+      <div class="bg-white p-3.5 rounded-2xl shadow-xs border border-emerald-100/90 space-y-3">
+        <!-- 1. Navigasi Bulan -->
+        <div class="flex items-center justify-between bg-slate-50 p-1.5 rounded-xl border border-slate-200/70">
+          <button onclick="changeCalMonth(-1)" class="w-8 h-8 bg-white hover:bg-emerald-50 text-slate-700 hover:text-brand-primary rounded-lg flex items-center justify-center shadow-2xs transition active:scale-90 border border-slate-200/60 cursor-pointer">
+            <i class="fa-solid fa-chevron-left text-xs"></i>
+          </button>
+          <div class="text-center px-2">
+            <span id="cal-month-year-text" class="text-sm font-black text-brand-dark block leading-tight">
+              Oktober 2026
+            </span>
+            <span id="cal-hijri-month-text" class="text-[10px] font-bold text-emerald-700 block leading-tight mt-0.5">
+              Rabi'ul Akhir - Jumadil Ula 1448 H
+            </span>
+          </div>
+          <button onclick="changeCalMonth(1)" class="w-8 h-8 bg-white hover:bg-emerald-50 text-slate-700 hover:text-brand-primary rounded-lg flex items-center justify-center shadow-2xs transition active:scale-90 border border-slate-200/60 cursor-pointer">
+            <i class="fa-solid fa-chevron-right text-xs"></i>
+          </button>
+        </div>
+
+        <!-- 2. Detail Tanggal Terpilih -->
+        <div id="selected-date-card" class="bg-gradient-to-br from-brand-900 via-brand-800 to-emerald-900 text-white p-3 rounded-xl shadow-xs border border-emerald-700/50 space-y-1">
+          <div class="flex items-center justify-between gap-2">
+            <span id="selected-date-status-badge" class="text-[9px] font-black uppercase bg-amber-400/25 text-amber-300 px-2 py-0.5 rounded tracking-wider shrink-0">
+              Hari Ini
+            </span>
+            <div id="selected-date-tag" class="bg-white/10 px-2.5 py-0.5 rounded-full border border-white/10 text-[9.5px] font-semibold text-emerald-200 truncate max-w-[75%]">
+              <i class="fa-solid fa-book-quran text-amber-300 mr-1"></i> Kegiatan Normal
+            </div>
+          </div>
+          <div id="selected-date-title" class="text-sm font-extrabold text-white tracking-wide leading-tight pt-0.5">
+            Rabu Pon, 28 Oktober 2026
+          </div>
+          <div id="selected-date-subtitle" class="text-xs font-semibold text-amber-300 leading-tight">
+            Rabu Pon, 16 Jumadil Ula 1448 H
+          </div>
+        </div>
+
+        <!-- 3. Legend Kompak -->
+        <div class="flex items-center justify-between text-[8.5px] text-slate-500 px-1 py-1 bg-slate-50 rounded-lg border border-slate-100">
+          <div class="flex items-center gap-2">
+            <span class="flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span> Puasa</span>
+            <span class="flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-amber-400"></span> PHBI</span>
+            <span class="flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-teal-400"></span> Jumat</span>
+          </div>
+          <div class="flex items-center gap-1.5 font-medium">
+            <span class="text-slate-800 font-extrabold">Masehi</span> &bull;
+            <span class="text-emerald-700 font-extrabold">Hijriyah</span> &bull;
+            <span class="text-amber-700 font-bold">Jawa</span>
+          </div>
+        </div>
+
+        <!-- 4. Grid Hari (Ahad - Sabtu) -->
+        <div class="grid grid-cols-7 gap-1 text-center font-bold text-[10px] text-slate-500 py-1 border-y border-slate-100">
+          <div class="text-red-500">Ahad</div>
+          <div>Senin</div>
+          <div>Selasa</div>
+          <div>Rabu</div>
+          <div>Kamis</div>
+          <div class="text-emerald-700 font-extrabold">Jumat</div>
+          <div>Sabtu</div>
+        </div>
+
+        <!-- 5. Grid Tanggal -->
+        <div id="calendar-days-grid" class="grid grid-cols-7 gap-1">
+          <!-- Populated dynamically via JS -->
+        </div>
+
+        <!-- 6. Agenda & Hari Besar Islam -->
+        <div class="pt-3 border-t border-slate-100 space-y-2">
+          <div class="flex items-center justify-between">
+            <h4 class="text-[11px] font-black text-slate-600 uppercase tracking-wider flex items-center">
+              <span class="w-1.5 h-3 bg-brand-primary rounded-full mr-1.5"></span>
+              Agenda &amp; PHBI Bulan Ini
+            </h4>
+            <span id="cal-events-count" class="text-[9.5px] font-bold text-emerald-800 bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-200">
+              0 Agenda
+            </span>
+          </div>
+          <div id="calendar-events-container" class="space-y-1.5">
+            <!-- Populated dynamically -->
+          </div>
+        </div>
+      </div>
+    </div><!-- End #tab-kalender -->
+
+    <!-- ==================== TAB 4: DEWAN GURU & TENDIK ==================== -->
+    <div id="tab-guru" class="hidden space-y-3.5">
+      <!-- Header Banner Tab Guru -->
+      <div class="bg-gradient-to-r from-emerald-950 via-teal-950 to-emerald-900 text-white p-3.5 rounded-2xl shadow-sm border border-emerald-700/80 flex items-center justify-between">
+        <div class="flex items-center gap-2.5">
+          <button onclick="switchAppTab('beranda')" type="button" class="w-8 h-8 rounded-xl bg-white/10 hover:bg-white/20 flex items-center justify-center text-white transition-colors cursor-pointer" title="Kembali ke Beranda">
+            <i data-lucide="arrow-left" class="w-4 h-4"></i>
+          </button>
+          <div>
+            <h2 class="text-sm font-black text-white leading-tight">Dewan Guru &amp; Tendik</h2>
+            <p class="text-[10px] text-emerald-200 mt-0.5">Pendidik Berakhlak &amp; Berkompeten</p>
+          </div>
+        </div>
+        <button onclick="fetchTabTeachers(true)" class="px-2.5 py-1 rounded-lg bg-white/10 hover:bg-white/20 text-white text-[10.5px] font-bold flex items-center gap-1 active:scale-95 transition-all cursor-pointer" title="Segarkan Data Guru">
+          <i data-lucide="refresh-cw" id="guruRefreshIcon" class="w-3 h-3 text-amber-300"></i>
+          <span>Segarkan</span>
+        </button>
+      </div>
+
+      <!-- Spotlight Pimpinan Madrasah -->
+      <div class="bg-gradient-to-br from-[#022c1f] via-[#065F46] to-[#0A6B48] text-white p-3.5 rounded-2xl shadow-sm border border-emerald-700/80 flex items-center gap-3 relative overflow-hidden">
+        <div class="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl overflow-hidden bg-white/20 border-2 border-amber-300/70 shrink-0 shadow-md">
+          <img id="appKepalaFoto" src="kepala-madrasah.webp" alt="Kepala Madrasah" class="w-full h-full object-cover object-top" onerror="this.src='logo.png'">
+        </div>
+        <div class="flex-1 min-w-0">
+          <span class="inline-block px-2 py-0.5 rounded-md bg-amber-400 text-slate-950 font-black text-[8.5px] uppercase tracking-wider mb-0.5">
+            Kepala Madrasah
+          </span>
+          <h3 id="appKepalaNama" class="text-xs sm:text-sm font-extrabold text-white leading-snug truncate">
+            Muthohar, S.Pd.
+          </h3>
+          <p id="appKepalaJabatan" class="text-[10px] text-emerald-200 line-clamp-1 mt-0.5">
+            Pimpinan MTs YASUA Pilangwetan • Khidmah 2026/2027
+          </p>
+        </div>
+      </div>
+
+      <!-- Pencarian & Filter Kategori Guru -->
+      <div class="bg-white p-3 rounded-2xl border border-emerald-100/90 shadow-xs space-y-2">
+        <div class="relative">
+          <i data-lucide="search" class="w-4 h-4 text-emerald-600 absolute left-3 top-1/2 -translate-y-1/2"></i>
+          <input type="text" id="appGuruSearchInput" oninput="filterTabTeachers()" placeholder="Cari nama guru atau mata pelajaran..." class="w-full pl-9 pr-8 py-2 rounded-xl bg-slate-50 border border-slate-200 text-xs font-semibold text-slate-800 placeholder:text-slate-400 focus:bg-white focus:outline-none focus:border-brand-primary focus:ring-1 focus:ring-brand-primary transition-all">
+          <button id="appGuruClearSearch" onclick="clearGuruSearch()" class="hidden absolute right-2.5 top-1/2 -translate-y-1/2 w-5 h-5 rounded-full bg-slate-200 text-slate-600 flex items-center justify-center text-[10px] cursor-pointer">
+            <i data-lucide="x" class="w-3 h-3"></i>
+          </button>
+        </div>
+
+        <!-- Filter Pills Scrollable -->
+        <div class="flex items-center gap-1.5 overflow-x-auto pb-0.5 text-[10.5px] font-bold scrollbar-none">
+          <button onclick="setGuruCategory('all')" id="btnGuruCat-all" class="guru-cat-btn px-3 py-1 rounded-full bg-brand-primary text-white shrink-0 transition-all shadow-xs cursor-pointer">
+            Semua
+          </button>
+          <button onclick="setGuruCategory('bahasa')" id="btnGuruCat-bahasa" class="guru-cat-btn px-3 py-1 rounded-full bg-slate-100 text-slate-600 shrink-0 hover:bg-slate-200 transition-all cursor-pointer">
+            Bahasa
+          </button>
+          <button onclick="setGuruCategory('sains')" id="btnGuruCat-sains" class="guru-cat-btn px-3 py-1 rounded-full bg-slate-100 text-slate-600 shrink-0 hover:bg-slate-200 transition-all cursor-pointer">
+            Sains &amp; TIK
+          </button>
+          <button onclick="setGuruCategory('karakter')" id="btnGuruCat-karakter" class="guru-cat-btn px-3 py-1 rounded-full bg-slate-100 text-slate-600 shrink-0 hover:bg-slate-200 transition-all cursor-pointer">
+            Sosial &amp; PPKn
+          </button>
+          <button onclick="setGuruCategory('agama')" id="btnGuruCat-agama" class="guru-cat-btn px-3 py-1 rounded-full bg-slate-100 text-slate-600 shrink-0 hover:bg-slate-200 transition-all cursor-pointer">
+            Keagamaan
+          </button>
+        </div>
+      </div>
+
+      <!-- List Guru Grid -->
+      <div class="space-y-2">
+        <div class="flex items-center justify-between px-1">
+          <h4 class="text-xs font-black text-slate-800 uppercase tracking-wider flex items-center gap-1.5">
+            <i data-lucide="users" class="w-3.5 h-3.5 text-brand-primary"></i>
+            <span>Daftar Guru Pengajar</span>
+          </h4>
+          <span id="appGuruCount" class="text-[10px] font-bold text-slate-400">6 Guru</span>
+        </div>
+        <div id="appTeachersGrid" class="grid grid-cols-2 gap-2.5">
+          <!-- Populated dynamically via JS -->
+        </div>
+      </div>
+    </div><!-- End #tab-guru -->
+
+    <!-- ==================== TAB 5: PROGRAM PILIHAN & UNGGULAN ==================== -->
+    <div id="tab-program" class="hidden space-y-3.5">
+      <!-- Header Banner Tab Program -->
+      <div class="bg-gradient-to-r from-emerald-950 via-teal-950 to-emerald-900 text-white p-3.5 rounded-2xl shadow-sm border border-emerald-700/80 flex items-center justify-between">
+        <div class="flex items-center gap-2.5">
+          <button onclick="switchAppTab('beranda')" type="button" class="w-8 h-8 rounded-xl bg-white/10 hover:bg-white/20 flex items-center justify-center text-white transition-colors cursor-pointer" title="Kembali ke Beranda">
+            <i data-lucide="arrow-left" class="w-4 h-4"></i>
+          </button>
+          <div>
+            <h2 class="text-sm font-black text-white leading-tight">Program Madrasah</h2>
+            <p class="text-[10px] text-emerald-200 mt-0.5">Kurikulum Terpadu &amp; Pembinaan Santri</p>
+          </div>
+        </div>
+        <button onclick="switchAppTab('ppdb')" class="px-2.5 py-1 rounded-lg bg-amber-400 text-slate-950 text-[10.5px] font-black flex items-center gap-1 active:scale-95 transition-all cursor-pointer">
+          <span>Daftar</span>
+          <i data-lucide="arrow-right" class="w-3 h-3"></i>
+        </button>
+      </div>
+
+      <!-- Program Spotlight Card -->
+      <div class="bg-gradient-to-r from-emerald-800 to-brand-primary text-white p-3.5 rounded-2xl shadow-sm border border-emerald-600/60 space-y-1">
+        <span class="inline-block px-2 py-0.5 rounded bg-white/20 text-amber-300 font-extrabold text-[8.5px] uppercase tracking-wider">
+          Visi Pendidikan Unggul
+        </span>
+        <h3 class="text-sm font-black leading-snug">
+          Membentuk Santri Berakhlakul Karimah, Unggul Akademik, &amp; Tanggap Digital
+        </h3>
+        <p class="text-[10.5px] text-emerald-100/90 leading-relaxed">
+          Mengintegrasikan kurikulum Kementerian Agama, kemandirian pesantren salaf Aswaja, dan kesiapan asesmen digital masa kini.
+        </p>
+      </div>
+
+      <!-- 4 Kartu Program Utama Mobile -->
+      <div class="space-y-2.5">
+        <!-- 1. Tahfidzul Qur'an & Kitab Salaf -->
+        <div class="bg-white p-3.5 rounded-2xl border border-emerald-100/90 shadow-xs space-y-2">
+          <div class="flex items-start gap-3">
+            <div class="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-700 flex items-center justify-center border border-emerald-100 shrink-0">
+              <i data-lucide="book-marked" class="w-5 h-5"></i>
+            </div>
+            <div class="flex-1 min-w-0">
+              <span class="text-[9px] font-extrabold uppercase px-2 py-0.5 rounded bg-emerald-100 text-emerald-800">Keagamaan &amp; Salaf</span>
+              <h4 class="font-extrabold text-slate-900 text-xs sm:text-sm mt-1 leading-snug">
+                Tahfidzul Qur'an &amp; Pengajian Kitab Salaf (Aswaja)
+              </h4>
+            </div>
+          </div>
+          <p class="text-[11px] text-slate-600 leading-relaxed">
+            Bimbingan tahfidz intensif Juz 30 dan surat pilihan, kajian kitab kuning (Fiqih Safinah, Mabadi' Fiqhiyah, Akhlak Ta'limul Muta'allim), serta tradisi sorogan &amp; bandongan.
+          </p>
+          <div class="flex flex-wrap gap-1.5 pt-1 text-[9.5px] font-bold text-emerald-900">
+            <span class="px-2 py-0.5 rounded bg-slate-100 border border-slate-200">Bimbingan Tartil</span>
+            <span class="px-2 py-0.5 rounded bg-slate-100 border border-slate-200">Sorogan Kitab</span>
+            <span class="px-2 py-0.5 rounded bg-slate-100 border border-slate-200">Sanad Aswaja NU</span>
+          </div>
+        </div>
+
+        <!-- 2. Pembiasaan Adab & Ibadah Harian -->
+        <div class="bg-white p-3.5 rounded-2xl border border-emerald-100/90 shadow-xs space-y-2">
+          <div class="flex items-start gap-3">
+            <div class="w-10 h-10 rounded-xl bg-amber-50 text-amber-600 flex items-center justify-center border border-amber-100 shrink-0">
+              <i data-lucide="heart-handshake" class="w-5 h-5"></i>
+            </div>
+            <div class="flex-1 min-w-0">
+              <span class="text-[9px] font-extrabold uppercase px-2 py-0.5 rounded bg-amber-100 text-amber-800">Karakter Santri</span>
+              <h4 class="font-extrabold text-slate-900 text-xs sm:text-sm mt-1 leading-snug">
+                Adab Santun &amp; Pembiasaan Ibadah Harian
+              </h4>
+            </div>
+          </div>
+          <p class="text-[11px] text-slate-600 leading-relaxed">
+            Pembiasaan Shalat Dhuha dan Dzuhur berjamaah, pembacaan Asmaul Husna harian, istighotsah rutin Kamis Wage, serta penanaman adab 5S (Senyum, Sapa, Salam, Sopan, Santun).
+          </p>
+          <div class="flex flex-wrap gap-1.5 pt-1 text-[9.5px] font-bold text-amber-900">
+            <span class="px-2 py-0.5 rounded bg-slate-100 border border-slate-200">Shalat Berjamaah</span>
+            <span class="px-2 py-0.5 rounded bg-slate-100 border border-slate-200">Istighotsah Wage</span>
+            <span class="px-2 py-0.5 rounded bg-slate-100 border border-slate-200">Adab Kepesantrenan</span>
+          </div>
+        </div>
+
+        <!-- 3. Literasi Bahasa (Arab & Inggris) -->
+        <div class="bg-white p-3.5 rounded-2xl border border-emerald-100/90 shadow-xs space-y-2">
+          <div class="flex items-start gap-3">
+            <div class="w-10 h-10 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center border border-blue-100 shrink-0">
+              <i data-lucide="languages" class="w-5 h-5"></i>
+            </div>
+            <div class="flex-1 min-w-0">
+              <span class="text-[9px] font-extrabold uppercase px-2 py-0.5 rounded bg-blue-100 text-blue-800">Bahasa Asing</span>
+              <h4 class="font-extrabold text-slate-900 text-xs sm:text-sm mt-1 leading-snug">
+                Penguatan Literasi Bahasa (Arab &amp; Inggris)
+              </h4>
+            </div>
+          </div>
+          <p class="text-[11px] text-slate-600 leading-relaxed">
+            Penguasaan kosakata praktis (mufradat harian), latihan percakapan santri (muhadatsah), serta bimbingan khitobah / pidato tiga bahasa untuk melatih mental percaya diri santri.
+          </p>
+          <div class="flex flex-wrap gap-1.5 pt-1 text-[9.5px] font-bold text-blue-900">
+            <span class="px-2 py-0.5 rounded bg-slate-100 border border-slate-200">Muhadatsah Harian</span>
+            <span class="px-2 py-0.5 rounded bg-slate-100 border border-slate-200">Khitobah 3 Bahasa</span>
+            <span class="px-2 py-0.5 rounded bg-slate-100 border border-slate-200">Pentas Seni Bahasa</span>
+          </div>
+        </div>
+
+        <!-- 4. Literasi Digital & Lab Komputer CBT -->
+        <div class="bg-white p-3.5 rounded-2xl border border-emerald-100/90 shadow-xs space-y-2">
+          <div class="flex items-start gap-3">
+            <div class="w-10 h-10 rounded-xl bg-teal-50 text-teal-700 flex items-center justify-center border border-teal-100 shrink-0">
+              <i data-lucide="monitor" class="w-5 h-5"></i>
+            </div>
+            <div class="flex-1 min-w-0">
+              <span class="text-[9px] font-extrabold uppercase px-2 py-0.5 rounded bg-teal-100 text-teal-800">Digital &amp; ANBK</span>
+              <h4 class="font-extrabold text-slate-900 text-xs sm:text-sm mt-1 leading-snug">
+                Literasi Digital &amp; Lab Komputer Siap CBT
+              </h4>
+            </div>
+          </div>
+          <p class="text-[11px] text-slate-600 leading-relaxed">
+            Fasilitas laboratorium komputer ber-AC dengan internet fiber optik, praktik dasar komputer dan pemrograman pemula, serta pelaksanaan Asesmen Nasional Berbasis Komputer (ANBK) mandiri.
+          </p>
+          <div class="flex flex-wrap gap-1.5 pt-1 text-[9.5px] font-bold text-teal-900">
+            <span class="px-2 py-0.5 rounded bg-slate-100 border border-slate-200">Lab Komputer AC</span>
+            <span class="px-2 py-0.5 rounded bg-slate-100 border border-slate-200">ANBK Mandiri</span>
+            <span class="px-2 py-0.5 rounded bg-slate-100 border border-slate-200">Internet Edukasi Sehat</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quick Consultation CTA -->
+      <div class="p-3 bg-emerald-50 rounded-2xl border border-emerald-200 text-center space-y-2">
+        <h4 class="text-xs font-black text-brand-dark">Tertarik dengan Program Kami?</h4>
+        <p class="text-[10.5px] text-slate-600">Konsultasikan minat dan bakat putra-putri Anda bersama tim kesiswaan madrasah.</p>
+        <a href="https://wa.me/6285649881966?text=Assalamu%27alaikum%2C%20saya%20ingin%20berkonsultasi%20mengenai%20Program%20MTs%20YASUA" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-brand-primary text-white font-bold text-xs shadow-xs hover:bg-emerald-700 transition-colors">
+          <i data-lucide="message-circle" class="w-3.5 h-3.5 text-amber-300"></i>
+          <span>Konsultasi Program via WhatsApp</span>
+        </a>
+      </div>
+    </div><!-- End #tab-program -->
+
+    <!-- ==================== TAB 6: PPDB SANTRI BARU ==================== -->
+    <div id="tab-ppdb" class="hidden space-y-3.5">
+      <!-- Header Banner Tab PPDB -->
+      <div class="bg-gradient-to-r from-emerald-950 via-teal-950 to-emerald-900 text-white p-3.5 rounded-2xl shadow-sm border border-emerald-700/80 flex items-center justify-between">
+        <div class="flex items-center gap-2.5">
+          <button onclick="switchAppTab('beranda')" type="button" class="w-8 h-8 rounded-xl bg-white/10 hover:bg-white/20 flex items-center justify-center text-white transition-colors cursor-pointer" title="Kembali ke Beranda">
+            <i data-lucide="arrow-left" class="w-4 h-4"></i>
+          </button>
+          <div>
+            <h2 class="text-sm font-black text-white leading-tight">PPDB Santri Baru</h2>
+            <p class="text-[10px] text-emerald-200 mt-0.5">Tahun Pelajaran 2026/2027</p>
+          </div>
+        </div>
+        <span class="px-2 py-0.5 rounded-full bg-amber-400 text-slate-950 text-[9.5px] font-black uppercase tracking-wide">
+          Gelombang 1
+        </span>
+      </div>
+
+      <!-- Hero Callout PPDB -->
+      <div class="bg-gradient-to-br from-brand-primary to-emerald-800 text-white p-3.5 rounded-2xl shadow-sm border border-emerald-500/50 space-y-2">
+        <div class="flex items-center gap-2 text-amber-300 text-xs font-black">
+          <i data-lucide="award" class="w-4 h-4"></i>
+          <span>Pendaftaran Santri Baru Dibuka!</span>
+        </div>
+        <p class="text-[11px] text-emerald-100 leading-relaxed">
+          Raih beasiswa bebas biaya pendaftaran dan SPP bagi santri berprestasi akademik, kejuaraan olahraga/seni, dan penghafal Al-Qur'an (Tahfidz).
+        </p>
+        <div class="pt-1 flex gap-2">
+          <a href="https://wa.me/6285649881966?text=Assalamu%27alaikum%20Panitia%20PPDB%20MTs%20YASUA%20Pilangwetan%2C%20saya%20ingin%20mendaftar%20santri%20baru" target="_blank" rel="noopener noreferrer" class="flex-1 py-2 px-3 rounded-xl bg-amber-400 hover:bg-amber-300 text-slate-950 font-black text-xs text-center flex items-center justify-center gap-1.5 shadow-sm active:scale-98 transition-all">
+            <i data-lucide="send" class="w-3.5 h-3.5"></i>
+            <span>Daftar via WA</span>
+          </a>
+          <button onclick="openBrochureModal()" class="py-2 px-3 rounded-xl bg-white/20 hover:bg-white/30 text-white font-bold text-xs flex items-center justify-center gap-1.5 cursor-pointer active:scale-98 transition-all">
+            <i data-lucide="printer" class="w-3.5 h-3.5 text-amber-300"></i>
+            <span>Brosur</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- 4 Langkah Alur Pendaftaran (Stepper) -->
+      <div class="bg-white p-3.5 rounded-2xl border border-emerald-100/90 shadow-xs space-y-2.5">
+        <h4 class="text-xs font-black text-brand-dark uppercase tracking-wider flex items-center gap-1.5">
+          <i data-lucide="layers" class="w-3.5 h-3.5 text-brand-primary"></i>
+          <span>Alur Pendaftaran Santri Baru</span>
+        </h4>
+
+        <div class="space-y-2 text-xs">
+          <!-- Langkah 1 -->
+          <div class="flex items-start gap-2.5 p-2 rounded-xl bg-slate-50 border border-slate-100">
+            <div class="w-6 h-6 rounded-full bg-brand-primary text-white text-[11px] font-black flex items-center justify-center shrink-0">1</div>
+            <div class="flex-1 min-w-0">
+              <span class="font-extrabold text-slate-800 block text-[11.5px]">Isi Formulir Pendaftaran</span>
+              <p class="text-[10px] text-slate-500 mt-0.5">Daftar online melalui WhatsApp / Website atau datang langsung ke ruang panitia madrasah.</p>
+            </div>
+          </div>
+
+          <!-- Langkah 2 -->
+          <div class="flex items-start gap-2.5 p-2 rounded-xl bg-slate-50 border border-slate-100">
+            <div class="w-6 h-6 rounded-full bg-brand-primary text-white text-[11px] font-black flex items-center justify-center shrink-0">2</div>
+            <div class="flex-1 min-w-0">
+              <span class="font-extrabold text-slate-800 block text-[11.5px]">Penyerahan Berkas Persyaratan</span>
+              <p class="text-[10px] text-slate-500 mt-0.5">Menyerahkan fotokopi Kartu Keluarga (KK), Akta Kelahiran, dan Ijazah/SKL MI/SD.</p>
+            </div>
+          </div>
+
+          <!-- Langkah 3 -->
+          <div class="flex items-start gap-2.5 p-2 rounded-xl bg-slate-50 border border-slate-100">
+            <div class="w-6 h-6 rounded-full bg-brand-primary text-white text-[11px] font-black flex items-center justify-center shrink-0">3</div>
+            <div class="flex-1 min-w-0">
+              <span class="font-extrabold text-slate-800 block text-[11.5px]">Observasi &amp; Pemetaan Minat</span>
+              <p class="text-[10px] text-slate-500 mt-0.5">Tes baca Al-Qur'an fashahah dan wawancara peminatan program unggulan santri.</p>
+            </div>
+          </div>
+
+          <!-- Langkah 4 -->
+          <div class="flex items-start gap-2.5 p-2 rounded-xl bg-slate-50 border border-slate-100">
+            <div class="w-6 h-6 rounded-full bg-emerald-600 text-white text-[11px] font-black flex items-center justify-center shrink-0">4</div>
+            <div class="flex-1 min-w-0">
+              <span class="font-extrabold text-slate-800 block text-[11.5px]">Pengumuman &amp; Daftar Ulang</span>
+              <p class="text-[10px] text-slate-500 mt-0.5">Pengumuman kelulusan, pengukuran seragam madrasah, dan pembagian kelas santri baru.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Syarat Berkas Pendaftaran -->
+      <div class="bg-white p-3.5 rounded-2xl border border-emerald-100/90 shadow-xs space-y-2">
+        <h4 class="text-xs font-black text-brand-dark uppercase tracking-wider flex items-center gap-1.5">
+          <i data-lucide="file-check" class="w-3.5 h-3.5 text-emerald-600"></i>
+          <span>Berkas yang Perlu Disiapkan</span>
+        </h4>
+        <div class="grid grid-cols-2 gap-2 text-[10.5px]">
+          <div class="p-2 rounded-xl bg-slate-50 border border-slate-100 flex items-center gap-1.5">
+            <i data-lucide="check" class="w-3.5 h-3.5 text-emerald-600 shrink-0"></i>
+            <span class="font-semibold text-slate-700">Fotokopi Kartu Keluarga (KK)</span>
+          </div>
+          <div class="p-2 rounded-xl bg-slate-50 border border-slate-100 flex items-center gap-1.5">
+            <i data-lucide="check" class="w-3.5 h-3.5 text-emerald-600 shrink-0"></i>
+            <span class="font-semibold text-slate-700">Fotokopi Akta Kelahiran</span>
+          </div>
+          <div class="p-2 rounded-xl bg-slate-50 border border-slate-100 flex items-center gap-1.5">
+            <i data-lucide="check" class="w-3.5 h-3.5 text-emerald-600 shrink-0"></i>
+            <span class="font-semibold text-slate-700">Ijazah / SKL MI/SD (3 lbr)</span>
+          </div>
+          <div class="p-2 rounded-xl bg-slate-50 border border-slate-100 flex items-center gap-1.5">
+            <i data-lucide="check" class="w-3.5 h-3.5 text-emerald-600 shrink-0"></i>
+            <span class="font-semibold text-slate-700">Pas Foto 3x4 (3 lembar)</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Kontak Sekretariat PPDB -->
+      <div class="bg-slate-900 text-white p-3.5 rounded-2xl shadow-sm space-y-2">
+        <div class="flex items-center justify-between">
+          <span class="text-[10px] text-amber-300 font-extrabold uppercase tracking-wider">Sekretariat PPDB</span>
+          <span class="text-[10px] text-slate-400">Pukul 07.30 - 13.00 WIB</span>
+        </div>
+        <p class="text-xs text-slate-200">
+          Gedung MTs YASUA Pilangwetan, Jl. Raya Pilangwetan, Kec. Kebonagung, Kab. Demak.
+        </p>
+        <div class="pt-1 flex items-center gap-2">
+          <a href="https://wa.me/6285649881966" target="_blank" rel="noopener noreferrer" class="px-3 py-1.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs flex items-center gap-1.5 transition-colors">
+            <i data-lucide="phone" class="w-3.5 h-3.5 text-amber-300"></i>
+            <span>Chat WA Panitia</span>
+          </a>
+          <a href="kontak.html" class="px-3 py-1.5 rounded-xl bg-white/10 hover:bg-white/20 text-white font-bold text-xs transition-colors">
+            Lihat Peta Lokasi
+          </a>
+        </div>
+      </div>
+    </div><!-- End #tab-ppdb -->
+
+    <!-- ==================== TAB 7: EKSTRAKURIKULER ==================== -->
+    <div id="tab-ekskul" class="hidden space-y-3.5">
+      <div class="bg-gradient-to-r from-emerald-950 via-teal-950 to-emerald-900 text-white p-3.5 rounded-2xl shadow-sm border border-emerald-700/80 flex items-center justify-between">
+        <div class="flex items-center gap-2.5">
+          <button onclick="switchAppTab('beranda')" type="button" class="w-8 h-8 rounded-xl bg-white/10 hover:bg-white/20 flex items-center justify-center text-white transition-colors cursor-pointer" title="Kembali ke Beranda">
+            <i data-lucide="arrow-left" class="w-4 h-4"></i>
+          </button>
+          <div>
+            <h2 class="text-sm font-black text-white leading-tight">Unit Ekstrakurikuler</h2>
+            <p class="text-[10px] text-emerald-200 mt-0.5">Wadah Bakat, Seni, &amp; Olahraga Santri</p>
+          </div>
+        </div>
+        <span class="text-[10px] font-bold text-amber-300 bg-white/10 px-2 py-0.5 rounded-md">8 Ekskul Aktif</span>
+      </div>
+
+      <div class="grid grid-cols-2 gap-2 text-xs">
+        <div class="bg-white p-3 rounded-2xl border border-emerald-100/90 shadow-xs space-y-1">
+          <div class="w-8 h-8 rounded-xl bg-amber-50 text-amber-600 flex items-center justify-center font-bold">
+            <i data-lucide="compass" class="w-4 h-4"></i>
+          </div>
+          <h4 class="font-bold text-slate-800 text-[11.5px] mt-1">Gerakan Pramuka</h4>
+          <p class="text-[10px] text-slate-500">Gugus Depan MTs YASUA. Kemah, tali-temali, kedisiplinan, &amp; kepemimpinan.</p>
+        </div>
+        <div class="bg-white p-3 rounded-2xl border border-emerald-100/90 shadow-xs space-y-1">
+          <div class="w-8 h-8 rounded-xl bg-emerald-50 text-emerald-700 flex items-center justify-center font-bold">
+            <i data-lucide="music" class="w-4 h-4"></i>
+          </div>
+          <h4 class="font-bold text-slate-800 text-[11.5px] mt-1">Rebana &amp; Hadroh</h4>
+          <p class="text-[10px] text-slate-500">Seni shalawat Nabi, banjari, &amp; pengiring peringatan hari besar Islam.</p>
+        </div>
+        <div class="bg-white p-3 rounded-2xl border border-emerald-100/90 shadow-xs space-y-1">
+          <div class="w-8 h-8 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center font-bold">
+            <i data-lucide="flag" class="w-4 h-4"></i>
+          </div>
+          <h4 class="font-bold text-slate-800 text-[11.5px] mt-1">Paskibra Madrasah</h4>
+          <p class="text-[10px] text-slate-500">Pelatihan baris-berbaris (PBB), upacara kemerdekaan, &amp; jiwa nasionalisme.</p>
+        </div>
+        <div class="bg-white p-3 rounded-2xl border border-emerald-100/90 shadow-xs space-y-1">
+          <div class="w-8 h-8 rounded-xl bg-red-50 text-red-600 flex items-center justify-center font-bold">
+            <i data-lucide="cross" class="w-4 h-4"></i>
+          </div>
+          <h4 class="font-bold text-slate-800 text-[11.5px] mt-1">PMR Madya</h4>
+          <p class="text-[10px] text-slate-500">Pertolongan pertama pada kecelakaan (P3K), kesiapsiagaan bencana, &amp; bakti sosial.</p>
+        </div>
+        <div class="bg-white p-3 rounded-2xl border border-emerald-100/90 shadow-xs space-y-1">
+          <div class="w-8 h-8 rounded-xl bg-teal-50 text-teal-700 flex items-center justify-center font-bold">
+            <i data-lucide="trophy" class="w-4 h-4"></i>
+          </div>
+          <h4 class="font-bold text-slate-800 text-[11.5px] mt-1">Futsal Santri</h4>
+          <p class="text-[10px] text-slate-500">Pelatihan teknik dasar futsal, turnamen antarmadrasah, &amp; sportivitas.</p>
+        </div>
+        <div class="bg-white p-3 rounded-2xl border border-emerald-100/90 shadow-xs space-y-1">
+          <div class="w-8 h-8 rounded-xl bg-purple-50 text-purple-600 flex items-center justify-center font-bold">
+            <i data-lucide="pen-tool" class="w-4 h-4"></i>
+          </div>
+          <h4 class="font-bold text-slate-800 text-[11.5px] mt-1">Seni Kaligrafi Islam</h4>
+          <p class="text-[10px] text-slate-500">Khat naskhi, tsuluts, riq'ah, &amp; karya dekorasi hiasan mushaf Al-Qur'an.</p>
+        </div>
+      </div>
+    </div><!-- End #tab-ekskul -->
+
+    <!-- ==================== TAB 8: PRESTASI SISWA ==================== -->
+    <div id="tab-prestasi" class="hidden space-y-3.5">
+      <div class="bg-gradient-to-r from-emerald-950 via-teal-950 to-emerald-900 text-white p-3.5 rounded-2xl shadow-sm border border-emerald-700/80 flex items-center justify-between">
+        <div class="flex items-center gap-2.5">
+          <button onclick="switchAppTab('beranda')" type="button" class="w-8 h-8 rounded-xl bg-white/10 hover:bg-white/20 flex items-center justify-center text-white transition-colors cursor-pointer" title="Kembali ke Beranda">
+            <i data-lucide="arrow-left" class="w-4 h-4"></i>
+          </button>
+          <div>
+            <h2 class="text-sm font-black text-white leading-tight">Prestasi Madrasah</h2>
+            <p class="text-[10px] text-emerald-200 mt-0.5">Rekam Jejak Juara Santri MTs YASUA</p>
+          </div>
+        </div>
+        <i data-lucide="award" class="w-5 h-5 text-amber-300"></i>
+      </div>
+
+      <div class="space-y-2.5">
+        <div class="bg-white p-3 rounded-2xl border border-emerald-100/90 shadow-xs flex items-center gap-3">
+          <div class="w-10 h-10 rounded-xl bg-amber-100 text-amber-800 font-black flex items-center justify-center text-sm shrink-0">
+            🥇
+          </div>
+          <div class="flex-1 min-w-0">
+            <span class="text-[9px] font-extrabold uppercase px-2 py-0.5 rounded bg-amber-50 text-amber-800 border border-amber-200">KSM Kemenag</span>
+            <h4 class="font-extrabold text-slate-900 text-xs mt-0.5 leading-snug truncate">Juara 1 Kompetisi Sains Madrasah Matematika</h4>
+            <p class="text-[10px] text-slate-500">Tingkat Sub-Rayon Kebonagung • Tahun 2026</p>
+          </div>
+        </div>
+
+        <div class="bg-white p-3 rounded-2xl border border-emerald-100/90 shadow-xs flex items-center gap-3">
+          <div class="w-10 h-10 rounded-xl bg-slate-100 text-slate-700 font-black flex items-center justify-center text-sm shrink-0">
+            🥈
+          </div>
+          <div class="flex-1 min-w-0">
+            <span class="text-[9px] font-extrabold uppercase px-2 py-0.5 rounded bg-emerald-50 text-emerald-800 border border-emerald-200">Porseni Madrasah</span>
+            <h4 class="font-extrabold text-slate-900 text-xs mt-0.5 leading-snug truncate">Juara 2 Kaligrafi Hiasan Mushaf</h4>
+            <p class="text-[10px] text-slate-500">Tingkat Kabupaten Demak • Tahun 2026</p>
+          </div>
+        </div>
+
+        <div class="bg-white p-3 rounded-2xl border border-emerald-100/90 shadow-xs flex items-center gap-3">
+          <div class="w-10 h-10 rounded-xl bg-amber-50 text-amber-700 font-black flex items-center justify-center text-sm shrink-0">
+            🥉
+          </div>
+          <div class="flex-1 min-w-0">
+            <span class="text-[9px] font-extrabold uppercase px-2 py-0.5 rounded bg-blue-50 text-blue-800 border border-blue-200">MTQ Santri</span>
+            <h4 class="font-extrabold text-slate-900 text-xs mt-0.5 leading-snug truncate">Juara 3 Tahfidz Al-Qur'an 3 Juz</h4>
+            <p class="text-[10px] text-slate-500">Peringatan Hari Santri Nasional • Tahun 2026</p>
+          </div>
+        </div>
+      </div>
+    </div><!-- End #tab-prestasi -->
+
+    <!-- ==================== TAB 9: PROFIL MADRASAH ==================== -->
+    <div id="tab-profil" class="hidden space-y-3.5">
+      <div class="bg-gradient-to-r from-emerald-950 via-teal-950 to-emerald-900 text-white p-3.5 rounded-2xl shadow-sm border border-emerald-700/80 flex items-center justify-between">
+        <div class="flex items-center gap-2.5">
+          <button onclick="switchAppTab('beranda')" type="button" class="w-8 h-8 rounded-xl bg-white/10 hover:bg-white/20 flex items-center justify-center text-white transition-colors cursor-pointer" title="Kembali ke Beranda">
+            <i data-lucide="arrow-left" class="w-4 h-4"></i>
+          </button>
+          <div>
+            <h2 class="text-sm font-black text-white leading-tight">Profil MTs YASUA</h2>
+            <p class="text-[10px] text-emerald-200 mt-0.5">Identitas, Visi Misi, &amp; Legalitas</p>
+          </div>
+        </div>
+        <span class="text-[9.5px] font-black uppercase px-2 py-0.5 rounded-full bg-amber-400 text-slate-950">
+          Akreditasi A
+        </span>
+      </div>
+
+      <!-- Kartu Identitas Resmi -->
+      <div class="bg-white p-3.5 rounded-2xl border border-emerald-100/90 shadow-xs space-y-2">
+        <h4 class="text-xs font-black text-brand-dark uppercase tracking-wider">Identitas Resmi Madrasah</h4>
+        <div class="grid grid-cols-2 gap-2 text-[10.5px]">
+          <div class="p-2 rounded-xl bg-slate-50 border border-slate-100">
+            <span class="text-slate-400 block text-[9.5px]">NPSN</span>
+            <span class="font-extrabold text-slate-800">20363229</span>
+          </div>
+          <div class="p-2 rounded-xl bg-slate-50 border border-slate-100">
+            <span class="text-slate-400 block text-[9.5px]">NSM (Kemenag)</span>
+            <span class="font-extrabold text-slate-800">121233210034</span>
+          </div>
+          <div class="p-2 rounded-xl bg-slate-50 border border-slate-100">
+            <span class="text-slate-400 block text-[9.5px]">Status Akreditasi</span>
+            <span class="font-extrabold text-emerald-700">Terakreditasi A (Unggul)</span>
+          </div>
+          <div class="p-2 rounded-xl bg-slate-50 border border-slate-100">
+            <span class="text-slate-400 block text-[9.5px]">Naungan Yayasan</span>
+            <span class="font-extrabold text-slate-800">YASUA Pilangwetan</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Visi & Misi Ringkas -->
+      <div class="bg-white p-3.5 rounded-2xl border border-emerald-100/90 shadow-xs space-y-2">
+        <h4 class="text-xs font-black text-brand-dark uppercase tracking-wider">Visi Madrasah</h4>
+        <p class="text-xs text-slate-700 italic font-semibold leading-relaxed p-2.5 rounded-xl bg-emerald-50/70 border border-emerald-100 text-center">
+          “Terwujudnya Generasi Qur'ani yang Cerdas, Berakhlakul Karimah, Mandiri, dan Menguasai Teknologi Informasi.”
+        </p>
+      </div>
+
+      <!-- Lokasi & Peta -->
+      <div class="bg-white p-3.5 rounded-2xl border border-emerald-100/90 shadow-xs space-y-2">
+        <h4 class="text-xs font-black text-brand-dark uppercase tracking-wider">Lokasi Madrasah</h4>
+        <p class="text-xs text-slate-600 leading-relaxed">
+          Jl. Raya Pilangwetan, Desa Pilangwetan RT 02 / RW 01, Kec. Kebonagung, Kabupaten Demak, Jawa Tengah 59561.
+        </p>
+        <a href="https://maps.google.com/?q=MTs+YASUA+Pilangwetan+Demak" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-brand-primary text-white font-bold text-xs">
+          <i data-lucide="map-pin" class="w-3.5 h-3.5 text-amber-300"></i>
+          <span>Buka di Google Maps</span>
+        </a>
+      </div>
+    </div><!-- End #tab-profil -->
+
+    <!-- ==================== TAB 10: GALERI FOTO ==================== -->
+    <div id="tab-galeri" class="hidden space-y-3.5">
+      <div class="bg-gradient-to-r from-emerald-950 via-teal-950 to-emerald-900 text-white p-3.5 rounded-2xl shadow-sm border border-emerald-700/80 flex items-center justify-between">
+        <div class="flex items-center gap-2.5">
+          <button onclick="switchAppTab('beranda')" type="button" class="w-8 h-8 rounded-xl bg-white/10 hover:bg-white/20 flex items-center justify-center text-white transition-colors cursor-pointer" title="Kembali ke Beranda">
+            <i data-lucide="arrow-left" class="w-4 h-4"></i>
+          </button>
+          <div>
+            <h2 class="text-sm font-black text-white leading-tight">Galeri Dokumentasi</h2>
+            <p class="text-[10px] text-emerald-200 mt-0.5">Aktivitas &amp; Kegiatan Santri</p>
+          </div>
+        </div>
+        <i data-lucide="camera" class="w-5 h-5 text-amber-300"></i>
+      </div>
+
+      <div class="grid grid-cols-2 gap-2">
+        <div class="aspect-square rounded-2xl overflow-hidden bg-slate-100 border border-slate-200 shadow-2xs relative group">
+          <img src="banner_1.jpg" alt="Lab CBT" class="w-full h-full object-cover">
+          <span class="absolute bottom-1.5 left-1.5 right-1.5 bg-black/60 backdrop-blur-xs text-white text-[9px] font-bold px-1.5 py-0.5 rounded text-center truncate">Lab CBT ANBK</span>
+        </div>
+        <div class="aspect-square rounded-2xl overflow-hidden bg-slate-100 border border-slate-200 shadow-2xs relative group">
+          <img src="banner_2.jpg" alt="Tahfidz" class="w-full h-full object-cover">
+          <span class="absolute bottom-1.5 left-1.5 right-1.5 bg-black/60 backdrop-blur-xs text-white text-[9px] font-bold px-1.5 py-0.5 rounded text-center truncate">Tahfidz Qur'an</span>
+        </div>
+        <div class="aspect-square rounded-2xl overflow-hidden bg-slate-100 border border-slate-200 shadow-2xs relative group">
+          <img src="banner_3.jpg" alt="Kajian Kitab" class="w-full h-full object-cover">
+          <span class="absolute bottom-1.5 left-1.5 right-1.5 bg-black/60 backdrop-blur-xs text-white text-[9px] font-bold px-1.5 py-0.5 rounded text-center truncate">Kajian Kitab Salaf</span>
+        </div>
+        <div class="aspect-square rounded-2xl overflow-hidden bg-slate-100 border border-slate-200 shadow-2xs relative group">
+          <img src="foto-gedung.webp" alt="Gedung Madrasah" class="w-full h-full object-cover">
+          <span class="absolute bottom-1.5 left-1.5 right-1.5 bg-black/60 backdrop-blur-xs text-white text-[9px] font-bold px-1.5 py-0.5 rounded text-center truncate">Gedung Utama</span>
+        </div>
+      </div>
+    </div><!-- End #tab-galeri -->
+
+    <!-- Modal Detail Guru Mobile -->
+    <div id="guruModal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-3 bg-slate-950/70 backdrop-blur-xs transition-opacity duration-300">
+      <div class="bg-white rounded-3xl max-w-sm w-full max-h-[85vh] overflow-y-auto shadow-2xl border border-emerald-100 flex flex-col relative animate-in fade-in zoom-in-95 p-4 space-y-3">
+        <button onclick="closeGuruModal()" class="absolute top-3 right-3 z-20 w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-600 flex items-center justify-center cursor-pointer" title="Tutup">
+          <i data-lucide="x" class="w-4 h-4"></i>
+        </button>
+        <div class="flex items-center gap-3 pt-2">
+          <div class="w-16 h-16 rounded-2xl overflow-hidden bg-emerald-50 border border-emerald-100 shrink-0 shadow-xs">
+            <img id="modalGuruImg" src="" alt="Foto Guru" class="w-full h-full object-cover object-top" onerror="this.src='logo.png'">
+          </div>
+          <div class="flex-1 min-w-0">
+            <span id="modalGuruBidang" class="inline-block px-2 py-0.5 rounded text-[9px] font-extrabold uppercase"></span>
+            <h3 id="modalGuruNama" class="text-sm font-extrabold text-slate-900 leading-snug mt-0.5"></h3>
+            <p id="modalGuruJabatan" class="text-[11px] font-bold text-amber-700"></p>
+          </div>
+        </div>
+        <div class="border-t border-slate-100 pt-2.5 space-y-2 text-xs">
+          <div>
+            <span class="text-[10px] font-extrabold uppercase text-slate-400 block">Tugas &amp; Peran</span>
+            <p id="modalGuruDeskripsi" class="text-slate-600 text-[11.5px] leading-relaxed mt-0.5"></p>
+          </div>
+          <div class="p-2 rounded-xl bg-emerald-50 border border-emerald-100 flex items-center justify-between text-[11px]">
+            <span id="modalGuruPendidikan" class="font-bold text-brand-primary"></span>
+            <span class="px-2 py-0.5 rounded bg-emerald-100 text-emerald-800 font-extrabold text-[9.5px]">Aktif Mengajar</span>
+          </div>
+        </div>
+        <div class="pt-1 flex justify-end">
+          <button onclick="closeGuruModal()" class="w-full py-2 rounded-xl bg-brand-primary text-white font-bold text-xs cursor-pointer hover:bg-emerald-700 transition-colors">
+            Tutup
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal Detail Berita Mobile -->
+    <div id="newsModal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-3 bg-slate-950/70 backdrop-blur-xs transition-opacity duration-300">
+      <div class="bg-white rounded-3xl max-w-md w-full max-h-[85vh] overflow-y-auto shadow-2xl border border-emerald-100 flex flex-col relative animate-in fade-in zoom-in-95">
+        <button onclick="closeNewsModal()" class="absolute top-3 right-3 z-20 w-8 h-8 rounded-full bg-black/60 hover:bg-black/80 text-white flex items-center justify-center cursor-pointer" title="Tutup">
+          <i data-lucide="x" class="w-4 h-4"></i>
+        </button>
+        <div id="modalNewsImgContainer" class="relative aspect-video w-full overflow-hidden bg-slate-100">
+          <img id="modalNewsImg" src="" alt="Berita Image" class="w-full h-full object-cover">
+          <span id="modalNewsCategory" class="absolute bottom-2.5 left-3 px-2.5 py-0.5 rounded-full text-[10px] font-black shadow-md"></span>
+        </div>
+        <div class="p-4 space-y-3">
+          <div class="flex items-center gap-1.5 text-[11px] text-slate-400 font-semibold">
+            <i data-lucide="calendar" class="w-3.5 h-3.5 text-brand-primary"></i>
+            <span id="modalNewsDate"></span>
+          </div>
+          <h3 id="modalNewsTitle" class="text-base font-black text-slate-900 leading-snug"></h3>
+          <div id="modalNewsContent" class="text-slate-600 text-xs leading-relaxed border-t border-slate-100 pt-3"></div>
+          <div class="pt-2 flex justify-end">
+            <button onclick="closeNewsModal()" class="px-4 py-2 rounded-xl bg-brand-primary text-white font-bold text-xs cursor-pointer">
+              Tutup
+            </button>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -531,6 +1325,711 @@
       }
     })();
   </script>
+
+  <!-- ==================== MOBILE APP SPA ROUTER & ENGINES ==================== -->
+  <script>
+    // --- 1. Client-Side Tab Router ---
+    let currentActiveTab = 'beranda';
+    const allAppTabs = ['beranda', 'berita', 'kalender', 'guru', 'program', 'ppdb', 'ekskul', 'prestasi', 'profil', 'galeri'];
+
+    function switchAppTab(tabName, updateHistory = true) {
+      if (!allAppTabs.includes(tabName)) tabName = 'beranda';
+
+      currentActiveTab = tabName;
+
+      // Toggle views
+      allAppTabs.forEach(t => {
+        const el = document.getElementById('tab-' + t);
+        if (el) {
+          if (t === tabName) {
+            el.classList.remove('hidden');
+          } else {
+            el.classList.add('hidden');
+          }
+        }
+      });
+
+      // Update bottom dock active styles: standard dock tabs (beranda, berita, kalender)
+      // When in sub-views (guru, program, ppdb, etc.), beranda is highlighted
+      const dockTabToHighlight = ['berita', 'kalender'].includes(tabName) ? tabName : 'beranda';
+      ['beranda', 'berita', 'kalender'].forEach(t => {
+        const btn = document.getElementById('dockBtn-' + t);
+        if (btn) {
+          const svg = btn.querySelector('svg');
+          if (t === dockTabToHighlight) {
+            btn.classList.remove('text-slate-500');
+            btn.classList.add('text-brand-primary', 'font-bold');
+            if (svg) svg.classList.add('stroke-[2.5]');
+          } else {
+            btn.classList.remove('text-brand-primary', 'font-bold');
+            btn.classList.add('text-slate-500');
+            if (svg) svg.classList.remove('stroke-[2.5]');
+          }
+        }
+      });
+
+      // Update browser URL
+      if (updateHistory) {
+        const targetPath = (tabName === 'beranda') ? '/app' : ('/app/' + tabName);
+        if (window.location.pathname !== targetPath) {
+          window.history.pushState({ tab: tabName }, '', targetPath);
+        }
+      }
+
+      // Re-trigger dynamic fetch/render on first open
+      if (tabName === 'berita') {
+        if (typeof fetchTabNews === 'function') fetchTabNews();
+      } else if (tabName === 'kalender') {
+        if (typeof renderCalendar === 'function') renderCalendar();
+      } else if (tabName === 'guru') {
+        if (typeof initTabGuru === 'function') initTabGuru();
+      }
+
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      if (window.lucide) window.lucide.createIcons();
+    }
+
+    // Expose globally for pwa.js dock
+    window.switchAppTab = switchAppTab;
+
+    // Handle deep links and browser Back/Forward navigation
+    function initClientRouting() {
+      // Normalize /app.html to /app in address bar immediately
+      if (window.location.pathname.endsWith('app.html')) {
+        try {
+          const cleanPath = window.location.pathname.replace(/\/app\.html$/, '/app') + window.location.search + window.location.hash;
+          window.history.replaceState(null, '', cleanPath);
+        } catch (e) {}
+      }
+
+      const path = window.location.pathname.toLowerCase().replace(/\/+$/, '') || '';
+      const urlParams = new URLSearchParams(window.location.search);
+      const tabParam = urlParams.get('tab');
+
+      // Check all tabs in order
+      let matchedTab = 'beranda';
+      for (const t of allAppTabs) {
+        if (t !== 'beranda' && (tabParam === t || path.endsWith('/' + t) || path.includes('/app/' + t))) {
+          matchedTab = t;
+          break;
+        }
+      }
+      switchAppTab(matchedTab, false);
+
+      window.addEventListener('popstate', (e) => {
+        if (e.state && e.state.tab) {
+          switchAppTab(e.state.tab, false);
+        } else {
+          initClientRouting();
+        }
+      });
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      initClientRouting();
+    });
+
+    // --- 2. Berita & Warta Engine ---
+    const tabNewsDetails = {
+      pts: {
+        category: 'PENGUMUMAN RESMI',
+        badgeClass: 'bg-blue-600 text-white',
+        date: '5 - 10 Oktober 2026',
+        title: 'Penilaian Tengah Semester (PTS) MTs YASUA Pilangwetan TA 2026/2027',
+        image: 'poster_pts_berita.webp',
+        content: '<p class="mb-3">Assalamu’alaikum Warahmatullahi Wabarakatuh,</p><p class="mb-3">Diberitahukan kepada seluruh siswa-siswi dan Bapak/Ibu Wali Murid MTs YASUA Pilangwetan bahwa kegiatan <strong>Penilaian Tengah Semester (PTS) Gasal Tahun Ajaran 2026/2027</strong> diselenggarakan secara terpadu.</p>'
+      }
+    };
+
+    function openNewsModal(newsId) {
+      const data = tabNewsDetails[newsId];
+      if (!data) return;
+
+      const modal = document.getElementById('newsModal');
+      const img = document.getElementById('modalNewsImg');
+      const category = document.getElementById('modalNewsCategory');
+      const date = document.getElementById('modalNewsDate');
+      const title = document.getElementById('modalNewsTitle');
+      const content = document.getElementById('modalNewsContent');
+
+      if (img) { img.src = data.image; img.alt = data.title; }
+      if (category) {
+        category.textContent = data.category;
+        category.className = 'absolute bottom-2.5 left-3 px-2.5 py-0.5 rounded-full text-[10px] font-black shadow-md ' + data.badgeClass;
+      }
+      if (date) date.textContent = data.date;
+      if (title) title.textContent = data.title;
+      if (content) content.innerHTML = data.content;
+
+      if (modal) {
+        modal.classList.remove('hidden');
+        document.body.style.overflow = 'hidden';
+      }
+      if (window.lucide) window.lucide.createIcons();
+    }
+
+    function closeNewsModal() {
+      const modal = document.getElementById('newsModal');
+      if (modal) {
+        modal.classList.add('hidden');
+        document.body.style.overflow = '';
+      }
+    }
+
+    let isTabNewsLoaded = false;
+    function fetchTabNews() {
+      const NEWS_API_URL = 'https://script.google.com/macros/s/AKfycbxNFLoL96Ch_8QOKhp5AFauIGb9GcMpd9eb3my_zqikL0sDuncgRhDPD6tez-fuY6wT/exec?action=getNews';
+      const countEl = document.getElementById('tabNewsCount');
+      if (countEl) countEl.textContent = 'Menyinkronkan...';
+
+      fetch(NEWS_API_URL)
+        .then(res => res.json())
+        .then(json => {
+          if (json.status === 'success' && Array.isArray(json.data) && json.data.length > 0) {
+            const activeNews = json.data.filter(n => n.status_aktif === true || String(n.status_aktif).toLowerCase() === 'true');
+            if (activeNews.length === 0) return;
+
+            activeNews.forEach(n => {
+              const color = n.kategori === 'Prestasi' ? 'bg-emerald-600 text-white' :
+                            n.kategori === 'Pengumuman' ? 'bg-amber-600 text-white' :
+                            n.kategori === 'Akademik' ? 'bg-blue-600 text-white' : 'bg-purple-600 text-white';
+
+              tabNewsDetails[n.id] = {
+                category: (n.kategori || 'Berita').toUpperCase(),
+                badgeClass: color,
+                date: n.tanggal,
+                title: n.judul,
+                image: n.gambar_url || 'poster_pts_berita.webp',
+                content: n.konten
+              };
+            });
+
+            // 1. Featured News
+            const featured = activeNews.find(n => n.is_featured === true || String(n.is_featured).toLowerCase() === 'true') || activeNews[0];
+            const featSection = document.getElementById('tabFeaturedNews');
+            if (featSection && featured) {
+              featSection.setAttribute('onclick', "openNewsModal('" + featured.id + "')");
+              const img = document.getElementById('tabFeaturedImg');
+              if (img) img.src = featured.gambar_url || 'poster_pts_berita.webp';
+              const dateEl = document.getElementById('tabFeaturedDate');
+              if (dateEl) dateEl.textContent = featured.tanggal;
+              const badgeEl = document.getElementById('tabFeaturedBadge');
+              if (badgeEl) badgeEl.textContent = (featured.kategori || 'PENGUMUMAN').toUpperCase();
+              const titleEl = document.getElementById('tabFeaturedTitle');
+              if (titleEl) titleEl.textContent = featured.judul;
+              const sumEl = document.getElementById('tabFeaturedSummary');
+              if (sumEl) sumEl.textContent = featured.ringkasan;
+            }
+
+            // 2. Regular News
+            const regular = activeNews.filter(n => n.id !== featured.id);
+            const grid = document.getElementById('tabNewsGrid');
+            if (countEl) countEl.textContent = activeNews.length + ' Berita Tersedia';
+
+            if (grid && regular.length > 0) {
+              grid.innerHTML = regular.map(n => {
+                const color = n.kategori === 'Prestasi' ? 'bg-emerald-100 text-emerald-800' :
+                              n.kategori === 'Pengumuman' ? 'bg-amber-100 text-amber-800' :
+                              n.kategori === 'Akademik' ? 'bg-blue-100 text-blue-800' : 'bg-purple-100 text-purple-800';
+
+                return '<div onclick="openNewsModal(\'' + n.id + '\')" class="bg-white p-3 rounded-2xl border border-emerald-100 shadow-2xs hover:border-emerald-300 transition-all cursor-pointer flex gap-3 items-center group">' +
+                  '<div class="w-20 h-16 rounded-xl overflow-hidden bg-slate-100 shrink-0 relative">' +
+                    '<img src="' + (n.gambar_url || 'poster_pts_berita.webp') + '" alt="' + n.judul + '" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" onerror="this.src=\'poster_pts_berita.webp\'">' +
+                  '</div>' +
+                  '<div class="flex-1 min-w-0 space-y-1">' +
+                    '<div class="flex items-center gap-2">' +
+                      '<span class="px-2 py-0.5 rounded ' + color + ' font-extrabold text-[8.5px] uppercase">' + (n.kategori || 'Berita') + '</span>' +
+                      '<span class="text-[9.5px] text-slate-400">' + n.tanggal + '</span>' +
+                    '</div>' +
+                    '<h4 class="font-bold text-slate-900 text-xs leading-snug line-clamp-2 group-hover:text-brand-primary transition-colors">' + n.judul + '</h4>' +
+                  '</div>' +
+                '</div>';
+              }).join('');
+            }
+
+            isTabNewsLoaded = true;
+            if (window.lucide) window.lucide.createIcons();
+          }
+        })
+        .catch(err => {
+          console.warn('[TabNews] Menggunakan warta offline:', err);
+          if (countEl) countEl.textContent = 'Mode Offline';
+        });
+    }
+
+    // --- 3. Tri-Kalender Asnawiyyah Engine ---
+    let currentCalDate = new Date();
+    const namaBulanIndo = ["Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "November", "Desember"];
+    const namaHariIndo = ["Minggu", "Senin", "Selasa", "Rabu", "Kamis", "Jumat", "Sabtu"];
+    const pasaranJawa = ["Legi", "Pahing", "Pon", "Wage", "Kliwon"];
+
+    const namaBulanHijriyah = [
+      "", "Muharram", "Safar", "Rabi'ul Awwal", "Rabi'ul Akhir",
+      "Jumadil Ula", "Jumadil Akhirah", "Rajab", "Sya'ban",
+      "Ramadhan", "Syawal", "Dzulqa'dah", "Dzulhijjah"
+    ];
+
+    const HARI_BESAR_ISLAM = {
+      "1-1": "Tahun Baru Islam 1448 H",
+      "1-10": "Hari Asyura 10 Muharram (Puasa Sunnah)",
+      "3-12": "Maulid Nabi Muhammad SAW",
+      "7-27": "Isra Mi'raj Nabi Muhammad SAW",
+      "8-15": "Malam Nisfu Sya'ban",
+      "9-1": "Awal Puasa Ramadhan 1448 H",
+      "9-17": "Nuzulul Qur'an",
+      "10-1": "Hari Raya Idul Fitri 1 Syawal 1448 H",
+      "12-9": "Hari Arafah (Puasa Sunnah Arafah)",
+      "12-10": "Hari Raya Idul Adha 1448 H"
+    };
+
+    const AGENDA_YASUA = {
+      "2026-10-5": { title: "Penilaian Tengah Semester (PTS) Gasal", desc: "Asesmen tertulis & CBT Lab Komputer", type: "exam" },
+      "2026-10-22": { title: "Peringatan Hari Santri Nasional 2026", desc: "Upacara bendera & pawai ta'aruf", type: "event" },
+      "2026-11-10": { title: "Peringatan Hari Pahlawan & Ziarah Suada", desc: "Tahlil akbar di Makam Pendiri YASUA", type: "religious" },
+      "2026-12-14": { title: "Penilaian Akhir Semester (PAS) Gasal", desc: "Ujian semester ganjil digital", type: "exam" }
+    };
+
+    function getHijriDate(dateObj) {
+      try {
+        const intlFormatter = new Intl.DateTimeFormat('id-ID-u-ca-islamic-umalqura', {
+          day: 'numeric',
+          month: 'numeric',
+          year: 'numeric'
+        });
+        const parts = intlFormatter.formatToParts(dateObj);
+        let day = 1, month = 1, year = 1448;
+        parts.forEach(p => {
+          if (p.type === 'day') day = parseInt(p.value, 10);
+          if (p.type === 'month') month = parseInt(p.value, 10);
+          if (p.type === 'year') year = parseInt(p.value, 10);
+        });
+        return {
+          day: day,
+          month: month,
+          year: year,
+          monthName: namaBulanHijriyah[month] || "Hijriyah"
+        };
+      } catch (e) {
+        return { day: 1, month: 4, year: 1448, monthName: "Rabi'ul Akhir" };
+      }
+    }
+
+    function getPasaranJawa(dateObj) {
+      const baseDate = new Date(1970, 0, 1);
+      const diffTime = dateObj.getTime() - baseDate.getTime();
+      const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
+      const pasaranIdx = (diffDays + 3) % 5;
+      return pasaranJawa[(pasaranIdx + 5) % 5];
+    }
+
+    function changeCalMonth(step) {
+      currentCalDate.setMonth(currentCalDate.getMonth() + step);
+      renderCalendar();
+    }
+
+    function goToCurrentMonth() {
+      currentCalDate = new Date();
+      renderCalendar();
+    }
+
+    function renderCalendar() {
+      const year = currentCalDate.getFullYear();
+      const month = currentCalDate.getMonth();
+
+      const monthYearText = document.getElementById('cal-month-year-text');
+      if (monthYearText) monthYearText.innerText = namaBulanIndo[month] + " " + year;
+
+      const firstDay = new Date(year, month, 1);
+      const lastDay = new Date(year, month + 1, 0);
+      const hStart = getHijriDate(firstDay);
+      const hEnd = getHijriDate(lastDay);
+
+      const hijriMonthText = document.getElementById('cal-hijri-month-text');
+      if (hijriMonthText) {
+        if (hStart.month === hEnd.month) {
+          hijriMonthText.innerText = hStart.monthName + " " + hStart.year + " H";
+        } else {
+          hijriMonthText.innerText = hStart.monthName + " - " + hEnd.monthName + " " + hEnd.year + " H";
+        }
+      }
+
+      const grid = document.getElementById('calendar-days-grid');
+      if (!grid) return;
+      grid.innerHTML = "";
+
+      const startDayOfWeek = firstDay.getDay();
+      const totalDays = lastDay.getDate();
+      const today = new Date();
+
+      for (let i = 0; i < startDayOfWeek; i++) {
+        const emptyCell = document.createElement('div');
+        emptyCell.className = "h-12 sm:h-14 bg-slate-50/40 rounded-lg";
+        grid.appendChild(emptyCell);
+      }
+
+      const monthlyEvents = [];
+
+      for (let day = 1; day <= totalDays; day++) {
+        const thisDate = new Date(year, month, day);
+        const dayOfWeek = thisDate.getDay();
+        const isToday = thisDate.toDateString() === today.toDateString();
+        const pasaran = getPasaranJawa(thisDate);
+        const hijri = getHijriDate(thisDate);
+
+        const hijriKey = hijri.month + "-" + hijri.day;
+        const holiday = HARI_BESAR_ISLAM[hijriKey] || null;
+        const dateKey = year + "-" + (month + 1) + "-" + day;
+        const agenda = AGENDA_YASUA[dateKey] || null;
+
+        const isHaramPuasa = (hijri.month === 10 && hijri.day === 1) || (hijri.month === 12 && [10, 11, 12, 13].includes(hijri.day));
+        const isRamadhan = (hijri.month === 9);
+        const isAyyamulBidh = !isRamadhan && !isHaramPuasa && [13, 14, 15].includes(hijri.day);
+        const isSeninKamis = !isRamadhan && !isHaramPuasa && (dayOfWeek === 1 || dayOfWeek === 4);
+
+        if (holiday) monthlyEvents.push({ date: day + " " + namaBulanIndo[month], title: holiday, type: "phbi" });
+        if (agenda) monthlyEvents.push({ date: day + " " + namaBulanIndo[month], title: agenda.title, desc: agenda.desc, type: "agenda" });
+
+        const dayCell = document.createElement('div');
+        let bgStyle = isToday ? "bg-brand-primary text-white shadow-xs font-black ring-2 ring-amber-400" : "bg-white hover:bg-emerald-50 text-slate-800 border border-slate-100";
+        if (isAyyamulBidh && !isToday) bgStyle += " ring-1 ring-emerald-500 bg-emerald-50/50";
+
+        dayCell.className = "h-12 sm:h-14 p-1 rounded-lg flex flex-col justify-between cursor-pointer transition active:scale-95 " + bgStyle;
+        dayCell.onclick = () => selectCalDate(year, month, day, pasaran, dayOfWeek, hijri, holiday, agenda, isToday);
+
+        const hijriColor = isToday ? "text-amber-200" : "text-emerald-700 font-bold";
+        const pasaranColor = isToday ? "text-amber-300" : (dayOfWeek === 0 ? "text-red-400" : "text-slate-400");
+        const masehiColor = isToday ? "text-white" : (dayOfWeek === 0 ? "text-red-600 font-extrabold" : "font-black");
+
+        dayCell.innerHTML = 
+          '<div class="flex justify-between items-start leading-none">' +
+            '<span class="text-xs ' + masehiColor + '">' + day + '</span>' +
+            '<span class="text-[8px] ' + hijriColor + '">' + hijri.day + '</span>' +
+          '</div>' +
+          '<div class="flex justify-between items-end leading-none">' +
+            '<span class="text-[7.5px] font-semibold ' + pasaranColor + '">' + pasaran + '</span>' +
+            (holiday || agenda ? '<span class="w-1.5 h-1.5 rounded-full bg-amber-400"></span>' : (isSeninKamis || isAyyamulBidh ? '<span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>' : '')) +
+          '</div>';
+
+        grid.appendChild(dayCell);
+
+        if (isToday) {
+          selectCalDate(year, month, day, pasaran, dayOfWeek, hijri, holiday, agenda, true);
+        }
+      }
+
+      renderCalEventsList(monthlyEvents);
+    }
+
+    function selectCalDate(year, month, day, pasaran, dayOfWeek, hijri, holiday, agenda, isToday) {
+      const badge = document.getElementById('selected-date-status-badge');
+      const tag = document.getElementById('selected-date-tag');
+      const title = document.getElementById('selected-date-title');
+      const subtitle = document.getElementById('selected-date-subtitle');
+
+      if (badge) badge.textContent = isToday ? "Hari Ini" : namaHariIndo[dayOfWeek];
+      if (title) title.textContent = namaHariIndo[dayOfWeek] + " " + pasaran + ", " + day + " " + namaBulanIndo[month] + " " + year;
+      if (subtitle) subtitle.textContent = namaHariIndo[dayOfWeek] + " " + pasaran + ", " + hijri.day + " " + hijri.monthName + " " + hijri.year + " H";
+
+      if (tag) {
+        if (holiday) {
+          tag.innerHTML = '<i class="fa-solid fa-moon text-amber-300 mr-1"></i> ' + holiday;
+        } else if (agenda) {
+          tag.innerHTML = '<i class="fa-solid fa-bell text-amber-300 mr-1"></i> ' + agenda.title;
+        } else if (dayOfWeek === 1 || dayOfWeek === 4) {
+          tag.innerHTML = '<i class="fa-solid fa-star text-emerald-300 mr-1"></i> Sunnah Puasa Senin-Kamis';
+        } else if ([13, 14, 15].includes(hijri.day)) {
+          tag.innerHTML = '<i class="fa-solid fa-star text-emerald-300 mr-1"></i> Sunnah Puasa Ayyamul Bidh';
+        } else {
+          tag.innerHTML = '<i class="fa-solid fa-book-quran text-amber-300 mr-1"></i> Kegiatan KBM Normal';
+        }
+      }
+    }
+
+    function renderCalEventsList(events) {
+      const container = document.getElementById('calendar-events-container');
+      const count = document.getElementById('cal-events-count');
+      if (!container) return;
+
+      if (count) count.textContent = events.length + ' Agenda';
+
+      if (events.length === 0) {
+        container.innerHTML = '<div class="text-center text-xs text-slate-400 py-3 italic">Tidak ada agenda khusus bulan ini.</div>';
+        return;
+      }
+
+      container.innerHTML = events.map(e => {
+        const isPhbi = e.type === 'phbi';
+        return '<div class="p-2.5 rounded-xl border ' + (isPhbi ? 'bg-amber-50/60 border-amber-200/80 text-amber-950' : 'bg-emerald-50/60 border-emerald-200/80 text-emerald-950') + ' flex items-start gap-2.5">' +
+          '<div class="w-7 h-7 rounded-lg ' + (isPhbi ? 'bg-amber-200 text-amber-800' : 'bg-emerald-200 text-emerald-800') + ' flex items-center justify-center font-bold text-xs shrink-0">' +
+            '<i class="fa-solid ' + (isPhbi ? 'fa-moon' : 'fa-calendar-check') + '"></i>' +
+          '</div>' +
+          '<div class="min-w-0 flex-1">' +
+            '<div class="flex items-center justify-between gap-1">' +
+              '<h5 class="font-bold text-xs leading-tight">' + e.title + '</h5>' +
+              '<span class="text-[9px] font-semibold text-slate-500 shrink-0">' + e.date + '</span>' +
+            '</div>' +
+            (e.desc ? '<p class="text-[10px] text-slate-600 mt-0.5 line-clamp-1">' + e.desc + '</p>' : '') +
+          '</div>' +
+        '</div>';
+      }).join('');
+    }
+
+    // --- 4. Guru & Tendik Engine ---
+    let appTeachersData = [
+      {
+        id: 'guru-1',
+        nama_lengkap: 'Susriandi, S.Pd.',
+        jabatan: 'Guru Bahasa Indonesia',
+        badge_bidang: 'Bahasa & Sastra',
+        kategori: 'bahasa',
+        foto_url: 'guru_1.webp',
+        deskripsi: 'Membimbing literasi membaca, retorika berbicara, dan apresiasi sastra santri.',
+        pendidikan: 'Sarjana Pendidikan'
+      },
+      {
+        id: 'guru-2',
+        nama_lengkap: 'Arsyad Edi, SS.',
+        jabatan: 'Guru Bahasa Inggris',
+        badge_bidang: 'Bahasa Asing',
+        kategori: 'bahasa',
+        foto_url: 'guru_2.webp',
+        deskripsi: 'Mengembangkan percakapan bahasa Inggris aktif dan wawasan komunikasi global.',
+        pendidikan: 'Sarjana Sastra'
+      },
+      {
+        id: 'guru-3',
+        nama_lengkap: 'Hasbullah, S.Kom.',
+        jabatan: 'Guru Informatika & Ka. Lab Komputer',
+        badge_bidang: 'TIK & Digital',
+        kategori: 'sains',
+        foto_url: 'guru_3.webp',
+        deskripsi: 'Mengampu Informatika, pengelolaan laboratorium CBT, dan proktor teknis ANBK.',
+        pendidikan: 'Sarjana Komputer'
+      },
+      {
+        id: 'guru-4',
+        nama_lengkap: 'Aidiyah, S.Pd.',
+        jabatan: 'Guru Matematika',
+        badge_bidang: 'Sains & Matematika',
+        kategori: 'sains',
+        foto_url: 'guru_4.webp',
+        deskripsi: 'Melatih kemampuan bernalar logis, numerasi, dan pembimbingan olimpiade sains.',
+        pendidikan: 'Sarjana Pendidikan'
+      },
+      {
+        id: 'guru-5',
+        nama_lengkap: 'Wahyuni Arida Agustina, S.Pd.',
+        jabatan: 'Guru PPKn & Karakter Santri',
+        badge_bidang: 'Karakter & Kebangsaan',
+        kategori: 'karakter',
+        foto_url: 'guru_5.webp',
+        deskripsi: 'Menanamkan wawasan kebangsaan, cinta tanah air, dan adab santun bermasyarakat.',
+        pendidikan: 'Sarjana Pendidikan'
+      },
+      {
+        id: 'guru-6',
+        nama_lengkap: 'Emi Sulastri, S.Pd.',
+        jabatan: 'Guru Ilmu Pengetahuan Sosial (IPS)',
+        badge_bidang: 'Sosial & Keagamaan',
+        kategori: 'karakter',
+        foto_url: 'guru_6.webp',
+        deskripsi: 'Membina wawasan sejarah Islam, sosiologi, dan kepedulian sosial santri.',
+        pendidikan: 'Sarjana Pendidikan'
+      }
+    ];
+
+    let currentGuruCategory = 'all';
+    let guruTabInitialized = false;
+
+    function initTabGuru() {
+      if (guruTabInitialized) return;
+      guruTabInitialized = true;
+      renderAppTeachers();
+      fetchTabTeachers(false);
+    }
+
+    function fetchTabTeachers(force = false) {
+      const refreshIcon = document.getElementById('guruRefreshIcon');
+      if (refreshIcon) refreshIcon.classList.add('animate-spin');
+
+      fetch('https://script.google.com/macros/s/AKfycbxNFLoL96Ch_8QOKhp5AFauIGb9GcMpd9eb3my_zqikL0sDuncgRhDPD6tez-fuY6wT/exec?action=getTeachers')
+        .then(res => res.json())
+        .then(json => {
+          if (json.status === 'success' && Array.isArray(json.data) && json.data.length > 0) {
+            const pimpinan = json.data.find(t => t.kategori === 'pimpinan');
+            if (pimpinan) {
+              const kImg = document.getElementById('appKepalaFoto');
+              const kNama = document.getElementById('appKepalaNama');
+              const kJabatan = document.getElementById('appKepalaJabatan');
+              if (kImg && pimpinan.foto_url) kImg.src = pimpinan.foto_url;
+              if (kNama && pimpinan.nama_lengkap) kNama.textContent = pimpinan.nama_lengkap;
+              if (kJabatan && pimpinan.jabatan) kJabatan.textContent = pimpinan.jabatan;
+            }
+
+            const active = json.data.filter(t => t.kategori !== 'pimpinan' && (t.status_aktif === true || String(t.status_aktif).toLowerCase() === 'true'));
+            if (active.length > 0) {
+              active.sort((a, b) => (Number(a.urutan) || 0) - (Number(b.urutan) || 0));
+              appTeachersData = active.map(t => {
+                let cat = 'sains';
+                const bidang = t.badge_bidang || '';
+                const mapel = t.mata_pelajaran || '';
+                if (bidang.includes('Bahasa') || mapel.includes('Bahasa') || mapel.includes('Arab') || mapel.includes('Inggris')) cat = 'bahasa';
+                else if (bidang.includes('Agama') || mapel.includes('Agama') || mapel.includes('Qur') || mapel.includes('Fiqih') || mapel.includes('Akidah')) cat = 'agama';
+                else if (bidang.includes('PPKn') || bidang.includes('Karakter') || bidang.includes('Sosial') || mapel.includes('IPS') || mapel.includes('PKn')) cat = 'karakter';
+
+                return {
+                  id: 'guru-' + (t.id || Math.random().toString(36).substr(2, 5)),
+                  nama_lengkap: t.nama_lengkap || '',
+                  jabatan: t.jabatan || ('Guru ' + (t.mata_pelajaran || '')),
+                  badge_bidang: t.badge_bidang || 'Pendidik',
+                  kategori: cat,
+                  foto_url: t.foto_url || 'guru_1.webp',
+                  deskripsi: t.deskripsi || 'Tenaga pendidik profesional dan berkompeten MTs YASUA Pilangwetan.',
+                  pendidikan: t.pendidikan_terakhir || 'Sarjana Pendidikan'
+                };
+              });
+              renderAppTeachers();
+            }
+          }
+        })
+        .catch(err => {
+          console.log('[PWA] Menggunakan data guru fallback:', err);
+        })
+        .finally(() => {
+          if (refreshIcon) refreshIcon.classList.remove('animate-spin');
+        });
+    }
+
+    function setGuruCategory(cat) {
+      currentGuruCategory = cat;
+      document.querySelectorAll('.guru-cat-btn').forEach(btn => {
+        btn.classList.remove('bg-brand-primary', 'text-white', 'shadow-xs');
+        btn.classList.add('bg-slate-100', 'text-slate-600');
+      });
+      const activeBtn = document.getElementById('btnGuruCat-' + cat);
+      if (activeBtn) {
+        activeBtn.classList.remove('bg-slate-100', 'text-slate-600');
+        activeBtn.classList.add('bg-brand-primary', 'text-white', 'shadow-xs');
+      }
+      renderAppTeachers();
+    }
+
+    function filterTabTeachers() {
+      const input = document.getElementById('appGuruSearchInput');
+      const clearBtn = document.getElementById('appGuruClearSearch');
+      if (input && clearBtn) {
+        clearBtn.classList.toggle('hidden', !input.value.trim());
+      }
+      renderAppTeachers();
+    }
+
+    function clearGuruSearch() {
+      const input = document.getElementById('appGuruSearchInput');
+      const clearBtn = document.getElementById('appGuruClearSearch');
+      if (input) input.value = '';
+      if (clearBtn) clearBtn.classList.add('hidden');
+      renderAppTeachers();
+    }
+
+    function renderAppTeachers() {
+      const grid = document.getElementById('appTeachersGrid');
+      const countEl = document.getElementById('appGuruCount');
+      if (!grid) return;
+
+      const searchVal = (document.getElementById('appGuruSearchInput')?.value || '').toLowerCase().trim();
+
+      const filtered = appTeachersData.filter(t => {
+        const matchCat = (currentGuruCategory === 'all') || (t.kategori === currentGuruCategory);
+        const matchSearch = !searchVal || 
+          t.nama_lengkap.toLowerCase().includes(searchVal) || 
+          t.jabatan.toLowerCase().includes(searchVal) || 
+          t.badge_bidang.toLowerCase().includes(searchVal);
+        return matchCat && matchSearch;
+      });
+
+      if (countEl) countEl.textContent = filtered.length + ' Guru';
+
+      if (filtered.length === 0) {
+        grid.innerHTML = '<div class="col-span-2 text-center py-6 text-slate-400 text-xs italic">Tidak ada data guru yang cocok dengan pencarian Anda.</div>';
+        return;
+      }
+
+      grid.innerHTML = filtered.map(t => {
+        let badgeColor = 'bg-brand-primary text-white';
+        if (t.badge_bidang.includes('Bahasa')) badgeColor = 'bg-blue-600 text-white';
+        else if (t.badge_bidang.includes('Sains') || t.badge_bidang.includes('Matematika')) badgeColor = 'bg-amber-600 text-white';
+        else if (t.badge_bidang.includes('TIK') || t.badge_bidang.includes('Digital')) badgeColor = 'bg-emerald-700 text-white';
+        else if (t.badge_bidang.includes('Karakter') || t.badge_bidang.includes('Kebangsaan')) badgeColor = 'bg-red-600 text-white';
+        else if (t.badge_bidang.includes('Sosial') || t.badge_bidang.includes('Agama')) badgeColor = 'bg-purple-600 text-white';
+
+        return `
+          <div onclick="openGuruModal('${t.id}')" class="bg-white rounded-2xl p-2.5 border border-emerald-100/90 shadow-2xs hover:shadow-xs active:scale-[0.98] transition-all flex flex-col justify-between cursor-pointer group">
+            <div>
+              <div class="aspect-[4/3] rounded-xl overflow-hidden bg-slate-100 mb-2 relative">
+                <img src="${t.foto_url}" alt="${t.nama_lengkap}" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-300" loading="lazy" onerror="this.src='logo.png'">
+                <span class="absolute top-1.5 left-1.5 px-2 py-0.5 rounded-full ${badgeColor} text-[8px] font-black shadow-xs">
+                  ${t.badge_bidang}
+                </span>
+              </div>
+              <h4 class="font-extrabold text-slate-900 text-[11px] leading-snug group-hover:text-brand-primary transition-colors line-clamp-1">
+                ${t.nama_lengkap}
+              </h4>
+              <p class="text-[9.5px] font-bold text-amber-700 line-clamp-1 mt-0.5">
+                ${t.jabatan}
+              </p>
+            </div>
+            <div class="pt-2 mt-2 border-t border-slate-50 flex items-center justify-between text-[9px] text-slate-400">
+              <span class="truncate max-w-[80%]">${t.pendidikan}</span>
+              <i data-lucide="chevron-right" class="w-3 h-3 text-slate-300"></i>
+            </div>
+          </div>
+        `;
+      }).join('');
+
+      if (window.lucide) window.lucide.createIcons();
+    }
+
+    function openGuruModal(id) {
+      const guru = appTeachersData.find(t => t.id === id);
+      if (!guru) return;
+
+      const modal = document.getElementById('guruModal');
+      const img = document.getElementById('modalGuruImg');
+      const bidang = document.getElementById('modalGuruBidang');
+      const nama = document.getElementById('modalGuruNama');
+      const jabatan = document.getElementById('modalGuruJabatan');
+      const deskripsi = document.getElementById('modalGuruDeskripsi');
+      const pendidikan = document.getElementById('modalGuruPendidikan');
+
+      if (img) img.src = guru.foto_url;
+      if (bidang) {
+        bidang.textContent = guru.badge_bidang;
+        bidang.className = 'inline-block px-2 py-0.5 rounded text-[9px] font-extrabold uppercase bg-emerald-100 text-emerald-800';
+      }
+      if (nama) nama.textContent = guru.nama_lengkap;
+      if (jabatan) jabatan.textContent = guru.jabatan;
+      if (deskripsi) deskripsi.textContent = guru.deskripsi;
+      if (pendidikan) pendidikan.textContent = guru.pendidikan;
+
+      if (modal) {
+        modal.classList.remove('hidden');
+        document.body.style.overflow = 'hidden';
+      }
+    }
+
+    function closeGuruModal() {
+      const modal = document.getElementById('guruModal');
+      if (modal) {
+        modal.classList.add('hidden');
+        document.body.style.overflow = '';
+      }
+    }
+
+    function openBrochureModal() {
+      window.open('https://api.whatsapp.com/send?text=*Brosur%20PPDB%20MTs%20YASUA%20Pilangwetan*%20Demak%20TA%202026%2F2027%0Ahttps%3A%2F%2Fwww.mtsyasua.sch.id%2Fapp%2Fppdb', '_blank');
+    }
+  </script>
+
 </body>
 </html>
 

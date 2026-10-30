@@ -4,8 +4,8 @@
   "name": "MTs YASUA Pilangwetan",
   "short_name": "MTs YASUA",
   "description": "Website Resmi dan Portal Informasi Madrasah Tsanawiyah YASUA Pilangwetan, Kebonagung, Demak.",
-  "start_url": "app.html?source=pwa",
-  "scope": "./",
+  "start_url": "/app?source=pwa",
+  "scope": "/",
   "display": "standalone",
   "display_override": ["standalone", "minimal-ui", "window-controls-overlay"],
   "orientation": "portrait-primary",
@@ -49,10 +49,17 @@
       "icons": [{ "src": "icon-192.png", "sizes": "192x192" }]
     },
     {
+      "name": "Berita & Pengumuman",
+      "short_name": "Berita",
+      "description": "Warta & Berita Resmi MTs YASUA",
+      "url": "/app/berita",
+      "icons": [{ "src": "icon-192.png", "sizes": "192x192" }]
+    },
+    {
       "name": "Kalender Islam & Jawa",
       "short_name": "Kalender",
       "description": "Tri-Penanggalan Masehi, Hijriyah & Pasaran Jawa",
-      "url": "kalender.html",
+      "url": "/app/kalender",
       "icons": [{ "src": "icon-192.png", "sizes": "192x192" }]
     },
     {
