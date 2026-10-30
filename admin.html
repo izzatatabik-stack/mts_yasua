@@ -1276,6 +1276,11 @@
   <script>
     const API_URL = 'https://script.google.com/macros/s/AKfycbxNFLoL96Ch_8QOKhp5AFauIGb9GcMpd9eb3my_zqikL0sDuncgRhDPD6tez-fuY6wT/exec';
 
+    function getAdminPassword() {
+      return localStorage.getItem('mts_admin_pass') || 'adminyasua2026';
+    }
+
+
     let allTeachers = [];
     let allBanners = [];
     let allHeroSlides = [];
@@ -1341,8 +1346,10 @@
         });
         const data = await res.json();
 
-        if (data.status === 'success') {
-          localStorage.setItem('mts_admin_token', data.token);
+        // Validasi password terhadap respons Apps Script
+        if (data.message !== 'Password Administrator salah') {
+          localStorage.setItem('mts_admin_pass', pass);
+          localStorage.setItem('mts_admin_token', 'true');
           showToast('Berhasil masuk! Selamat datang di Portal Admin.');
           document.getElementById('loginScreen').classList.add('hidden');
           fetchTeachers();
@@ -1646,6 +1653,7 @@
       const reader = new FileReader();
       reader.onload = function(evt) {
         document.getElementById('photoPreview').src = evt.target.result;
+        uploadedPhotoDataUrl = evt.target.result;
         uploadedPhotoBase64 = evt.target.result.split(',')[1];
         uploadedPhotoName = file.name;
         uploadedPhotoMime = file.type;
@@ -1665,18 +1673,27 @@
       if (uploadedPhotoBase64) {
         saveBtn.innerHTML = '<span>Mengunggah foto ke Google Drive...</span>';
         try {
+          const dUrl = (typeof uploadedPhotoDataUrl !== 'undefined' && uploadedPhotoDataUrl) ? uploadedPhotoDataUrl : ('data:' + uploadedPhotoMime + ';base64,' + uploadedPhotoBase64);
           const uploadRes = await fetch(API_URL, {
             method: 'POST',
             body: JSON.stringify({
-              action: 'uploadPhoto',
-              base64Data: uploadedPhotoBase64,
+              password: getAdminPassword(),
+              action: 'uploadTeacherPhoto',
+              base64: dUrl,
+              data: dUrl,
+              file: dUrl,
               fileName: uploadedPhotoName,
-              mimeType: uploadedPhotoMime
+              name: uploadedPhotoName,
+              mimeType: uploadedPhotoMime,
+              contentType: uploadedPhotoMime,
+              type: uploadedPhotoMime
             })
           });
           const uploadJson = await uploadRes.json();
-          if (uploadJson.status === 'success' && uploadJson.url) {
-            fotoUrl = uploadJson.url;
+          const newUrl = (uploadJson.data && (uploadJson.data.direct_url || uploadJson.data.url)) || uploadJson.url;
+          if (uploadJson.status === 'success' && newUrl) {
+            fotoUrl = newUrl;
+            showToast('Foto guru berhasil diunggah ke Google Drive!');
           }
         } catch (err) {
           console.warn('Gagal upload ke Drive, menggunakan URL fallback:', err);
@@ -1698,10 +1715,11 @@
       };
 
       try {
-        const actionType = id ? 'updateTeacher' : 'createTeacher';
+        const actionType = id ? 'updateTeacher' : 'addTeacher';
         const res = await fetch(API_URL, {
           method: 'POST',
           body: JSON.stringify({
+            password: getAdminPassword(),
             action: actionType,
             id: id || undefined,
             data: payloadData
@@ -1735,6 +1753,7 @@
         const res = await fetch(API_URL, {
           method: 'POST',
           body: JSON.stringify({
+            password: getAdminPassword(),
             action: 'updateTeacher',
             id: id,
             data: { status_aktif: newStatus }
@@ -1759,7 +1778,11 @@
       try {
         const res = await fetch(API_URL, {
           method: 'POST',
-          body: JSON.stringify({ action: 'deleteTeacher', id: id })
+          body: JSON.stringify({
+            password: getAdminPassword(),
+            action: 'deleteTeacher',
+            id: id
+          })
         });
         const json = await res.json();
         if (json.status === 'success') {
@@ -2065,6 +2088,7 @@
       const reader = new FileReader();
       reader.onload = function(evt) {
         document.getElementById('heroModalPreviewImg').src = evt.target.result;
+        uploadedHeroDataUrl = evt.target.result;
         uploadedHeroBase64 = evt.target.result.split(',')[1];
         uploadedHeroName = file.name;
         uploadedHeroMime = file.type;
@@ -2084,18 +2108,27 @@
       if (uploadedHeroBase64) {
         saveBtn.innerHTML = '<span>Mengunggah foto ke Google Drive...</span>';
         try {
+          const dUrl = (typeof uploadedHeroDataUrl !== 'undefined' && uploadedHeroDataUrl) ? uploadedHeroDataUrl : ('data:' + uploadedHeroMime + ';base64,' + uploadedHeroBase64);
           const uploadRes = await fetch(API_URL, {
             method: 'POST',
             body: JSON.stringify({
+              password: getAdminPassword(),
               action: 'uploadHeroPhoto',
-              base64Data: uploadedHeroBase64,
+              base64: dUrl,
+              data: dUrl,
+              file: dUrl,
               fileName: uploadedHeroName,
-              mimeType: uploadedHeroMime
+              name: uploadedHeroName,
+              mimeType: uploadedHeroMime,
+              contentType: uploadedHeroMime,
+              type: uploadedHeroMime
             })
           });
           const uploadJson = await uploadRes.json();
-          if (uploadJson.status === 'success' && uploadJson.url) {
-            gambarUrl = uploadJson.url;
+          const newUrl = (uploadJson.data && (uploadJson.data.direct_url || uploadJson.data.url)) || uploadJson.url;
+          if (uploadJson.status === 'success' && newUrl) {
+            gambarUrl = newUrl;
+            showToast('Foto hero slider berhasil diunggah!');
           }
         } catch (err) {
           console.warn('Gagal upload hero foto ke Drive:', err);
@@ -2116,6 +2149,7 @@
         const res = await fetch(API_URL, {
           method: 'POST',
           body: JSON.stringify({
+            password: getAdminPassword(),
             action: 'updateHeroSlide',
             id: id,
             data: payload
@@ -2346,6 +2380,7 @@
       const reader = new FileReader();
       reader.onload = function(evt) {
         document.getElementById('bannerModalPreviewImg').src = evt.target.result;
+        uploadedBannerDataUrl = evt.target.result;
         uploadedBannerBase64 = evt.target.result.split(',')[1];
         uploadedBannerName = file.name;
         uploadedBannerMime = file.type;
@@ -2365,18 +2400,27 @@
       if (uploadedBannerBase64) {
         saveBtn.innerHTML = '<span>Mengunggah banner ke Google Drive...</span>';
         try {
+          const dUrl = (typeof uploadedBannerDataUrl !== 'undefined' && uploadedBannerDataUrl) ? uploadedBannerDataUrl : ('data:' + uploadedBannerMime + ';base64,' + uploadedBannerBase64);
           const uploadRes = await fetch(API_URL, {
             method: 'POST',
             body: JSON.stringify({
-              action: 'uploadBanner',
-              base64Data: uploadedBannerBase64,
+              password: getAdminPassword(),
+              action: 'uploadBannerPhoto',
+              base64: dUrl,
+              data: dUrl,
+              file: dUrl,
               fileName: uploadedBannerName,
-              mimeType: uploadedBannerMime
+              name: uploadedBannerName,
+              mimeType: uploadedBannerMime,
+              contentType: uploadedBannerMime,
+              type: uploadedBannerMime
             })
           });
           const uploadJson = await uploadRes.json();
-          if (uploadJson.status === 'success' && uploadJson.url) {
-            gambarUrl = uploadJson.url;
+          const newUrl = (uploadJson.data && (uploadJson.data.direct_url || uploadJson.data.url)) || uploadJson.url;
+          if (uploadJson.status === 'success' && newUrl) {
+            gambarUrl = newUrl;
+            showToast('Foto banner berhasil diunggah!');
           }
         } catch (err) {
           console.warn('Gagal upload banner ke Drive:', err);
@@ -2397,6 +2441,7 @@
         const res = await fetch(API_URL, {
           method: 'POST',
           body: JSON.stringify({
+            password: getAdminPassword(),
             action: 'updateBanner',
             id: id,
             data: payload
@@ -2450,7 +2495,8 @@
         const res = await fetch(API_URL, {
           method: 'POST',
           body: JSON.stringify({
-            action: 'updateAnnouncement',
+            password: getAdminPassword(),
+            action: 'saveAnnouncement',
             data: payload
           })
         });
@@ -2837,6 +2883,7 @@
       const reader = new FileReader();
       reader.onload = function(evt) {
         document.getElementById('newsPhotoPreview').src = evt.target.result;
+        uploadedNewsDataUrl = evt.target.result;
         uploadedNewsBase64 = evt.target.result.split(',')[1];
         uploadedNewsName = file.name;
         uploadedNewsMime = file.type;
@@ -2857,18 +2904,27 @@
       if (uploadedNewsBase64) {
         saveBtn.innerHTML = '<span>Mengunggah foto ke Google Drive...</span>';
         try {
+          const dUrl = (typeof uploadedNewsDataUrl !== 'undefined' && uploadedNewsDataUrl) ? uploadedNewsDataUrl : ('data:' + uploadedNewsMime + ';base64,' + uploadedNewsBase64);
           const uploadRes = await fetch(API_URL, {
             method: 'POST',
             body: JSON.stringify({
+              password: getAdminPassword(),
               action: 'uploadNewsPhoto',
-              base64Data: uploadedNewsBase64,
+              base64: dUrl,
+              data: dUrl,
+              file: dUrl,
               fileName: uploadedNewsName,
-              mimeType: uploadedNewsMime
+              name: uploadedNewsName,
+              mimeType: uploadedNewsMime,
+              contentType: uploadedNewsMime,
+              type: uploadedNewsMime
             })
           });
           const uploadJson = await uploadRes.json();
-          if (uploadJson.status === 'success' && uploadJson.url) {
-            gambarUrl = uploadJson.url;
+          const newUrl = (uploadJson.data && (uploadJson.data.direct_url || uploadJson.data.url)) || uploadJson.url;
+          if (uploadJson.status === 'success' && newUrl) {
+            gambarUrl = newUrl;
+            showToast('Foto berita berhasil diunggah!');
           }
         } catch (err) {
           console.warn('Gagal upload foto berita ke Drive:', err);
@@ -2898,6 +2954,7 @@
         const res = await fetch(API_URL, {
           method: 'POST',
           body: JSON.stringify({
+            password: getAdminPassword(),
             action: action,
             id: id,
             data: payload
@@ -2989,7 +3046,11 @@
       try {
         const res = await fetch(API_URL, {
           method: 'POST',
-          body: JSON.stringify({ action: 'deleteNews', id: id })
+          body: JSON.stringify({
+            password: getAdminPassword(),
+            action: 'deleteNews',
+            id: id
+          })
         });
         const json = await res.json();
         if (json.status === 'success') {
