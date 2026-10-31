@@ -265,7 +265,7 @@
         <!-- ================================================================= -->
         <!-- VIEW 1: DATA GURU & TENDIK (Default Active)                       -->
         <!-- ================================================================= -->
-        <div id="viewTeachers" class="space-y-6">
+        <div id="viewTeachers" class="space-y-6 hidden">
           <!-- Banner Selamat Datang & Status Otoritas -->
           <div class="bg-gradient-to-r from-emerald-50 via-teal-50 to-emerald-50 border border-emerald-200 rounded-2xl p-4 sm:p-5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 shadow-2xs">
             <div class="flex items-center gap-3">
@@ -2264,13 +2264,21 @@
 
     // View Switcher (Teachers vs Banners vs News)
     function switchAdminView(view) {
+      const viewDashboard = document.getElementById('viewDashboard');
       const viewTeachers = document.getElementById('viewTeachers');
+      const viewPrestasi = document.getElementById('viewPrestasi');
       const viewBanners = document.getElementById('viewBanners');
       const viewNews = document.getElementById('viewNews');
+      const viewGallery = document.getElementById('viewGallery');
+      const viewAlumni = document.getElementById('viewAlumni');
 
+      const navBtnDashboard = document.getElementById('navBtnDashboard');
       const navBtnTeachers = document.getElementById('navBtnTeachers');
+      const navBtnPrestasi = document.getElementById('navBtnPrestasi');
       const navBtnBanners = document.getElementById('navBtnBanners');
       const navBtnNews = document.getElementById('navBtnNews');
+      const navBtnGallery = document.getElementById('navBtnGallery');
+      const navBtnAlumni = document.getElementById('navBtnAlumni');
 
       const breadcrumbCat = document.getElementById('breadcrumbCategory');
       const breadcrumbPage = document.getElementById('breadcrumbPage');
@@ -2280,35 +2288,32 @@
       const inactiveClass = 'w-full flex items-center justify-between px-3 py-2.5 rounded-xl text-slate-300 hover:text-white hover:bg-emerald-900/50 transition-all text-left cursor-pointer font-medium';
       const activeClass = 'w-full flex items-center justify-between px-3 py-2.5 rounded-xl bg-brand-primary text-white font-bold shadow-sm text-left transition-all cursor-pointer';
 
-      // Hide all
-      viewTeachers.classList.add('hidden');
-      viewBanners.classList.add('hidden');
+      // Hide all views
+      if (viewDashboard) viewDashboard.classList.add('hidden');
+      if (viewTeachers) viewTeachers.classList.add('hidden');
+      if (viewPrestasi) viewPrestasi.classList.add('hidden');
+      if (viewBanners) viewBanners.classList.add('hidden');
       if (viewNews) viewNews.classList.add('hidden');
+      if (viewGallery) viewGallery.classList.add('hidden');
+      if (viewAlumni) viewAlumni.classList.add('hidden');
 
-      navBtnTeachers.className = inactiveClass;
-      navBtnBanners.className = inactiveClass;
+      // Reset all buttons
+      if (navBtnDashboard) navBtnDashboard.className = inactiveClass;
+      if (navBtnTeachers) navBtnTeachers.className = inactiveClass;
+      if (navBtnPrestasi) navBtnPrestasi.className = inactiveClass;
+      if (navBtnBanners) navBtnBanners.className = inactiveClass;
       if (navBtnNews) navBtnNews.className = inactiveClass;
+      if (navBtnGallery) navBtnGallery.className = inactiveClass;
+      if (navBtnAlumni) navBtnAlumni.className = inactiveClass;
 
-      if (view === 'alumni') {
-        if (viewAlumni) viewAlumni.classList.remove('hidden');
-        if (navBtnAlumni) navBtnAlumni.className = activeClass;
+      if (view === 'teachers') {
+        if (viewTeachers) viewTeachers.classList.remove('hidden');
+        if (navBtnTeachers) navBtnTeachers.className = activeClass;
 
         breadcrumbCat.textContent = 'Kesiswaan & SDM';
-        breadcrumbPage.textContent = 'Jejaring Alumni';
-        webPublikBtn.href = 'alumni.html';
-        webPublikLabel.textContent = 'Web Publik (alumni.html)';
-
-        renderAlumniGrid();
-      } else if (view === 'gallery') {
-        if (viewGallery) viewGallery.classList.remove('hidden');
-        if (navBtnGallery) navBtnGallery.className = activeClass;
-
-        breadcrumbCat.textContent = 'Portal & Publikasi';
-        breadcrumbPage.textContent = 'Galeri Madrasah';
-        webPublikBtn.href = 'galeri.html';
-        webPublikLabel.textContent = 'Web Publik (galeri.html)';
-
-        renderGalleryGrid();
+        breadcrumbPage.textContent = 'Data Dewan Guru';
+        webPublikBtn.href = 'guru.html';
+        webPublikLabel.textContent = 'Web Publik (guru.html)';
       } else if (view === 'prestasi') {
         if (viewPrestasi) viewPrestasi.classList.remove('hidden');
         if (navBtnPrestasi) navBtnPrestasi.className = activeClass;
@@ -2319,9 +2324,19 @@
         webPublikLabel.textContent = 'Web Publik (prestasi.html)';
 
         renderPrestasiGrid();
+      } else if (view === 'alumni') {
+        if (viewAlumni) viewAlumni.classList.remove('hidden');
+        if (navBtnAlumni) navBtnAlumni.className = activeClass;
+
+        breadcrumbCat.textContent = 'Kesiswaan & SDM';
+        breadcrumbPage.textContent = 'Jejaring Alumni';
+        webPublikBtn.href = 'alumni.html';
+        webPublikLabel.textContent = 'Web Publik (alumni.html)';
+
+        renderAlumniGrid();
       } else if (view === 'banners') {
-        viewBanners.classList.remove('hidden');
-        navBtnBanners.className = activeClass;
+        if (viewBanners) viewBanners.classList.remove('hidden');
+        if (navBtnBanners) navBtnBanners.className = activeClass;
 
         breadcrumbCat.textContent = 'Web Builder & Konten';
         breadcrumbPage.textContent = 'Hero & Banner Beranda';
@@ -2339,14 +2354,28 @@
         webPublikLabel.textContent = 'Web Publik (berita.html)';
 
         renderNews();
-      } else {
-        viewTeachers.classList.remove('hidden');
-        navBtnTeachers.className = activeClass;
+      } else if (view === 'gallery') {
+        if (viewGallery) viewGallery.classList.remove('hidden');
+        if (navBtnGallery) navBtnGallery.className = activeClass;
 
-        breadcrumbCat.textContent = 'Kesiswaan & SDM';
-        breadcrumbPage.textContent = 'Data Dewan Guru';
-        webPublikBtn.href = 'guru.html';
-        webPublikLabel.textContent = 'Web Publik (guru.html)';
+        breadcrumbCat.textContent = 'Portal & Publikasi';
+        breadcrumbPage.textContent = 'Galeri Madrasah';
+        webPublikBtn.href = 'galeri.html';
+        webPublikLabel.textContent = 'Web Publik (galeri.html)';
+
+        renderGalleryGrid();
+      } else {
+        // Default: DASHBOARD UTAMA
+        if (viewDashboard) viewDashboard.classList.remove('hidden');
+        if (navBtnDashboard) navBtnDashboard.className = activeClass;
+
+        breadcrumbCat.textContent = 'Ringkasan & Overview';
+        breadcrumbPage.textContent = 'Dashboard Utama';
+        webPublikBtn.href = 'index.html';
+        webPublikLabel.textContent = 'Lihat Website Publik';
+
+        updateDashboardGlobalKPIs();
+        renderDashboardActivityFeed();
       }
 
       const sidebar = document.getElementById('sidebar');
@@ -5646,6 +5675,168 @@
         });
       } catch (err) {
         console.warn('Gagal sinkron hapus alumni:', err);
+      }
+    }
+
+
+    // =========================================================================
+    // DASHBOARD UTAMA & GLOBAL METRICS LOGIC
+    // =========================================================================
+    function initDashboardClock() {
+      const clockEl = document.getElementById('dashboardClockText');
+      if (!clockEl) return;
+
+      const updateClock = () => {
+        const now = new Date();
+        const options = { weekday: 'short', day: 'numeric', month: 'short', year: 'numeric', hour: '2-digit', minute: '2-digit', second: '2-digit' };
+        clockEl.textContent = now.toLocaleDateString('id-ID', options) + ' WIB';
+      };
+      updateClock();
+      setInterval(updateClock, 1000);
+    }
+
+    function updateDashboardGlobalKPIs() {
+      const teacherCount = teachersData ? teachersData.length : 7;
+      const prestasiCount = allPrestasiData ? allPrestasiData.length : 6;
+      const newsCount = newsList ? newsList.length : 5;
+      const galleryCount = allGalleryData ? allGalleryData.length : 6;
+      const alumniCount = allAlumniData ? allAlumniData.length : 6;
+      const bannerCount = (heroSlides ? heroSlides.length : 5) + (bannersData ? bannersData.length : 3);
+
+      const elTeachers = document.getElementById('dashKpiTeachers');
+      const elPrestasi = document.getElementById('dashKpiPrestasi');
+      const elNews = document.getElementById('dashKpiNews');
+      const elGallery = document.getElementById('dashKpiGallery');
+      const elAlumni = document.getElementById('dashKpiAlumni');
+      const elBanners = document.getElementById('dashKpiBanners');
+
+      if (elTeachers) elTeachers.textContent = teacherCount;
+      if (elPrestasi) elPrestasi.textContent = prestasiCount;
+      if (elNews) elNews.textContent = newsCount;
+      if (elGallery) elGallery.textContent = galleryCount;
+      if (elAlumni) elAlumni.textContent = alumniCount;
+      if (elBanners) elBanners.textContent = bannerCount;
+    }
+
+    function renderDashboardActivityFeed() {
+      const feed = document.getElementById('dashboardActivityFeed');
+      if (!feed) return;
+
+      const activities = [];
+
+      // 1. Berita terbaru
+      if (Array.isArray(newsList) && newsList.length > 0) {
+        const latestNews = newsList[0];
+        activities.push({
+          icon: 'newspaper',
+          iconColor: 'bg-blue-100 text-blue-700',
+          modul: 'Warta & Publikasi',
+          title: latestNews.judul || 'Publikasi Berita',
+          desc: `Kategori: ${latestNews.kategori || 'Berita'} • Tanggal: ${latestNews.tanggal || 'Terkini'}`,
+          action: () => switchAdminView('news')
+        });
+      }
+
+      // 2. Prestasi terbaru
+      if (Array.isArray(allPrestasiData) && allPrestasiData.length > 0) {
+        const latestPrestasi = allPrestasiData[0];
+        activities.push({
+          icon: 'trophy',
+          iconColor: 'bg-amber-100 text-amber-800',
+          modul: 'Prestasi Siswa',
+          title: latestPrestasi.judul || 'Kejuaraan Santri',
+          desc: `Peraih: ${latestPrestasi.peraih} (${latestPrestasi.peringkat} - ${latestPrestasi.tingkat})`,
+          action: () => switchAdminView('prestasi')
+        });
+      }
+
+      // 3. Galeri terbaru
+      if (Array.isArray(allGalleryData) && allGalleryData.length > 0) {
+        const latestGal = allGalleryData[0];
+        activities.push({
+          icon: 'image',
+          iconColor: 'bg-purple-100 text-purple-700',
+          modul: 'Galeri Madrasah',
+          title: latestGal.judul || 'Dokumentasi Madrasah',
+          desc: `Lokasi: ${latestGal.lokasi || 'Pilangwetan'} • Label: ${latestGal.kategoriLabel || 'Dokumentasi'}`,
+          action: () => switchAdminView('gallery')
+        });
+      }
+
+      // 4. Alumni terbaru
+      if (Array.isArray(allAlumniData) && allAlumniData.length > 0) {
+        const latestAlumni = allAlumniData[0];
+        activities.push({
+          icon: 'users',
+          iconColor: 'bg-teal-100 text-teal-800',
+          modul: 'Jejaring Alumni',
+          title: latestAlumni.nama || 'Profil Alumni',
+          desc: `${latestAlumni.profesi} • Angkatan ${latestAlumni.angkatan}`,
+          action: () => switchAdminView('alumni')
+        });
+      }
+
+      // 5. Guru
+      if (Array.isArray(teachersData) && teachersData.length > 0) {
+        const firstTeacher = teachersData[0];
+        activities.push({
+          icon: 'graduation-cap',
+          iconColor: 'bg-emerald-100 text-emerald-800',
+          modul: 'Data Dewan Guru',
+          title: firstTeacher.nama_lengkap || 'Dewan Guru MTs YASUA',
+          desc: `${firstTeacher.jabatan || 'Pendidik'} • NPK/NIP: ${firstTeacher.nip || 'Terdata'}`,
+          action: () => switchAdminView('teachers')
+        });
+      }
+
+      feed.innerHTML = activities.map(item => `
+        <div onclick="(${item.action.toString()})()"
+          class="p-3 rounded-2xl bg-slate-50 hover:bg-slate-100 border border-slate-100 hover:border-slate-200 transition-all flex items-center justify-between gap-3 cursor-pointer group">
+          <div class="flex items-center gap-3 min-w-0">
+            <div class="w-10 h-10 rounded-xl ${item.iconColor} flex items-center justify-center shrink-0">
+              <i data-lucide="${item.icon}" class="w-4 h-4"></i>
+            </div>
+            <div class="min-w-0">
+              <span class="text-[9.5px] font-bold text-slate-400 uppercase tracking-wider block">${item.modul}</span>
+              <h5 class="text-xs font-bold text-slate-800 truncate group-hover:text-emerald-700 transition-colors">${item.title}</h5>
+              <p class="text-[10px] text-slate-500 truncate mt-0.5">${item.desc}</p>
+            </div>
+          </div>
+          <i data-lucide="chevron-right" class="w-4 h-4 text-slate-300 group-hover:text-slate-600 transition-colors shrink-0"></i>
+        </div>
+      `).join('');
+
+      if (window.lucide) window.lucide.createIcons();
+    }
+
+    async function syncAllAdminData() {
+      const syncIcon = document.getElementById('syncAllIcon');
+      const syncBtn = document.getElementById('syncAllBtn');
+      if (syncIcon) syncIcon.classList.add('animate-spin');
+      if (syncBtn) syncBtn.disabled = true;
+
+      showToast('Menghubungi Cloud Google Apps Script...', 'info');
+
+      try {
+        await Promise.allSettled([
+          fetchTeachers(),
+          fetchHeroSlides(),
+          fetchBanners(),
+          fetchAnnouncement(),
+          fetchNews(),
+          fetchPrestasi(),
+          fetchGallery(),
+          fetchAlumni()
+        ]);
+        updateDashboardGlobalKPIs();
+        renderDashboardActivityFeed();
+        showToast('Seluruh data berhasil disinkronkan dari Cloud!');
+      } catch (err) {
+        console.error(err);
+        showToast('Sinkronisasi selesai dengan data cadangan lokal.');
+      } finally {
+        if (syncIcon) syncIcon.classList.remove('animate-spin');
+        if (syncBtn) syncBtn.disabled = false;
       }
     }
 
