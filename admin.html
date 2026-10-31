@@ -1021,6 +1021,125 @@
           </div>
         </div>
 
+      
+        <!-- ================================================================= -->
+        <!-- VIEW 6: JEJARING ALUMNI & TRACER STUDY (Kesiswaan Module)         -->
+        <!-- ================================================================= -->
+        <div id="viewAlumni" class="space-y-6 hidden">
+          <!-- Header Banner -->
+          <div class="bg-gradient-to-r from-teal-500/10 via-emerald-500/10 to-amber-500/10 border border-teal-200/80 rounded-2xl p-4 sm:p-5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 shadow-2xs">
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 rounded-xl bg-teal-700 text-white flex items-center justify-center shrink-0 shadow-sm">
+                <i data-lucide="users" class="w-5 h-5 text-amber-200"></i>
+              </div>
+              <div>
+                <div class="flex items-center gap-2">
+                  <h2 class="text-sm sm:text-base font-black text-slate-900">Pengelolaan Jejaring Alumni &amp; Tracer Study</h2>
+                  <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-teal-100 text-teal-900 font-bold text-[10px]">
+                    <span class="w-1.5 h-1.5 rounded-full bg-teal-500 animate-ping"></span> Live Web (alumni.html &amp; /app)
+                  </span>
+                </div>
+                <p class="text-xs text-slate-600 mt-0.5">Kelola database alumni IKAMAS, persebaran kiprah karir santri, dan testimoni inspiratif lulusan.</p>
+              </div>
+            </div>
+            <div class="flex items-center gap-2 self-end sm:self-auto">
+              <button onclick="fetchAlumni()"
+                class="px-3 py-2 rounded-xl border border-slate-200 hover:bg-white text-xs font-bold text-slate-700 flex items-center gap-1.5 transition-colors shadow-2xs cursor-pointer">
+                <i data-lucide="refresh-cw" id="refreshAlumniIcon" class="w-3.5 h-3.5"></i>
+                <span>Segarkan Data</span>
+              </button>
+              <button onclick="openAddAlumniModal()"
+                class="px-3.5 py-2 rounded-xl bg-teal-700 hover:bg-teal-800 text-white text-xs font-black flex items-center gap-1.5 shadow-sm transition-colors cursor-pointer">
+                <i data-lucide="user-plus" class="w-3.5 h-3.5 text-amber-200"></i>
+                <span>+ Tambah Alumni Baru</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Statistik Mini Cards -->
+          <div class="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
+            <div class="bg-gradient-to-br from-teal-800 to-teal-950 text-white p-4 rounded-2xl relative overflow-hidden shadow-sm">
+              <div class="absolute -right-3 -bottom-3 w-16 h-16 bg-white/10 rounded-full blur-xs"></div>
+              <p class="text-[11px] font-semibold text-teal-200 uppercase tracking-wider">Total Terdata</p>
+              <h3 id="alumniTotalStat" class="text-2xl sm:text-3xl font-black mt-1">6</h3>
+              <p class="text-[10px] text-teal-300 mt-1 flex items-center gap-1">
+                <i data-lucide="database" class="w-3 h-3"></i> Database IKAMAS
+              </p>
+            </div>
+            <div class="bg-gradient-to-br from-emerald-700 to-emerald-900 text-white p-4 rounded-2xl relative overflow-hidden shadow-sm">
+              <div class="absolute -right-3 -bottom-3 w-16 h-16 bg-white/10 rounded-full blur-xs"></div>
+              <p class="text-[11px] font-semibold text-emerald-100 uppercase tracking-wider">Pesantren &amp; Kuliah</p>
+              <h3 id="alumniStudiLanjutStat" class="text-2xl sm:text-3xl font-black mt-1">3</h3>
+              <p class="text-[10px] text-emerald-200 mt-1 flex items-center gap-1">
+                <i data-lucide="graduation-cap" class="w-3 h-3"></i> Studi Lanjutan
+              </p>
+            </div>
+            <div class="bg-gradient-to-br from-amber-600 to-amber-800 text-white p-4 rounded-2xl relative overflow-hidden shadow-sm">
+              <div class="absolute -right-3 -bottom-3 w-16 h-16 bg-white/10 rounded-full blur-xs"></div>
+              <p class="text-[11px] font-semibold text-amber-100 uppercase tracking-wider">Karir &amp; Wirausaha</p>
+              <h3 id="alumniKarirStat" class="text-2xl sm:text-3xl font-black mt-1">3</h3>
+              <p class="text-[10px] text-amber-200 mt-1 flex items-center gap-1">
+                <i data-lucide="briefcase" class="w-3 h-3"></i> Profesional / Usaha
+              </p>
+            </div>
+            <div class="bg-gradient-to-br from-slate-800 to-slate-950 text-white p-4 rounded-2xl relative overflow-hidden shadow-sm">
+              <div class="absolute -right-3 -bottom-3 w-16 h-16 bg-white/10 rounded-full blur-xs"></div>
+              <p class="text-[11px] font-semibold text-slate-300 uppercase tracking-wider">Aktif Publik</p>
+              <h3 id="alumniAktifStat" class="text-2xl sm:text-3xl font-black mt-1">6</h3>
+              <p class="text-[10px] text-emerald-400 mt-1 flex items-center gap-1">
+                <i data-lucide="check-circle-2" class="w-3 h-3"></i> Tampil di Web &amp; App
+              </p>
+            </div>
+          </div>
+
+          <!-- Filter Kategori & Search -->
+          <div class="flex flex-col md:flex-row items-stretch md:items-center justify-between gap-3 bg-white p-3.5 rounded-2xl border border-slate-200/90 shadow-2xs">
+            <!-- Filter Pills -->
+            <div class="flex items-center gap-1.5 overflow-x-auto pb-1 md:pb-0 scrollbar-none text-xs">
+              <button onclick="filterAdminAlumni('all')" id="alumniFilterAll"
+                class="px-3 py-1.5 rounded-xl font-bold transition-all bg-teal-800 text-white shadow-xs whitespace-nowrap cursor-pointer">
+                Semua (<span id="countAlmAll">6</span>)
+              </button>
+              <button onclick="filterAdminAlumni('pesantren')" id="alumniFilterPesantren"
+                class="px-3 py-1.5 rounded-xl font-medium text-slate-600 hover:text-teal-800 hover:bg-teal-50 transition-all whitespace-nowrap cursor-pointer">
+                Pesantren (<span id="countAlmPesantren">2</span>)
+              </button>
+              <button onclick="filterAdminAlumni('kuliah')" id="alumniFilterKuliah"
+                class="px-3 py-1.5 rounded-xl font-medium text-slate-600 hover:text-teal-800 hover:bg-teal-50 transition-all whitespace-nowrap cursor-pointer">
+                Perguruan Tinggi (<span id="countAlmKuliah">1</span>)
+              </button>
+              <button onclick="filterAdminAlumni('profesional')" id="alumniFilterProfesional"
+                class="px-3 py-1.5 rounded-xl font-medium text-slate-600 hover:text-teal-800 hover:bg-teal-50 transition-all whitespace-nowrap cursor-pointer">
+                Profesional &amp; Medis (<span id="countAlmProfesional">2</span>)
+              </button>
+              <button onclick="filterAdminAlumni('wirausaha')" id="alumniFilterWirausaha"
+                class="px-3 py-1.5 rounded-xl font-medium text-slate-600 hover:text-teal-800 hover:bg-teal-50 transition-all whitespace-nowrap cursor-pointer">
+                Wirausaha (<span id="countAlmWirausaha">1</span>)
+              </button>
+            </div>
+
+            <!-- Search Field -->
+            <div class="relative w-full md:w-64">
+              <i data-lucide="search" class="w-4 h-4 text-slate-400 absolute left-3 top-1/2 -translate-y-1/2"></i>
+              <input type="text" id="alumniSearchInput" oninput="searchAdminAlumni()"
+                placeholder="Cari nama, angkatan, profesi..."
+                class="w-full pl-9 pr-3 py-1.5 text-xs rounded-xl border border-slate-200 focus:outline-teal-600 focus:border-teal-600 bg-slate-50/50">
+            </div>
+          </div>
+
+          <!-- Grid Daftar Alumni -->
+          <div>
+            <div class="flex items-center justify-between mb-3 px-1">
+              <h3 class="text-xs font-black uppercase tracking-wider text-slate-500">Daftar Alumni &amp; Kisah Sukses</h3>
+              <span id="alumniShowingCount" class="text-xs text-slate-500">Menampilkan 6 dari 6 alumni</span>
+            </div>
+
+            <div id="alumniGrid" class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 sm:gap-5">
+              <!-- Dynamically populated via JS -->
+            </div>
+          </div>
+        </div>
+
       </main>
     </div>
   </div>
@@ -1823,6 +1942,151 @@
     </div>
   </div>
 
+  
+  <!-- ===================================================================== -->
+  <!-- MODAL: TAMBAH / EDIT ALUMNI                                           -->
+  <!-- ===================================================================== -->
+  <div id="alumniModal" class="fixed inset-0 z-50 hidden bg-slate-900/60 backdrop-blur-xs flex items-center justify-center p-3 sm:p-4 overflow-y-auto">
+    <div class="bg-white rounded-3xl max-w-xl w-full p-5 sm:p-6 shadow-2xl border border-slate-200 my-8">
+      <div class="flex items-center justify-between pb-3.5 border-b border-slate-100">
+        <div class="flex items-center gap-2.5">
+          <div class="w-9 h-9 rounded-xl bg-teal-50 text-teal-700 flex items-center justify-center">
+            <i data-lucide="user-check" class="w-5 h-5"></i>
+          </div>
+          <div>
+            <h3 id="alumniModalTitle" class="font-extrabold text-slate-900 text-base">Tambah Data Alumni Baru</h3>
+            <p class="text-[11px] text-slate-500">Lengkapi data kiprah lulusan dan testimoni santri.</p>
+          </div>
+        </div>
+        <button onclick="closeModalAlumni()" class="w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-500 flex items-center justify-center transition-colors cursor-pointer">
+          <i data-lucide="x" class="w-4 h-4"></i>
+        </button>
+      </div>
+
+      <form id="alumniForm" onsubmit="handleSaveAlumni(event)" class="mt-4 space-y-4">
+        <input type="hidden" id="alumniId">
+
+        <!-- Nama Lengkap Alumni -->
+        <div>
+          <label class="block text-xs font-bold text-slate-700 mb-1">Nama Lengkap &amp; Gelar <span class="text-rose-500">*</span></label>
+          <input type="text" id="alumniNama" required placeholder="Contoh: Ust. Ahmad Muzakki, M.Pd."
+            class="w-full px-3.5 py-2 text-xs rounded-xl border border-slate-300 focus:outline-teal-600 focus:border-teal-600">
+        </div>
+
+        <!-- Baris: Tahun Angkatan & Kategori Jalur Karir -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <div>
+            <label class="block text-xs font-bold text-slate-700 mb-1">Tahun Angkatan / Lulus <span class="text-rose-500">*</span></label>
+            <input type="text" id="alumniAngkatan" required placeholder="Contoh: 2014 atau Angkatan 2014"
+              class="w-full px-3 py-2 text-xs rounded-xl border border-slate-300 focus:outline-teal-600 focus:border-teal-600">
+          </div>
+          <div>
+            <label class="block text-xs font-bold text-slate-700 mb-1">Jalur Karir / Kategori <span class="text-rose-500">*</span></label>
+            <select id="alumniKategori" required
+              class="w-full px-3 py-2 text-xs rounded-xl border border-slate-300 focus:outline-teal-600 focus:border-teal-600 bg-white">
+              <option value="pesantren">Pondok Pesantren &amp; Studi Agama</option>
+              <option value="kuliah">Perguruan Tinggi / Sarjana</option>
+              <option value="profesional">Tenaga Medis, Guru, &amp; Profesional</option>
+              <option value="wirausaha">Wirausaha &amp; Industri Kreatif</option>
+              <option value="lainnya">Lain-lain</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Baris: Profesi & Label Badge -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <div>
+            <label class="block text-xs font-bold text-slate-700 mb-1">Profesi / Aktivitas Saat Ini <span class="text-rose-500">*</span></label>
+            <input type="text" id="alumniProfesi" required placeholder="Contoh: Dokter Umum / Dosen / Software Engineer"
+              class="w-full px-3.5 py-2 text-xs rounded-xl border border-slate-300 focus:outline-teal-600 focus:border-teal-600">
+          </div>
+          <div>
+            <label class="block text-xs font-bold text-slate-700 mb-1">Label Badge Khusus</label>
+            <input type="text" id="alumniKategoriLabel" placeholder="Contoh: Medis &amp; Kesehatan / Pendidikan"
+              class="w-full px-3.5 py-2 text-xs rounded-xl border border-slate-300 focus:outline-teal-600 focus:border-teal-600">
+          </div>
+        </div>
+
+        <!-- Baris: Lembaga / Instansi & Kota Domisili -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <div>
+            <label class="block text-xs font-bold text-slate-700 mb-1">Instansi / Kampus / Tempat Tugas</label>
+            <input type="text" id="alumniInstansi" placeholder="Contoh: RSUD Sunan Kalijaga / UIN Walisongo"
+              class="w-full px-3.5 py-2 text-xs rounded-xl border border-slate-300 focus:outline-teal-600 focus:border-teal-600">
+          </div>
+          <div>
+            <label class="block text-xs font-bold text-slate-700 mb-1">Kota / Domisili Saat Ini</label>
+            <input type="text" id="alumniDomisili" placeholder="Contoh: Demak / Semarang / Yogyakarta"
+              class="w-full px-3.5 py-2 text-xs rounded-xl border border-slate-300 focus:outline-teal-600 focus:border-teal-600">
+          </div>
+        </div>
+
+        <!-- No WhatsApp & Urutan -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <div>
+            <label class="block text-xs font-bold text-slate-700 mb-1">No. WhatsApp (Kontak IKAMAS)</label>
+            <input type="tel" id="alumniWhatsapp" placeholder="08xxxxxxxxxx (untuk arsip koordinasi)"
+              class="w-full px-3.5 py-2 text-xs rounded-xl border border-slate-300 focus:outline-teal-600 focus:border-teal-600">
+          </div>
+          <div>
+            <label class="block text-xs font-bold text-slate-700 mb-1">Urutan Prioritas Tampil</label>
+            <input type="number" id="alumniUrutan" min="1" value="1"
+              class="w-full px-3.5 py-2 text-xs rounded-xl border border-slate-300 focus:outline-teal-600 focus:border-teal-600">
+          </div>
+        </div>
+
+        <!-- Kutipan Testimoni -->
+        <div>
+          <label class="block text-xs font-bold text-slate-700 mb-1">Kutipan / Testimoni Alumni untuk Madrasah <span class="text-rose-500">*</span></label>
+          <textarea id="alumniTestimoni" rows="3" required placeholder="Pesan kesan alumni selama belajar di MTs YASUA dan nasihat untuk adik santri..."
+            class="w-full px-3.5 py-2 text-xs rounded-xl border border-slate-300 focus:outline-teal-600 focus:border-teal-600"></textarea>
+        </div>
+
+        <!-- Status Publikasi -->
+        <div>
+          <label class="block text-xs font-bold text-slate-700 mb-1">Status Publikasi</label>
+          <select id="alumniStatus"
+            class="w-full px-3 py-2 text-xs rounded-xl border border-slate-300 focus:outline-teal-600 focus:border-teal-600 bg-white">
+            <option value="true">Aktif (Tampil di Web &amp; App)</option>
+            <option value="false">Draft / Arsip Internal</option>
+          </select>
+        </div>
+
+        <!-- Foto Profil Alumni -->
+        <div>
+          <label class="block text-xs font-bold text-slate-700 mb-1">Foto Profil Alumni</label>
+          <div class="flex items-center gap-3">
+            <div class="w-16 h-16 rounded-2xl bg-teal-50 border border-teal-200 overflow-hidden shrink-0 flex items-center justify-center text-teal-800 font-black text-sm">
+              <img id="alumniPreviewImg" src="" alt="Preview" class="w-full h-full object-cover hidden">
+              <span id="alumniPreviewPlaceholder">FOTO</span>
+            </div>
+            <div class="flex-1 space-y-1.5">
+              <input type="file" id="alumniFileInput" accept="image/*" onchange="handleAlumniFileChange(event)"
+                class="w-full text-xs text-slate-500 file:mr-2 file:py-1.5 file:px-3 file:rounded-xl file:border-0 file:text-xs file:font-semibold file:bg-teal-50 file:text-teal-800 hover:file:bg-teal-100 cursor-pointer">
+              <p class="text-[10px] text-slate-400">Otomatis di-resize dan dikompresi canvas sebelum diunggah.</p>
+              <input type="text" id="alumniGambarUrl" placeholder="Atau tautkan URL foto profil..."
+                oninput="updateAlumniUrlPreview()"
+                class="w-full px-3 py-1.5 text-xs rounded-xl border border-slate-200 bg-slate-50/50">
+            </div>
+          </div>
+        </div>
+
+        <!-- Actions -->
+        <div class="flex items-center justify-end gap-2 pt-3 border-t border-slate-100">
+          <button type="button" onclick="closeModalAlumni()"
+            class="px-4 py-2 rounded-xl text-xs font-bold text-slate-600 hover:bg-slate-100 transition-colors cursor-pointer">
+            Batal
+          </button>
+          <button type="submit" id="saveAlumniBtn"
+            class="px-5 py-2 rounded-xl text-xs font-black bg-teal-700 hover:bg-teal-800 text-white shadow-sm transition-all flex items-center gap-2 cursor-pointer">
+            <i data-lucide="save" class="w-3.5 h-3.5 text-white"></i>
+            <span>Simpan Data Alumni</span>
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
   <div id="toastContainer" class="fixed top-5 right-5 z-50 space-y-2 pointer-events-none"></div>
 
   <!-- =================================================================== -->
@@ -2025,7 +2289,17 @@
       navBtnBanners.className = inactiveClass;
       if (navBtnNews) navBtnNews.className = inactiveClass;
 
-      if (view === 'gallery') {
+      if (view === 'alumni') {
+        if (viewAlumni) viewAlumni.classList.remove('hidden');
+        if (navBtnAlumni) navBtnAlumni.className = activeClass;
+
+        breadcrumbCat.textContent = 'Kesiswaan & SDM';
+        breadcrumbPage.textContent = 'Jejaring Alumni';
+        webPublikBtn.href = 'alumni.html';
+        webPublikLabel.textContent = 'Web Publik (alumni.html)';
+
+        renderAlumniGrid();
+      } else if (view === 'gallery') {
         if (viewGallery) viewGallery.classList.remove('hidden');
         if (navBtnGallery) navBtnGallery.className = activeClass;
 
@@ -4815,6 +5089,563 @@
         });
       } catch (err) {
         console.warn('Gagal sinkron hapus galeri:', err);
+      }
+    }
+
+
+    // =========================================================================
+    // JEJARING ALUMNI & TRACER STUDY CRUD MODULE
+    // =========================================================================
+    let allAlumniData = [
+      {
+        id: "alm_1",
+        nama: "Ust. Ahmad Muzakki, M.Pd.",
+        angkatan: "2012",
+        kategori: "pesantren",
+        kategoriLabel: "Pendidikan & Pesantren",
+        profesi: "Dosen & Pengasuh Majlis Taklim",
+        instansi: "UIN Walisongo & Ponpes Lirboyo",
+        domisili: "Demak",
+        whatsapp: "081234567890",
+        testimoni: "Fondasi nahwu shorof dan disiplin sholat dhuha yang ditanamkan guru-guru MTs YASUA menjadi bekal paling berharga saat saya mondok di pesantren dan menyelesaikan studi magister pendidikan.",
+        urutan: 1,
+        status: true,
+        foto: ""
+      },
+      {
+        id: "alm_2",
+        nama: "dr. Rina Nurul Aini",
+        angkatan: "2014",
+        kategori: "profesional",
+        kategoriLabel: "Medis & Kesehatan",
+        profesi: "Dokter Umum RSUD",
+        instansi: "RSUD Sunan Kalijaga Demak",
+        domisili: "Jawa Tengah",
+        whatsapp: "081234567891",
+        testimoni: "Madrasah ini mengajarkan bahwa menjadi profesional di bidang sains dan kedokteran tetap harus berlandaskan adab dan kasih sayang kepada sesama sebagaimana ajaran Islam.",
+        urutan: 2,
+        status: true,
+        foto: ""
+      },
+      {
+        id: "alm_3",
+        nama: "Muhammad Fajar Sidiq, S.Kom.",
+        angkatan: "2017",
+        kategori: "profesional",
+        kategoriLabel: "Teknologi & Digital",
+        profesi: "Founder Tech Studio",
+        instansi: "PT Inovasi Digital Nusantara",
+        domisili: "Semarang",
+        whatsapp: "081234567892",
+        testimoni: "Pengenalan awal komputer dan ekstrakurikuler di MTs YASUA memicu ketertarikan saya pada dunia software engineering hingga kini berhasil memimpin agensi teknologi digital.",
+        urutan: 3,
+        status: true,
+        foto: ""
+      },
+      {
+        id: "alm_4",
+        nama: "Nur Halimah, S.Pd.",
+        angkatan: "2016",
+        kategori: "kuliah",
+        kategoriLabel: "Pendidikan",
+        profesi: "Guru Bahasa Arab & Penulis",
+        instansi: "Madrasah Aliyah Negeri Demak",
+        domisili: "Demak",
+        whatsapp: "081234567893",
+        testimoni: "Kecintaan saya pada literasi dan bahasa Arab tumbuh berkat keteladanan para asatidz di MTs YASUA Pilangwetan.",
+        urutan: 4,
+        status: true,
+        foto: ""
+      },
+      {
+        id: "alm_5",
+        nama: "Ahmad Faiz Robbani",
+        angkatan: "2019",
+        kategori: "pesantren",
+        kategoriLabel: "Studi Islam Salaf",
+        profesi: "Santri Ma'had Aly & Mahasiswa Tafsir",
+        instansi: "Ma'had Aly Krapyak Yogyakarta",
+        domisili: "Yogyakarta",
+        whatsapp: "081234567894",
+        testimoni: "Tradisi sorogan dan hafalan juz 'amma di MTs YASUA sangat mempermudah saya dalam memperdalam kitab-kitab turats klasik di pesantren.",
+        urutan: 5,
+        status: true,
+        foto: ""
+      },
+      {
+        id: "alm_6",
+        nama: "Siti Mar'atun Sholihah",
+        angkatan: "2018",
+        kategori: "wirausaha",
+        kategoriLabel: "Ekonomi Syariah",
+        profesi: "Pengusaha Busana Muslim & Konveksi",
+        instansi: "CV Suada Hijab Mandiri",
+        domisili: "Demak",
+        whatsapp: "081234567895",
+        testimoni: "Karakter ulet, jujur, dan berani memulai usaha diajarkan sejak kegiatan kepramukaan dan kemandirian santri di madrasah.",
+        urutan: 6,
+        status: true,
+        foto: ""
+      }
+    ];
+
+    let currentAlumniFilter = 'all';
+    let uploadedAlumniBase64 = null;
+    let uploadedAlumniName = null;
+    let uploadedAlumniMime = null;
+
+    async function fetchAlumni() {
+      const refreshIcon = document.getElementById('refreshAlumniIcon');
+      if (refreshIcon) refreshIcon.classList.add('animate-spin');
+
+      try {
+        const res = await fetch(`${API_URL}?action=getAlumni`);
+        const json = await res.json();
+        if (json.status === 'success' && Array.isArray(json.data) && json.data.length > 0) {
+          allAlumniData = json.data.map(item => ({
+            id: String(item.id || item.ID || Date.now()),
+            nama: item.nama || item.Nama || item.name || '',
+            angkatan: String(item.angkatan || item.Angkatan || item.tahun || '2020'),
+            kategori: (item.kategori || item.Kategori || 'pesantren').toLowerCase(),
+            kategoriLabel: item.kategoriLabel || item.KategoriLabel || 'Alumni YASUA',
+            profesi: item.profesi || item.Profesi || item.pekerjaan || '',
+            instansi: item.instansi || item.Instansi || item.kampus || '',
+            domisili: item.domisili || item.Domisili || 'Demak',
+            whatsapp: item.whatsapp || item.Whatsapp || item.no_hp || '',
+            testimoni: item.testimoni || item.Testimoni || item.pesan || '',
+            urutan: Number(item.urutan || item.Urutan || 99),
+            status: item.status === true || item.status === 'true' || item.Status === 'Aktif' || item.status === undefined,
+            foto: item.foto || item.Foto || item.gambar || ''
+          }));
+          showToast('Data alumni berhasil disinkronkan.');
+        }
+      } catch (err) {
+        console.warn('Gagal memuat alumni dari cloud, menggunakan data lokal:', err);
+      } finally {
+        if (refreshIcon) refreshIcon.classList.remove('animate-spin');
+        updateAlumniKPIs();
+        renderAlumniGrid();
+      }
+    }
+
+    function updateAlumniKPIs() {
+      const total = allAlumniData.length;
+      const studiLanjut = allAlumniData.filter(a => a.kategori === 'pesantren' || a.kategori === 'kuliah').length;
+      const karir = allAlumniData.filter(a => a.kategori === 'profesional' || a.kategori === 'wirausaha').length;
+      const aktif = allAlumniData.filter(a => a.status).length;
+
+      const totalEl = document.getElementById('alumniTotalStat');
+      const studiLanjutEl = document.getElementById('alumniStudiLanjutStat');
+      const karirEl = document.getElementById('alumniKarirStat');
+      const aktifEl = document.getElementById('alumniAktifStat');
+      const sidebarBadge = document.getElementById('sidebarAlumniCount');
+
+      if (totalEl) totalEl.textContent = total;
+      if (studiLanjutEl) studiLanjutEl.textContent = studiLanjut;
+      if (karirEl) karirEl.textContent = karir;
+      if (aktifEl) aktifEl.textContent = aktif;
+      if (sidebarBadge) sidebarBadge.textContent = `${aktif} Terdaftar`;
+
+      // Update filter pills count
+      const countAll = total;
+      const countPesantren = allAlumniData.filter(a => a.kategori === 'pesantren').length;
+      const countKuliah = allAlumniData.filter(a => a.kategori === 'kuliah').length;
+      const countProfesional = allAlumniData.filter(a => a.kategori === 'profesional').length;
+      const countWirausaha = allAlumniData.filter(a => a.kategori === 'wirausaha').length;
+
+      if (document.getElementById('countAlmAll')) document.getElementById('countAlmAll').textContent = countAll;
+      if (document.getElementById('countAlmPesantren')) document.getElementById('countAlmPesantren').textContent = countPesantren;
+      if (document.getElementById('countAlmKuliah')) document.getElementById('countAlmKuliah').textContent = countKuliah;
+      if (document.getElementById('countAlmProfesional')) document.getElementById('countAlmProfesional').textContent = countProfesional;
+      if (document.getElementById('countAlmWirausaha')) document.getElementById('countAlmWirausaha').textContent = countWirausaha;
+    }
+
+    function filterAdminAlumni(kategori) {
+      currentAlumniFilter = kategori;
+      const filters = ['all', 'pesantren', 'kuliah', 'profesional', 'wirausaha'];
+      filters.forEach(f => {
+        const btn = document.getElementById('alumniFilter' + f.charAt(0).toUpperCase() + f.slice(1));
+        if (btn) {
+          if (f === kategori) {
+            btn.className = 'px-3 py-1.5 rounded-xl font-bold transition-all bg-teal-800 text-white shadow-xs whitespace-nowrap cursor-pointer';
+          } else {
+            btn.className = 'px-3 py-1.5 rounded-xl font-medium text-slate-600 hover:text-teal-800 hover:bg-teal-50 transition-all whitespace-nowrap cursor-pointer';
+          }
+        }
+      });
+      renderAlumniGrid();
+    }
+
+    function searchAdminAlumni() {
+      renderAlumniGrid();
+    }
+
+    function getInitials(name) {
+      if (!name) return 'UA';
+      const parts = name.replace(/^(ust.|dr.|drs.|kh.|h.)s*/i, '').trim().split(' ');
+      if (parts.length === 1) return parts[0].substring(0, 2).toUpperCase();
+      return (parts[0][0] + parts[parts.length - 1][0]).toUpperCase();
+    }
+
+    function renderAlumniGrid() {
+      const grid = document.getElementById('alumniGrid');
+      if (!grid) return;
+
+      const searchInput = document.getElementById('alumniSearchInput');
+      const q = searchInput ? searchInput.value.toLowerCase().trim() : '';
+
+      let list = allAlumniData.filter(item => {
+        const matchesCat = currentAlumniFilter === 'all' || item.kategori === currentAlumniFilter;
+        const matchesSearch = !q ||
+          item.nama.toLowerCase().includes(q) ||
+          item.profesi.toLowerCase().includes(q) ||
+          item.instansi.toLowerCase().includes(q) ||
+          item.domisili.toLowerCase().includes(q) ||
+          item.angkatan.toLowerCase().includes(q);
+        return matchesCat && matchesSearch;
+      });
+
+      list.sort((a, b) => (a.urutan || 99) - (b.urutan || 99));
+
+      const showingEl = document.getElementById('alumniShowingCount');
+      if (showingEl) showingEl.textContent = `Menampilkan ${list.length} dari ${allAlumniData.length} alumni`;
+
+      if (list.length === 0) {
+        grid.innerHTML = `
+          <div class="col-span-full py-12 text-center bg-white rounded-3xl border border-slate-200">
+            <div class="w-12 h-12 rounded-2xl bg-teal-50 text-teal-600 mx-auto flex items-center justify-center mb-3">
+              <i data-lucide="users" class="w-6 h-6"></i>
+            </div>
+            <h4 class="font-bold text-slate-800 text-sm">Tidak ada data alumni yang cocok</h4>
+            <p class="text-xs text-slate-500 mt-1">Coba gunakan kata kunci pencarian lain atau pilih filter Semua.</p>
+          </div>
+        `;
+        if (window.lucide) window.lucide.createIcons();
+        return;
+      }
+
+      grid.innerHTML = list.map(item => {
+        const isAktif = item.status;
+        const statusBadge = isAktif
+          ? 'bg-emerald-100 text-emerald-800 border-emerald-200'
+          : 'bg-slate-100 text-slate-600 border-slate-200';
+
+        const initials = getInitials(item.nama);
+        const angkatanLabel = item.angkatan.startsWith('Angkatan') ? item.angkatan : `Angkatan ${item.angkatan}`;
+
+        return `
+          <div class="bg-white rounded-3xl border border-slate-200/90 overflow-hidden shadow-2xs hover:shadow-md transition-all flex flex-col justify-between p-5 group">
+            <div class="space-y-3.5">
+              <!-- Top Row: Avatar & Header -->
+              <div class="flex items-start justify-between gap-3">
+                <div class="flex items-center gap-3">
+                  <div class="w-12 h-12 rounded-2xl overflow-hidden shrink-0 bg-teal-100 text-teal-800 font-black flex items-center justify-center text-sm border-2 border-teal-200/80 shadow-xs">
+                    ${item.foto ? `
+                      <img src="${item.foto}" alt="${item.nama}" class="w-full h-full object-cover">
+                    ` : `
+                      <span>${initials}</span>
+                    `}
+                  </div>
+                  <div>
+                    <h4 class="font-black text-slate-900 text-sm leading-snug line-clamp-1 hover:text-teal-800 transition-colors">
+                      ${item.nama}
+                    </h4>
+                    <span class="inline-block text-[11px] font-bold text-teal-700 bg-teal-50 px-2 py-0.5 rounded-md mt-0.5">
+                      ${angkatanLabel}
+                    </span>
+                  </div>
+                </div>
+
+                <button onclick="handleToggleAlumniStatus('${item.id}')"
+                  title="Klik untuk mengubah status publikasi"
+                  class="px-2 py-0.5 rounded-full text-[10px] font-bold shadow-xs transition-all border cursor-pointer shrink-0 ${statusBadge}">
+                  ${isAktif ? 'Aktif' : 'Draft'}
+                </button>
+              </div>
+
+              <!-- Profesi & Instansi -->
+              <div class="p-3 rounded-2xl bg-slate-50 border border-slate-100 space-y-1 text-xs">
+                <div class="flex items-center gap-1.5 font-bold text-slate-800">
+                  <i data-lucide="briefcase" class="w-3.5 h-3.5 text-teal-600 shrink-0"></i>
+                  <span class="truncate">${item.profesi}</span>
+                </div>
+                <div class="flex items-center gap-1.5 text-[11px] text-slate-500">
+                  <i data-lucide="building" class="w-3.5 h-3.5 text-slate-400 shrink-0"></i>
+                  <span class="truncate">${item.instansi || 'Alumni MTs YASUA'}</span>
+                </div>
+                <div class="flex items-center gap-1.5 text-[11px] text-slate-500">
+                  <i data-lucide="map-pin" class="w-3.5 h-3.5 text-slate-400 shrink-0"></i>
+                  <span class="truncate">${item.domisili || 'Demak, Jawa Tengah'}</span>
+                </div>
+              </div>
+
+              <!-- Testimoni / Pesan -->
+              ${item.testimoni ? `
+                <div class="p-3 rounded-2xl bg-amber-50/50 border border-amber-200/50 text-[11px] text-slate-700 italic leading-relaxed">
+                  “${item.testimoni}”
+                </div>
+              ` : ''}
+            </div>
+
+            <!-- Footer Action Buttons -->
+            <div class="pt-3.5 mt-3.5 border-t border-slate-100 flex items-center justify-between text-xs">
+              <span class="text-[10px] text-slate-400 font-bold">#${item.urutan || 1} • ${item.kategoriLabel || 'Alumni'}</span>
+              <div class="flex items-center gap-2">
+                <button onclick="openEditAlumniModal('${item.id}')"
+                  class="px-3 py-1.5 rounded-xl bg-white hover:bg-teal-50 text-teal-800 font-bold border border-slate-200 hover:border-teal-300 shadow-2xs transition-colors flex items-center gap-1 cursor-pointer">
+                  <i data-lucide="edit-3" class="w-3.5 h-3.5"></i>
+                  <span>Edit</span>
+                </button>
+                <button onclick="handleDeleteAlumni('${item.id}')"
+                  class="p-1.5 rounded-xl bg-white hover:bg-rose-50 text-rose-600 hover:text-rose-700 font-bold border border-slate-200 hover:border-rose-300 shadow-2xs transition-colors cursor-pointer"
+                  title="Hapus Data Alumni">
+                  <i data-lucide="trash-2" class="w-3.5 h-3.5"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        `;
+      }).join('');
+
+      if (window.lucide) window.lucide.createIcons();
+    }
+
+    function openAddAlumniModal() {
+      document.getElementById('alumniModalTitle').textContent = 'Tambah Data Alumni Baru';
+      document.getElementById('alumniForm').reset();
+      document.getElementById('alumniId').value = '';
+      document.getElementById('alumniUrutan').value = allAlumniData.length + 1;
+      document.getElementById('alumniPreviewImg').classList.add('hidden');
+      document.getElementById('alumniPreviewPlaceholder').classList.remove('hidden');
+      uploadedAlumniBase64 = null;
+      uploadedAlumniName = null;
+      uploadedAlumniMime = null;
+
+      document.getElementById('alumniModal').classList.remove('hidden');
+      if (window.lucide) window.lucide.createIcons();
+    }
+
+    function openEditAlumniModal(id) {
+      const item = allAlumniData.find(a => String(a.id) === String(id));
+      if (!item) return;
+
+      document.getElementById('alumniModalTitle').textContent = 'Edit Data Profil Alumni';
+      document.getElementById('alumniId').value = item.id;
+      document.getElementById('alumniNama').value = item.nama || '';
+      document.getElementById('alumniAngkatan').value = item.angkatan || '';
+      document.getElementById('alumniKategori').value = item.kategori || 'pesantren';
+      document.getElementById('alumniKategoriLabel').value = item.kategoriLabel || '';
+      document.getElementById('alumniProfesi').value = item.profesi || '';
+      document.getElementById('alumniInstansi').value = item.instansi || '';
+      document.getElementById('alumniDomisili').value = item.domisili || '';
+      document.getElementById('alumniWhatsapp').value = item.whatsapp || '';
+      document.getElementById('alumniTestimoni').value = item.testimoni || '';
+      document.getElementById('alumniUrutan').value = item.urutan || 1;
+      document.getElementById('alumniStatus').value = item.status ? 'true' : 'false';
+      document.getElementById('alumniGambarUrl').value = item.foto || '';
+
+      const previewImg = document.getElementById('alumniPreviewImg');
+      const placeholder = document.getElementById('alumniPreviewPlaceholder');
+      if (item.foto) {
+        previewImg.src = item.foto;
+        previewImg.classList.remove('hidden');
+        placeholder.classList.add('hidden');
+      } else {
+        previewImg.classList.add('hidden');
+        placeholder.classList.remove('hidden');
+      }
+
+      uploadedAlumniBase64 = null;
+      uploadedAlumniName = null;
+      uploadedAlumniMime = null;
+
+      document.getElementById('alumniModal').classList.remove('hidden');
+      if (window.lucide) window.lucide.createIcons();
+    }
+
+    function closeModalAlumni() {
+      document.getElementById('alumniModal').classList.add('hidden');
+    }
+
+    function updateAlumniUrlPreview() {
+      const url = document.getElementById('alumniGambarUrl').value.trim();
+      const img = document.getElementById('alumniPreviewImg');
+      const placeholder = document.getElementById('alumniPreviewPlaceholder');
+      if (url) {
+        img.src = url;
+        img.classList.remove('hidden');
+        placeholder.classList.add('hidden');
+      }
+    }
+
+    function handleAlumniFileChange(e) {
+      const file = e.target.files[0];
+      if (!file) return;
+
+      uploadedAlumniName = file.name;
+      uploadedAlumniMime = file.type;
+
+      const reader = new FileReader();
+      reader.onload = function(evt) {
+        const rawImg = new Image();
+        rawImg.onload = function() {
+          const canvas = document.createElement('canvas');
+          const ctx = canvas.getContext('2d');
+          const maxDim = 800;
+          let w = rawImg.width;
+          let h = rawImg.height;
+
+          if (w > maxDim || h > maxDim) {
+            if (w > h) {
+              h = Math.round((h * maxDim) / w);
+              w = maxDim;
+            } else {
+              w = Math.round((w * maxDim) / h);
+              h = maxDim;
+            }
+          }
+
+          canvas.width = w;
+          canvas.height = h;
+          ctx.drawImage(rawImg, 0, 0, w, h);
+
+          const compressedDataUrl = canvas.toDataURL('image/jpeg', 0.85);
+          uploadedAlumniBase64 = compressedDataUrl.split(',')[1];
+          const img = document.getElementById('alumniPreviewImg');
+          img.src = compressedDataUrl;
+          img.classList.remove('hidden');
+          document.getElementById('alumniPreviewPlaceholder').classList.add('hidden');
+        };
+        rawImg.src = evt.target.result;
+      };
+      reader.readAsDataURL(file);
+    }
+
+    async function handleSaveAlumni(e) {
+      e.preventDefault();
+      const saveBtn = document.getElementById('saveAlumniBtn');
+      saveBtn.disabled = true;
+      saveBtn.innerHTML = '<span>Menyimpan...</span>';
+
+      const id = document.getElementById('alumniId').value;
+      const isNew = !id;
+      const finalId = id || 'alm_' + Date.now();
+
+      const itemData = {
+        id: finalId,
+        nama: document.getElementById('alumniNama').value.trim(),
+        angkatan: document.getElementById('alumniAngkatan').value.trim(),
+        kategori: document.getElementById('alumniKategori').value,
+        kategoriLabel: document.getElementById('alumniKategoriLabel').value.trim() || 'Alumni YASUA',
+        profesi: document.getElementById('alumniProfesi').value.trim(),
+        instansi: document.getElementById('alumniInstansi').value.trim() || 'Alumni MTs YASUA',
+        domisili: document.getElementById('alumniDomisili').value.trim() || 'Demak, Jawa Tengah',
+        whatsapp: document.getElementById('alumniWhatsapp').value.trim(),
+        testimoni: document.getElementById('alumniTestimoni').value.trim(),
+        urutan: Number(document.getElementById('alumniUrutan').value) || 1,
+        status: document.getElementById('alumniStatus').value === 'true',
+        foto: document.getElementById('alumniGambarUrl').value.trim() || ''
+      };
+
+      if (uploadedAlumniBase64) {
+        itemData.foto = document.getElementById('alumniPreviewImg').src;
+      }
+
+      if (isNew) {
+        allAlumniData.unshift(itemData);
+      } else {
+        const idx = allAlumniData.findIndex(a => String(a.id) === String(id));
+        if (idx !== -1) {
+          allAlumniData[idx] = itemData;
+        }
+      }
+
+      updateAlumniKPIs();
+      renderAlumniGrid();
+      closeModalAlumni();
+      showToast(isNew ? 'Data alumni berhasil ditambahkan.' : 'Data alumni berhasil diperbarui.');
+
+      try {
+        const payload = {
+          password: getAdminPassword(),
+          action: isNew ? 'addAlumni' : 'updateAlumni',
+          data: itemData
+        };
+
+        if (uploadedAlumniBase64) {
+          payload.fileBase64 = uploadedAlumniBase64;
+          payload.fileName = uploadedAlumniName;
+          payload.fileMime = uploadedAlumniMime;
+        }
+
+        const res = await fetch(API_URL, {
+          method: 'POST',
+          body: JSON.stringify(payload)
+        });
+        const json = await res.json();
+        if (json.status === 'success') {
+          showToast('Data alumni tersinkronisasi ke Cloud Database.');
+          if (json.fileUrl) {
+            itemData.foto = json.fileUrl;
+            renderAlumniGrid();
+          }
+        }
+      } catch (err) {
+        console.warn('Gagal sinkron alumni ke Apps Script:', err);
+      } finally {
+        saveBtn.disabled = false;
+        saveBtn.innerHTML = '<i data-lucide="save" class="w-3.5 h-3.5 text-white"></i><span>Simpan Data Alumni</span>';
+      }
+    }
+
+    async function handleToggleAlumniStatus(id) {
+      const item = allAlumniData.find(a => String(a.id) === String(id));
+      if (!item) return;
+
+      item.status = !item.status;
+      updateAlumniKPIs();
+      renderAlumniGrid();
+      showToast(`Status alumni diubah menjadi ${item.status ? 'Aktif' : 'Draft'}.`);
+
+      try {
+        await fetch(API_URL, {
+          method: 'POST',
+          body: JSON.stringify({
+            password: getAdminPassword(),
+            action: 'toggleAlumniStatus',
+            id: id,
+            status: item.status
+          })
+        });
+      } catch (err) {
+        console.warn('Gagal sinkron toggle status alumni:', err);
+      }
+    }
+
+    async function handleDeleteAlumni(id) {
+      const item = allAlumniData.find(a => String(a.id) === String(id));
+      if (!item) return;
+
+      if (!confirm(`Yakin ingin menghapus data alumni "${item.nama}"?`)) {
+        return;
+      }
+
+      allAlumniData = allAlumniData.filter(a => String(a.id) !== String(id));
+      updateAlumniKPIs();
+      renderAlumniGrid();
+      showToast('Data alumni berhasil dihapus.');
+
+      try {
+        await fetch(API_URL, {
+          method: 'POST',
+          body: JSON.stringify({
+            password: getAdminPassword(),
+            action: 'deleteAlumni',
+            id: id
+          })
+        });
+      } catch (err) {
+        console.warn('Gagal sinkron hapus alumni:', err);
       }
     }
 

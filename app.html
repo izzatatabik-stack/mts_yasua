@@ -252,6 +252,23 @@
       </div>
     </div>
 
+    <!-- Card Pintasan Portal Alumni IKAMAS -->
+    <div onclick="switchAppTab('alumni')" class="bg-gradient-to-r from-teal-900 via-emerald-950 to-teal-950 text-white p-3.5 rounded-2xl border border-teal-700/60 shadow-xs flex items-center justify-between cursor-pointer active:scale-98 transition-transform">
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-xl bg-teal-500/20 text-amber-300 flex items-center justify-center shrink-0 border border-teal-500/30">
+          <i data-lucide="users" class="w-5 h-5"></i>
+        </div>
+        <div>
+          <span class="text-[9px] font-black uppercase tracking-wider text-teal-300 block">Jejaring Santri &amp; Alumni</span>
+          <h4 class="text-xs font-black text-white leading-tight">Portal Alumni IKAMAS &amp; Tracer Study</h4>
+        </div>
+      </div>
+      <div class="flex items-center gap-1 text-[11px] font-bold text-amber-300 shrink-0">
+        <span>Buka</span>
+        <i data-lucide="chevron-right" class="w-4 h-4"></i>
+      </div>
+    </div>
+
     <!-- Banner Slider Mobile App (Rasio 3:1) -->
     <div class="relative overflow-hidden rounded-2xl shadow-sm border border-emerald-100/90 bg-slate-900 group">
       <div id="appBannerTrack" class="flex transition-transform duration-500 ease-out">
@@ -1147,6 +1164,63 @@
       </div>
     </div><!-- End #tab-galeri -->
 
+    <!-- ==================== TAB 11: JEJARING ALUMNI ==================== -->
+    <div id="tab-alumni" class="hidden space-y-3.5">
+      <!-- Header Banner -->
+      <div class="bg-gradient-to-r from-teal-800 via-emerald-800 to-teal-950 text-white p-4 rounded-3xl shadow-sm border border-teal-600/30 flex items-center justify-between">
+        <div class="flex items-center gap-3">
+          <button onclick="switchAppTab('beranda')" type="button" class="w-8 h-8 rounded-xl bg-white/10 hover:bg-white/20 flex items-center justify-center text-white transition-colors cursor-pointer" title="Kembali ke Beranda">
+            <i data-lucide="arrow-left" class="w-4 h-4"></i>
+          </button>
+          <div>
+            <h2 class="text-sm font-black text-white leading-tight">Jejaring Alumni (IKAMAS)</h2>
+            <p class="text-[10px] text-teal-200 mt-0.5">Kiprah &amp; Kisah Sukses Santri MTs YASUA</p>
+          </div>
+        </div>
+        <button onclick="fetchAppAlumni(true)" type="button" class="w-8 h-8 rounded-xl bg-white/10 hover:bg-white/20 flex items-center justify-center text-white transition-colors cursor-pointer" title="Segarkan Data">
+          <i data-lucide="refresh-cw" id="alumniAppRefreshIcon" class="w-4 h-4 text-teal-200"></i>
+        </button>
+      </div>
+
+      <!-- Banner Ajakan Tracer Study Mobile -->
+      <div class="bg-gradient-to-br from-slate-900 to-teal-950 text-white p-3.5 rounded-2xl border border-teal-800 shadow-xs flex items-center justify-between gap-3">
+        <div class="space-y-1">
+          <span class="text-[9px] font-extrabold uppercase px-2 py-0.5 rounded bg-amber-400 text-slate-950">Pendataan Santri</span>
+          <h4 class="text-xs font-black text-white">Lulusan MTs YASUA?</h4>
+          <p class="text-[10px] text-slate-300">Gabung grup silaturahmi &amp; perbarui data studi/pekerjaan Anda.</p>
+        </div>
+        <a href="https://wa.me/6281234567890?text=Assalamu%27alaikum%20Admin%20IKAMAS%20MTs%20YASUA,%20saya%20alumni%20ingin%20mendaftarkan%20data%20alumni." target="_blank"
+          class="shrink-0 px-3 py-2 rounded-xl bg-amber-500 hover:bg-amber-600 text-slate-950 font-black text-[11px] shadow-sm flex items-center gap-1.5 transition-colors">
+          <i data-lucide="user-plus" class="w-3.5 h-3.5 text-slate-950"></i>
+          <span>Daftar via WA</span>
+        </a>
+      </div>
+
+      <!-- Filter Kategori Pills (Horizontal Scroll) -->
+      <div class="flex items-center gap-1.5 overflow-x-auto pb-1 scrollbar-none text-[11px]">
+        <button onclick="filterAppAlumni('all', this)" class="app-alm-filter-btn px-3 py-1.5 rounded-full font-bold bg-teal-700 text-white shadow-xs whitespace-nowrap cursor-pointer">
+          Semua Alumni
+        </button>
+        <button onclick="filterAppAlumni('pesantren', this)" class="app-alm-filter-btn px-3 py-1.5 rounded-full font-semibold bg-white border border-slate-200 text-slate-700 hover:bg-teal-50 transition-all whitespace-nowrap cursor-pointer">
+          Pesantren
+        </button>
+        <button onclick="filterAppAlumni('kuliah', this)" class="app-alm-filter-btn px-3 py-1.5 rounded-full font-semibold bg-white border border-slate-200 text-slate-700 hover:bg-teal-50 transition-all whitespace-nowrap cursor-pointer">
+          Perguruan Tinggi
+        </button>
+        <button onclick="filterAppAlumni('profesional', this)" class="app-alm-filter-btn px-3 py-1.5 rounded-full font-semibold bg-white border border-slate-200 text-slate-700 hover:bg-teal-50 transition-all whitespace-nowrap cursor-pointer">
+          Profesional &amp; Medis
+        </button>
+        <button onclick="filterAppAlumni('wirausaha', this)" class="app-alm-filter-btn px-3 py-1.5 rounded-full font-semibold bg-white border border-slate-200 text-slate-700 hover:bg-teal-50 transition-all whitespace-nowrap cursor-pointer">
+          Wirausaha
+        </button>
+      </div>
+
+      <!-- Container List Alumni -->
+      <div id="appAlumniContainer" class="space-y-3">
+        <!-- Rendered dynamically via JS with fallback -->
+      </div>
+    </div><!-- End #tab-alumni -->
+
     <!-- LIGHTBOX MODAL APP PWA -->
     <div id="appGalleryLightboxModal" class="fixed inset-0 z-50 hidden bg-slate-950/85 backdrop-blur-md flex items-center justify-center p-4" onclick="closeAppGalleryLightbox()">
       <div class="relative max-w-sm w-full bg-slate-900 rounded-3xl overflow-hidden shadow-2xl border border-white/10 flex flex-col" onclick="event.stopPropagation()">
@@ -1355,7 +1429,7 @@
   <script>
     // --- 1. Client-Side Tab Router ---
     let currentActiveTab = 'beranda';
-    const allAppTabs = ['beranda', 'berita', 'kalender', 'guru', 'program', 'ppdb', 'ekskul', 'prestasi', 'profil', 'galeri'];
+    const allAppTabs = ['beranda', 'berita', 'kalender', 'guru', 'program', 'ppdb', 'ekskul', 'prestasi', 'profil', 'galeri', 'alumni'];
 
     function switchAppTab(tabName, updateHistory = true) {
       if (!allAppTabs.includes(tabName)) tabName = 'beranda';
@@ -1412,6 +1486,8 @@
         if (typeof initTabPrestasi === 'function') initTabPrestasi();
       } else if (tabName === 'galeri') {
         if (typeof initTabGaleri === 'function') initTabGaleri();
+      } else if (tabName === 'alumni') {
+        if (typeof initTabAlumni === 'function') initTabAlumni();
       }
 
       window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -1807,6 +1883,205 @@
         })
         .catch(err => {
           console.warn('Gagal memuat galeri app dari cloud, menggunakan cache lokal:', err);
+        })
+        .finally(() => {
+          if (refreshIcon) refreshIcon.classList.remove('animate-spin');
+        });
+    }
+
+
+    // =========================================================================
+    // MOBILE APP PWA: JEJARING ALUMNI (IKAMAS) LOGIC
+    // =========================================================================
+    let appAlumniData = [
+      {
+        id: "alm_1",
+        nama: "Ust. Ahmad Muzakki, M.Pd.",
+        angkatan: "2012",
+        kategori: "pesantren",
+        kategoriLabel: "Pendidikan & Pesantren",
+        profesi: "Dosen & Pengasuh Majlis Taklim",
+        instansi: "UIN Walisongo & Ponpes Lirboyo",
+        domisili: "Demak",
+        testimoni: "Fondasi nahwu shorof dan disiplin sholat dhuha yang ditanamkan guru-guru MTs YASUA menjadi bekal paling berharga saat saya mondok di pesantren dan menyelesaikan studi magister pendidikan.",
+        foto: ""
+      },
+      {
+        id: "alm_2",
+        nama: "dr. Rina Nurul Aini",
+        angkatan: "2014",
+        kategori: "profesional",
+        kategoriLabel: "Medis & Kesehatan",
+        profesi: "Dokter Umum RSUD",
+        instansi: "RSUD Sunan Kalijaga Demak",
+        domisili: "Jawa Tengah",
+        testimoni: "Madrasah ini mengajarkan bahwa menjadi profesional di bidang sains dan kedokteran tetap harus berlandaskan adab dan kasih sayang kepada sesama sebagaimana ajaran Islam.",
+        foto: ""
+      },
+      {
+        id: "alm_3",
+        nama: "Muhammad Fajar Sidiq, S.Kom.",
+        angkatan: "2017",
+        kategori: "profesional",
+        kategoriLabel: "Teknologi & Digital",
+        profesi: "Founder Tech Studio",
+        instansi: "PT Inovasi Digital Nusantara",
+        domisili: "Semarang",
+        testimoni: "Pengenalan awal komputer dan ekstrakurikuler di MTs YASUA memicu ketertarikan saya pada dunia software engineering hingga kini berhasil memimpin agensi teknologi digital.",
+        foto: ""
+      },
+      {
+        id: "alm_4",
+        nama: "Nur Halimah, S.Pd.",
+        angkatan: "2016",
+        kategori: "kuliah",
+        kategoriLabel: "Pendidikan",
+        profesi: "Guru Bahasa Arab & Penulis",
+        instansi: "Madrasah Aliyah Negeri Demak",
+        domisili: "Demak",
+        testimoni: "Kecintaan saya pada literasi dan bahasa Arab tumbuh berkat keteladanan para asatidz di MTs YASUA Pilangwetan.",
+        foto: ""
+      },
+      {
+        id: "alm_5",
+        nama: "Ahmad Faiz Robbani",
+        angkatan: "2019",
+        kategori: "pesantren",
+        kategoriLabel: "Studi Islam Salaf",
+        profesi: "Santri Ma'had Aly & Mahasiswa Tafsir",
+        instansi: "Ma'had Aly Krapyak Yogyakarta",
+        domisili: "Yogyakarta",
+        testimoni: "Tradisi sorogan dan hafalan juz 'amma di MTs YASUA sangat mempermudah saya dalam memperdalam kitab-kitab turats klasik di pesantren.",
+        foto: ""
+      },
+      {
+        id: "alm_6",
+        nama: "Siti Mar'atun Sholihah",
+        angkatan: "2018",
+        kategori: "wirausaha",
+        kategoriLabel: "Ekonomi Syariah",
+        profesi: "Pengusaha Busana Muslim & Konveksi",
+        instansi: "CV Suada Hijab Mandiri",
+        domisili: "Demak",
+        testimoni: "Karakter ulet, jujur, dan berani memulai usaha diajarkan sejak kegiatan kepramukaan dan kemandirian santri di madrasah.",
+        foto: ""
+      }
+    ];
+
+    let currentAppAlmFilter = 'all';
+
+    function initTabAlumni() {
+      renderAppAlumniList();
+      fetchAppAlumni(false);
+    }
+
+    function getAppAlmInitials(name) {
+      if (!name) return 'UA';
+      const parts = name.replace(/^(ust.|dr.|drs.|kh.|h.)s*/i, '').trim().split(' ');
+      if (parts.length === 1) return parts[0].substring(0, 2).toUpperCase();
+      return (parts[0][0] + parts[parts.length - 1][0]).toUpperCase();
+    }
+
+    function renderAppAlumniList() {
+      const container = document.getElementById('appAlumniContainer');
+      if (!container) return;
+
+      const filtered = appAlumniData.filter(a => {
+        return currentAppAlmFilter === 'all' || a.kategori === currentAppAlmFilter;
+      });
+
+      if (filtered.length === 0) {
+        container.innerHTML = `
+          <div class="py-10 text-center bg-white rounded-3xl border border-slate-100 p-4">
+            <i data-lucide="users" class="w-8 h-8 text-teal-500 mx-auto mb-2"></i>
+            <p class="text-xs font-bold text-slate-700">Belum ada alumni pada kategori ini</p>
+            <p class="text-[10px] text-slate-400 mt-0.5">Pilih filter Semua Alumni untuk melihat seluruh data.</p>
+          </div>
+        `;
+        if (window.lucide) window.lucide.createIcons();
+        return;
+      }
+
+      container.innerHTML = filtered.map(item => {
+        const initials = getAppAlmInitials(item.nama);
+        const angkatanLabel = item.angkatan.startsWith('Angkatan') ? item.angkatan : `Angkatan ${item.angkatan}`;
+
+        return `
+          <div class="bg-white rounded-2xl border border-teal-100/90 shadow-2xs p-3.5 space-y-3">
+            <div class="flex items-center gap-3">
+              <div class="w-11 h-11 rounded-2xl overflow-hidden shrink-0 bg-teal-100 text-teal-800 font-black flex items-center justify-center text-xs border border-teal-200">
+                ${item.foto ? `
+                  <img src="${item.foto}" alt="${item.nama}" class="w-full h-full object-cover">
+                ` : `
+                  <span>${initials}</span>
+                `}
+              </div>
+              <div class="flex-1 min-w-0">
+                <span class="text-[9px] font-extrabold uppercase px-1.5 py-0.5 rounded bg-teal-50 text-teal-800 border border-teal-200">
+                  ${angkatanLabel}
+                </span>
+                <h4 class="font-extrabold text-slate-900 text-xs mt-0.5 leading-snug truncate">
+                  ${item.nama}
+                </h4>
+                <p class="text-[10px] text-teal-700 font-semibold truncate">${item.profesi}</p>
+              </div>
+            </div>
+
+            <div class="p-2.5 rounded-xl bg-slate-50 border border-slate-100 text-[10px] text-slate-500 flex items-center justify-between">
+              <span class="truncate">${item.instansi || 'Alumni MTs YASUA'}</span>
+              <span class="shrink-0 font-medium text-slate-600">${item.domisili || 'Demak'}</span>
+            </div>
+
+            ${item.testimoni ? `
+              <p class="text-[10px] text-slate-600 italic bg-amber-50/60 p-2.5 rounded-xl border border-amber-200/50 leading-relaxed">
+                “${item.testimoni}”
+              </p>
+            ` : ''}
+          </div>
+        `;
+      }).join('');
+
+      if (window.lucide) window.lucide.createIcons();
+    }
+
+    function filterAppAlumni(cat, btn) {
+      currentAppAlmFilter = cat;
+      const allBtns = document.querySelectorAll('.app-alm-filter-btn');
+      allBtns.forEach(b => {
+        b.className = 'app-alm-filter-btn px-3 py-1.5 rounded-full font-semibold bg-white border border-slate-200 text-slate-700 hover:bg-teal-50 transition-all whitespace-nowrap cursor-pointer';
+      });
+      btn.className = 'app-alm-filter-btn px-3 py-1.5 rounded-full font-bold bg-teal-700 text-white shadow-xs whitespace-nowrap cursor-pointer';
+      renderAppAlumniList();
+    }
+
+    function fetchAppAlumni(force = false) {
+      const refreshIcon = document.getElementById('alumniAppRefreshIcon');
+      if (refreshIcon) refreshIcon.classList.add('animate-spin');
+
+      fetch('https://script.google.com/macros/s/AKfycbxNFLoL96Ch_8QOKhp5AFauIGb9GcMpd9eb3my_zqikL0sDuncgRhDPD6tez-fuY6wT/exec?action=getAlumni')
+        .then(res => res.json())
+        .then(json => {
+          if (json.status === 'success' && Array.isArray(json.data) && json.data.length > 0) {
+            const activeOnly = json.data.filter(a => a.status === true || a.status === 'true' || a.Status === 'Aktif' || a.status === undefined);
+            if (activeOnly.length > 0) {
+              appAlumniData = activeOnly.map(item => ({
+                id: String(item.id || item.ID || Date.now()),
+                nama: item.nama || item.Nama || item.name || '',
+                angkatan: String(item.angkatan || item.Angkatan || item.tahun || '2020'),
+                kategori: (item.kategori || item.Kategori || 'pesantren').toLowerCase(),
+                kategoriLabel: item.kategoriLabel || item.KategoriLabel || 'Alumni YASUA',
+                profesi: item.profesi || item.Profesi || item.pekerjaan || '',
+                instansi: item.instansi || item.Instansi || item.kampus || '',
+                domisili: item.domisili || item.Domisili || 'Demak',
+                testimoni: item.testimoni || item.Testimoni || item.pesan || '',
+                foto: item.foto || item.Foto || item.gambar || ''
+              }));
+              renderAppAlumniList();
+            }
+          }
+        })
+        .catch(err => {
+          console.warn('Gagal memuat alumni app dari cloud, menggunakan cache lokal:', err);
         })
         .finally(() => {
           if (refreshIcon) refreshIcon.classList.remove('animate-spin');

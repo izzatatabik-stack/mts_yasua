@@ -415,7 +415,7 @@
           </p>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div id="webAlumniGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
 
           <!-- Alumni 1 -->
           <div class="bg-white rounded-3xl p-6 border border-emerald-100 shadow-xs hover-lift flex flex-col justify-between">
@@ -759,6 +759,75 @@
       modal.classList.add('hidden');
       document.body.style.overflow = '';
     }
+
+    // Sinkronisasi data live alumni dari Cloud Google Apps Script
+    async function fetchLiveAlumni() {
+      const API_URL = 'https://script.google.com/macros/s/AKfycbxNFLoL96Ch_8QOKhp5AFauIGb9GcMpd9eb3my_zqikL0sDuncgRhDPD6tez-fuY6wT/exec?action=getAlumni';
+      try {
+        const res = await fetch(API_URL);
+        const json = await res.json();
+        if (json.status === 'success' && Array.isArray(json.data) && json.data.length > 0) {
+          const activeAlumni = json.data.filter(a => a.status === true || a.status === 'true' || a.Status === 'Aktif' || a.status === undefined);
+          if (activeAlumni.length > 0) {
+            renderWebAlumniGrid(activeAlumni);
+          }
+        }
+      } catch (e) {
+        console.info('Menggunakan kartu alumni statis bawaan.');
+      }
+    }
+
+    function getWebAlmInitials(name) {
+      if (!name) return 'UA';
+      const parts = name.replace(/^(ust.|dr.|drs.|kh.|h.)s*/i, '').trim().split(' ');
+      if (parts.length === 1) return parts[0].substring(0, 2).toUpperCase();
+      return (parts[0][0] + parts[parts.length - 1][0]).toUpperCase();
+    }
+
+    function renderWebAlumniGrid(items) {
+      const grid = document.getElementById('webAlumniGrid');
+      if (!grid) return;
+
+      items.sort((a, b) => (Number(a.urutan) || 99) - (Number(b.urutan) || 99));
+
+      grid.innerHTML = items.map(item => {
+        const initials = getWebAlmInitials(item.nama);
+        const angkatanLabel = (item.angkatan && item.angkatan.startsWith('Angkatan')) ? item.angkatan : `Alumni Angkatan ${item.angkatan || 'YASUA'}`;
+
+        return `
+          <div class="bg-white rounded-3xl p-6 border border-emerald-100 shadow-xs hover-lift flex flex-col justify-between">
+            <div class="space-y-4">
+              <div class="flex items-center gap-3">
+                <div class="w-12 h-12 rounded-full overflow-hidden bg-emerald-100 text-brand-primary font-black flex items-center justify-center text-sm border-2 border-emerald-200 shrink-0">
+                  ${item.foto ? `
+                    <img src="${item.foto}" alt="${item.nama}" class="w-full h-full object-cover">
+                  ` : `
+                    <span>${initials}</span>
+                  `}
+                </div>
+                <div>
+                  <h3 class="font-extrabold text-slate-900 text-base leading-snug">${item.nama}</h3>
+                  <p class="text-xs text-brand-primary font-semibold">${angkatanLabel}</p>
+                </div>
+              </div>
+              <div class="p-3.5 rounded-2xl bg-slate-50 border border-slate-200/80 text-xs text-slate-700 italic leading-relaxed">
+                “${item.testimoni || 'Bangga menjadi bagian dari keluarga besar MTs YASUA Pilangwetan.'}”
+              </div>
+            </div>
+            <div class="pt-4 mt-4 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500">
+              <span class="font-semibold text-slate-800 truncate mr-2">${item.profesi}</span>
+              <span class="shrink-0">${item.domisili || 'Demak'}</span>
+            </div>
+          </div>
+        `;
+      }).join('');
+
+      if (window.lucide) window.lucide.createIcons();
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      fetchLiveAlumni();
+    });
 
     window.addEventListener('keydown', function(e) {
       if (e.key === 'Escape') closeBrochureModal();
