@@ -902,6 +902,125 @@
           </div>
         </div>
 
+      
+        <!-- ================================================================= -->
+        <!-- VIEW 5: GALERI MADRASAH (Portal & Publikasi Module)               -->
+        <!-- ================================================================= -->
+        <div id="viewGallery" class="space-y-6 hidden">
+          <!-- Header Banner -->
+          <div class="bg-gradient-to-r from-indigo-500/10 via-purple-500/10 to-emerald-500/10 border border-indigo-200/80 rounded-2xl p-4 sm:p-5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 shadow-2xs">
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 rounded-xl bg-indigo-600 text-white flex items-center justify-center shrink-0 shadow-sm">
+                <i data-lucide="image" class="w-5 h-5 text-indigo-100"></i>
+              </div>
+              <div>
+                <div class="flex items-center gap-2">
+                  <h2 class="text-sm sm:text-base font-black text-slate-900">Pengelolaan Galeri &amp; Dokumentasi Madrasah</h2>
+                  <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-indigo-100 text-indigo-900 font-bold text-[10px]">
+                    <span class="w-1.5 h-1.5 rounded-full bg-indigo-500 animate-ping"></span> Live Web (galeri.html &amp; /app)
+                  </span>
+                </div>
+                <p class="text-xs text-slate-600 mt-0.5">Kelola foto arsip kegiatan santri, fasilitas madrasah, dan dokumentasi terhubung Instagram/TikTok.</p>
+              </div>
+            </div>
+            <div class="flex items-center gap-2 self-end sm:self-auto">
+              <button onclick="fetchGallery()"
+                class="px-3 py-2 rounded-xl border border-slate-200 hover:bg-white text-xs font-bold text-slate-700 flex items-center gap-1.5 transition-colors shadow-2xs cursor-pointer">
+                <i data-lucide="refresh-cw" id="refreshGalleryIcon" class="w-3.5 h-3.5"></i>
+                <span>Segarkan Data</span>
+              </button>
+              <button onclick="openAddGalleryModal()"
+                class="px-3.5 py-2 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-black flex items-center gap-1.5 shadow-sm transition-colors cursor-pointer">
+                <i data-lucide="plus-circle" class="w-3.5 h-3.5 text-white"></i>
+                <span>+ Tambah Foto Galeri</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Statistik Mini Cards -->
+          <div class="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
+            <div class="bg-gradient-to-br from-indigo-800 to-indigo-950 text-white p-4 rounded-2xl relative overflow-hidden shadow-sm">
+              <div class="absolute -right-3 -bottom-3 w-16 h-16 bg-white/10 rounded-full blur-xs"></div>
+              <p class="text-[11px] font-semibold text-indigo-200 uppercase tracking-wider">Total Dokumentasi</p>
+              <h3 id="galleryTotalStat" class="text-2xl sm:text-3xl font-black mt-1">6</h3>
+              <p class="text-[10px] text-indigo-300 mt-1 flex items-center gap-1">
+                <i data-lucide="camera" class="w-3 h-3"></i> Foto &amp; Video Arsip
+              </p>
+            </div>
+            <div class="bg-gradient-to-br from-purple-600 to-purple-800 text-white p-4 rounded-2xl relative overflow-hidden shadow-sm">
+              <div class="absolute -right-3 -bottom-3 w-16 h-16 bg-white/10 rounded-full blur-xs"></div>
+              <p class="text-[11px] font-semibold text-purple-100 uppercase tracking-wider">Kegiatan Santri</p>
+              <h3 id="galleryKegiatanStat" class="text-2xl sm:text-3xl font-black mt-1">3</h3>
+              <p class="text-[10px] text-purple-200 mt-1 flex items-center gap-1">
+                <i data-lucide="users" class="w-3 h-3"></i> Pembinaan &amp; Pembiasaan
+              </p>
+            </div>
+            <div class="bg-gradient-to-br from-teal-600 to-teal-800 text-white p-4 rounded-2xl relative overflow-hidden shadow-sm">
+              <div class="absolute -right-3 -bottom-3 w-16 h-16 bg-white/10 rounded-full blur-xs"></div>
+              <p class="text-[11px] font-semibold text-teal-100 uppercase tracking-wider">Sarana &amp; Gedung</p>
+              <h3 id="gallerySarprasStat" class="text-2xl sm:text-3xl font-black mt-1">2</h3>
+              <p class="text-[10px] text-teal-200 mt-1 flex items-center gap-1">
+                <i data-lucide="building-2" class="w-3 h-3"></i> Fasilitas Madrasah
+              </p>
+            </div>
+            <div class="bg-gradient-to-br from-emerald-700 to-emerald-950 text-white p-4 rounded-2xl relative overflow-hidden shadow-sm">
+              <div class="absolute -right-3 -bottom-3 w-16 h-16 bg-white/10 rounded-full blur-xs"></div>
+              <p class="text-[11px] font-semibold text-emerald-100 uppercase tracking-wider">Aktif Publik</p>
+              <h3 id="galleryAktifStat" class="text-2xl sm:text-3xl font-black mt-1">6</h3>
+              <p class="text-[10px] text-emerald-200 mt-1 flex items-center gap-1">
+                <i data-lucide="check-circle-2" class="w-3 h-3"></i> Tampil di Web &amp; App
+              </p>
+            </div>
+          </div>
+
+          <!-- Filter Kategori & Search -->
+          <div class="flex flex-col md:flex-row items-stretch md:items-center justify-between gap-3 bg-white p-3.5 rounded-2xl border border-slate-200/90 shadow-2xs">
+            <!-- Filter Pills -->
+            <div class="flex items-center gap-1.5 overflow-x-auto pb-1 md:pb-0 scrollbar-none text-xs">
+              <button onclick="filterAdminGallery('all')" id="galleryFilterAll"
+                class="px-3 py-1.5 rounded-xl font-bold transition-all bg-indigo-700 text-white shadow-xs whitespace-nowrap cursor-pointer">
+                Semua (<span id="countGalAll">6</span>)
+              </button>
+              <button onclick="filterAdminGallery('kegiatan')" id="galleryFilterKegiatan"
+                class="px-3 py-1.5 rounded-xl font-medium text-slate-600 hover:text-indigo-700 hover:bg-indigo-50 transition-all whitespace-nowrap cursor-pointer">
+                Kegiatan &amp; Siswa (<span id="countGalKegiatan">2</span>)
+              </button>
+              <button onclick="filterAdminGallery('sarpras')" id="galleryFilterSarpras"
+                class="px-3 py-1.5 rounded-xl font-medium text-slate-600 hover:text-indigo-700 hover:bg-indigo-50 transition-all whitespace-nowrap cursor-pointer">
+                Sarana &amp; Fasilitas (<span id="countGalSarpras">2</span>)
+              </button>
+              <button onclick="filterAdminGallery('ibadah')" id="galleryFilterIbadah"
+                class="px-3 py-1.5 rounded-xl font-medium text-slate-600 hover:text-indigo-700 hover:bg-indigo-50 transition-all whitespace-nowrap cursor-pointer">
+                Pembiasaan Ibadah (<span id="countGalIbadah">1</span>)
+              </button>
+              <button onclick="filterAdminGallery('akademik')" id="galleryFilterAkademik"
+                class="px-3 py-1.5 rounded-xl font-medium text-slate-600 hover:text-indigo-700 hover:bg-indigo-50 transition-all whitespace-nowrap cursor-pointer">
+                Akademik &amp; Info (<span id="countGalAkademik">1</span>)
+              </button>
+            </div>
+
+            <!-- Search Field -->
+            <div class="relative w-full md:w-64">
+              <i data-lucide="search" class="w-4 h-4 text-slate-400 absolute left-3 top-1/2 -translate-y-1/2"></i>
+              <input type="text" id="gallerySearchInput" oninput="searchAdminGallery()"
+                placeholder="Cari dokumentasi, caption..."
+                class="w-full pl-9 pr-3 py-1.5 text-xs rounded-xl border border-slate-200 focus:outline-indigo-600 focus:border-indigo-600 bg-slate-50/50">
+            </div>
+          </div>
+
+          <!-- Grid Daftar Foto Galeri -->
+          <div>
+            <div class="flex items-center justify-between mb-3 px-1">
+              <h3 class="text-xs font-black uppercase tracking-wider text-slate-500">Daftar Foto Dokumentasi</h3>
+              <span id="galleryShowingCount" class="text-xs text-slate-500">Menampilkan 6 dari 6 foto</span>
+            </div>
+
+            <div id="galleryGrid" class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 sm:gap-5">
+              <!-- Dynamically populated via JS -->
+            </div>
+          </div>
+        </div>
+
       </main>
     </div>
   </div>
@@ -1538,6 +1657,172 @@
     </div>
   </div>
 
+  
+  <!-- ===================================================================== -->
+  <!-- MODAL: TAMBAH / EDIT FOTO GALERI                                      -->
+  <!-- ===================================================================== -->
+  <div id="galleryModal" class="fixed inset-0 z-50 hidden bg-slate-900/60 backdrop-blur-xs flex items-center justify-center p-3 sm:p-4 overflow-y-auto">
+    <div class="bg-white rounded-3xl max-w-xl w-full p-5 sm:p-6 shadow-2xl border border-slate-200 my-8">
+      <div class="flex items-center justify-between pb-3.5 border-b border-slate-100">
+        <div class="flex items-center gap-2.5">
+          <div class="w-9 h-9 rounded-xl bg-indigo-50 text-indigo-600 flex items-center justify-center">
+            <i data-lucide="image" class="w-5 h-5"></i>
+          </div>
+          <div>
+            <h3 id="galleryModalTitle" class="font-extrabold text-slate-900 text-base">Tambah Foto Dokumentasi Galeri</h3>
+            <p class="text-[11px] text-slate-500">Unggah foto kegiatan, fasilitas kampus, atau dokumentasi madrasah.</p>
+          </div>
+        </div>
+        <button onclick="closeModalGallery()" class="w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-500 flex items-center justify-center transition-colors cursor-pointer">
+          <i data-lucide="x" class="w-4 h-4"></i>
+        </button>
+      </div>
+
+      <form id="galleryForm" onsubmit="handleSaveGallery(event)" class="mt-4 space-y-4">
+        <input type="hidden" id="galleryId">
+
+        <!-- Judul Dokumentasi -->
+        <div>
+          <label class="block text-xs font-bold text-slate-700 mb-1">Judul / Nama Dokumentasi <span class="text-rose-500">*</span></label>
+          <input type="text" id="galleryJudul" required placeholder="Contoh: Praktik Komputer &amp; Gladi Bersih ANBK"
+            class="w-full px-3.5 py-2 text-xs rounded-xl border border-slate-300 focus:outline-indigo-600 focus:border-indigo-600">
+        </div>
+
+        <!-- Baris: Kategori & Label Badge -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <div>
+            <label class="block text-xs font-bold text-slate-700 mb-1">Kategori <span class="text-rose-500">*</span></label>
+            <select id="galleryKategori" required
+              class="w-full px-3 py-2 text-xs rounded-xl border border-slate-300 focus:outline-indigo-600 focus:border-indigo-600 bg-white">
+              <option value="kegiatan">Kegiatan &amp; Pembinaan Siswa</option>
+              <option value="sarpras">Sarana &amp; Fasilitas Gedung</option>
+              <option value="ibadah">Pembiasaan Ibadah Santri</option>
+              <option value="akademik">Akademik &amp; Info Resmi</option>
+              <option value="ekskul">Ekstrakurikuler &amp; Seni</option>
+              <option value="lainnya">Lain-lain</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-xs font-bold text-slate-700 mb-1">Label Badge Khusus</label>
+            <input type="text" id="galleryKategoriLabel" placeholder="Contoh: Literasi Digital / Fasilitas Kampus"
+              class="w-full px-3.5 py-2 text-xs rounded-xl border border-slate-300 focus:outline-indigo-600 focus:border-indigo-600">
+          </div>
+        </div>
+
+        <!-- Baris: Tanggal & Lokasi -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <div>
+            <label class="block text-xs font-bold text-slate-700 mb-1">Tanggal / Waktu Kegiatan</label>
+            <input type="text" id="galleryTanggal" placeholder="Contoh: 15 September 2024 / Semester Gasal"
+              class="w-full px-3.5 py-2 text-xs rounded-xl border border-slate-300 focus:outline-indigo-600 focus:border-indigo-600">
+          </div>
+          <div>
+            <label class="block text-xs font-bold text-slate-700 mb-1">Lokasi Kegiatan</label>
+            <input type="text" id="galleryLokasi" placeholder="Contoh: Lab Komputer Terpadu / Masjid Madrasah"
+              class="w-full px-3.5 py-2 text-xs rounded-xl border border-slate-300 focus:outline-indigo-600 focus:border-indigo-600">
+          </div>
+        </div>
+
+        <!-- Baris: Platform Sumber & URL Medsos -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <div>
+            <label class="block text-xs font-bold text-slate-700 mb-1">Sumber / Platform Sosial Media</label>
+            <select id="galleryPlatform"
+              class="w-full px-3 py-2 text-xs rounded-xl border border-slate-300 focus:outline-indigo-600 focus:border-indigo-600 bg-white">
+              <option value="instagram">Instagram Resmi (@mts.yasua_pilangwetan)</option>
+              <option value="tiktok">TikTok Resmi (@mtsyasuapilangwetan)</option>
+              <option value="internal">Arsip Internal Madrasah</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-xs font-bold text-slate-700 mb-1">Tautan URL Post Medsos</label>
+            <input type="url" id="galleryPlatformUrl" placeholder="https://www.instagram.com/..."
+              class="w-full px-3.5 py-2 text-xs rounded-xl border border-slate-300 focus:outline-indigo-600 focus:border-indigo-600">
+          </div>
+        </div>
+
+        <!-- Deskripsi / Caption -->
+        <div>
+          <label class="block text-xs font-bold text-slate-700 mb-1">Keterangan / Caption Foto</label>
+          <textarea id="galleryDeskripsi" rows="2" placeholder="Catatan cerita singkat dokumentasi kegiatan..."
+            class="w-full px-3.5 py-2 text-xs rounded-xl border border-slate-300 focus:outline-indigo-600 focus:border-indigo-600"></textarea>
+        </div>
+
+        <!-- Baris: Urutan & Status -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <div>
+            <label class="block text-xs font-bold text-slate-700 mb-1">Urutan Prioritas Tampil</label>
+            <input type="number" id="galleryUrutan" min="1" value="1"
+              class="w-full px-3.5 py-2 text-xs rounded-xl border border-slate-300 focus:outline-indigo-600 focus:border-indigo-600">
+          </div>
+          <div>
+            <label class="block text-xs font-bold text-slate-700 mb-1">Status Publikasi</label>
+            <select id="galleryStatus"
+              class="w-full px-3 py-2 text-xs rounded-xl border border-slate-300 focus:outline-indigo-600 focus:border-indigo-600 bg-white">
+              <option value="true">Aktif (Tampil di Web &amp; App)</option>
+              <option value="false">Draft / Arsip (Disembunyikan)</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Upload Foto -->
+        <div>
+          <label class="block text-xs font-bold text-slate-700 mb-1">File Foto Dokumentasi <span class="text-rose-500">*</span></label>
+          <div class="flex items-center gap-3">
+            <div class="w-20 h-16 rounded-xl bg-slate-100 border border-slate-200 overflow-hidden shrink-0 flex items-center justify-center">
+              <img id="galleryPreviewImg" src="foto-gedung.webp" alt="Preview" class="w-full h-full object-cover">
+            </div>
+            <div class="flex-1 space-y-1.5">
+              <input type="file" id="galleryFileInput" accept="image/*" onchange="handleGalleryFileChange(event)"
+                class="w-full text-xs text-slate-500 file:mr-2 file:py-1.5 file:px-3 file:rounded-xl file:border-0 file:text-xs file:font-semibold file:bg-indigo-50 file:text-indigo-700 hover:file:bg-indigo-100 cursor-pointer">
+              <p class="text-[10px] text-slate-400">Otomatis dioptimalkan canvas HTML5 sebelum diunggah ke Google Drive.</p>
+              <input type="text" id="galleryGambarUrl" placeholder="Atau tempel URL gambar lokal/eksternal..."
+                oninput="updateGalleryUrlPreview()"
+                class="w-full px-3 py-1.5 text-xs rounded-xl border border-slate-200 bg-slate-50/50">
+            </div>
+          </div>
+        </div>
+
+        <!-- Actions -->
+        <div class="flex items-center justify-end gap-2 pt-3 border-t border-slate-100">
+          <button type="button" onclick="closeModalGallery()"
+            class="px-4 py-2 rounded-xl text-xs font-bold text-slate-600 hover:bg-slate-100 transition-colors cursor-pointer">
+            Batal
+          </button>
+          <button type="submit" id="saveGalleryBtn"
+            class="px-5 py-2 rounded-xl text-xs font-black bg-indigo-600 hover:bg-indigo-700 text-white shadow-sm transition-all flex items-center gap-2 cursor-pointer">
+            <i data-lucide="save" class="w-3.5 h-3.5 text-white"></i>
+            <span>Simpan Dokumentasi</span>
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- LIGHTBOX MODAL: LIHAT UKURAN PENUH -->
+  <div id="galleryLightboxModal" class="fixed inset-0 z-50 hidden bg-slate-950/85 backdrop-blur-md flex items-center justify-center p-3 sm:p-6" onclick="closeGalleryLightbox()">
+    <div class="relative max-w-4xl w-full bg-slate-900 rounded-3xl overflow-hidden shadow-2xl border border-white/10" onclick="event.stopPropagation()">
+      <button onclick="closeGalleryLightbox()" class="absolute top-4 right-4 z-10 w-9 h-9 rounded-full bg-black/60 hover:bg-black/80 text-white flex items-center justify-center backdrop-blur-sm cursor-pointer">
+        <i data-lucide="x" class="w-5 h-5"></i>
+      </button>
+      <div class="max-h-[70vh] bg-black flex items-center justify-center overflow-hidden">
+        <img id="lightboxImg" src="" alt="Full view" class="w-full h-full max-h-[70vh] object-contain">
+      </div>
+      <div class="p-4 sm:p-5 bg-slate-900 text-white flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+        <div>
+          <span id="lightboxBadge" class="inline-block px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-indigo-500/30 text-indigo-300 border border-indigo-500/40 mb-1"></span>
+          <h4 id="lightboxTitle" class="font-extrabold text-sm sm:text-base text-white"></h4>
+          <p id="lightboxDesc" class="text-xs text-slate-300 mt-0.5"></p>
+        </div>
+        <a id="lightboxLink" href="#" target="_blank" rel="noopener noreferrer"
+          class="shrink-0 px-3.5 py-1.5 rounded-xl bg-white/10 hover:bg-white/20 text-xs font-bold text-white border border-white/20 flex items-center gap-1.5 transition-colors">
+          <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+          <span>Buka Tautan Sumber</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
   <div id="toastContainer" class="fixed top-5 right-5 z-50 space-y-2 pointer-events-none"></div>
 
   <!-- =================================================================== -->
@@ -1740,7 +2025,17 @@
       navBtnBanners.className = inactiveClass;
       if (navBtnNews) navBtnNews.className = inactiveClass;
 
-      if (view === 'prestasi') {
+      if (view === 'gallery') {
+        if (viewGallery) viewGallery.classList.remove('hidden');
+        if (navBtnGallery) navBtnGallery.className = activeClass;
+
+        breadcrumbCat.textContent = 'Portal & Publikasi';
+        breadcrumbPage.textContent = 'Galeri Madrasah';
+        webPublikBtn.href = 'galeri.html';
+        webPublikLabel.textContent = 'Web Publik (galeri.html)';
+
+        renderGalleryGrid();
+      } else if (view === 'prestasi') {
         if (viewPrestasi) viewPrestasi.classList.remove('hidden');
         if (navBtnPrestasi) navBtnPrestasi.className = activeClass;
 
@@ -3962,6 +4257,564 @@
         });
       } catch (err) {
         console.warn('Gagal sinkron hapus ke backend:', err);
+      }
+    }
+
+
+    // =========================================================================
+    // GALERI & DOKUMENTASI MADRASAH CRUD MODULE
+    // =========================================================================
+    let allGalleryData = [
+      {
+        id: "gal_1",
+        judul: "Gedung Pembelajaran Terpadu MTs YASUA",
+        kategori: "sarpras",
+        kategoriLabel: "Fasilitas Kampus",
+        tanggal: "2024-08-10",
+        lokasi: "Pilangwetan, Demak",
+        platform: "instagram",
+        platformUrl: "https://www.instagram.com/mts.yasua_pilangwetan/",
+        deskripsi: "Suasana kampus madrasah yang asri, hijau, bersih, dan berwawasan islami di Desa Pilangwetan, Kebonagung, Demak.",
+        urutan: 1,
+        status: true,
+        gambar: "foto-gedung.webp"
+      },
+      {
+        id: "gal_2",
+        judul: "Apel Pagi & Pembinaan Siswa di Lapangan",
+        kategori: "kegiatan",
+        kategoriLabel: "Kedisiplinan",
+        tanggal: "2024-08-15",
+        lokasi: "Lapangan Madrasah",
+        platform: "tiktok",
+        platformUrl: "https://www.tiktok.com/@mtsyasuapilangwetan",
+        deskripsi: "Membiasakan ketertiban, adab saling menghormati, dan kebersamaan seluruh siswa-siswi sebelum memasuki ruang kelas.",
+        urutan: 2,
+        status: true,
+        gambar: "foto-upacara.webp"
+      },
+      {
+        id: "gal_3",
+        judul: "Praktik Komputer & Gladi Bersih ANBK",
+        kategori: "sarpras",
+        kategoriLabel: "Literasi Digital",
+        tanggal: "2024-09-02",
+        lokasi: "Lab Komputer Terpadu",
+        platform: "instagram",
+        platformUrl: "https://www.instagram.com/mts.yasua_pilangwetan/",
+        deskripsi: "Penguasaan aplikasi teknologi dan pelaksanaan asesmen digital secara mandiri dengan komputer modern ber-AC.",
+        urutan: 3,
+        status: true,
+        gambar: "foto-labkom.webp"
+      },
+      {
+        id: "gal_4",
+        judul: "Sholat Berjamaah Siswa Putra di Masjid",
+        kategori: "ibadah",
+        kategoriLabel: "Ibadah Harian",
+        tanggal: "2024-09-12",
+        lokasi: "Masjid Madrasah",
+        platform: "instagram",
+        platformUrl: "https://www.instagram.com/mts.yasua_pilangwetan/",
+        deskripsi: "Penanaman kebiasaan sholat tepat waktu, adab di rumah ibadah, dan kerapian shaf sholat santri putra madrasah.",
+        urutan: 4,
+        status: true,
+        gambar: "foto-sholat-santri.webp"
+      },
+      {
+        id: "gal_5",
+        judul: "Kajian Fiqih Wanita & Bimbingan Santriwati",
+        kategori: "kegiatan",
+        kategoriLabel: "Kajian Santriwati",
+        tanggal: "2024-09-20",
+        lokasi: "Aula Madrasah",
+        platform: "tiktok",
+        platformUrl: "https://www.tiktok.com/@mtsyasuapilangwetan",
+        deskripsi: "Sesi pembinaan khusus akhlak muslimah, fiqih wanita, dan tartil Al-Qur'an santriwati MTs YASUA.",
+        urutan: 5,
+        status: true,
+        gambar: "foto-kajian-santriwati.webp"
+      },
+      {
+        id: "gal_6",
+        judul: "Penilaian Tengah Semester (PTS) Gasal",
+        kategori: "akademik",
+        kategoriLabel: "Pengumuman Resmi",
+        tanggal: "2024-10-01",
+        lokasi: "MTs YASUA",
+        platform: "instagram",
+        platformUrl: "https://www.instagram.com/mts.yasua_pilangwetan/",
+        deskripsi: "Poster jadwal dan ketentuan resmi pelaksanaan PTS bagi seluruh peserta didik kelas VII, VIII, dan IX.",
+        urutan: 6,
+        status: true,
+        gambar: "poster_pts_berita.webp"
+      }
+    ];
+
+    let currentGalleryFilter = 'all';
+    let uploadedGalleryBase64 = null;
+    let uploadedGalleryName = null;
+    let uploadedGalleryMime = null;
+
+    async function fetchGallery() {
+      const refreshIcon = document.getElementById('refreshGalleryIcon');
+      if (refreshIcon) refreshIcon.classList.add('animate-spin');
+
+      try {
+        const res = await fetch(`${API_URL}?action=getGallery`);
+        const json = await res.json();
+        if (json.status === 'success' && Array.isArray(json.data) && json.data.length > 0) {
+          allGalleryData = json.data.map(item => ({
+            id: String(item.id || item.ID || Date.now()),
+            judul: item.judul || item.Judul || item.title || '',
+            kategori: (item.kategori || item.Kategori || 'kegiatan').toLowerCase(),
+            kategoriLabel: item.kategoriLabel || item.KategoriLabel || item.badge || 'Dokumentasi',
+            tanggal: String(item.tanggal || item.Tanggal || ''),
+            lokasi: item.lokasi || item.Lokasi || 'MTs YASUA Pilangwetan',
+            platform: (item.platform || item.Platform || 'instagram').toLowerCase(),
+            platformUrl: item.platformUrl || item.PlatformUrl || 'https://www.instagram.com/mts.yasua_pilangwetan/',
+            deskripsi: item.deskripsi || item.Deskripsi || '',
+            urutan: Number(item.urutan || item.Urutan || 99),
+            status: item.status === true || item.status === 'true' || item.Status === 'Aktif' || item.status === undefined,
+            gambar: item.gambar || item.Gambar || item.image || 'foto-gedung.webp'
+          }));
+          showToast('Data galeri berhasil disinkronkan.');
+        }
+      } catch (err) {
+        console.warn('Gagal memuat galeri dari cloud, menggunakan data lokal:', err);
+      } finally {
+        if (refreshIcon) refreshIcon.classList.remove('animate-spin');
+        updateGalleryKPIs();
+        renderGalleryGrid();
+      }
+    }
+
+    function updateGalleryKPIs() {
+      const total = allGalleryData.length;
+      const kegiatan = allGalleryData.filter(g => g.kategori === 'kegiatan').length;
+      const sarpras = allGalleryData.filter(g => g.kategori === 'sarpras').length;
+      const aktif = allGalleryData.filter(g => g.status).length;
+
+      const totalEl = document.getElementById('galleryTotalStat');
+      const kegiatanEl = document.getElementById('galleryKegiatanStat');
+      const sarprasEl = document.getElementById('gallerySarprasStat');
+      const aktifEl = document.getElementById('galleryAktifStat');
+      const sidebarBadge = document.getElementById('sidebarGalleryCount');
+
+      if (totalEl) totalEl.textContent = total;
+      if (kegiatanEl) kegiatanEl.textContent = kegiatan;
+      if (sarprasEl) sarprasEl.textContent = sarpras;
+      if (aktifEl) aktifEl.textContent = aktif;
+      if (sidebarBadge) sidebarBadge.textContent = `${aktif} Foto`;
+
+      // Update filter pills count
+      const countAll = total;
+      const countKegiatan = kegiatan;
+      const countSarpras = sarpras;
+      const countIbadah = allGalleryData.filter(g => g.kategori === 'ibadah').length;
+      const countAkademik = allGalleryData.filter(g => g.kategori === 'akademik').length;
+
+      if (document.getElementById('countGalAll')) document.getElementById('countGalAll').textContent = countAll;
+      if (document.getElementById('countGalKegiatan')) document.getElementById('countGalKegiatan').textContent = countKegiatan;
+      if (document.getElementById('countGalSarpras')) document.getElementById('countGalSarpras').textContent = countSarpras;
+      if (document.getElementById('countGalIbadah')) document.getElementById('countGalIbadah').textContent = countIbadah;
+      if (document.getElementById('countGalAkademik')) document.getElementById('countGalAkademik').textContent = countAkademik;
+    }
+
+    function filterAdminGallery(kategori) {
+      currentGalleryFilter = kategori;
+      const filters = ['all', 'kegiatan', 'sarpras', 'ibadah', 'akademik'];
+      filters.forEach(f => {
+        const btn = document.getElementById('galleryFilter' + f.charAt(0).toUpperCase() + f.slice(1));
+        if (btn) {
+          if (f === kategori) {
+            btn.className = 'px-3 py-1.5 rounded-xl font-bold transition-all bg-indigo-700 text-white shadow-xs whitespace-nowrap cursor-pointer';
+          } else {
+            btn.className = 'px-3 py-1.5 rounded-xl font-medium text-slate-600 hover:text-indigo-700 hover:bg-indigo-50 transition-all whitespace-nowrap cursor-pointer';
+          }
+        }
+      });
+      renderGalleryGrid();
+    }
+
+    function searchAdminGallery() {
+      renderGalleryGrid();
+    }
+
+    function renderGalleryGrid() {
+      const grid = document.getElementById('galleryGrid');
+      if (!grid) return;
+
+      const searchInput = document.getElementById('gallerySearchInput');
+      const q = searchInput ? searchInput.value.toLowerCase().trim() : '';
+
+      let list = allGalleryData.filter(item => {
+        const matchesCat = currentGalleryFilter === 'all' || item.kategori === currentGalleryFilter;
+        const matchesSearch = !q ||
+          item.judul.toLowerCase().includes(q) ||
+          item.deskripsi.toLowerCase().includes(q) ||
+          item.lokasi.toLowerCase().includes(q) ||
+          (item.kategoriLabel && item.kategoriLabel.toLowerCase().includes(q));
+        return matchesCat && matchesSearch;
+      });
+
+      list.sort((a, b) => (a.urutan || 99) - (b.urutan || 99));
+
+      const showingEl = document.getElementById('galleryShowingCount');
+      if (showingEl) showingEl.textContent = `Menampilkan ${list.length} dari ${allGalleryData.length} foto`;
+
+      if (list.length === 0) {
+        grid.innerHTML = `
+          <div class="col-span-full py-12 text-center bg-white rounded-3xl border border-slate-200">
+            <div class="w-12 h-12 rounded-2xl bg-indigo-50 text-indigo-500 mx-auto flex items-center justify-center mb-3">
+              <i data-lucide="image" class="w-6 h-6"></i>
+            </div>
+            <h4 class="font-bold text-slate-800 text-sm">Tidak ada dokumentasi yang cocok</h4>
+            <p class="text-xs text-slate-500 mt-1">Coba gunakan kata kunci pencarian lain atau pilih filter Semua.</p>
+          </div>
+        `;
+        if (window.lucide) window.lucide.createIcons();
+        return;
+      }
+
+      grid.innerHTML = list.map(item => {
+        const isAktif = item.status;
+        const statusBadge = isAktif
+          ? 'bg-emerald-100 text-emerald-800 border-emerald-200'
+          : 'bg-slate-100 text-slate-600 border-slate-200';
+
+        let platformIcon = 'instagram';
+        let platformText = 'Instagram';
+        let platformColor = 'text-pink-400';
+        if (item.platform === 'tiktok') {
+          platformIcon = 'video';
+          platformText = 'TikTok';
+          platformColor = 'text-cyan-400';
+        } else if (item.platform === 'internal') {
+          platformIcon = 'camera';
+          platformText = 'Dokumentasi';
+          platformColor = 'text-amber-300';
+        }
+
+        return `
+          <div class="bg-white rounded-3xl border border-slate-200/90 overflow-hidden shadow-2xs hover:shadow-md transition-all flex flex-col justify-between group">
+            <div>
+              <!-- Photo Aspect 16:10 -->
+              <div class="relative h-44 w-full bg-slate-100 overflow-hidden">
+                <img src="${item.gambar || 'foto-gedung.webp'}" alt="${item.judul}"
+                  onerror="this.src='foto-gedung.webp'"
+                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-950/20 to-transparent"></div>
+                
+                <!-- Top Badges -->
+                <div class="absolute top-3 left-3 right-3 flex items-center justify-between gap-2">
+                  <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[10px] font-bold bg-black/60 text-white backdrop-blur-xs shadow-sm">
+                    <i data-lucide="${platformIcon}" class="w-3 h-3 ${platformColor}"></i>
+                    <span>${platformText}</span>
+                  </span>
+                  <button onclick="handleToggleGalleryStatus('${item.id}')"
+                    title="Klik untuk mengubah status"
+                    class="px-2 py-0.5 rounded-full text-[10px] font-bold shadow-xs transition-all border cursor-pointer ${statusBadge}">
+                    ${isAktif ? 'Aktif' : 'Draft'}
+                  </button>
+                </div>
+
+                <!-- Bottom Image Badge: Label & Lokasi -->
+                <div class="absolute bottom-3 left-3 right-3 flex items-center justify-between text-white text-[10px]">
+                  <span class="font-bold px-2 py-0.5 rounded-md bg-indigo-600/90 text-white backdrop-blur-xs">
+                    ${item.kategoriLabel || 'Dokumentasi'}
+                  </span>
+                  <span class="text-slate-300 truncate max-w-[140px]">${item.lokasi || 'Pilangwetan'}</span>
+                </div>
+              </div>
+
+              <!-- Body Info -->
+              <div class="p-4 space-y-2">
+                <div class="flex items-center justify-between text-[11px] text-slate-400">
+                  <span class="uppercase tracking-wider font-extrabold text-indigo-700 text-[10px]">${item.kategori}</span>
+                  <span>${item.tanggal || ''}</span>
+                </div>
+
+                <h4 class="font-black text-slate-900 text-sm leading-snug line-clamp-2 hover:text-indigo-700 transition-colors">
+                  ${item.judul}
+                </h4>
+
+                ${item.deskripsi ? `
+                  <p class="text-xs text-slate-600 line-clamp-2 pt-1 border-t border-slate-100">
+                    ${item.deskripsi}
+                  </p>
+                ` : ''}
+              </div>
+            </div>
+
+            <!-- Footer Action Buttons -->
+            <div class="px-4 py-3 bg-slate-50 border-t border-slate-100 flex items-center justify-between text-xs">
+              <span class="text-[10px] text-slate-400 font-bold">#${item.urutan || 1}</span>
+              <div class="flex items-center gap-2">
+                <button onclick="openGalleryLightbox('${item.id}')"
+                  class="p-1.5 rounded-xl bg-white hover:bg-slate-100 text-slate-600 font-bold border border-slate-200 shadow-2xs transition-colors cursor-pointer"
+                  title="Lihat Ukuran Penuh">
+                  <i data-lucide="maximize-2" class="w-3.5 h-3.5"></i>
+                </button>
+                <button onclick="openEditGalleryModal('${item.id}')"
+                  class="px-3 py-1.5 rounded-xl bg-white hover:bg-indigo-50 text-indigo-700 font-bold border border-slate-200 hover:border-indigo-300 shadow-2xs transition-colors flex items-center gap-1 cursor-pointer">
+                  <i data-lucide="edit-3" class="w-3.5 h-3.5"></i>
+                  <span>Edit</span>
+                </button>
+                <button onclick="handleDeleteGallery('${item.id}')"
+                  class="p-1.5 rounded-xl bg-white hover:bg-rose-50 text-rose-600 hover:text-rose-700 font-bold border border-slate-200 hover:border-rose-300 shadow-2xs transition-colors cursor-pointer"
+                  title="Hapus Foto">
+                  <i data-lucide="trash-2" class="w-3.5 h-3.5"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        `;
+      }).join('');
+
+      if (window.lucide) window.lucide.createIcons();
+    }
+
+    function openAddGalleryModal() {
+      document.getElementById('galleryModalTitle').textContent = 'Tambah Foto Dokumentasi Galeri';
+      document.getElementById('galleryForm').reset();
+      document.getElementById('galleryId').value = '';
+      document.getElementById('galleryUrutan').value = allGalleryData.length + 1;
+      document.getElementById('galleryTanggal').value = new Date().toISOString().split('T')[0];
+      document.getElementById('galleryPreviewImg').src = 'foto-gedung.webp';
+      uploadedGalleryBase64 = null;
+      uploadedGalleryName = null;
+      uploadedGalleryMime = null;
+
+      document.getElementById('galleryModal').classList.remove('hidden');
+      if (window.lucide) window.lucide.createIcons();
+    }
+
+    function openEditGalleryModal(id) {
+      const item = allGalleryData.find(g => String(g.id) === String(id));
+      if (!item) return;
+
+      document.getElementById('galleryModalTitle').textContent = 'Edit Foto Dokumentasi Galeri';
+      document.getElementById('galleryId').value = item.id;
+      document.getElementById('galleryJudul').value = item.judul || '';
+      document.getElementById('galleryKategori').value = item.kategori || 'kegiatan';
+      document.getElementById('galleryKategoriLabel').value = item.kategoriLabel || '';
+      document.getElementById('galleryTanggal').value = item.tanggal || '';
+      document.getElementById('galleryLokasi').value = item.lokasi || '';
+      document.getElementById('galleryPlatform').value = item.platform || 'instagram';
+      document.getElementById('galleryPlatformUrl').value = item.platformUrl || '';
+      document.getElementById('galleryDeskripsi').value = item.deskripsi || '';
+      document.getElementById('galleryUrutan').value = item.urutan || 1;
+      document.getElementById('galleryStatus').value = item.status ? 'true' : 'false';
+      document.getElementById('galleryGambarUrl').value = item.gambar || '';
+      document.getElementById('galleryPreviewImg').src = item.gambar || 'foto-gedung.webp';
+
+      uploadedGalleryBase64 = null;
+      uploadedGalleryName = null;
+      uploadedGalleryMime = null;
+
+      document.getElementById('galleryModal').classList.remove('hidden');
+      if (window.lucide) window.lucide.createIcons();
+    }
+
+    function closeModalGallery() {
+      document.getElementById('galleryModal').classList.add('hidden');
+    }
+
+    function openGalleryLightbox(id) {
+      const item = allGalleryData.find(g => String(g.id) === String(id));
+      if (!item) return;
+
+      document.getElementById('lightboxImg').src = item.gambar || 'foto-gedung.webp';
+      document.getElementById('lightboxTitle').textContent = item.judul;
+      document.getElementById('lightboxDesc').textContent = item.deskripsi || (item.lokasi + ' • ' + item.tanggal);
+      document.getElementById('lightboxBadge').textContent = item.kategoriLabel || item.kategori;
+
+      const linkEl = document.getElementById('lightboxLink');
+      if (item.platformUrl) {
+        linkEl.href = item.platformUrl;
+        linkEl.classList.remove('hidden');
+      } else {
+        linkEl.classList.add('hidden');
+      }
+
+      document.getElementById('galleryLightboxModal').classList.remove('hidden');
+      if (window.lucide) window.lucide.createIcons();
+    }
+
+    function closeGalleryLightbox() {
+      document.getElementById('galleryLightboxModal').classList.add('hidden');
+    }
+
+    function updateGalleryUrlPreview() {
+      const url = document.getElementById('galleryGambarUrl').value.trim();
+      const img = document.getElementById('galleryPreviewImg');
+      if (url) {
+        img.src = url;
+      }
+    }
+
+    function handleGalleryFileChange(e) {
+      const file = e.target.files[0];
+      if (!file) return;
+
+      uploadedGalleryName = file.name;
+      uploadedGalleryMime = file.type;
+
+      const reader = new FileReader();
+      reader.onload = function(evt) {
+        const rawImg = new Image();
+        rawImg.onload = function() {
+          const canvas = document.createElement('canvas');
+          const ctx = canvas.getContext('2d');
+          const maxW = 1200;
+          const maxH = 900;
+          let w = rawImg.width;
+          let h = rawImg.height;
+
+          if (w > maxW || h > maxH) {
+            if (w > h) {
+              h = Math.round((h * maxW) / w);
+              w = maxW;
+            } else {
+              w = Math.round((w * maxH) / h);
+              h = maxH;
+            }
+          }
+
+          canvas.width = w;
+          canvas.height = h;
+          ctx.drawImage(rawImg, 0, 0, w, h);
+
+          const compressedDataUrl = canvas.toDataURL('image/jpeg', 0.85);
+          uploadedGalleryBase64 = compressedDataUrl.split(',')[1];
+          document.getElementById('galleryPreviewImg').src = compressedDataUrl;
+        };
+        rawImg.src = evt.target.result;
+      };
+      reader.readAsDataURL(file);
+    }
+
+    async function handleSaveGallery(e) {
+      e.preventDefault();
+      const saveBtn = document.getElementById('saveGalleryBtn');
+      saveBtn.disabled = true;
+      saveBtn.innerHTML = '<span>Menyimpan...</span>';
+
+      const id = document.getElementById('galleryId').value;
+      const isNew = !id;
+      const finalId = id || 'gal_' + Date.now();
+
+      const itemData = {
+        id: finalId,
+        judul: document.getElementById('galleryJudul').value.trim(),
+        kategori: document.getElementById('galleryKategori').value,
+        kategoriLabel: document.getElementById('galleryKategoriLabel').value.trim() || 'Dokumentasi',
+        tanggal: document.getElementById('galleryTanggal').value.trim(),
+        lokasi: document.getElementById('galleryLokasi').value.trim() || 'Pilangwetan, Demak',
+        platform: document.getElementById('galleryPlatform').value,
+        platformUrl: document.getElementById('galleryPlatformUrl').value.trim() || 'https://www.instagram.com/mts.yasua_pilangwetan/',
+        deskripsi: document.getElementById('galleryDeskripsi').value.trim(),
+        urutan: Number(document.getElementById('galleryUrutan').value) || 1,
+        status: document.getElementById('galleryStatus').value === 'true',
+        gambar: document.getElementById('galleryPreviewImg').src || 'foto-gedung.webp'
+      };
+
+      if (isNew) {
+        allGalleryData.unshift(itemData);
+      } else {
+        const idx = allGalleryData.findIndex(g => String(g.id) === String(id));
+        if (idx !== -1) {
+          allGalleryData[idx] = itemData;
+        }
+      }
+
+      updateGalleryKPIs();
+      renderGalleryGrid();
+      closeModalGallery();
+      showToast(isNew ? 'Foto galeri baru berhasil ditambahkan.' : 'Data foto galeri berhasil diperbarui.');
+
+      try {
+        const payload = {
+          password: getAdminPassword(),
+          action: isNew ? 'addGallery' : 'updateGallery',
+          data: itemData
+        };
+
+        if (uploadedGalleryBase64) {
+          payload.fileBase64 = uploadedGalleryBase64;
+          payload.fileName = uploadedGalleryName;
+          payload.fileMime = uploadedGalleryMime;
+        }
+
+        const res = await fetch(API_URL, {
+          method: 'POST',
+          body: JSON.stringify(payload)
+        });
+        const json = await res.json();
+        if (json.status === 'success') {
+          showToast('Data galeri tersinkronisasi ke Google Drive & Cloud Database.');
+          if (json.fileUrl) {
+            itemData.gambar = json.fileUrl;
+            renderGalleryGrid();
+          }
+        }
+      } catch (err) {
+        console.warn('Gagal sinkron galeri ke Apps Script:', err);
+      } finally {
+        saveBtn.disabled = false;
+        saveBtn.innerHTML = '<i data-lucide="save" class="w-3.5 h-3.5 text-white"></i><span>Simpan Dokumentasi</span>';
+      }
+    }
+
+    async function handleToggleGalleryStatus(id) {
+      const item = allGalleryData.find(g => String(g.id) === String(id));
+      if (!item) return;
+
+      item.status = !item.status;
+      updateGalleryKPIs();
+      renderGalleryGrid();
+      showToast(`Status foto diubah menjadi ${item.status ? 'Aktif' : 'Draft'}.`);
+
+      try {
+        await fetch(API_URL, {
+          method: 'POST',
+          body: JSON.stringify({
+            password: getAdminPassword(),
+            action: 'toggleGalleryStatus',
+            id: id,
+            status: item.status
+          })
+        });
+      } catch (err) {
+        console.warn('Gagal sinkron toggle status galeri:', err);
+      }
+    }
+
+    async function handleDeleteGallery(id) {
+      const item = allGalleryData.find(g => String(g.id) === String(id));
+      if (!item) return;
+
+      if (!confirm(`Yakin ingin menghapus foto "${item.judul}"?`)) {
+        return;
+      }
+
+      allGalleryData = allGalleryData.filter(g => String(g.id) !== String(id));
+      updateGalleryKPIs();
+      renderGalleryGrid();
+      showToast('Foto galeri berhasil dihapus.');
+
+      try {
+        await fetch(API_URL, {
+          method: 'POST',
+          body: JSON.stringify({
+            password: getAdminPassword(),
+            action: 'deleteGallery',
+            id: id
+          })
+        });
+      } catch (err) {
+        console.warn('Gagal sinkron hapus galeri:', err);
       }
     }
 
