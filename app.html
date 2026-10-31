@@ -1002,52 +1002,44 @@
 
     <!-- ==================== TAB 8: PRESTASI SISWA ==================== -->
     <div id="tab-prestasi" class="hidden space-y-3.5">
-      <div class="bg-gradient-to-r from-emerald-950 via-teal-950 to-emerald-900 text-white p-3.5 rounded-2xl shadow-sm border border-emerald-700/80 flex items-center justify-between">
-        <div class="flex items-center gap-2.5">
+      <!-- Header Banner -->
+      <div class="bg-gradient-to-r from-amber-600 via-amber-700 to-emerald-900 text-white p-4 rounded-3xl shadow-sm border border-amber-500/30 flex items-center justify-between">
+        <div class="flex items-center gap-3">
           <button onclick="switchAppTab('beranda')" type="button" class="w-8 h-8 rounded-xl bg-white/10 hover:bg-white/20 flex items-center justify-center text-white transition-colors cursor-pointer" title="Kembali ke Beranda">
             <i data-lucide="arrow-left" class="w-4 h-4"></i>
           </button>
           <div>
-            <h2 class="text-sm font-black text-white leading-tight">Prestasi Madrasah</h2>
-            <p class="text-[10px] text-emerald-200 mt-0.5">Rekam Jejak Juara Santri MTs YASUA</p>
+            <h2 class="text-sm font-black text-white leading-tight">Prestasi Santri &amp; Siswa</h2>
+            <p class="text-[10px] text-amber-200 mt-0.5">Rekam Jejak Kejuaraan MTs YASUA</p>
           </div>
         </div>
-        <i data-lucide="award" class="w-5 h-5 text-amber-300"></i>
+        <button onclick="fetchAppPrestasi(true)" type="button" class="w-8 h-8 rounded-xl bg-white/10 hover:bg-white/20 flex items-center justify-center text-white transition-colors cursor-pointer" title="Segarkan Data">
+          <i data-lucide="refresh-cw" id="prestasiAppRefreshIcon" class="w-4 h-4 text-amber-200"></i>
+        </button>
       </div>
 
-      <div class="space-y-2.5">
-        <div class="bg-white p-3 rounded-2xl border border-emerald-100/90 shadow-xs flex items-center gap-3">
-          <div class="w-10 h-10 rounded-xl bg-amber-100 text-amber-800 font-black flex items-center justify-center text-sm shrink-0">
-            🥇
-          </div>
-          <div class="flex-1 min-w-0">
-            <span class="text-[9px] font-extrabold uppercase px-2 py-0.5 rounded bg-amber-50 text-amber-800 border border-amber-200">KSM Kemenag</span>
-            <h4 class="font-extrabold text-slate-900 text-xs mt-0.5 leading-snug truncate">Juara 1 Kompetisi Sains Madrasah Matematika</h4>
-            <p class="text-[10px] text-slate-500">Tingkat Sub-Rayon Kebonagung • Tahun 2026</p>
-          </div>
-        </div>
+      <!-- Filter Kategori Pills (Horizontal Scroll) -->
+      <div class="flex items-center gap-1.5 overflow-x-auto pb-1 scrollbar-none text-[11px]">
+        <button onclick="filterAppPrestasi('all', this)" class="app-prestasi-filter-btn px-3 py-1.5 rounded-full font-bold bg-amber-500 text-slate-950 shadow-xs whitespace-nowrap cursor-pointer">
+          Semua Prestasi
+        </button>
+        <button onclick="filterAppPrestasi('sains', this)" class="app-prestasi-filter-btn px-3 py-1.5 rounded-full font-semibold bg-white border border-slate-200 text-slate-700 hover:bg-amber-50 transition-all whitespace-nowrap cursor-pointer">
+          Sains &amp; Riset
+        </button>
+        <button onclick="filterAppPrestasi('keagamaan', this)" class="app-prestasi-filter-btn px-3 py-1.5 rounded-full font-semibold bg-white border border-slate-200 text-slate-700 hover:bg-amber-50 transition-all whitespace-nowrap cursor-pointer">
+          Keagamaan &amp; Seni
+        </button>
+        <button onclick="filterAppPrestasi('pramuka', this)" class="app-prestasi-filter-btn px-3 py-1.5 rounded-full font-semibold bg-white border border-slate-200 text-slate-700 hover:bg-amber-50 transition-all whitespace-nowrap cursor-pointer">
+          Pramuka &amp; PBB
+        </button>
+        <button onclick="filterAppPrestasi('olahraga', this)" class="app-prestasi-filter-btn px-3 py-1.5 rounded-full font-semibold bg-white border border-slate-200 text-slate-700 hover:bg-amber-50 transition-all whitespace-nowrap cursor-pointer">
+          Olahraga &amp; Silat
+        </button>
+      </div>
 
-        <div class="bg-white p-3 rounded-2xl border border-emerald-100/90 shadow-xs flex items-center gap-3">
-          <div class="w-10 h-10 rounded-xl bg-slate-100 text-slate-700 font-black flex items-center justify-center text-sm shrink-0">
-            🥈
-          </div>
-          <div class="flex-1 min-w-0">
-            <span class="text-[9px] font-extrabold uppercase px-2 py-0.5 rounded bg-emerald-50 text-emerald-800 border border-emerald-200">Porseni Madrasah</span>
-            <h4 class="font-extrabold text-slate-900 text-xs mt-0.5 leading-snug truncate">Juara 2 Kaligrafi Hiasan Mushaf</h4>
-            <p class="text-[10px] text-slate-500">Tingkat Kabupaten Demak • Tahun 2026</p>
-          </div>
-        </div>
-
-        <div class="bg-white p-3 rounded-2xl border border-emerald-100/90 shadow-xs flex items-center gap-3">
-          <div class="w-10 h-10 rounded-xl bg-amber-50 text-amber-700 font-black flex items-center justify-center text-sm shrink-0">
-            🥉
-          </div>
-          <div class="flex-1 min-w-0">
-            <span class="text-[9px] font-extrabold uppercase px-2 py-0.5 rounded bg-blue-50 text-blue-800 border border-blue-200">MTQ Santri</span>
-            <h4 class="font-extrabold text-slate-900 text-xs mt-0.5 leading-snug truncate">Juara 3 Tahfidz Al-Qur'an 3 Juz</h4>
-            <p class="text-[10px] text-slate-500">Peringatan Hari Santri Nasional • Tahun 2026</p>
-          </div>
-        </div>
+      <!-- Container List Prestasi -->
+      <div id="appPrestasiContainer" class="space-y-3">
+        <!-- Rendered dynamically via JS with fallback -->
       </div>
     </div><!-- End #tab-prestasi -->
 
@@ -1383,6 +1375,8 @@
         if (typeof renderCalendar === 'function') renderCalendar();
       } else if (tabName === 'guru') {
         if (typeof initTabGuru === 'function') initTabGuru();
+      } else if (tabName === 'prestasi') {
+        if (typeof initTabPrestasi === 'function') initTabPrestasi();
       }
 
       window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -1390,6 +1384,205 @@
     }
 
     // Expose globally for pwa.js dock
+
+    // =========================================================================
+    // MOBILE APP PWA: PRESTASI SANTRI & SISWA LOGIC
+    // =========================================================================
+    let appPrestasiData = [
+      {
+        id: "1",
+        judul: "Juara 1 KSM Matematika Terintegrasi",
+        kategori: "sains",
+        peringkat: "Juara 1",
+        tingkat: "Kabupaten",
+        tahun: "2024",
+        peraih: "Ahmad Zaki Mubarak",
+        penyelenggara: "Kemenag Kab. Demak",
+        deskripsi: "Kompetisi Sains Madrasah tingkat Kabupaten Demak bidang Matematika Terintegrasi.",
+        gambar: "https://images.unsplash.com/photo-1596495578065-6e0763fa1178?q=80&w=800&auto=format&fit=crop"
+      },
+      {
+        id: "2",
+        judul: "Juara Umum 1 Festival Drumband",
+        kategori: "pramuka",
+        peringkat: "Juara Umum 1",
+        tingkat: "Karesidenan",
+        tahun: "2023",
+        peraih: "Tim Bahana Swara YASUA",
+        penyelenggara: "PDBI Wilayah Karesidenan Semarang",
+        deskripsi: "Penampilan display & parade terbaik marching band pada festival tahunan pelajar.",
+        gambar: "https://images.unsplash.com/photo-1511192336575-5a79af67a629?q=80&w=800&auto=format&fit=crop"
+      },
+      {
+        id: "3",
+        judul: "Juara 1 Kaligrafi Mushaf Pospenas",
+        kategori: "keagamaan",
+        peringkat: "Juara 1",
+        tingkat: "Provinsi",
+        tahun: "2024",
+        peraih: "Nur Aini Fatimah",
+        penyelenggara: "Kanwil Kemenag Jawa Tengah",
+        deskripsi: "Pekan Olahraga dan Seni Antar Pondok Pesantren Daerah Tingkat Provinsi Jateng.",
+        gambar: "https://images.unsplash.com/photo-1582738411706-bfc8e691d1c2?q=80&w=800&auto=format&fit=crop"
+      },
+      {
+        id: "4",
+        judul: "Juara 2 MHQ 3 Juz Aksioma",
+        kategori: "keagamaan",
+        peringkat: "Juara 2",
+        tingkat: "Kabupaten",
+        tahun: "2023",
+        peraih: "M. Rizky Pratama",
+        penyelenggara: "Kemenag Kab. Demak",
+        deskripsi: "Ajang Kompetisi Seni dan Olahraga Madrasah cabang Musabaqah Hifdzil Qur'an 3 Juz.",
+        gambar: "https://images.unsplash.com/photo-1609599006353-e629aaabfeae?q=80&w=800&auto=format&fit=crop"
+      },
+      {
+        id: "5",
+        judul: "Regu Berprestasi Tinggi LT-II Pramuka",
+        kategori: "pramuka",
+        peringkat: "Juara Umum",
+        tingkat: "Kabupaten",
+        tahun: "2023",
+        peraih: "Regu Rajawali MTs YASUA",
+        penyelenggara: "Kwarran Karangawen & Kwarcab Demak",
+        deskripsi: "Lomba Tingkat II Regu Penggalang Putra dengan akumulasi poin tertinggi.",
+        gambar: "https://images.unsplash.com/photo-1517649763962-0c623266ddc0?q=80&w=800&auto=format&fit=crop"
+      },
+      {
+        id: "6",
+        judul: "Juara 1 Pencak Silat Pagar Nusa",
+        kategori: "olahraga",
+        peringkat: "Juara 1",
+        tingkat: "Kabupaten",
+        tahun: "2024",
+        peraih: "Ilham Wahyudi",
+        penyelenggara: "PC Pagar Nusa Demak",
+        deskripsi: "Kejuaraan Cabang Pencak Silat Nahdlatul Ulama Pagar Nusa Kelas C Remaja Putra.",
+        gambar: "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?q=80&w=800&auto=format&fit=crop"
+      }
+    ];
+
+    let currentAppPrestasiFilter = 'all';
+
+    function initTabPrestasi() {
+      renderAppPrestasiList();
+      fetchAppPrestasi(false);
+    }
+
+    function renderAppPrestasiList() {
+      const container = document.getElementById('appPrestasiContainer');
+      if (!container) return;
+
+      const filtered = appPrestasiData.filter(p => {
+        return currentAppPrestasiFilter === 'all' || p.kategori === currentAppPrestasiFilter;
+      });
+
+      if (filtered.length === 0) {
+        container.innerHTML = `
+          <div class="py-10 text-center bg-white rounded-3xl border border-slate-100 p-4">
+            <i data-lucide="trophy" class="w-8 h-8 text-amber-400 mx-auto mb-2"></i>
+            <p class="text-xs font-bold text-slate-700">Belum ada prestasi pada kategori ini</p>
+            <p class="text-[10px] text-slate-400 mt-0.5">Pilih filter Semua Prestasi untuk melihat seluruh data.</p>
+          </div>
+        `;
+        if (window.lucide) window.lucide.createIcons();
+        return;
+      }
+
+      container.innerHTML = filtered.map(item => {
+        let badgeIcon = '🥇';
+        if (/juara 2/i.test(item.peringkat)) badgeIcon = '🥈';
+        if (/juara 3/i.test(item.peringkat)) badgeIcon = '🥉';
+
+        return `
+          <div class="bg-white rounded-2xl border border-emerald-100/90 shadow-2xs overflow-hidden flex flex-col">
+            <div class="relative h-32 w-full bg-slate-100 overflow-hidden">
+              <img src="${item.gambar || 'logo-mts.png'}" alt="${item.judul}"
+                onerror="this.src='logo-mts.png'"
+                class="w-full h-full object-cover">
+              <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent"></div>
+              <div class="absolute top-2 left-2 flex items-center gap-1.5">
+                <span class="px-2 py-0.5 rounded-full text-[9px] font-black uppercase tracking-wide bg-amber-400 text-slate-950 shadow-xs flex items-center gap-1">
+                  <span>${badgeIcon}</span> ${item.peringkat}
+                </span>
+                <span class="px-2 py-0.5 rounded-full text-[9px] font-bold bg-white/20 backdrop-blur-xs text-white border border-white/30">
+                  ${item.tingkat}
+                </span>
+              </div>
+              <div class="absolute bottom-2 left-2 text-white">
+                <span class="text-[9px] font-medium text-amber-200">Tahun ${item.tahun}</span>
+              </div>
+            </div>
+            <div class="p-3.5 space-y-1.5">
+              <h4 class="font-black text-slate-900 text-xs leading-snug">
+                ${item.judul}
+              </h4>
+              <div class="flex items-center gap-1.5 text-[11px] font-bold text-emerald-800">
+                <i data-lucide="user" class="w-3.5 h-3.5 text-amber-500 shrink-0"></i>
+                <span class="truncate">${item.peraih}</span>
+              </div>
+              <div class="flex items-center gap-1.5 text-[10px] text-slate-500">
+                <i data-lucide="building" class="w-3 h-3 text-slate-400 shrink-0"></i>
+                <span class="truncate">${item.penyelenggara || 'Kemenag Kab. Demak'}</span>
+              </div>
+              ${item.deskripsi ? `
+                <p class="text-[10px] text-slate-600 line-clamp-2 pt-1 border-t border-slate-100">
+                  ${item.deskripsi}
+                </p>
+              ` : ''}
+            </div>
+          </div>
+        `;
+      }).join('');
+
+      if (window.lucide) window.lucide.createIcons();
+    }
+
+    function filterAppPrestasi(cat, btn) {
+      currentAppPrestasiFilter = cat;
+      const allBtns = document.querySelectorAll('.app-prestasi-filter-btn');
+      allBtns.forEach(b => {
+        b.className = 'app-prestasi-filter-btn px-3 py-1.5 rounded-full font-semibold bg-white border border-slate-200 text-slate-700 hover:bg-amber-50 transition-all whitespace-nowrap cursor-pointer';
+      });
+      btn.className = 'app-prestasi-filter-btn px-3 py-1.5 rounded-full font-bold bg-amber-500 text-slate-950 shadow-xs whitespace-nowrap cursor-pointer';
+      renderAppPrestasiList();
+    }
+
+    function fetchAppPrestasi(force = false) {
+      const refreshIcon = document.getElementById('prestasiAppRefreshIcon');
+      if (refreshIcon) refreshIcon.classList.add('animate-spin');
+
+      fetch('https://script.google.com/macros/s/AKfycbxNFLoL96Ch_8QOKhp5AFauIGb9GcMpd9eb3my_zqikL0sDuncgRhDPD6tez-fuY6wT/exec?action=getPrestasi')
+        .then(res => res.json())
+        .then(json => {
+          if (json.status === 'success' && Array.isArray(json.data) && json.data.length > 0) {
+            const activeOnly = json.data.filter(p => p.status === true || p.status === 'true' || p.Status === 'Aktif' || p.status === undefined);
+            if (activeOnly.length > 0) {
+              appPrestasiData = activeOnly.map(item => ({
+                id: String(item.id || item.ID || Date.now()),
+                judul: item.judul || item.Judul || item.title || '',
+                kategori: (item.kategori || item.Kategori || 'lainnya').toLowerCase(),
+                peringkat: item.peringkat || item.Peringkat || 'Juara',
+                tingkat: item.tingkat || item.Tingkat || 'Kabupaten',
+                tahun: String(item.tahun || item.Tahun || new Date().getFullYear()),
+                peraih: item.peraih || item.Peraih || item.nama || '',
+                penyelenggara: item.penyelenggara || item.Penyelenggara || '',
+                deskripsi: item.deskripsi || item.Deskripsi || '',
+                gambar: item.gambar || item.Gambar || item.image || 'logo-mts.png'
+              }));
+              renderAppPrestasiList();
+            }
+          }
+        })
+        .catch(err => {
+          console.warn('Gagal memuat prestasi app dari server, menggunakan cache lokal:', err);
+        })
+        .finally(() => {
+          if (refreshIcon) refreshIcon.classList.remove('animate-spin');
+        });
+    }
+
     window.switchAppTab = switchAppTab;
 
     // Handle deep links and browser Back/Forward navigation

@@ -853,6 +853,76 @@
       });
     }
 
+    // Sinkronisasi data prestasi live dari Cloud Google Apps Script
+    async function fetchLivePrestasi() {
+      const API_URL = 'https://script.google.com/macros/s/AKfycbxNFLoL96Ch_8QOKhp5AFauIGb9GcMpd9eb3my_zqikL0sDuncgRhDPD6tez-fuY6wT/exec?action=getPrestasi';
+      try {
+        const res = await fetch(API_URL);
+        const json = await res.json();
+        if (json.status === 'success' && Array.isArray(json.data) && json.data.length > 0) {
+          const activePrestasi = json.data.filter(p => p.status === true || p.status === 'true' || p.Status === 'Aktif' || p.status === undefined);
+          if (activePrestasi.length > 0) {
+            renderWebPrestasiGrid(activePrestasi);
+          }
+        }
+      } catch (e) {
+        // Fallback anggun: Tetap menggunakan kartu statis HTML eksisting
+        console.info('Menggunakan kartu prestasi statis bawaan.');
+      }
+    }
+
+    function renderWebPrestasiGrid(items) {
+      const grid = document.getElementById('prestasiGrid');
+      if (!grid) return;
+
+      // Sort urutan asc
+      items.sort((a, b) => (Number(a.urutan) || 99) - (Number(b.urutan) || 99) || (Number(b.tahun) || 2024) - (Number(a.tahun) || 2024));
+
+      grid.innerHTML = items.map(item => {
+        const cat = (item.kategori || 'sains').toLowerCase();
+        let badgeIcon = 'crown';
+        if (/umum|emas|utama/i.test(item.peringkat)) badgeIcon = 'trophy';
+        if (/perak|2/i.test(item.peringkat)) badgeIcon = 'medal';
+
+        return `
+          <div class="prestasi-card bg-white rounded-3xl p-6 border border-emerald-100 shadow-xs hover-lift flex flex-col justify-between" data-cat="${cat}">
+            <div class="space-y-4">
+              <div class="flex items-center justify-between">
+                <span class="px-3 py-1 rounded-full bg-amber-100 text-amber-900 text-xs font-black border border-amber-200 flex items-center gap-1">
+                  <i data-lucide="${badgeIcon}" class="w-3.5 h-3.5 text-amber-600"></i> ${item.peringkat || 'Juara'}
+                </span>
+                <span class="text-xs text-slate-400 font-bold">${item.tahun || '2024'}</span>
+              </div>
+              <div class="space-y-1">
+                <span class="text-[11px] font-bold text-brand-primary uppercase tracking-wider block">${item.tingkat || 'Kabupaten'}</span>
+                <h3 class="font-black text-slate-900 text-lg leading-snug">${item.judul}</h3>
+              </div>
+              <div class="space-y-1 pt-2 border-t border-slate-50 text-xs text-slate-600">
+                <p class="font-bold text-slate-900 flex items-center gap-1.5">
+                  <i data-lucide="user" class="w-3.5 h-3.5 text-brand-primary"></i>
+                  <span>Peraih: ${item.peraih}</span>
+                </p>
+                <p class="text-[11px] text-slate-500">${item.penyelenggara || 'Kemenag / Instansi Terkait'}</p>
+                ${item.deskripsi ? `<p class="text-slate-600 text-xs pt-1">${item.deskripsi}</p>` : ''}
+              </div>
+            </div>
+            <div class="pt-6 mt-4 border-t border-slate-100 flex items-center justify-between">
+              <span class="text-xs font-semibold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-md">MTs YASUA</span>
+              <span class="text-xs font-bold text-slate-400 flex items-center gap-1">
+                <i data-lucide="award" class="w-3.5 h-3.5 text-amber-500"></i> Terverifikasi
+              </span>
+            </div>
+          </div>
+        `;
+      }).join('');
+
+      if (window.lucide) window.lucide.createIcons();
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      fetchLivePrestasi();
+    });
+
     window.addEventListener('keydown', function(e) {
       if (e.key === 'Escape') closeBrochureModal();
     });
